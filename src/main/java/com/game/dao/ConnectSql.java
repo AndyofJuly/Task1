@@ -1,15 +1,12 @@
 package com.game.dao;
 
-import com.game.common.Const;
-import com.game.entity.Scene;
-import com.game.service.FunctionService;
+import com.game.common.ConfigMapUtil;
+import com.game.controller.FunctionService;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
-import static com.game.common.Const.SCENE_NAME;
 
 
 /**
@@ -117,7 +114,7 @@ public class ConnectSql {
             System.out.println("We got unexpected:" + e.getMessage());
         }
         //初始场景中加入该角色
-        Const.scenes.get(0).getRoleAll().add(FunctionService.role);
+        ConfigMapUtil.scenes.get(10001).getRoleAll().add(FunctionService.role);
         return false;
     }
 
@@ -136,13 +133,9 @@ public class ConnectSql {
         }catch (Exception e){
             System.out.println("We got unexpected1:" + e.getMessage());
         }
-        String temp = SCENE_NAME[selectRoleScenesId(rolename)-1];
-        for(Scene scene:Const.scenes) {
-            //if(SCENE_NAME[ServerHandler.role.getNowScenesId()-1].equals(scene.getName())){
-            if(temp.equals(scene.getName())){
-                scene.getRoleAll().add(FunctionService.role);
-            }
-        }
+
+        //角色所在的场景id，然后在该id场景中加入该角色
+        ConfigMapUtil.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
         return result;
     }
 
@@ -155,7 +148,7 @@ public class ConnectSql {
         try{
             PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where rolename=?");
             st.setInt(1,scenesId);
-            st.setString(2,FunctionService.role.getName());
+            st.setString(2, FunctionService.role.getName());
             st.executeUpdate();
         }catch (Exception e)
         {

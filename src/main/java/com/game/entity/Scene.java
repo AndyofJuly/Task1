@@ -8,45 +8,39 @@ import java.util.ArrayList;
  * @create 2020/5/13 11:10
  */
 public class Scene {
-    private int id;
+    //private int id;
     private String name;
-    private int x;
-    private int y;
+    private int[] sceneRelation;
 
     private Npc[] npcAll = new Npc[]{};
     private Monster[] monsterAll = new Monster[]{};
     private ArrayList<Role> roleAll = new ArrayList<Role>();
 
-   public Scene(int id,String name, int x, int y) {
+/*    public Scene(int id, String name, int[] sceneRelation) {
         this.id = id;
         this.name = name;
-        this.x = x;
-        this.y = y;
+        this.sceneRelation = sceneRelation;
+    }*/
+    public Scene(String name, int[] sceneRelation) {
+        this.name = name;
+        this.sceneRelation = sceneRelation;
     }
 
-    public int getX() {
-        return x;
+    public int[] getSceneRelation() {
+        return sceneRelation;
     }
 
-    public void setX(int x) {
-        this.x = x;
+    public void setSceneRelation(int[] sceneRelation) {
+        this.sceneRelation = sceneRelation;
     }
 
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    public int getId() {
+/*    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
+    }*/
 
     public String getName() {
         return name;

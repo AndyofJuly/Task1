@@ -1,6 +1,6 @@
 package com.game.netty.server;
 
-import com.game.common.Const;
+import com.game.common.ConfigMapUtil;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -8,8 +8,6 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 /**
  * netty服务端
  * 参考来源：csdn上作者maoyuanming0806的文章，参考了如何用netty实现客户端与服务端的通信，属于通用类代码
@@ -18,14 +16,14 @@ import org.slf4j.LoggerFactory;
  */
 
 public class NettyServer {
-    Logger logger = LoggerFactory.getLogger(NettyServer.class);
+
     public static void main(String[] args) {
         startServer();
     }
 
     public static void startServer(){
         //服务器启动，从数据库中加载场景信息
-        new Const();
+        new ConfigMapUtil();
 
         //1.定义server启动类
         ServerBootstrap serverBootstrap = new ServerBootstrap();

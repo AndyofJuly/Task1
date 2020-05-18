@@ -1,9 +1,11 @@
-package com.game.service;
+package com.game.controller;
 
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
 import com.game.entity.Role;
 import com.game.entity.User;
+import com.game.service.RoleService;
+import com.game.service.UserService;
 import org.reflections.Reflections;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +25,7 @@ public class FunctionService {
     RoleService roleService = new RoleService();
     public static String[] strings = new String[]{};
     ConnectSql connectSql = new ConnectSql();
-    public static String inputString;
-    String getString;
+
 
     @MyAnnontation(MethodName = "register")
     public String registerMesseage() {
@@ -39,18 +40,19 @@ public class FunctionService {
 
     @MyAnnontation(MethodName = "registerR")
     public String registerRoleMesseage() {
-        role = new Role(strings[1],1);
+        role = new Role(strings[1],10001);
         user.setRole(role);
         role.setId(connectSql.selectRoleIdByName(strings[1]));
         return userService.registerRole(strings[1]);
     }
 
     @MyAnnontation(MethodName = "loginR")
-    public String loginReleMesseage() {
+    public String loginRoleMesseage() {
         role = new Role(strings[1],connectSql.selectRoleScenesId(strings[1]));
         user.setRole(role);
         return userService.loginRole(strings[1]);
     }
+
 
     @MyAnnontation(MethodName = "move")
     public String moveMesseage() {
@@ -67,27 +69,5 @@ public class FunctionService {
         return roleService.checkPlace(strings[1]);
     }
 
-    public String getMethod(String inputString) {
-        Reflections reflections = new Reflections("com.game.service");
-        //获取带Service注解的类
-        Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Service.class);
-        for (Class clazz : typesAnnotatedWith) {
-            Method[] methods = clazz.getDeclaredMethods();
-            for (Method method : methods) {
-                //判断带自定义注解MyAnnontation的method
-                if (method.isAnnotationPresent(MyAnnontation.class)) {
-                    MyAnnontation annotation = method.getAnnotation(MyAnnontation.class);
-                    if (null != annotation.MethodName() && annotation.MethodName().equals(inputString)) {
-                        try {
-                            //执行method
-                            getString=(String) method.invoke(clazz.newInstance());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-        }
-        return getString;
-    }
+
 }

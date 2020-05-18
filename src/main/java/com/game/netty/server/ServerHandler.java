@@ -1,8 +1,11 @@
 package com.game.netty.server;
 
-import com.game.service.FunctionService;
+import com.game.common.ReflectService;
+import com.game.controller.FunctionService;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -16,11 +19,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
+        Logger logger = LoggerFactory.getLogger(NettyServer.class);
         System.out.println("收到来自客户端的命令:"+msg.toString());
 
         FunctionService.strings = msg.toString().split(" ");
-        FunctionService functionService = new FunctionService();
-        ctx.channel().writeAndFlush(functionService.getMethod(FunctionService.strings[0]));
+        ReflectService reflectService = new ReflectService();
+        ctx.channel().writeAndFlush(reflectService.getMethod(FunctionService.strings[0]));
         ctx.fireChannelRead(msg);
     }
 
