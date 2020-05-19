@@ -8,39 +8,57 @@ import java.util.ArrayList;
  * @create 2020/5/13 11:10
  */
 public class Scene {
-    //private int id;
+    private int id;
     private String name;
-    private int[] sceneRelation;
+    private String[] sceneRelation;
 
-    private Npc[] npcAll = new Npc[]{};
-    private Monster[] monsterAll = new Monster[]{};
+    private String[] npcId;
+    private String[] monsterId;
+
     private ArrayList<Role> roleAll = new ArrayList<Role>();
 
-/*    public Scene(int id, String name, int[] sceneRelation) {
+    public Scene(int id, String name, String[] sceneRelation, String[] npcId, String[] monsterId) {
         this.id = id;
         this.name = name;
         this.sceneRelation = sceneRelation;
-    }*/
-    public Scene(String name, int[] sceneRelation) {
+        this.npcId = npcId;
+        this.monsterId = monsterId;
+    }
+
+    public Scene(String name) {
+        this.name = name;
+    }
+
+    public Scene(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Scene(int id, String name, String[] sceneRelation) {
+        this.id = id;
+        this.name = name;
+        this.sceneRelation = sceneRelation;
+    }
+    public Scene(String name, String[] sceneRelation) {
         this.name = name;
         this.sceneRelation = sceneRelation;
     }
 
-    public int[] getSceneRelation() {
+    public String[] getSceneRelation() {
         return sceneRelation;
     }
 
-    public void setSceneRelation(int[] sceneRelation) {
+    public void setSceneRelation(String[] sceneRelation) {
         this.sceneRelation = sceneRelation;
     }
 
-/*    public int getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }*/
+    }
 
     public String getName() {
         return name;
@@ -50,27 +68,27 @@ public class Scene {
         this.name = name;
     }
 
-    public Npc[] getNpcAll() {
-        return npcAll;
-    }
-
-    public void setNpcAll(Npc[] npcAll) {
-        this.npcAll = npcAll;
-    }
-
-    public Monster[] getMonsterAll() {
-        return monsterAll;
-    }
-
-    public void setMonsterAll(Monster[] monsterAll) {
-        this.monsterAll = monsterAll;
-    }
-
     public ArrayList<Role> getRoleAll() {
         return roleAll;
     }
 
     public void setRoleAll(ArrayList<Role> roleAll) {
         this.roleAll = roleAll;
+    }
+
+    public String[] getNpcId() {
+        return npcId;
+    }
+
+    public void setNpcId(String[] npcId) {
+        this.npcId = npcId;
+    }
+
+    public String[] getMonsterId() {
+        return monsterId;
+    }
+
+    public void setMonsterId(String[] monsterId) {
+        this.monsterId = monsterId;
     }
 }

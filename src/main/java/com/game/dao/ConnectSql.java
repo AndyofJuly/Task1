@@ -1,6 +1,6 @@
 package com.game.dao;
 
-import com.game.common.ConfigMapUtil;
+import com.game.common.ExcelToJson;
 import com.game.controller.FunctionService;
 
 import java.sql.Connection;
@@ -114,7 +114,7 @@ public class ConnectSql {
             System.out.println("We got unexpected:" + e.getMessage());
         }
         //初始场景中加入该角色
-        ConfigMapUtil.scenes.get(10001).getRoleAll().add(FunctionService.role);
+        ExcelToJson.scenes.get(10001).getRoleAll().add(FunctionService.role);
         return false;
     }
 
@@ -135,7 +135,7 @@ public class ConnectSql {
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
-        ConfigMapUtil.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
+        ExcelToJson.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
         return result;
     }
 

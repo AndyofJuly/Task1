@@ -1,6 +1,6 @@
 package com.game.service;
 
-import com.game.common.ConfigMapUtil;
+import com.game.common.ExcelToJson;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
 import com.game.entity.Scene;
@@ -24,7 +24,7 @@ public class RoleService {
     }
 
     public String aoi(){
-        String scenesName = ConfigMapUtil.scenes.get(FunctionService.role.getNowScenesId()).getName();
+        String scenesName = ExcelToJson.scenes.get(FunctionService.role.getNowScenesId()).getName();
         return placeDetail(scenesName);
     }
 
@@ -34,22 +34,24 @@ public class RoleService {
 
     public String placeDetail(String scenesName){
         StringBuilder stringBuilder = new StringBuilder("要查看的场景为："+scenesName+"；");
-        for(int j = 10001; j< 10001+ConfigMapUtil.sceneInfo.size(); j++){
-            if(ConfigMapUtil.scenes.get(j).getName().equals(scenesName)){
-                Scene o = ConfigMapUtil.scenes.get(j);
+        for(int j = 10001; j< 10001+ExcelToJson.scenes.size(); j++){
+            if(ExcelToJson.scenes.get(j).getName().equals(scenesName)){
+                Scene o = ExcelToJson.scenes.get(j);
                 stringBuilder.append("角色：");
                 for(int i=0;i<o.getRoleAll().size();i++) {
                     stringBuilder.append(o.getRoleAll().get(i).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
                 stringBuilder.append("NPC：");
-                for(int i=0;i<o.getNpcAll().length;i++) {
-                    stringBuilder.append(o.getNpcAll()[i].getName()).append(" ");
+                for(int i=0;i<o.getNpcId().length;i++) {
+                    //System.out.println(o.getNpcId()[i]);
+                    //System.out.println(ExcelToJson.npcs.get(o.getNpcId()[i]));
+                    stringBuilder.append(ExcelToJson.npcs.get(Integer.valueOf(o.getNpcId()[i])).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
                 stringBuilder.append("怪物：");
-                for(int i=0;i<o.getMonsterAll().length;i++) {
-                    stringBuilder.append(o.getMonsterAll()[i].getName()).append(" ");
+                for(int i=0;i<o.getMonsterId().length;i++) {
+                    stringBuilder.append(ExcelToJson.monsters.get(Integer.valueOf(o.getMonsterId()[i])).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
             }
@@ -59,17 +61,17 @@ public class RoleService {
 
     public boolean moveTo(String moveTarget){
         //获得角色当前所在场景的坐标-通过角色的nowSceneId属性获取，在登录注册时已经获得
-        String nowPlace = ConfigMapUtil.scenes.get(FunctionService.role.getNowScenesId()).getName();
+        String nowPlace = ExcelToJson.scenes.get(FunctionService.role.getNowScenesId()).getName();
         System.out.println(nowPlace);
         //将当前场景坐标与要移动的场景的坐标进行对比
-        int[] list;
-        list = ConfigMapUtil.places.get(nowPlace);
+        String[] arr;
+        arr = ExcelToJson.places.get(nowPlace);
         result = false;
 
-        int temp = 0;
-        for (int value : list) {
+        String temp = null;
+        for (String value : arr) {
             System.out.println(value);
-            if (moveTarget.equals(ConfigMapUtil.scenes.get(value).getName())) {
+            if (moveTarget.equals(ExcelToJson.scenes.get(Integer.valueOf(value)).getName())) {
                 result = true;
                 temp = value;
                 break;
@@ -79,10 +81,10 @@ public class RoleService {
         System.out.println(temp);
         //如果移动成功，当前场景剔除该角色，目标场景加入该角色
         if(result){
-            ConfigMapUtil.scenes.get(FunctionService.role.getNowScenesId()).getRoleAll().remove(FunctionService.role);
-            ConfigMapUtil.scenes.get(temp).getRoleAll().add(FunctionService.role);
+            ExcelToJson.scenes.get(FunctionService.role.getNowScenesId()).getRoleAll().remove(FunctionService.role);
+            ExcelToJson.scenes.get(Integer.valueOf(temp)).getRoleAll().add(FunctionService.role);
             //移动后角色属性的场景id改变
-            FunctionService.role.setNowScenesId(temp);
+            FunctionService.role.setNowScenesId(Integer.valueOf(temp));
             connectSql.insertRoleScenes(FunctionService.role.getNowScenesId());
         }
         return result;

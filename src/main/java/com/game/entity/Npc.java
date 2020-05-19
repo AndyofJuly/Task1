@@ -6,28 +6,23 @@ package com.game.entity;
  * @create 2020/5/11 14:58
  */
 public class Npc {
-    //private int id;
+    private int id;
     private String name;
     private int alive;
 
-/*    public Npc(int id,String name) {
+    public Npc(int id,String name) {
         this.name = name;
         this.id = id;
         this.alive = 1;
-    }*/
-
-    public Npc(String name) {
-        this.name = name;
-        //this.id = id;
-        this.alive = 1;
     }
-/*    public int getId() {
+
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }*/
+    }
 
     public String getName() {
         return name;
