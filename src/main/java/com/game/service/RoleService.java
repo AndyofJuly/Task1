@@ -34,7 +34,7 @@ public class RoleService {
 
     public String placeDetail(String scenesName){
         StringBuilder stringBuilder = new StringBuilder("要查看的场景为："+scenesName+"；");
-        for(int j = 10001; j< 10001+ExcelToJson.scenes.size(); j++){
+        for(int j = ExcelToJson.initSceneId; j< ExcelToJson.initSceneId+ExcelToJson.scenes.size(); j++){
             if(ExcelToJson.scenes.get(j).getName().equals(scenesName)){
                 Scene o = ExcelToJson.scenes.get(j);
                 stringBuilder.append("角色：");
@@ -44,8 +44,6 @@ public class RoleService {
                 stringBuilder.append("。 ");
                 stringBuilder.append("NPC：");
                 for(int i=0;i<o.getNpcId().length;i++) {
-                    //System.out.println(o.getNpcId()[i]);
-                    //System.out.println(ExcelToJson.npcs.get(o.getNpcId()[i]));
                     stringBuilder.append(ExcelToJson.npcs.get(Integer.valueOf(o.getNpcId()[i])).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
@@ -62,7 +60,6 @@ public class RoleService {
     public boolean moveTo(String moveTarget){
         //获得角色当前所在场景的坐标-通过角色的nowSceneId属性获取，在登录注册时已经获得
         String nowPlace = ExcelToJson.scenes.get(FunctionService.role.getNowScenesId()).getName();
-        System.out.println(nowPlace);
         //将当前场景坐标与要移动的场景的坐标进行对比
         String[] arr;
         arr = ExcelToJson.places.get(nowPlace);
@@ -70,15 +67,12 @@ public class RoleService {
 
         String temp = null;
         for (String value : arr) {
-            System.out.println(value);
             if (moveTarget.equals(ExcelToJson.scenes.get(Integer.valueOf(value)).getName())) {
                 result = true;
                 temp = value;
                 break;
             }
         }
-        System.out.println(result);
-        System.out.println(temp);
         //如果移动成功，当前场景剔除该角色，目标场景加入该角色
         if(result){
             ExcelToJson.scenes.get(FunctionService.role.getNowScenesId()).getRoleAll().remove(FunctionService.role);

@@ -1,0 +1,1828 @@
+2020-05-19 15:35:08  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:35:08  [ main:6 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:35:08  [ main:21 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:35:08  [ main:21 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:35:08  [ main:27 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:35:08  [ main:27 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:35:08  [ main:42 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:35:08  [ main:45 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:35:08  [ main:45 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:35:08  [ main:47 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:35:08  [ main:47 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:35:08  [ main:47 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:35:08  [ main:48 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:35:08  [ main:48 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:35:08  [ main:48 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:35:08  [ main:48 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:35:08  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:35:08  [ main:49 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:35:08  [ main:49 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:35:08  [ main:50 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:35:08  [ main:50 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:35:08  [ main:50 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:35:08  [ main:51 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:35:08  [ main:56 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:35:09  [ main:284 ] - [ DEBUG ]  -Dio.netty.processId: 23676 (auto-detected)
+2020-05-19 15:35:09  [ main:285 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:35:09  [ main:286 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:35:09  [ main:428 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:35:09  [ main:429 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:35:09  [ main:574 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 15:35:09  [ main:585 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:35:09  [ main:585 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:35:09  [ main:611 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:35:09  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:35:09  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:35:09  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:35:09  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:35:09  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:35:09  [ main:621 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:35:09  [ main:621 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:35:09  [ main:621 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:35:17  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:35:17  [ main:7 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:35:17  [ main:25 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:35:17  [ main:25 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:35:17  [ main:30 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:35:17  [ main:30 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:35:17  [ main:43 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:35:17  [ main:44 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:35:17  [ main:45 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:35:17  [ main:46 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:35:17  [ main:46 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:35:17  [ main:47 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:35:17  [ main:47 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:35:17  [ main:47 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:35:17  [ main:48 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:35:17  [ main:48 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:35:17  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:35:17  [ main:48 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:35:17  [ main:48 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:35:17  [ main:49 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:35:17  [ main:50 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:35:17  [ main:51 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:35:17  [ main:51 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:35:17  [ main:57 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:35:17  [ main:277 ] - [ DEBUG ]  -Dio.netty.processId: 12652 (auto-detected)
+2020-05-19 15:35:17  [ main:279 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:35:17  [ main:279 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:35:17  [ main:392 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:35:17  [ main:393 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:35:17  [ main:522 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 15:35:17  [ main:532 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:35:17  [ main:532 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:35:17  [ main:550 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:35:17  [ main:551 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:35:17  [ main:551 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:35:17  [ main:551 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:35:17  [ main:551 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:35:17  [ main:558 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:35:17  [ main:558 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:35:17  [ main:558 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:35:25  [ main:7982 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:35:25  [ main:7982 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:35:25  [ main:7982 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:35:25  [ main:7982 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:35:25  [ nioEventLoopGroup-2-1:7991 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:35:25  [ nioEventLoopGroup-2-1:7992 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:35:25  [ nioEventLoopGroup-2-1:7992 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@6199f533
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16253 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16253 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16253 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16253 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16259 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16259 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16260 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@71c31be3
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16290 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16321 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16546 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:35:25  [ nioEventLoopGroup-3-1:16552 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1e869125, L:/127.0.0.1:8080 - R:/127.0.0.1:65269].
+2020-05-19 15:35:55  [ nioEventLoopGroup-3-1:47078 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:35:55  [ nioEventLoopGroup-3-1:47081 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:35:55  [ nioEventLoopGroup-3-1:47109 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:35:55  [ nioEventLoopGroup-3-1:47109 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1e869125, L:/127.0.0.1:8080 - R:/127.0.0.1:65269].
+2020-05-19 15:35:58  [ nioEventLoopGroup-3-1:49804 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:35:58  [ nioEventLoopGroup-3-1:49808 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:35:58  [ nioEventLoopGroup-3-1:49819 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 15:43:04  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:43:04  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:43:04  [ main:19 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:43:04  [ main:19 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:43:04  [ main:24 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:43:04  [ main:24 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:43:04  [ main:35 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:43:04  [ main:37 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:43:04  [ main:37 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:43:04  [ main:39 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:43:04  [ main:39 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:43:04  [ main:39 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:43:04  [ main:40 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:43:04  [ main:40 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:43:04  [ main:40 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:43:04  [ main:40 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:43:04  [ main:41 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:43:04  [ main:41 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:43:04  [ main:41 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:43:04  [ main:42 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:43:04  [ main:42 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:43:04  [ main:43 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:43:04  [ main:43 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:43:04  [ main:49 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:43:05  [ main:289 ] - [ DEBUG ]  -Dio.netty.processId: 10496 (auto-detected)
+2020-05-19 15:43:05  [ main:291 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:43:05  [ main:291 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:43:05  [ main:417 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:43:05  [ main:417 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:43:05  [ main:569 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 15:43:05  [ main:579 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:43:05  [ main:580 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:43:05  [ main:600 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:43:05  [ main:601 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:43:05  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:43:05  [ main:608 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:43:05  [ main:608 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:45:24  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:45:24  [ main:7 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:45:24  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:45:24  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:45:24  [ main:32 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:45:24  [ main:32 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:45:24  [ main:49 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:45:24  [ main:51 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:45:24  [ main:51 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:45:24  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:45:24  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:45:24  [ main:54 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:45:24  [ main:55 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:45:24  [ main:56 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:45:24  [ main:56 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:45:24  [ main:56 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:45:24  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:45:24  [ main:57 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:45:24  [ main:57 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:45:24  [ main:58 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:45:24  [ main:58 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:45:24  [ main:59 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:45:24  [ main:59 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:45:24  [ main:69 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:45:25  [ main:291 ] - [ DEBUG ]  -Dio.netty.processId: 24788 (auto-detected)
+2020-05-19 15:45:25  [ main:293 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:45:25  [ main:293 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:45:25  [ main:403 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:45:25  [ main:403 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:45:25  [ main:543 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-05-19 15:45:25  [ main:552 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:45:25  [ main:552 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:45:25  [ main:575 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:45:25  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:45:25  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:45:25  [ main:587 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:45:25  [ main:588 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:45:28  [ main:3558 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:45:28  [ main:3558 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:45:28  [ main:3558 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:45:28  [ main:3558 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:45:28  [ nioEventLoopGroup-2-1:3567 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:45:28  [ nioEventLoopGroup-2-1:3568 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:45:28  [ nioEventLoopGroup-2-1:3568 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@307c39a0
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143546 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143546 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143546 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143546 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143551 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143551 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143551 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@20378e62
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143583 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143615 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143825 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:45:28  [ nioEventLoopGroup-3-1:143830 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46839254, L:/127.0.0.1:8080 - R:/127.0.0.1:49371].
+2020-05-19 15:45:31  [ nioEventLoopGroup-3-1:146402 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:45:31  [ nioEventLoopGroup-3-1:146406 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:45:31  [ nioEventLoopGroup-3-1:146426 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:45:31  [ nioEventLoopGroup-3-1:146426 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46839254, L:/127.0.0.1:8080 - R:/127.0.0.1:49371].
+2020-05-19 15:45:32  [ nioEventLoopGroup-3-1:147389 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:45:32  [ nioEventLoopGroup-3-1:147391 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:45:32  [ nioEventLoopGroup-3-1:147401 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 15:45:58  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:45:58  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:45:58  [ main:18 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:45:58  [ main:18 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:45:58  [ main:25 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:45:58  [ main:25 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:45:58  [ main:36 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:45:58  [ main:38 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:45:58  [ main:38 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:45:58  [ main:39 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:45:58  [ main:40 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:45:58  [ main:40 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:45:58  [ main:41 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:45:58  [ main:41 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:45:58  [ main:41 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:45:58  [ main:41 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:45:58  [ main:41 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:45:58  [ main:42 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:45:58  [ main:42 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:45:58  [ main:43 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:45:58  [ main:43 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:45:58  [ main:44 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:45:58  [ main:45 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:45:58  [ main:54 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:45:59  [ main:326 ] - [ DEBUG ]  -Dio.netty.processId: 25632 (auto-detected)
+2020-05-19 15:45:59  [ main:327 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:45:59  [ main:327 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:45:59  [ main:447 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:45:59  [ main:448 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:45:59  [ main:609 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 15:45:59  [ main:617 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:45:59  [ main:618 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:45:59  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:45:59  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:45:59  [ main:645 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:45:59  [ main:645 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:45:59  [ main:645 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:46:00  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 15:46:00  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 15:46:00  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 15:46:00  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 15:46:00  [ main:31 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 15:46:00  [ main:31 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 15:46:00  [ main:48 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 15:46:00  [ main:50 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 15:46:00  [ main:50 ] - [ DEBUG ]  Java version: 8
+2020-05-19 15:46:00  [ main:52 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 15:46:00  [ main:52 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 15:46:00  [ main:53 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 15:46:00  [ main:53 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 15:46:00  [ main:54 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 15:46:00  [ main:54 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 15:46:00  [ main:54 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 15:46:00  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 15:46:00  [ main:55 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 15:46:00  [ main:55 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 15:46:00  [ main:57 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 15:46:00  [ main:58 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 15:46:00  [ main:59 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 15:46:00  [ main:59 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 15:46:00  [ main:70 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 15:46:00  [ main:311 ] - [ DEBUG ]  -Dio.netty.processId: 24804 (auto-detected)
+2020-05-19 15:46:00  [ main:313 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 15:46:00  [ main:313 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 15:46:01  [ main:423 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 15:46:01  [ main:424 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 15:46:01  [ main:577 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 15:46:01  [ main:586 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 15:46:01  [ main:586 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 15:46:01  [ main:605 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 15:46:01  [ main:612 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 15:46:01  [ main:612 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 15:46:01  [ main:612 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 15:46:04  [ main:4411 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:46:04  [ main:4411 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:46:04  [ main:4411 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:46:04  [ main:4411 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:46:05  [ nioEventLoopGroup-2-1:4420 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:46:05  [ nioEventLoopGroup-2-1:4420 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:46:05  [ nioEventLoopGroup-2-1:4421 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@6199f533
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6110 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6110 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6110 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6110 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6115 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6115 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6116 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@2ce93937
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6147 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6180 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6394 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:05  [ nioEventLoopGroup-3-1:6400 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:07  [ nioEventLoopGroup-3-1:8725 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:07  [ nioEventLoopGroup-3-1:8729 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:07  [ nioEventLoopGroup-3-1:8749 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:07  [ nioEventLoopGroup-3-1:8749 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:09  [ nioEventLoopGroup-3-1:10287 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:09  [ nioEventLoopGroup-3-1:10290 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:09  [ nioEventLoopGroup-3-1:10300 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:09  [ nioEventLoopGroup-3-1:10301 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:24  [ nioEventLoopGroup-3-1:25562 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:24  [ nioEventLoopGroup-3-1:25564 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:24  [ nioEventLoopGroup-3-1:25577 ] - [ DEBUG ]  Discarded inbound message checkPlace 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:24  [ nioEventLoopGroup-3-1:25577 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:32  [ nioEventLoopGroup-3-1:33248 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:32  [ nioEventLoopGroup-3-1:33250 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:32  [ nioEventLoopGroup-3-1:33576 ] - [ DEBUG ]  Discarded inbound message move 起始之地 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:32  [ nioEventLoopGroup-3-1:33576 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:35  [ nioEventLoopGroup-3-1:36831 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:35  [ nioEventLoopGroup-3-1:36833 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:35  [ nioEventLoopGroup-3-1:36851 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:35  [ nioEventLoopGroup-3-1:36851 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:44  [ nioEventLoopGroup-3-1:45600 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:44  [ nioEventLoopGroup-3-1:45602 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:44  [ nioEventLoopGroup-3-1:45621 ] - [ DEBUG ]  Discarded inbound message move 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:44  [ nioEventLoopGroup-3-1:45621 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:46  [ nioEventLoopGroup-3-1:47232 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:46  [ nioEventLoopGroup-3-1:47234 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:46  [ nioEventLoopGroup-3-1:47250 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:46  [ nioEventLoopGroup-3-1:47250 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:53  [ nioEventLoopGroup-3-1:54687 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:53  [ nioEventLoopGroup-3-1:54690 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:53  [ nioEventLoopGroup-3-1:54710 ] - [ DEBUG ]  Discarded inbound message move 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:53  [ nioEventLoopGroup-3-1:54710 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:46:59  [ nioEventLoopGroup-3-1:60394 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:46:59  [ nioEventLoopGroup-3-1:60396 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:46:59  [ nioEventLoopGroup-3-1:60411 ] - [ DEBUG ]  Discarded inbound message checkPlace 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:46:59  [ nioEventLoopGroup-3-1:60411 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 15:47:06  [ nioEventLoopGroup-3-1:67368 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 15:47:06  [ nioEventLoopGroup-3-1:67370 ] - [ INFO ]  Reflections took 1 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 15:47:06  [ nioEventLoopGroup-3-1:67383 ] - [ DEBUG ]  Discarded inbound message checkPlace 未知世界 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 15:47:06  [ nioEventLoopGroup-3-1:67383 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1c8c5b6f, L:/127.0.0.1:8080 - R:/127.0.0.1:49511].
+2020-05-19 16:28:07  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:28:07  [ main:14 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:28:07  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:28:07  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:28:07  [ main:40 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:28:07  [ main:40 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:28:07  [ main:60 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:28:07  [ main:63 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:28:07  [ main:63 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:28:07  [ main:65 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:28:07  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:28:07  [ main:67 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:28:07  [ main:67 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:28:07  [ main:68 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:28:07  [ main:68 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:28:07  [ main:68 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:28:07  [ main:68 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:28:07  [ main:69 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:28:07  [ main:69 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:28:07  [ main:70 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:28:07  [ main:70 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:28:07  [ main:72 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:28:07  [ main:72 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:28:07  [ main:79 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:28:07  [ main:372 ] - [ DEBUG ]  -Dio.netty.processId: 19408 (auto-detected)
+2020-05-19 16:28:07  [ main:373 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:28:07  [ main:374 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:28:07  [ main:504 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:28:07  [ main:505 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:28:08  [ main:634 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:28:08  [ main:642 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:28:08  [ main:642 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:28:08  [ main:659 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:28:08  [ main:660 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:28:08  [ main:660 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:28:08  [ main:666 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:28:08  [ main:666 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:28:08  [ main:666 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:28:18  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:28:18  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:28:18  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:28:18  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:28:18  [ main:36 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:28:18  [ main:36 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:28:18  [ main:48 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:28:18  [ main:49 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:28:18  [ main:49 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:28:18  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:28:18  [ main:51 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:28:18  [ main:51 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:28:18  [ main:52 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:28:18  [ main:52 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:28:18  [ main:52 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:28:18  [ main:52 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:28:18  [ main:52 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:28:18  [ main:53 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:28:18  [ main:53 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:28:18  [ main:54 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:28:18  [ main:54 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:28:18  [ main:55 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:28:18  [ main:55 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:28:18  [ main:62 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:28:18  [ main:297 ] - [ DEBUG ]  -Dio.netty.processId: 21212 (auto-detected)
+2020-05-19 16:28:18  [ main:298 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:28:18  [ main:298 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:28:18  [ main:429 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:28:18  [ main:430 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:28:18  [ main:571 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:28:18  [ main:586 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:28:18  [ main:586 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:28:18  [ main:608 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:28:18  [ main:620 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:28:18  [ main:620 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:28:18  [ main:620 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:28:23  [ main:5338 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 16:28:23  [ main:5338 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 16:28:23  [ main:5338 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 16:28:23  [ main:5339 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 16:28:23  [ nioEventLoopGroup-2-1:5352 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 16:28:23  [ nioEventLoopGroup-2-1:5352 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 16:28:23  [ nioEventLoopGroup-2-1:5353 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@307c39a0
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:15996 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:15996 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:15996 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:15996 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:16001 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:16001 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:16002 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@60e6b81f
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:16055 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:23  [ nioEventLoopGroup-3-1:16097 ] - [ INFO ]  Reflections took 42 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:24  [ nioEventLoopGroup-3-1:16561 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:24  [ nioEventLoopGroup-3-1:16577 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:26  [ nioEventLoopGroup-3-1:19302 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:26  [ nioEventLoopGroup-3-1:19305 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:26  [ nioEventLoopGroup-3-1:19326 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:26  [ nioEventLoopGroup-3-1:19326 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:29  [ nioEventLoopGroup-3-1:22387 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:29  [ nioEventLoopGroup-3-1:22389 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:29  [ nioEventLoopGroup-3-1:22401 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:29  [ nioEventLoopGroup-3-1:22401 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:34  [ nioEventLoopGroup-3-1:26831 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:34  [ nioEventLoopGroup-3-1:26833 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:34  [ nioEventLoopGroup-3-1:27004 ] - [ DEBUG ]  Discarded inbound message move 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:34  [ nioEventLoopGroup-3-1:27004 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:39  [ nioEventLoopGroup-3-1:31942 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:39  [ nioEventLoopGroup-3-1:31944 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:39  [ nioEventLoopGroup-3-1:31962 ] - [ DEBUG ]  Discarded inbound message checkPlace 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:39  [ nioEventLoopGroup-3-1:31962 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:42  [ nioEventLoopGroup-3-1:35524 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:42  [ nioEventLoopGroup-3-1:35526 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:43  [ nioEventLoopGroup-3-1:35679 ] - [ DEBUG ]  Discarded inbound message move 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:43  [ nioEventLoopGroup-3-1:35680 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:28:44  [ nioEventLoopGroup-3-1:36834 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:28:44  [ nioEventLoopGroup-3-1:36836 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:28:44  [ nioEventLoopGroup-3-1:36851 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:28:44  [ nioEventLoopGroup-3-1:36852 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xff8ff4ed, L:/127.0.0.1:8080 - R:/127.0.0.1:51104].
+2020-05-19 16:30:38  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:30:38  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:30:38  [ main:19 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:30:38  [ main:19 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:30:38  [ main:25 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:30:38  [ main:25 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:30:38  [ main:37 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:30:38  [ main:39 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:30:38  [ main:39 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:30:38  [ main:40 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:30:38  [ main:41 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:30:38  [ main:41 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:30:38  [ main:42 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:30:38  [ main:43 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:30:38  [ main:43 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:30:38  [ main:43 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:30:38  [ main:44 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:30:38  [ main:44 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:30:38  [ main:44 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:30:38  [ main:46 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:30:38  [ main:46 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:30:38  [ main:47 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:30:38  [ main:48 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:30:38  [ main:55 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:30:38  [ main:329 ] - [ DEBUG ]  -Dio.netty.processId: 19692 (auto-detected)
+2020-05-19 16:30:38  [ main:331 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:30:38  [ main:331 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:30:38  [ main:451 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:30:38  [ main:452 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:30:39  [ main:617 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:30:39  [ main:626 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:30:39  [ main:626 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:30:39  [ main:648 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:30:39  [ main:648 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:30:39  [ main:649 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:30:39  [ main:657 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:30:39  [ main:658 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:30:39  [ main:658 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:30:43  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:30:43  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:30:43  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:30:43  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:30:43  [ main:32 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:30:43  [ main:32 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:30:43  [ main:45 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:30:43  [ main:46 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:30:43  [ main:47 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:30:43  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:30:43  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:30:43  [ main:49 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:30:43  [ main:49 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:30:43  [ main:49 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:30:43  [ main:50 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:30:43  [ main:50 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:30:43  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:30:43  [ main:50 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:30:43  [ main:50 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:30:43  [ main:53 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:30:43  [ main:53 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:30:43  [ main:54 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:30:43  [ main:54 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:30:43  [ main:62 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:30:44  [ main:332 ] - [ DEBUG ]  -Dio.netty.processId: 25984 (auto-detected)
+2020-05-19 16:30:44  [ main:333 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:30:44  [ main:333 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:30:44  [ main:465 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:30:44  [ main:466 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:30:44  [ main:634 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:30:44  [ main:650 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:30:44  [ main:650 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:30:44  [ main:674 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:30:44  [ main:684 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:30:44  [ main:684 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:30:44  [ main:684 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:31:57  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:31:57  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:31:57  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:31:57  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:31:57  [ main:28 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:31:57  [ main:28 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:31:57  [ main:40 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:31:57  [ main:42 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:31:57  [ main:43 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:31:57  [ main:44 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:31:57  [ main:44 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:31:57  [ main:44 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:31:57  [ main:45 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:31:57  [ main:45 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:31:57  [ main:45 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:31:57  [ main:45 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:31:57  [ main:45 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:31:57  [ main:46 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:31:57  [ main:46 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:31:57  [ main:47 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:31:57  [ main:47 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:31:57  [ main:48 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:31:57  [ main:48 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:31:57  [ main:54 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:31:57  [ main:305 ] - [ DEBUG ]  -Dio.netty.processId: 20028 (auto-detected)
+2020-05-19 16:31:57  [ main:308 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:31:57  [ main:308 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:31:57  [ main:442 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:31:57  [ main:442 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:31:58  [ main:608 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:31:58  [ main:621 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:31:58  [ main:621 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:31:58  [ main:652 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:31:58  [ main:661 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:31:58  [ main:661 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:31:58  [ main:661 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:32:02  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 16:32:02  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 16:32:02  [ main:30 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 16:32:02  [ main:30 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 16:32:02  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 16:32:02  [ main:38 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 16:32:02  [ main:61 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 16:32:02  [ main:63 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 16:32:02  [ main:64 ] - [ DEBUG ]  Java version: 8
+2020-05-19 16:32:02  [ main:65 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 16:32:02  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 16:32:02  [ main:66 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 16:32:02  [ main:67 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 16:32:02  [ main:67 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 16:32:02  [ main:67 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 16:32:02  [ main:67 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 16:32:02  [ main:67 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 16:32:02  [ main:68 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 16:32:02  [ main:68 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 16:32:02  [ main:70 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 16:32:02  [ main:70 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 16:32:02  [ main:71 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 16:32:02  [ main:71 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 16:32:02  [ main:78 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 16:32:03  [ main:310 ] - [ DEBUG ]  -Dio.netty.processId: 640 (auto-detected)
+2020-05-19 16:32:03  [ main:312 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 16:32:03  [ main:312 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 16:32:03  [ main:447 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 16:32:03  [ main:448 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 16:32:03  [ main:608 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 16:32:03  [ main:621 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 16:32:03  [ main:621 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 16:32:03  [ main:646 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 16:32:03  [ main:657 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 16:32:03  [ main:657 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 16:32:03  [ main:657 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 16:32:07  [ main:4400 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 16:32:07  [ main:4400 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 16:32:07  [ main:4400 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 16:32:07  [ main:4400 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 16:32:07  [ nioEventLoopGroup-2-1:4409 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 16:32:07  [ nioEventLoopGroup-2-1:4409 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 16:32:07  [ nioEventLoopGroup-2-1:4409 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@5bffc0bc
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9729 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9729 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9729 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9729 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9735 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9735 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9736 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@73c7be0b
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9766 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:9796 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:10030 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:07  [ nioEventLoopGroup-3-1:10036 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:10  [ nioEventLoopGroup-3-1:12790 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:10  [ nioEventLoopGroup-3-1:12793 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:10  [ nioEventLoopGroup-3-1:12813 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:10  [ nioEventLoopGroup-3-1:12813 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:12  [ nioEventLoopGroup-3-1:14828 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:12  [ nioEventLoopGroup-3-1:14831 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:12  [ nioEventLoopGroup-3-1:14839 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:12  [ nioEventLoopGroup-3-1:14839 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:15  [ nioEventLoopGroup-3-1:18315 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:15  [ nioEventLoopGroup-3-1:18317 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:15  [ nioEventLoopGroup-3-1:18337 ] - [ DEBUG ]  Discarded inbound message move 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:15  [ nioEventLoopGroup-3-1:18337 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:21  [ nioEventLoopGroup-3-1:23907 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:21  [ nioEventLoopGroup-3-1:23909 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:21  [ nioEventLoopGroup-3-1:23920 ] - [ DEBUG ]  Discarded inbound message move 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:21  [ nioEventLoopGroup-3-1:23920 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:27  [ nioEventLoopGroup-3-1:29692 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:27  [ nioEventLoopGroup-3-1:29696 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:27  [ nioEventLoopGroup-3-1:29760 ] - [ DEBUG ]  Discarded inbound message move 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:27  [ nioEventLoopGroup-3-1:29760 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 16:32:29  [ nioEventLoopGroup-3-1:32035 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 16:32:29  [ nioEventLoopGroup-3-1:32038 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 16:32:29  [ nioEventLoopGroup-3-1:32055 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 16:32:29  [ nioEventLoopGroup-3-1:32055 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xacd22795, L:/127.0.0.1:8080 - R:/127.0.0.1:51466].
+2020-05-19 17:27:10  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:27:10  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:27:10  [ main:30 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:27:10  [ main:30 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:27:10  [ main:41 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:27:10  [ main:41 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:27:10  [ main:68 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:27:10  [ main:71 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:27:10  [ main:71 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:27:10  [ main:74 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:27:10  [ main:75 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:27:10  [ main:76 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:27:10  [ main:77 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:27:10  [ main:78 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:27:10  [ main:78 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:27:10  [ main:78 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:27:10  [ main:79 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:27:10  [ main:79 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:27:10  [ main:79 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:27:10  [ main:81 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:27:10  [ main:81 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:27:10  [ main:83 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:27:10  [ main:83 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:27:10  [ main:94 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:27:11  [ main:365 ] - [ DEBUG ]  -Dio.netty.processId: 14588 (auto-detected)
+2020-05-19 17:27:11  [ main:367 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:27:11  [ main:367 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:27:11  [ main:470 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:27:11  [ main:471 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:27:11  [ main:596 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:27:11  [ main:613 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:27:11  [ main:613 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:27:11  [ main:633 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:27:11  [ main:634 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:27:11  [ main:642 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:27:11  [ main:642 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:27:11  [ main:642 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:27:13  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:27:13  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:27:13  [ main:39 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:27:13  [ main:39 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:27:13  [ main:48 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:27:13  [ main:48 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:27:13  [ main:64 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:27:13  [ main:65 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:27:13  [ main:66 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:27:13  [ main:67 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:27:13  [ main:67 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:27:13  [ main:68 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:27:13  [ main:68 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:27:13  [ main:69 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:27:13  [ main:70 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:27:13  [ main:70 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:27:13  [ main:71 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:27:13  [ main:71 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:27:13  [ main:79 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:27:13  [ main:314 ] - [ DEBUG ]  -Dio.netty.processId: 24700 (auto-detected)
+2020-05-19 17:27:13  [ main:316 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:27:13  [ main:316 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:27:14  [ main:451 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:27:14  [ main:452 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:27:14  [ main:593 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:27:14  [ main:603 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:27:14  [ main:604 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:27:14  [ main:623 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:27:14  [ main:631 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:27:14  [ main:632 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:27:14  [ main:632 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:27:18  [ main:4460 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:27:18  [ main:4460 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:27:18  [ main:4460 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:27:18  [ main:4460 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:27:18  [ nioEventLoopGroup-2-1:4471 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:27:18  [ nioEventLoopGroup-2-1:4471 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:27:18  [ nioEventLoopGroup-2-1:4471 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@307c39a0
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7372 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7372 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7372 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7372 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7377 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7377 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7378 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@512c5af0
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7420 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7470 ] - [ INFO ]  Reflections took 49 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7837 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:18  [ nioEventLoopGroup-3-1:7843 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:23  [ nioEventLoopGroup-3-1:13222 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:23  [ nioEventLoopGroup-3-1:13225 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:23  [ nioEventLoopGroup-3-1:13248 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:23  [ nioEventLoopGroup-3-1:13248 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:25  [ nioEventLoopGroup-3-1:14337 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:25  [ nioEventLoopGroup-3-1:14339 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:25  [ nioEventLoopGroup-3-1:14356 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:25  [ nioEventLoopGroup-3-1:14356 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:30  [ nioEventLoopGroup-3-1:19346 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:30  [ nioEventLoopGroup-3-1:19348 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:30  [ nioEventLoopGroup-3-1:19365 ] - [ DEBUG ]  Discarded inbound message checkPlace 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:30  [ nioEventLoopGroup-3-1:19365 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:33  [ nioEventLoopGroup-3-1:22639 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:33  [ nioEventLoopGroup-3-1:22641 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:33  [ nioEventLoopGroup-3-1:22820 ] - [ DEBUG ]  Discarded inbound message move 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:33  [ nioEventLoopGroup-3-1:22821 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:39  [ nioEventLoopGroup-3-1:28360 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:39  [ nioEventLoopGroup-3-1:28362 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:39  [ nioEventLoopGroup-3-1:28371 ] - [ DEBUG ]  Discarded inbound message move 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:39  [ nioEventLoopGroup-3-1:28372 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:47  [ nioEventLoopGroup-3-1:36630 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:47  [ nioEventLoopGroup-3-1:36632 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:47  [ nioEventLoopGroup-3-1:36781 ] - [ DEBUG ]  Discarded inbound message move 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:47  [ nioEventLoopGroup-3-1:36781 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:48  [ nioEventLoopGroup-3-1:38176 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:48  [ nioEventLoopGroup-3-1:38179 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:48  [ nioEventLoopGroup-3-1:38189 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:48  [ nioEventLoopGroup-3-1:38189 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:54  [ nioEventLoopGroup-3-1:43615 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:54  [ nioEventLoopGroup-3-1:43617 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:54  [ nioEventLoopGroup-3-1:43704 ] - [ DEBUG ]  Discarded inbound message move 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:54  [ nioEventLoopGroup-3-1:43704 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:27:55  [ nioEventLoopGroup-3-1:44885 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:27:55  [ nioEventLoopGroup-3-1:44887 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:27:55  [ nioEventLoopGroup-3-1:44894 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:27:55  [ nioEventLoopGroup-3-1:44894 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x46b1a219, L:/127.0.0.1:8080 - R:/127.0.0.1:54267].
+2020-05-19 17:30:45  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:30:45  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:30:45  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:30:45  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:30:45  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:30:45  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:30:45  [ main:40 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:30:45  [ main:42 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:30:45  [ main:42 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:30:45  [ main:43 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:30:45  [ main:43 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:30:45  [ main:44 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:30:45  [ main:44 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:30:45  [ main:44 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:30:45  [ main:45 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:30:45  [ main:45 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:30:45  [ main:45 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:30:45  [ main:45 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:30:45  [ main:45 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:30:45  [ main:46 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:30:45  [ main:46 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:30:45  [ main:47 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:30:45  [ main:47 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:30:45  [ main:53 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:30:46  [ main:298 ] - [ DEBUG ]  -Dio.netty.processId: 21084 (auto-detected)
+2020-05-19 17:30:46  [ main:299 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:30:46  [ main:299 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:30:46  [ main:415 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:30:46  [ main:415 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:30:46  [ main:557 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:30:46  [ main:567 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:30:46  [ main:567 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:30:46  [ main:587 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:30:46  [ main:588 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:30:46  [ main:588 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:30:46  [ main:588 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:30:46  [ main:588 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:30:46  [ main:588 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:30:46  [ main:594 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:30:46  [ main:594 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:30:46  [ main:594 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:30:48  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:30:48  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:30:48  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:30:48  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:30:48  [ main:32 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:30:48  [ main:33 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:30:48  [ main:45 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:30:48  [ main:47 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:30:48  [ main:47 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:30:48  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:30:48  [ main:49 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:30:48  [ main:49 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:30:48  [ main:49 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:30:48  [ main:50 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:30:48  [ main:50 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:30:48  [ main:50 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:30:48  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:30:48  [ main:51 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:30:48  [ main:51 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:30:48  [ main:53 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:30:48  [ main:53 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:30:48  [ main:54 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:30:48  [ main:54 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:30:48  [ main:62 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:30:49  [ main:303 ] - [ DEBUG ]  -Dio.netty.processId: 23712 (auto-detected)
+2020-05-19 17:30:49  [ main:305 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:30:49  [ main:305 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:30:49  [ main:411 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:30:49  [ main:411 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:30:49  [ main:543 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:30:49  [ main:555 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:30:49  [ main:555 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:30:49  [ main:576 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:30:49  [ main:583 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:30:49  [ main:583 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:30:49  [ main:583 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:30:55  [ main:6523 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:30:55  [ main:6523 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:30:55  [ main:6523 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:30:55  [ main:6523 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:30:55  [ nioEventLoopGroup-2-1:6532 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:30:55  [ nioEventLoopGroup-2-1:6532 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:30:55  [ nioEventLoopGroup-2-1:6532 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@20a9fbe4
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9571 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9571 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9571 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9571 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9576 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9576 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9577 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@586c2abf
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9607 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9639 ] - [ INFO ]  Reflections took 32 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9845 ] - [ DEBUG ]  Discarded inbound message register m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:30:55  [ nioEventLoopGroup-3-1:9852 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x6d6fdb86, L:/127.0.0.1:8080 - R:/127.0.0.1:54607].
+2020-05-19 17:31:00  [ nioEventLoopGroup-3-1:14376 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:31:00  [ nioEventLoopGroup-3-1:14379 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:31:00  [ nioEventLoopGroup-3-1:14610 ] - [ DEBUG ]  Discarded inbound message register ss s that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:31:00  [ nioEventLoopGroup-3-1:14610 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x6d6fdb86, L:/127.0.0.1:8080 - R:/127.0.0.1:54607].
+2020-05-19 17:31:09  [ nioEventLoopGroup-3-1:23544 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:31:09  [ nioEventLoopGroup-3-1:23546 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:31:09  [ nioEventLoopGroup-3-1:23557 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 17:34:01  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:34:01  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:34:01  [ main:22 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:34:01  [ main:22 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:34:01  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:34:01  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:34:01  [ main:41 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:34:01  [ main:43 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:34:01  [ main:43 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:34:01  [ main:44 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:34:01  [ main:44 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:34:01  [ main:45 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:34:01  [ main:45 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:34:01  [ main:46 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:34:01  [ main:46 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:34:01  [ main:46 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:34:01  [ main:46 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:34:01  [ main:47 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:34:01  [ main:47 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:34:01  [ main:48 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:34:01  [ main:48 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:34:01  [ main:49 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:34:01  [ main:49 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:34:01  [ main:55 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:34:01  [ main:298 ] - [ DEBUG ]  -Dio.netty.processId: 23568 (auto-detected)
+2020-05-19 17:34:01  [ main:300 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:34:01  [ main:301 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:34:01  [ main:428 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:34:01  [ main:429 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:34:02  [ main:589 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:34:02  [ main:599 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:34:02  [ main:599 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:34:02  [ main:617 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:34:02  [ main:618 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:34:02  [ main:618 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:34:02  [ main:618 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:34:02  [ main:625 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:34:02  [ main:625 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:34:02  [ main:625 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:34:04  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:34:04  [ main:12 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:34:04  [ main:51 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:34:04  [ main:52 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:34:04  [ main:62 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:34:04  [ main:62 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:34:04  [ main:89 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:34:04  [ main:91 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:34:04  [ main:92 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:34:04  [ main:94 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:34:04  [ main:95 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:34:04  [ main:96 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:34:04  [ main:97 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:34:04  [ main:97 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:34:04  [ main:97 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:34:04  [ main:98 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:34:04  [ main:98 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:34:04  [ main:98 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:34:04  [ main:99 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:34:04  [ main:101 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:34:04  [ main:101 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:34:04  [ main:102 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:34:04  [ main:103 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:34:04  [ main:113 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:34:04  [ main:345 ] - [ DEBUG ]  -Dio.netty.processId: 10356 (auto-detected)
+2020-05-19 17:34:04  [ main:346 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:34:04  [ main:346 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:34:04  [ main:447 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:34:04  [ main:448 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:34:04  [ main:588 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:34:04  [ main:603 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:34:04  [ main:603 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:34:04  [ main:624 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:34:04  [ main:625 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:34:04  [ main:625 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:34:04  [ main:625 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:34:04  [ main:631 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:34:04  [ main:631 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:34:04  [ main:631 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:34:09  [ main:5864 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:34:09  [ main:5864 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:34:09  [ main:5864 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:34:09  [ main:5864 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:34:09  [ nioEventLoopGroup-2-1:5873 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:34:09  [ nioEventLoopGroup-2-1:5873 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:34:09  [ nioEventLoopGroup-2-1:5874 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@5bffc0bc
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8457 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8457 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8457 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8457 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8462 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8462 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8463 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@15ee5429
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8492 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:34:09  [ nioEventLoopGroup-3-1:8524 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:34:10  [ nioEventLoopGroup-3-1:8737 ] - [ DEBUG ]  Discarded inbound message login ss s that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:34:10  [ nioEventLoopGroup-3-1:8743 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:34:23  [ nioEventLoopGroup-3-1:22488 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:34:23  [ nioEventLoopGroup-3-1:22491 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:34:23  [ nioEventLoopGroup-3-1:22513 ] - [ DEBUG ]  Discarded inbound message registerR tiny that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:34:23  [ nioEventLoopGroup-3-1:22513 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:34:32  [ nioEventLoopGroup-3-1:31130 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:34:32  [ nioEventLoopGroup-3-1:31132 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:34:32  [ nioEventLoopGroup-3-1:31295 ] - [ DEBUG ]  Discarded inbound message registerR rose that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:34:32  [ nioEventLoopGroup-3-1:31296 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:34:34  [ nioEventLoopGroup-3-1:33322 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:34:34  [ nioEventLoopGroup-3-1:33324 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:34:34  [ nioEventLoopGroup-3-1:33336 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:34:34  [ nioEventLoopGroup-3-1:33336 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:34:42  [ nioEventLoopGroup-3-1:41175 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:34:42  [ nioEventLoopGroup-3-1:41177 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:34:42  [ nioEventLoopGroup-3-1:41305 ] - [ DEBUG ]  Discarded inbound message move 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:34:42  [ nioEventLoopGroup-3-1:41305 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:35:38  [ nioEventLoopGroup-3-1:97330 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:35:38  [ nioEventLoopGroup-3-1:97332 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:35:38  [ nioEventLoopGroup-3-1:97472 ] - [ DEBUG ]  Discarded inbound message move 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:35:38  [ nioEventLoopGroup-3-1:97472 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:35:40  [ nioEventLoopGroup-3-1:98585 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:35:40  [ nioEventLoopGroup-3-1:98587 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:35:40  [ nioEventLoopGroup-3-1:98595 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:35:40  [ nioEventLoopGroup-3-1:98595 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:35:53  [ nioEventLoopGroup-3-1:111731 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:35:53  [ nioEventLoopGroup-3-1:111733 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:35:53  [ nioEventLoopGroup-3-1:111742 ] - [ DEBUG ]  Discarded inbound message move 森林 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:35:53  [ nioEventLoopGroup-3-1:111742 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:36:00  [ nioEventLoopGroup-3-1:119091 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:00  [ nioEventLoopGroup-3-1:119093 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:00  [ nioEventLoopGroup-3-1:119243 ] - [ DEBUG ]  Discarded inbound message move 未知世界 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:36:00  [ nioEventLoopGroup-3-1:119243 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:36:02  [ nioEventLoopGroup-3-1:120876 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:02  [ nioEventLoopGroup-3-1:120878 ] - [ INFO ]  Reflections took 1 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:02  [ nioEventLoopGroup-3-1:120886 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:36:02  [ nioEventLoopGroup-3-1:120887 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xcbe1eeff, L:/127.0.0.1:8080 - R:/127.0.0.1:54905].
+2020-05-19 17:36:26  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:36:26  [ main:6 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:36:26  [ main:22 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:36:26  [ main:22 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:36:26  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:36:26  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:36:26  [ main:43 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:36:26  [ main:45 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:36:26  [ main:46 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:36:26  [ main:47 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:36:26  [ main:47 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:36:26  [ main:47 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:36:26  [ main:48 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:36:26  [ main:48 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:36:26  [ main:48 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:36:26  [ main:48 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:36:26  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:36:26  [ main:49 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:36:26  [ main:49 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:36:26  [ main:50 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:36:26  [ main:50 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:36:26  [ main:51 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:36:26  [ main:51 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:36:26  [ main:58 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:36:26  [ main:330 ] - [ DEBUG ]  -Dio.netty.processId: 23460 (auto-detected)
+2020-05-19 17:36:26  [ main:332 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:36:26  [ main:333 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:36:26  [ main:447 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:36:26  [ main:448 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:36:26  [ main:555 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:36:26  [ main:562 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:36:26  [ main:562 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:36:26  [ main:578 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:36:26  [ main:579 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:36:26  [ main:579 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:36:26  [ main:579 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:36:26  [ main:579 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:36:26  [ main:579 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:36:26  [ main:584 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:36:26  [ main:584 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:36:26  [ main:584 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:36:31  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:36:31  [ main:7 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:36:31  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:36:31  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:36:31  [ main:32 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:36:31  [ main:32 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:36:31  [ main:46 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:36:31  [ main:47 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:36:31  [ main:47 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:36:31  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:36:31  [ main:49 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:36:31  [ main:49 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:36:31  [ main:50 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:36:31  [ main:50 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:36:31  [ main:50 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:36:31  [ main:50 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:36:31  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:36:31  [ main:51 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:36:31  [ main:51 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:36:31  [ main:53 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:36:31  [ main:53 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:36:31  [ main:54 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:36:31  [ main:55 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:36:31  [ main:66 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:36:32  [ main:320 ] - [ DEBUG ]  -Dio.netty.processId: 13500 (auto-detected)
+2020-05-19 17:36:32  [ main:322 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:36:32  [ main:323 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:36:32  [ main:474 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:36:32  [ main:474 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:36:32  [ main:615 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:36:32  [ main:627 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:36:32  [ main:627 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:36:32  [ main:650 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:36:32  [ main:651 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:36:32  [ main:651 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:36:32  [ main:662 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:36:32  [ main:662 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:36:32  [ main:663 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:36:39  [ main:7556 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:36:39  [ main:7556 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:36:39  [ main:7556 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:36:39  [ main:7556 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:36:39  [ nioEventLoopGroup-2-1:7566 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:36:39  [ nioEventLoopGroup-2-1:7566 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:36:39  [ nioEventLoopGroup-2-1:7566 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@5bffc0bc
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13189 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13189 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13189 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13189 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13194 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13194 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13195 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@63f722e2
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13223 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13253 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13486 ] - [ DEBUG ]  Discarded inbound message login ss s that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:36:39  [ nioEventLoopGroup-3-1:13492 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xc86fbb46, L:/127.0.0.1:8080 - R:/127.0.0.1:55189].
+2020-05-19 17:36:43  [ nioEventLoopGroup-3-1:17620 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:43  [ nioEventLoopGroup-3-1:17623 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:43  [ nioEventLoopGroup-3-1:17644 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 17:36:49  [ nioEventLoopGroup-3-1:23594 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:49  [ nioEventLoopGroup-3-1:23596 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:49  [ nioEventLoopGroup-3-1:23606 ] - [ DEBUG ]  Discarded inbound message loginR rose that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:36:49  [ nioEventLoopGroup-3-1:23606 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xc86fbb46, L:/127.0.0.1:8080 - R:/127.0.0.1:55189].
+2020-05-19 17:36:52  [ nioEventLoopGroup-3-1:25911 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:36:52  [ nioEventLoopGroup-3-1:25914 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:36:52  [ nioEventLoopGroup-3-1:25932 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:36:52  [ nioEventLoopGroup-3-1:25932 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0xc86fbb46, L:/127.0.0.1:8080 - R:/127.0.0.1:55189].
+2020-05-19 17:37:45  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:37:45  [ main:6 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:37:45  [ main:21 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:37:45  [ main:21 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:37:45  [ main:27 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:37:45  [ main:27 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:37:45  [ main:40 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:37:45  [ main:42 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:37:45  [ main:42 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:37:45  [ main:43 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:37:45  [ main:43 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:37:45  [ main:44 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:37:45  [ main:44 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:37:45  [ main:45 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:37:45  [ main:45 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:37:45  [ main:45 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:37:45  [ main:45 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:37:45  [ main:45 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:37:45  [ main:46 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:37:45  [ main:46 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:37:45  [ main:47 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:37:45  [ main:47 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:37:45  [ main:47 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:37:45  [ main:55 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:37:45  [ main:325 ] - [ DEBUG ]  -Dio.netty.processId: 27456 (auto-detected)
+2020-05-19 17:37:45  [ main:327 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:37:45  [ main:327 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:37:45  [ main:453 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:37:45  [ main:454 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:37:46  [ main:604 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:37:46  [ main:614 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:37:46  [ main:614 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:37:46  [ main:636 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:37:46  [ main:644 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:37:46  [ main:644 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:37:46  [ main:644 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:37:47  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:37:47  [ main:11 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:37:47  [ main:42 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:37:47  [ main:43 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:37:47  [ main:51 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:37:47  [ main:52 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:37:48  [ main:80 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:37:48  [ main:82 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:37:48  [ main:83 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:37:48  [ main:85 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:37:48  [ main:86 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:37:48  [ main:86 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:37:48  [ main:87 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:37:48  [ main:88 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:37:48  [ main:88 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:37:48  [ main:88 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:37:48  [ main:88 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:37:48  [ main:89 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:37:48  [ main:89 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:37:48  [ main:91 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:37:48  [ main:91 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:37:48  [ main:92 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:37:48  [ main:92 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:37:48  [ main:104 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:37:48  [ main:354 ] - [ DEBUG ]  -Dio.netty.processId: 27312 (auto-detected)
+2020-05-19 17:37:48  [ main:354 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:37:48  [ main:355 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:37:48  [ main:460 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:37:48  [ main:460 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:37:48  [ main:602 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:37:48  [ main:616 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:37:48  [ main:617 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:37:48  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:37:48  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:37:48  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:37:48  [ main:637 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:37:48  [ main:638 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:37:48  [ main:644 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:37:48  [ main:644 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:37:48  [ main:644 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:52:11  [ main:863395 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:52:11  [ main:863395 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:52:11  [ main:863395 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:52:11  [ main:863395 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:52:11  [ nioEventLoopGroup-2-1:863403 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:52:11  [ nioEventLoopGroup-2-1:863403 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:52:11  [ nioEventLoopGroup-2-1:863404 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@28c4449f
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865937 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865937 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865937 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865937 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865942 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865943 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865943 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@607559e6
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:865978 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:866014 ] - [ INFO ]  Reflections took 36 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:52:11  [ nioEventLoopGroup-3-1:866232 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 17:53:42  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:53:42  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:53:42  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:53:42  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:53:42  [ main:26 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:53:42  [ main:26 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:53:42  [ main:37 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:53:42  [ main:39 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:53:42  [ main:39 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:53:42  [ main:40 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:53:42  [ main:40 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:53:42  [ main:41 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:53:42  [ main:41 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:53:42  [ main:42 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:53:42  [ main:43 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:53:42  [ main:43 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:53:42  [ main:44 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:53:42  [ main:44 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:53:42  [ main:50 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:53:43  [ main:320 ] - [ DEBUG ]  -Dio.netty.processId: 25468 (auto-detected)
+2020-05-19 17:53:43  [ main:321 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:53:43  [ main:322 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:53:43  [ main:454 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:53:43  [ main:455 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:53:43  [ main:624 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:53:43  [ main:634 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:53:43  [ main:634 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:53:43  [ main:653 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:53:43  [ main:660 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:53:43  [ main:660 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:53:43  [ main:660 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:53:45  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-05-19 17:53:45  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-05-19 17:53:45  [ main:29 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-05-19 17:53:45  [ main:29 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-05-19 17:53:45  [ main:35 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-05-19 17:53:45  [ main:35 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-05-19 17:53:45  [ main:51 ] - [ DEBUG ]  Platform: Windows
+2020-05-19 17:53:45  [ main:53 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-05-19 17:53:45  [ main:53 ] - [ DEBUG ]  Java version: 8
+2020-05-19 17:53:45  [ main:55 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-05-19 17:53:45  [ main:55 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-05-19 17:53:45  [ main:56 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-05-19 17:53:45  [ main:56 ] - [ DEBUG ]  direct buffer constructor: available
+2020-05-19 17:53:45  [ main:57 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-05-19 17:53:45  [ main:57 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-05-19 17:53:45  [ main:57 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-05-19 17:53:45  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-05-19 17:53:45  [ main:58 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-05-19 17:53:45  [ main:58 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-05-19 17:53:45  [ main:60 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-05-19 17:53:45  [ main:60 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-05-19 17:53:45  [ main:61 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-05-19 17:53:45  [ main:61 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-05-19 17:53:45  [ main:68 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-05-19 17:53:45  [ main:301 ] - [ DEBUG ]  -Dio.netty.processId: 24624 (auto-detected)
+2020-05-19 17:53:45  [ main:305 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-05-19 17:53:45  [ main:305 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-05-19 17:53:45  [ main:414 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-05-19 17:53:45  [ main:415 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-05-19 17:53:46  [ main:557 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-05-19 17:53:46  [ main:571 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-05-19 17:53:46  [ main:571 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-05-19 17:53:46  [ main:590 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-05-19 17:53:46  [ main:591 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-05-19 17:53:46  [ main:598 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-05-19 17:53:46  [ main:598 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-05-19 17:53:46  [ main:598 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-05-19 17:53:49  [ main:4000 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:53:49  [ main:4000 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:53:49  [ main:4000 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:53:49  [ main:4000 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:53:49  [ nioEventLoopGroup-2-1:4009 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:53:49  [ nioEventLoopGroup-2-1:4009 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:53:49  [ nioEventLoopGroup-2-1:4010 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@307c39a0
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6774 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6774 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6774 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6774 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6781 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6781 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6781 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@25e0f6eb
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6811 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:6860 ] - [ INFO ]  Reflections took 49 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:7064 ] - [ DEBUG ]  Discarded inbound message login that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:53:49  [ nioEventLoopGroup-3-1:7070 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:53:57  [ nioEventLoopGroup-3-1:15268 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:53:57  [ nioEventLoopGroup-3-1:15271 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:53:57  [ nioEventLoopGroup-3-1:15272 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:27)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-19 17:54:03  [ nioEventLoopGroup-3-1:21233 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:03  [ nioEventLoopGroup-3-1:21235 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:03  [ nioEventLoopGroup-3-1:21254 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:03  [ nioEventLoopGroup-3-1:21254 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:17  [ nioEventLoopGroup-3-1:34404 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:17  [ nioEventLoopGroup-3-1:34406 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:17  [ nioEventLoopGroup-3-1:34423 ] - [ DEBUG ]  Discarded inbound message registerR that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:17  [ nioEventLoopGroup-3-1:34424 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:24  [ nioEventLoopGroup-3-1:41757 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:24  [ nioEventLoopGroup-3-1:41759 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:24  [ nioEventLoopGroup-3-1:41777 ] - [ DEBUG ]  Discarded inbound message registerR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:24  [ nioEventLoopGroup-3-1:41777 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:30  [ nioEventLoopGroup-3-1:48014 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:30  [ nioEventLoopGroup-3-1:48015 ] - [ INFO ]  Reflections took 1 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:30  [ nioEventLoopGroup-3-1:48026 ] - [ DEBUG ]  Discarded inbound message loginR  that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:30  [ nioEventLoopGroup-3-1:48026 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:44  [ nioEventLoopGroup-3-1:61976 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:44  [ nioEventLoopGroup-3-1:61977 ] - [ INFO ]  Reflections took 1 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:44  [ nioEventLoopGroup-3-1:61987 ] - [ DEBUG ]  Discarded inbound message loginR andy that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:44  [ nioEventLoopGroup-3-1:61987 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:46  [ nioEventLoopGroup-3-1:63701 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:46  [ nioEventLoopGroup-3-1:63703 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:46  [ nioEventLoopGroup-3-1:63718 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:46  [ nioEventLoopGroup-3-1:63718 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:48  [ nioEventLoopGroup-3-1:65417 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:48  [ nioEventLoopGroup-3-1:65419 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:48  [ nioEventLoopGroup-3-1:65426 ] - [ DEBUG ]  Discarded inbound message move that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:48  [ nioEventLoopGroup-3-1:65427 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:54:55  [ nioEventLoopGroup-3-1:72536 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:54:55  [ nioEventLoopGroup-3-1:72539 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:54:55  [ nioEventLoopGroup-3-1:72558 ] - [ DEBUG ]  Discarded inbound message checkPlace that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:54:55  [ nioEventLoopGroup-3-1:72558 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:55:01  [ nioEventLoopGroup-3-1:78301 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:55:01  [ nioEventLoopGroup-3-1:78303 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:55:01  [ nioEventLoopGroup-3-1:78456 ] - [ DEBUG ]  Discarded inbound message move 村子 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:55:01  [ nioEventLoopGroup-3-1:78456 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:55:03  [ nioEventLoopGroup-3-1:80626 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:55:03  [ nioEventLoopGroup-3-1:80628 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:55:03  [ nioEventLoopGroup-3-1:80638 ] - [ DEBUG ]  Discarded inbound message aoi that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:55:03  [ nioEventLoopGroup-3-1:80638 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].
+2020-05-19 17:55:09  [ nioEventLoopGroup-3-1:87289 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-05-19 17:55:09  [ nioEventLoopGroup-3-1:87290 ] - [ INFO ]  Reflections took 1 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-05-19 17:55:09  [ nioEventLoopGroup-3-1:87297 ] - [ DEBUG ]  Discarded inbound message checkPlace 城堡 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-05-19 17:55:09  [ nioEventLoopGroup-3-1:87297 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1804123b, L:/127.0.0.1:8080 - R:/127.0.0.1:56400].

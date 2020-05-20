@@ -114,7 +114,7 @@ public class ConnectSql {
             System.out.println("We got unexpected:" + e.getMessage());
         }
         //初始场景中加入该角色
-        ExcelToJson.scenes.get(10001).getRoleAll().add(FunctionService.role);
+        ExcelToJson.scenes.get(Integer.valueOf(ExcelToJson.initSceneId)).getRoleAll().add(FunctionService.role);
         return false;
     }
 

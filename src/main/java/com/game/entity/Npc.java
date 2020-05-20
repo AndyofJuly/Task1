@@ -8,12 +8,12 @@ package com.game.entity;
 public class Npc {
     private int id;
     private String name;
-    private int alive;
+    private String alive;
 
-    public Npc(int id,String name) {
+    public Npc(int id,String name,String alive) {
         this.name = name;
         this.id = id;
-        this.alive = 1;
+        this.alive = alive;
     }
 
     public int getId() {
@@ -32,11 +32,11 @@ public class Npc {
         this.name = name;
     }
 
-    public int getAlive() {
+    public String getAlive() {
         return alive;
     }
 
-    public void setAlive(int alive) {
+    public void setAlive(String alive) {
         this.alive = alive;
     }
 }
