@@ -1,19 +1,18 @@
 package com.game.dao;
 
-import com.game.common.ExcelToJson;
+import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 
 /**
  * 数据库连接与数据库操作方法实现
  * @Author andy
  * @create 2020/5/12 9:51
  */
+
 public class ConnectSql {
     public String url="jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
     public String user="root";
@@ -106,7 +105,7 @@ public class ConnectSql {
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO role(rolename,placeid,alive) VALUES(?,?,?)");
             st.setString(1, rolename);
-            st.setInt(2, 1);
+            st.setInt(2, 10001);
             st.setInt(3, 1);
             st.executeUpdate();
             st.close();
@@ -114,7 +113,7 @@ public class ConnectSql {
             System.out.println("We got unexpected:" + e.getMessage());
         }
         //初始场景中加入该角色
-        ExcelToJson.scenes.get(Integer.valueOf(ExcelToJson.initSceneId)).getRoleAll().add(FunctionService.role);
+        InitStaticResource.scenes.get(Integer.valueOf(InitStaticResource.initSceneId)).getRoleAll().add(FunctionService.role);
         return false;
     }
 
@@ -135,7 +134,7 @@ public class ConnectSql {
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
-        ExcelToJson.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
+        InitStaticResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
         return result;
     }
 

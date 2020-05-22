@@ -1,6 +1,6 @@
 package com.game.controller;
 
-import com.game.common.ExcelToJson;
+import com.game.common.InitStaticResource;
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
 import com.game.entity.Role;
@@ -40,7 +40,7 @@ public class FunctionService {
     @MyAnnontation(MethodName = "registerR")
     public String registerRoleMesseage() {
         if(strings.length<=1){return "";}
-        role = new Role(strings[1],ExcelToJson.initSceneId);
+        role = new Role(strings[1], InitStaticResource.initSceneId);
         user.setRole(role);
         role.setId(connectSql.selectRoleIdByName(strings[1]));
         return userService.registerRole(strings[1]);
@@ -70,6 +70,12 @@ public class FunctionService {
     public String checkPlaceMesseage() {
         if(strings.length<=1){return "";}
         return roleService.checkPlace(strings[1]);
+    }
+
+    @MyAnnontation(MethodName = "talkTo")
+    public String talkToNpc(){
+        if(strings.length<=1){return "";}
+        return roleService.getNpcReply(strings[1]);
     }
 
 

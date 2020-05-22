@@ -1,35 +1,26 @@
 package com.game.entity;
 
+import com.game.entity.excel.MonsterStatic;
+
 /**
  * 怪物类
  * @Author andy
  * @create 2020/5/12 22:32
  */
 public class Monster{
-    private int id;
-    private String name;
     private int alive;
+    private MonsterStatic monsterStatic;
 
-    public Monster(int id,String name) {
-        this.name = name;
-        this.id = id;
-        this.alive = 1;
+    public Monster(MonsterStatic monsterStatic) {
+        this.monsterStatic = monsterStatic;
     }
 
-    public int getId() {
-        return id;
+    public MonsterStatic getMonsterStatic() {
+        return monsterStatic;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setMonsterStatic(MonsterStatic monsterStatic) {
+        this.monsterStatic = monsterStatic;
     }
 
     public int getAlive() {

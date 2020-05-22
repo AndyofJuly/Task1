@@ -1,42 +1,33 @@
 package com.game.entity;
 
+import com.game.entity.excel.NpcStatic;
+
 /**
  * NPC类
  * @Author andy
  * @create 2020/5/11 14:58
  */
 public class Npc {
-    private int id;
-    private String name;
-    private String alive;
+    private int alive;
+    private NpcStatic npcStatic;
 
-    public Npc(int id,String name,String alive) {
-        this.name = name;
-        this.id = id;
-        this.alive = alive;
+    public Npc(NpcStatic npcStatic) {
+        this.npcStatic = npcStatic;
     }
 
-    public int getId() {
-        return id;
+    public NpcStatic getNpcStatic() {
+        return npcStatic;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNpcStatic(NpcStatic npcStatic) {
+        this.npcStatic = npcStatic;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAlive() {
+    public int getAlive() {
         return alive;
     }
 
-    public void setAlive(String alive) {
+    public void setAlive(int alive) {
         this.alive = alive;
     }
 }
