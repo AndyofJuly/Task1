@@ -7,4 +7,38 @@ package com.game.entity.excel;
  */
 public class RoleStatic {
     //待扩展；例如每升一级所需要的经验，获得的基础属性加成等等，属于静态数据，可在excel表中读取
+
+    private int typeId;
+    private int levelHp;
+    private int levelMp;
+
+    public RoleStatic(int typeId, int levelHp, int levelMp) {
+        this.typeId = typeId;
+        this.levelHp = levelHp;
+        this.levelMp = levelMp;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public int getLevelHp() {
+        return levelHp;
+    }
+
+    public void setLevelHp(int levelHp) {
+        this.levelHp = levelHp;
+    }
+
+    public int getLevelMp() {
+        return levelMp;
+    }
+
+    public void setLevelMp(int levelMp) {
+        this.levelMp = levelMp;
+    }
 }

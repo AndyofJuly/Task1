@@ -25,7 +25,8 @@ public class Role {
     private int atk = 2;
 
     //应该是集合
-    private HashMap<Integer,SkillStatic> skillStaticHashMap = new HashMap<Integer,SkillStatic>();
+    private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
+    //角色实际手上拿的只有一把武器，所以这里考虑可能不需要集合，背包里是需要集合的
     private HashMap<Integer,EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer,EquipmentStatic>();
     private HashMap<Integer,PotionStatic> potionStaticHashMap = new HashMap<Integer,PotionStatic>();
     private MyPackage myPackage;
@@ -34,6 +35,8 @@ public class Role {
         this.name = name;
         this.nowScenesId = nowScenesId;
         this.alive = 1;
+        //角色初始化，测试，每次进场配备装备
+        //this.getEquipmentStaticHashMap().put(3001,new EquipmentStatic(3001,"钢剑",10,5));
     }
 
     public Role(int id) {
@@ -104,12 +107,12 @@ public class Role {
         this.atk = atk;
     }
 
-    public HashMap<Integer, SkillStatic> getSkillStaticHashMap() {
-        return skillStaticHashMap;
+    public HashMap<Integer, Skill> getSkillHashMap() {
+        return skillHashMap;
     }
 
-    public void setSkillStaticHashMap(HashMap<Integer, SkillStatic> skillStaticHashMap) {
-        this.skillStaticHashMap = skillStaticHashMap;
+    public void setSkillHashMap(HashMap<Integer, Skill> skillHashMap) {
+        this.skillHashMap = skillHashMap;
     }
 
     public HashMap<Integer, EquipmentStatic> getEquipmentStaticHashMap() {

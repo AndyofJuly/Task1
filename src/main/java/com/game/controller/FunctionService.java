@@ -1,5 +1,6 @@
 package com.game.controller;
 
+import com.game.common.InitRole;
 import com.game.common.InitStaticResource;
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
@@ -43,6 +44,7 @@ public class FunctionService {
         role = new Role(strings[1], InitStaticResource.initSceneId);
         user.setRole(role);
         role.setId(connectSql.selectRoleIdByName(strings[1]));
+        new InitRole();
         return userService.registerRole(strings[1]);
     }
 
@@ -51,6 +53,7 @@ public class FunctionService {
         if(strings.length<=1){return "";}
         role = new Role(strings[1],connectSql.selectRoleScenesId(strings[1]));
         user.setRole(role);
+        new InitRole();
         return userService.loginRole(strings[1]);
     }
 
@@ -78,5 +81,35 @@ public class FunctionService {
         return roleService.getNpcReply(strings[1]);
     }
 
+    @MyAnnontation(MethodName = "repair")
+    public String repair(){
+        if(strings.length<=1){return "";}
+        return roleService.repairEquipment(strings[1]);
+    }
+
+    @MyAnnontation(MethodName = "putOn")
+    public String putOn(){
+        if(strings.length<=1){return "";}
+        return roleService.putOnEquipment(strings[1]);
+    }
+
+    @MyAnnontation(MethodName = "takeOff")
+    public String takeOff(){
+        if(strings.length<=1){return "";}
+        return roleService.takeOffEquipment(strings[1]);
+    }
+
+    @MyAnnontation(MethodName = "use")
+    public String use(){
+        if(strings.length<=1){return "";}
+        return roleService.useDrug(strings[1]);
+    }
+
+    //额外的一些小功能，自己运行程序时时方便观察变量情况
+    //返回角色的hp，mp，武器耐久，当前攻击力
+    @MyAnnontation(MethodName = "getInfo")
+    public String getInfo(){
+        return roleService.getRoleInfo();
+    }
 
 }

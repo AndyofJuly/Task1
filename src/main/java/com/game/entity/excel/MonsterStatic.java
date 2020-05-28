@@ -9,11 +9,31 @@ public class MonsterStatic {
     private int id;
     private String name;
     private int hp;
+    private int sceneId;
+    private int atk;
 
-    public MonsterStatic(int id, String name, int hp) {
+    public MonsterStatic(int id, String name, int hp, int sceneId, int atk) {
         this.id = id;
         this.name = name;
         this.hp = hp;
+        this.sceneId = sceneId;
+        this.atk = atk;
+    }
+
+    public int getAtk() {
+        return atk;
+    }
+
+    public void setAtk(int atk) {
+        this.atk = atk;
+    }
+
+    public int getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(int sceneId) {
+        this.sceneId = sceneId;
     }
 
     public int getHp() {

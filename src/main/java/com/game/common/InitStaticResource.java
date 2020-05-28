@@ -29,6 +29,8 @@ public class InitStaticResource {
     public static HashMap<Integer, EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer, EquipmentStatic>();
     public static HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<Integer, PotionStatic>();
 
+    public static HashMap<Integer, RoleStatic> roleStaticHashMap = new HashMap<Integer, RoleStatic>();
+
     static JSONArray result;
     static JSONObject jsonObject;
     static {
@@ -79,6 +81,13 @@ public class InitStaticResource {
             jsonObject = result.getJSONObject(i);
             PotionStatic potionStatic = JSON.parseObject(jsonObject.toJSONString(), PotionStatic.class);
             potionStaticHashMap.put(potionStatic.getId(),potionStatic);
+        }
+
+        result = ExcelToJson.getNeed("ROLE_CONST_PATH");
+        for(int i=0;i<result.size();i++){
+            jsonObject = result.getJSONObject(i);
+            RoleStatic roleStatic = JSON.parseObject(jsonObject.toJSONString(), RoleStatic.class);
+            roleStaticHashMap.put(roleStatic.getTypeId(),roleStatic);
         }
 
     }

@@ -1,6 +1,7 @@
 package com.game.entity.excel;
 
 /**
+ * 装备类的一些静态属性，属性与excel中的字段一一对应
  * @Author andy
  * @create 2020/5/21 17:53
  */

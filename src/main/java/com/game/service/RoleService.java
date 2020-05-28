@@ -3,8 +3,17 @@ package com.game.service;
 import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
+import com.game.entity.Monster;
 import com.game.entity.Scene;
 import com.game.entity.excel.EquipmentStatic;
+import com.game.entity.excel.MonsterStatic;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -100,4 +109,84 @@ public class RoleService {
         return replyWords;
     }
 
+    public String repairEquipment(String equipmentName){
+        String result = "没有该武器";
+        for (Integer key : InitStaticResource.equipmentStaticHashMap.keySet()) {
+            if(equipmentName.equals(InitStaticResource.equipmentStaticHashMap.get(key).getName())){
+                System.out.println("当前武器的耐久为"+FunctionService.role.getEquipmentStaticHashMap().get(key).getDurability()+"。正在修理...");
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                FunctionService.role.getEquipmentStaticHashMap().get(key).setDurability(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
+                result = "修理成功！当前武器耐久为："+FunctionService.role.getEquipmentStaticHashMap().get(key).getDurability();
+            }
+        }
+        return result;
+    }
+
+    public String putOnEquipment(String equipment){
+
+        // TODO: 2020/5/26 换武器的时候，新武器来自背包，旧武器放回背包；
+
+        int atk = FunctionService.role.getAtk();
+        for (Integer key : InitStaticResource.equipmentStaticHashMap.keySet()) {
+            if(equipment.equals(InitStaticResource.equipmentStaticHashMap.get(key).getName())){
+                atk = atk + InitStaticResource.equipmentStaticHashMap.get(key).getAtk();
+                FunctionService.role.setAtk(atk);
+                FunctionService.role.getEquipmentStaticHashMap().put(key,InitStaticResource.equipmentStaticHashMap.get(key));
+            }
+        }
+        return "你已成功装备该武器，目前攻击力为："+atk;
+    }
+
+    public String takeOffEquipment(String equipment){
+
+        // TODO: 2020/5/26  与背包交互；
+
+        int atk = FunctionService.role.getAtk();
+        for (Integer key : InitStaticResource.equipmentStaticHashMap.keySet()) {
+            if(equipment.equals(InitStaticResource.equipmentStaticHashMap.get(key).getName())){
+                atk = atk - InitStaticResource.equipmentStaticHashMap.get(key).getAtk();
+                //记得更新缓存
+                FunctionService.role.setAtk(atk);
+                //角色把武器放回了背包
+                FunctionService.role.getEquipmentStaticHashMap().clear();
+            }
+        }
+        return "你已成功卸下该武器，目前攻击力为："+atk;
+    }
+
+    public String useDrug(String drugName){
+
+        // TODO: 2020/5/26  与背包交互；
+
+        //根据名字查找id，获取该药品的hp和mp加成
+        int hp = FunctionService.role.getHp();
+        int mp = FunctionService.role.getMp();
+        for (Integer key : InitStaticResource.potionStaticHashMap.keySet()) {
+            if(drugName.equals(InitStaticResource.potionStaticHashMap.get(key).getName())){
+                System.out.println(key);
+                hp = hp + InitStaticResource.potionStaticHashMap.get(key).getAddHp();
+                mp = mp + InitStaticResource.potionStaticHashMap.get(key).getAddMp();
+                if(hp>=InitStaticResource.roleStaticHashMap.get(101).getLevelHp()){
+                    FunctionService.role.setHp(InitStaticResource.roleStaticHashMap.get(101).getLevelHp());
+                    return "血已满";
+                }else if (mp>=InitStaticResource.roleStaticHashMap.get(101).getLevelMp()){
+                    FunctionService.role.setMp(InitStaticResource.roleStaticHashMap.get(101).getLevelMp());
+                    return "蓝已满";
+                }
+                FunctionService.role.setHp(hp);
+                FunctionService.role.setMp(mp);
+            }
+        }
+        return "使用药品成功，你的当前血量为："+hp+"， 当前的蓝量为："+mp;
+    }
+
+    public String getRoleInfo(){
+        return "当前角色的hp："+FunctionService.role.getHp()+"。 mp："+FunctionService.role.getMp()+"。 武器耐久："+FunctionService.role.getEquipmentStaticHashMap().get(3001).getDurability()+"。 攻击力："+FunctionService.role.getAtk();
+    }
 }
+
+
