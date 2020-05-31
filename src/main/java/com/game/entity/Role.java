@@ -19,24 +19,24 @@ public class Role {
     private int nowScenesId;
     private int alive;
     private RoleStatic roleStatic;
+    private MyPackage myPackage;
 
     private int hp = 50;
     private int mp = 50;
     private int atk = 2;
 
-    //应该是集合
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
-    //角色实际手上拿的只有一把武器，所以这里考虑可能不需要集合，背包里是需要集合的
-    private HashMap<Integer,EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer,EquipmentStatic>();
+    //如果后续装备类型变多了，还是需要集合
+    //private HashMap<Integer,EquipmentStatic> equipmentStaticHashMaps = new HashMap<Integer,EquipmentStatic>();
+    private HashMap<Integer,Equipment> equipmentHashMap = new HashMap<Integer,Equipment>();
+    //药品应该可以不需要集合，直接从背包里拿，然后使用
     private HashMap<Integer,PotionStatic> potionStaticHashMap = new HashMap<Integer,PotionStatic>();
-    private MyPackage myPackage;
+
 
     public Role(String name, int nowScenesId) {
         this.name = name;
         this.nowScenesId = nowScenesId;
         this.alive = 1;
-        //角色初始化，测试，每次进场配备装备
-        //this.getEquipmentStaticHashMap().put(3001,new EquipmentStatic(3001,"钢剑",10,5));
     }
 
     public Role(int id) {
@@ -115,12 +115,12 @@ public class Role {
         this.skillHashMap = skillHashMap;
     }
 
-    public HashMap<Integer, EquipmentStatic> getEquipmentStaticHashMap() {
-        return equipmentStaticHashMap;
+    public HashMap<Integer, Equipment> getEquipmentHashMap() {
+        return equipmentHashMap;
     }
 
-    public void setEquipmentStaticHashMap(HashMap<Integer, EquipmentStatic> equipmentStaticHashMap) {
-        this.equipmentStaticHashMap = equipmentStaticHashMap;
+    public void setEquipmentHashMap(HashMap<Integer, Equipment> equipmentHashMap) {
+        this.equipmentHashMap = equipmentHashMap;
     }
 
     public HashMap<Integer, PotionStatic> getPotionStaticHashMap() {

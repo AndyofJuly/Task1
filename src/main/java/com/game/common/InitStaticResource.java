@@ -13,6 +13,7 @@ import java.util.HashMap;
  * @Author andy
  * @create 2020/5/21 12:08
  */
+
 public class InitStaticResource {
 
     public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();

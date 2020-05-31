@@ -11,6 +11,8 @@ public class EquipmentStatic {
     private int atk;
     private int durability;
 
+
+
     public EquipmentStatic(int id, String name, int atk, int durability) {
         this.id = id;
         this.name = name;

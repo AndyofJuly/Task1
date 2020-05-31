@@ -49,7 +49,7 @@ public class NettySingleClient {
         });
 
         //6.建立连接
-        ChannelFuture channelFuture = clientBootstap.connect("127.0.0.1",8080);//("0.0.0.0",9099);
+        ChannelFuture channelFuture = clientBootstap.connect("127.0.0.1",8080);
         try {
             //7.测试输入
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

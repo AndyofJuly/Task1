@@ -30,9 +30,6 @@ public class ExcelToJson {
             for(int i = 1; i < sheet.getRows(); i++) {
                 JSONObject object = new JSONObject();
                 for (int k = 0; k < sheet.getColumns(); k++) {
-/*                    if (k == 0) {
-                        object.put(sheet.getCell(k, 0).getContents(), Integer.parseInt(sheet.getCell(k, i).getContents()));//Integer.valueOf(sheet.getCell(k, i).getContents()).intValue());
-                    } else {*/
                         if (sheet.getCell(k, i).getContents().startsWith("[")) {
                             object.put(sheet.getCell(k, 0).getContents(), sheet.getCell(k, i).getContents().substring(1, sheet.getCell(k, i).getContents().length() - 1).split(","));
                         } else if(pattern.matcher(sheet.getCell(k, i).getContents()).matches()){
@@ -40,7 +37,6 @@ public class ExcelToJson {
                         } else {
                             object.put(sheet.getCell(k, 0).getContents(), sheet.getCell(k, i).getContents());
                         }
-                    //}
                 }
                 jsons.add(object);
             }

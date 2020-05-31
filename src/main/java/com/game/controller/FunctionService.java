@@ -105,6 +105,12 @@ public class FunctionService {
         return roleService.useDrug(strings[1]);
     }
 
+    @MyAnnontation(MethodName = "skill")
+    public String useSkill(){
+        if(strings.length<=2){return "";}
+        return roleService.useSkillAttack(strings[1],strings[2]);
+    }
+
     //额外的一些小功能，自己运行程序时时方便观察变量情况
     //返回角色的hp，mp，武器耐久，当前攻击力
     @MyAnnontation(MethodName = "getInfo")
