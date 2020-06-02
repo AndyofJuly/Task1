@@ -15,7 +15,8 @@ public class MyPackage {
     //背包容量
     private int size;
     //药类可叠加，只计数即可
-    private HashMap<Integer,Potion> potionHashMap = new HashMap<>();
+
+    private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
     private HashMap<Integer,Equipment> packageEquipmentHashMap = new HashMap<Integer,Equipment>();
 
     public MyPackage(int size, HashMap<Integer, Potion> potionHashMap, HashMap<Integer, Equipment> packageEquipmentHashMap) {

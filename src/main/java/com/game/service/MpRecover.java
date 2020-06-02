@@ -1,5 +1,7 @@
-package com.game.common;
+package com.game.service;
 
+import com.game.common.Const;
+import com.game.common.ExcelToJson;
 import com.game.controller.FunctionService;
 
 import java.util.TimerTask;
@@ -13,9 +15,9 @@ public class MpRecover extends TimerTask {
     @Override
     public void run() {
         //mp恢复方法；每隔x秒恢复1点
-        int mp=FunctionService.role.getMp()+1;
+        int mp=FunctionService.role.getMp()+ Const.RECOVER_MP;
         if(mp>= FunctionService.role.getRoleStatic().getLevelMp()){
-            System.out.println("mp恢复满了");
+            System.out.println("测试用提示：mp恢复满了");
             return;
         }
         FunctionService.role.setMp(mp);

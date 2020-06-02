@@ -8,7 +8,7 @@ import com.game.entity.excel.PotionStatic;
  */
 public class Potion {
     //背包中每格最多99瓶药
-    public static final int maxNumber = 99;
+    public static final int packageMaxNumber = 99;
     private int number;
     private PotionStatic potionStatic;
 

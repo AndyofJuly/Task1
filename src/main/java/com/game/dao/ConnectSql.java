@@ -1,5 +1,6 @@
 package com.game.dao;
 
+import com.game.common.Const;
 import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
 import java.sql.Connection;
@@ -14,9 +15,9 @@ import java.sql.ResultSet;
  */
 
 public class ConnectSql {
-    public String url="jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
+/*    public String url="jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
     public String user="root";
-    public String pw ="123456";
+    public String pw ="123456";*/
     public Connection conn;
     public boolean result;
     public int nowScenesId;
@@ -25,11 +26,11 @@ public class ConnectSql {
     public ConnectSql(){
         try {
             //1：加载驱动程序
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName(Const.DRIVER);
             //2：获得数据库连接
-            conn= DriverManager.getConnection(url,user,pw);
+            conn= DriverManager.getConnection(Const.URL,Const.USER,Const.PW);
         }catch (Exception e){
-            System.out.println("连接数据库时发生异常.异常信息为："+e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -47,7 +48,7 @@ public class ConnectSql {
             result = rs.next();
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         if(result){
             return true;
@@ -59,7 +60,7 @@ public class ConnectSql {
             st.executeUpdate();
             st.close();
         } catch (Exception e) {
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         return false;
     }
@@ -79,7 +80,7 @@ public class ConnectSql {
             result = rs.next();
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         return result;
     }
@@ -97,7 +98,7 @@ public class ConnectSql {
             result = rs.next();
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         if(result){
             return true;
@@ -110,7 +111,7 @@ public class ConnectSql {
             st.executeUpdate();
             st.close();
         } catch (Exception e) {
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         //初始场景中加入该角色
         InitStaticResource.scenes.get(Integer.valueOf(InitStaticResource.initSceneId)).getRoleAll().add(FunctionService.role);
@@ -130,7 +131,7 @@ public class ConnectSql {
             result = rs.next();
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected1:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
@@ -151,7 +152,7 @@ public class ConnectSql {
             st.executeUpdate();
         }catch (Exception e)
         {
-            System.out.println("sql init error");
+            System.out.println(e.getMessage());
         }
     }
 
@@ -171,7 +172,7 @@ public class ConnectSql {
             }
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         return id;
     }
@@ -192,7 +193,7 @@ public class ConnectSql {
             }
             rs.close();
         }catch (Exception e){
-            System.out.println("We got unexpected2:" + e.getMessage());
+            System.out.println(e.getMessage());
         }
         return nowScenesId;
     }

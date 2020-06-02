@@ -20,6 +20,7 @@ public class Role {
     private int alive;
     private RoleStatic roleStatic;
     private MyPackage myPackage;
+    private int levelId;
 
     private int hp = 50;
     private int mp = 50;
@@ -137,5 +138,13 @@ public class Role {
 
     public void setMyPackage(MyPackage myPackage) {
         this.myPackage = myPackage;
+    }
+
+    public int getLevelId() {
+        return levelId;
+    }
+
+    public void setLevelId(int levelId) {
+        this.levelId = levelId;
     }
 }

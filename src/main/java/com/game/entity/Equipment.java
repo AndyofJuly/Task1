@@ -8,7 +8,7 @@ import com.game.entity.excel.EquipmentStatic;
  */
 public class Equipment {
     //背包中每格最多放一件装备
-    public static final int maxNumber = 1;
+    public static final int packageMaxNumber = 1;
     private EquipmentStatic equipmentStatic;
 
     public Equipment(EquipmentStatic equipmentStatic) {

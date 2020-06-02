@@ -2,8 +2,13 @@ package com.game.netty.server;
 
 import com.game.common.ReflectService;
 import com.game.controller.FunctionService;
+import com.game.service.Listen;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.group.ChannelGroup;
+import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.util.concurrent.GlobalEventExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,16 +21,37 @@ import org.slf4j.LoggerFactory;
  */
 
 public class ServerHandler extends ChannelInboundHandlerAdapter {
+
+    private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
         Logger logger = LoggerFactory.getLogger(NettyServer.class);
-        System.out.println("收到来自客户端的命令:"+msg.toString());
+        System.out.println("收到来自客户端:"+msg.toString());
 
         FunctionService.strings = msg.toString().split(" ");
         ReflectService reflectService = new ReflectService();
         ctx.channel().writeAndFlush(reflectService.getMethod(FunctionService.strings[0]));
         ctx.fireChannelRead(msg);
+
+        Channel channel = ctx.channel();
+        channelGroup.forEach(ch -> {
+            if(Listen.isDead()){
+                ch.writeAndFlush(Listen.mesg());
+            }
+            if(channel !=ch){
+                ch.writeAndFlush(msg);
+            }/*else{
+                ch.writeAndFlush(" 【自己】"+msg +" ");
+            }*/
+        });
+        Listen.reset();
     }
 
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        Channel channel = ctx.channel();
+        channelGroup.writeAndFlush(" 【服务器】 -" +channel.remoteAddress() +" 加入");
+        channelGroup.add(channel);
+    }
 }

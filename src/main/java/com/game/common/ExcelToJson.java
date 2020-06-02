@@ -25,7 +25,7 @@ public class ExcelToJson {
         Sheet sheet;
         JSONArray jsons = new JSONArray();
         try {
-            workbook = Workbook.getWorkbook(new File(getConfigPath(str)));
+            workbook = Workbook.getWorkbook(new File(str));
             sheet = workbook.getSheet(0);
             for(int i = 1; i < sheet.getRows(); i++) {
                 JSONObject object = new JSONObject();
@@ -49,7 +49,7 @@ public class ExcelToJson {
         return jsons;
     }
 
-    //读取路径配置文件
+/*    //读取路径配置文件
     public static String getConfigPath(String PATH){
         Properties p = new Properties();
         try {
@@ -61,5 +61,5 @@ public class ExcelToJson {
             e.printStackTrace();
         }
         return p.getProperty(PATH);
-    }
+    }*/
 }

@@ -6,6 +6,7 @@ import com.game.entity.MyPackage;
 import com.game.entity.Potion;
 import com.game.entity.Skill;
 import com.game.entity.excel.EquipmentStatic;
+import com.game.service.MpRecover;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -18,44 +19,47 @@ import java.util.Timer;
  */
 public class InitRole {
     static {
-
-        //目前角色拥有两个技能
-        Skill skillA = new Skill(InitStaticResource.skillStaticHashMap.get(1001));
-        Skill skillB = new Skill(InitStaticResource.skillStaticHashMap.get(1002));
-
-        //放入角色的技能集合中
-        FunctionService.role.getSkillHashMap().put(1001,skillA);
-        FunctionService.role.getSkillHashMap().put(1002,skillB);
-
         //初始化技能的使用时间戳
         Instant start = Instant.now();
-        FunctionService.role.getSkillHashMap().get(1001).setStart(start);
-        FunctionService.role.getSkillHashMap().get(1002).setStart(start);
 
-        //角色静态数据信息注入，这里是角色当前等级的血量和蓝量
-        FunctionService.role.setRoleStatic(InitStaticResource.roleStaticHashMap.get(101));
+        //目前角色拥有四个技能，全都初始化给角色
+        for (Integer key : InitStaticResource.skillStaticHashMap.keySet()) {
+            FunctionService.role.getSkillHashMap().put(key,new Skill(InitStaticResource.skillStaticHashMap.get(key)));
+            FunctionService.role.getSkillHashMap().get(key).setStart(start);
+        }
 
-        //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态
+        //角色静态数据信息注入，这里是角色当前等级的血量和蓝量；set后方便get
+        FunctionService.role.setRoleStatic(InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID));
 
-        //此处初始化背包物品，给角色99瓶红药，集合最大容量为99，给角色其他装备放在背包里
-        //角色背包
-        // TODO: 2020/5/29 后面改为从数据库中读取
-
+        //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态，例如角色背包中的物品等
+        //目前所有装备和药物都初始化给角色，用于代码测试
         HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
         //如果不改变值，可以考虑简单引用（浅拷贝）静态资源的地址
-        potionHashMap.put(2001,new Potion(2,InitStaticResource.potionStaticHashMap.get(2001)));
-        potionHashMap.put(2002,new Potion(2,InitStaticResource.potionStaticHashMap.get(2002)));
+        for (Integer key : InitStaticResource.potionStaticHashMap.keySet()) {
+            potionHashMap.put(key,new Potion(2,InitStaticResource.potionStaticHashMap.get(key)));
+        }
+/*        potionHashMap.put(2001,new Potion(2,InitStaticResource.potionStaticHashMap.get(2001)));
+        potionHashMap.put(2002,new Potion(2,InitStaticResource.potionStaticHashMap.get(2002)));*/
 
         //装备要改变耐久，因此需要深拷贝，改变值了；注意这个问题即可！这里先通过手动赋值的方式简单实现
         HashMap<Integer, Equipment> equipmentHashMap = new HashMap<Integer,Equipment>();
-        Equipment s1 = new Equipment(new EquipmentStatic(3001,"钢剑",10,50));
+        for (Integer key : InitStaticResource.equipmentStaticHashMap.keySet()) {
+            equipmentHashMap.put(key,new Equipment(new EquipmentStatic(InitStaticResource.equipmentStaticHashMap.get(key).getId(),
+                    InitStaticResource.equipmentStaticHashMap.get(key).getName(),
+                    InitStaticResource.equipmentStaticHashMap.get(key).getAtk(),
+                    InitStaticResource.equipmentStaticHashMap.get(key).getDurability())));
+        }
+/*        Equipment s1 = new Equipment(new EquipmentStatic(3001,"钢剑",10,50));
         Equipment s2 = new Equipment(new EquipmentStatic(3002,"青釭剑",30,100));
         equipmentHashMap.put(3001,s1);
-        equipmentHashMap.put(3002,s2);
-        FunctionService.role.setMyPackage( new MyPackage(120,potionHashMap,equipmentHashMap));
+        equipmentHashMap.put(3002,s2);*/
+        FunctionService.role.setMyPackage( new MyPackage(100,potionHashMap,equipmentHashMap));
+
+
+
+
         //开始自动恢复mp
         run();
-
     }
 
     private static void run() {

@@ -35,7 +35,7 @@ public class InitStaticResource {
     static JSONArray result;
     static JSONObject jsonObject;
     static {
-        result = ExcelToJson.getNeed("SCENE_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.SCENE_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             SceneStatic sceneStatic = JSON.parseObject(jsonObject.toJSONString(), SceneStatic.class);
@@ -45,9 +45,10 @@ public class InitStaticResource {
         }
 
         //角色第一次开始游戏时的初始化场景
-        initSceneId = Integer.parseInt(ExcelToJson.getConfigPath("INIT_SCENE"));
+        //initSceneId = Integer.parseInt(ExcelToJson.getConfigPath());
+        initSceneId = Const.INIT_SCENE;
 
-        result = ExcelToJson.getNeed("NPC_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.NPC_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             NpcStatic npcStatic = JSON.parseObject(jsonObject.toJSONString(), NpcStatic.class);
@@ -55,7 +56,7 @@ public class InitStaticResource {
             npcs.put(npcStatic.getId(),new Npc(npcStatic));
         }
 
-        result = ExcelToJson.getNeed("MONSTER_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.MONSTER_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             MonsterStatic monsterStatic = JSON.parseObject(jsonObject.toJSONString(), MonsterStatic.class);
@@ -63,32 +64,32 @@ public class InitStaticResource {
             monsters.put(monsterStatic.getId(),new Monster(monsterStatic));
         }
 
-        result = ExcelToJson.getNeed("SKILL_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.SKILL_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             SkillStatic skillStatic = JSON.parseObject(jsonObject.toJSONString(), SkillStatic.class);
             skillStaticHashMap.put(skillStatic.getId(),skillStatic);
         }
 
-        result = ExcelToJson.getNeed("EQUIPMENT_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.EQUIPMENT_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             EquipmentStatic equipmentStatic = JSON.parseObject(jsonObject.toJSONString(), EquipmentStatic.class);
             equipmentStaticHashMap.put(equipmentStatic.getId(),equipmentStatic);
         }
 
-        result = ExcelToJson.getNeed("POTION_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.POTION_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             PotionStatic potionStatic = JSON.parseObject(jsonObject.toJSONString(), PotionStatic.class);
             potionStaticHashMap.put(potionStatic.getId(),potionStatic);
         }
 
-        result = ExcelToJson.getNeed("ROLE_CONST_PATH");
+        result = ExcelToJson.getNeed(Const.ROLE_CONST_PATH);
         for(int i=0;i<result.size();i++){
             jsonObject = result.getJSONObject(i);
             RoleStatic roleStatic = JSON.parseObject(jsonObject.toJSONString(), RoleStatic.class);
-            roleStaticHashMap.put(roleStatic.getTypeId(),roleStatic);
+            roleStaticHashMap.put(roleStatic.getLevelId(),roleStatic);
         }
 
     }

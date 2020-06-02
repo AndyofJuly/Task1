@@ -23,7 +23,7 @@ public class NettyServer {
     }
 
     public static void startServer(){
-        //服务器启动，从数据库中加载场景信息
+        //服务器启动，从数据库/excel配置表中加载场景信息
         new InitStaticResource();
 
         //1.定义server启动类
