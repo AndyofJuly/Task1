@@ -71,18 +71,22 @@ public class ConnectSql {
      * @param password 用户密码
      * @return 是否登录成功
      */
-    public boolean selectLogin(String username, String password) {
+    public int selectLogin(String username, String password) {
         try {
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM user WHERE username=? and password=?");
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT playid FROM user WHERE username=? and password=?");
             preparedStatement.setString(1,username);
             preparedStatement.setString(2,password);
             ResultSet rs=preparedStatement.executeQuery();
-            result = rs.next();
+            //result = rs.next();
+            while (rs.next())
+            {
+                id=rs.getInt("playid");
+            }
             rs.close();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        return result;
+        return id;
     }
 
     /**
@@ -90,7 +94,7 @@ public class ConnectSql {
      * @param rolename 角色名
      * @return 是否角色注册成功
      */
-    public boolean insertRegisterRole(String rolename){
+    public boolean insertRegisterRole(String rolename,int roleId){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM role WHERE rolename=?");
             preparedStatement.setString(1,rolename);
@@ -114,7 +118,7 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         //初始场景中加入该角色
-        InitStaticResource.scenes.get(Integer.valueOf(InitStaticResource.initSceneId)).getRoleAll().add(FunctionService.role);
+        InitStaticResource.scenes.get(Integer.valueOf(InitStaticResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return false;
     }
 
@@ -123,7 +127,7 @@ public class ConnectSql {
      * @param rolename 角色名
      * @return 是否角色登录成功
      */
-    public boolean selectLoginRole(String rolename){
+    public boolean selectLoginRole(String rolename,int roleId){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM role WHERE rolename=?");
             preparedStatement.setString(1,rolename);
@@ -135,7 +139,7 @@ public class ConnectSql {
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
-        InitStaticResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.role);
+        InitStaticResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return result;
     }
 
@@ -143,12 +147,12 @@ public class ConnectSql {
      * 给当前角色设置所在的场景属性，用于最后离开游戏时保存角色所在的位置
      * @param scenesId 场景id
      */
-    public void insertRoleScenes(int scenesId)
+    public void insertRoleScenes(int scenesId,int roleId)
     {
         try{
             PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where rolename=?");
             st.setInt(1,scenesId);
-            st.setString(2, FunctionService.role.getName());
+            st.setString(2, FunctionService.roleHashMap.get(roleId).getName());
             st.executeUpdate();
         }catch (Exception e)
         {
@@ -197,5 +201,11 @@ public class ConnectSql {
         }
         return nowScenesId;
     }
+
+    /**
+     * 根据用户名查找角色id
+     * @param username 用户名
+     * @return 角色id
+     */
 
 }

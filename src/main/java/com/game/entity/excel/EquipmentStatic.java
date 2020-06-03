@@ -6,12 +6,15 @@ package com.game.entity.excel;
  * @create 2020/5/21 17:53
  */
 public class EquipmentStatic {
+
+    // 装备id
     private int id;
+    // 装备名
     private String name;
+    // 装备攻击力
     private int atk;
+    // 装备耐久
     private int durability;
-
-
 
     public EquipmentStatic(int id, String name, int atk, int durability) {
         this.id = id;

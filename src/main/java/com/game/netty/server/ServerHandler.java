@@ -31,6 +31,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
         FunctionService.strings = msg.toString().split(" ");
         ReflectService reflectService = new ReflectService();
+        System.out.println(FunctionService.strings[0]);
         ctx.channel().writeAndFlush(reflectService.getMethod(FunctionService.strings[0]));
         ctx.fireChannelRead(msg);
 

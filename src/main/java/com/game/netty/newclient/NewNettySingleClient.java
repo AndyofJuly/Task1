@@ -57,7 +57,7 @@ public class NewNettySingleClient {
             System.out.println("请输入命令：");
             while(true){
                 String msg = bufferedReader.readLine();
-                channelFuture.channel().writeAndFlush(msg);
+                channelFuture.channel().writeAndFlush(msg+" 11");
                 if("quit".equals(msg)){
                     break;
                 }

@@ -6,11 +6,15 @@ package com.game.entity.excel;
  * @create 2020/5/20 20:47
  */
 public class SceneStatic {
+    // 场景id
     private int id;
+    // 场景名
     private String name;
+    // 场景间的关系
     private String[] sceneRelation;
-
+    // 场景包含的NPC-可以改为int
     private String[] npcId;
+    // 场景包含的怪物
     private String[] monsterId;
 
     public SceneStatic(int id, String name, String[] sceneRelation, String[] npcId, String[] monsterId) {

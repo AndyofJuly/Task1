@@ -5,13 +5,21 @@ package com.game.entity.excel;
  * @create 2020/5/21 17:53
  */
 public class SkillStatic {
+    // 技能的id
     private int id;
+    // 技能的名字
     private String name;
+    // 技能的cd
     private int cd;
+    // 技能的攻击力
     private int atk;
+    // 技能消耗的蓝
     private int useMp;
+    // 技能的类型
     private int typeId;
+    // 技能的加血量
     private int addHp;
+    // 技能的持续时间
     private int duration;
 
     public SkillStatic(int id, String name, int cd, int atk, int useMp, int typeId, int addHp, int duration) {

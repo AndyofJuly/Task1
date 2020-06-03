@@ -6,9 +6,13 @@ package com.game.entity;
  * @create 2020/5/13 17:09
  */
 public class User {
+    // 用户id
     private int id;
+    // 用户名
     private String username;
+    // 用户密码
     private String password;
+    // 用户的游戏角色-这里只要有角色id就行了吧
     private Role role;
 
     public User(String username, String password) {

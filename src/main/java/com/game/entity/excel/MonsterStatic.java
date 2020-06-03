@@ -6,10 +6,15 @@ package com.game.entity.excel;
  * @create 2020/5/20 20:45
  */
 public class MonsterStatic {
+    // 怪物id
     private int id;
+    // 怪物名
     private String name;
+    // 怪物血量
     private int hp;
+    // 怪物所在场景id
     private int sceneId;
+    // 怪物攻击力
     private int atk;
 
     public MonsterStatic(int id, String name, int hp, int sceneId, int atk) {

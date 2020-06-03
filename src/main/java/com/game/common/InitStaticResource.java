@@ -40,7 +40,7 @@ public class InitStaticResource {
             jsonObject = result.getJSONObject(i);
             SceneStatic sceneStatic = JSON.parseObject(jsonObject.toJSONString(), SceneStatic.class);
             scenesStatics.put(sceneStatic.getId(),sceneStatic);
-            scenes.put(sceneStatic.getId(),new Scene(sceneStatic));
+            scenes.put(sceneStatic.getId(),new Scene(sceneStatic.getId()));
             places.put(sceneStatic.getName(),sceneStatic.getSceneRelation());
         }
 
@@ -53,7 +53,7 @@ public class InitStaticResource {
             jsonObject = result.getJSONObject(i);
             NpcStatic npcStatic = JSON.parseObject(jsonObject.toJSONString(), NpcStatic.class);
             npcsStatics.put(npcStatic.getId(),npcStatic);
-            npcs.put(npcStatic.getId(),new Npc(npcStatic));
+            npcs.put(npcStatic.getId(),new Npc(npcStatic.getId()));
         }
 
         result = ExcelToJson.getNeed(Const.MONSTER_CONST_PATH);
@@ -61,7 +61,7 @@ public class InitStaticResource {
             jsonObject = result.getJSONObject(i);
             MonsterStatic monsterStatic = JSON.parseObject(jsonObject.toJSONString(), MonsterStatic.class);
             monstersStatics.put(monsterStatic.getId(),monsterStatic);
-            monsters.put(monsterStatic.getId(),new Monster(monsterStatic));
+            monsters.put(monsterStatic.getId(),new Monster(monsterStatic.getId()));
         }
 
         result = ExcelToJson.getNeed(Const.SKILL_CONST_PATH);

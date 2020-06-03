@@ -12,11 +12,14 @@ import java.util.HashMap;
  * @create 2020/5/21 20:04
  */
 public class MyPackage {
-    //背包容量
+    // 背包id
+    private int packageId;
+    // 背包容量
     private int size;
-    //药类可叠加，只计数即可
-
+    // 药类可叠加，只计数即可
+    // 背包中的药品
     private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
+    // 背包中的装备
     private HashMap<Integer,Equipment> packageEquipmentHashMap = new HashMap<Integer,Equipment>();
 
     public MyPackage(int size, HashMap<Integer, Potion> potionHashMap, HashMap<Integer, Equipment> packageEquipmentHashMap) {
