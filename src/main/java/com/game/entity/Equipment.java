@@ -9,7 +9,6 @@ import com.game.entity.excel.EquipmentStatic;
 public class Equipment {
     //背包中每格最多放一件装备
     public static final int packageMaxNumber = 1;
-    //private EquipmentStatic equipmentStatic;
     //装备id-静态属性
     private int equipmentId;
     //装备当前耐久
@@ -35,16 +34,4 @@ public class Equipment {
     public void setDura(int dura) {
         this.dura = dura;
     }
-
-    /*    public Equipment(EquipmentStatic equipmentStatic) {
-        this.equipmentStatic = equipmentStatic;
-    }
-
-    public EquipmentStatic getEquipmentStatic() {
-        return equipmentStatic;
-    }
-
-    public void setEquipmentStatic(EquipmentStatic equipmentStatic) {
-        this.equipmentStatic = equipmentStatic;
-    }*/
 }

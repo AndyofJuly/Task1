@@ -17,15 +17,21 @@ public class MyPackage {
     // 背包容量
     private int size;
     // 药类可叠加，只计数即可
-    // 背包中的药品
-    private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
-    // 背包中的装备
-    private HashMap<Integer,Equipment> packageEquipmentHashMap = new HashMap<Integer,Equipment>();
+    // 背包中的药品，使用List集合，元素可重复
+//    private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
+    // 背包中的装备，使用map集合，元素不可重复
+//    private HashMap<Integer,Equipment> packageEquipmentHashMap = new HashMap<Integer,Equipment>();
+    private HashMap<Integer,Integer> goodsHashMap = new HashMap<Integer,Integer>();
 
-    public MyPackage(int size, HashMap<Integer, Potion> potionHashMap, HashMap<Integer, Equipment> packageEquipmentHashMap) {
+/*    public MyPackage(int size, HashMap<Integer, Potion> potionHashMap, HashMap<Integer, Equipment> packageEquipmentHashMap) {
         this.size = size;
         this.potionHashMap = potionHashMap;
         this.packageEquipmentHashMap = packageEquipmentHashMap;
+    }*/
+
+    public MyPackage(int size, HashMap<Integer, Integer> goodsHashMap) {
+        this.size = size;
+        this.goodsHashMap = goodsHashMap;
     }
 
     public int getSize() {
@@ -36,7 +42,22 @@ public class MyPackage {
         this.size = size;
     }
 
-    public HashMap<Integer, Potion> getPotionHashMap() {
+    public int getPackageId() {
+        return packageId;
+    }
+
+    public void setPackageId(int packageId) {
+        this.packageId = packageId;
+    }
+
+    public HashMap<Integer, Integer> getGoodsHashMap() {
+        return goodsHashMap;
+    }
+
+    public void setGoodsHashMap(HashMap<Integer, Integer> goodsHashMap) {
+        this.goodsHashMap = goodsHashMap;
+    }
+/*    public HashMap<Integer, Potion> getPotionHashMap() {
         return potionHashMap;
     }
 
@@ -50,5 +71,5 @@ public class MyPackage {
 
     public void setPackageEquipmentHashMap(HashMap<Integer, Equipment> packageEquipmentHashMap) {
         this.packageEquipmentHashMap = packageEquipmentHashMap;
-    }
+    }*/
 }

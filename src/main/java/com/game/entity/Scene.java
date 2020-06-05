@@ -3,6 +3,7 @@ package com.game.entity;
 import com.game.entity.excel.SceneStatic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 场景类
@@ -12,9 +13,11 @@ import java.util.ArrayList;
 public class Scene {
     // 场景id-静态属性
     private int sceneId;
-    //private SceneStatic sceneStatic;
 
+    //该场景下的角色集合
     private ArrayList<Role> roleAll = new ArrayList<Role>();
+    //该场景下的怪物集合
+    private HashMap<Integer,Monster> monsterHashMap = new HashMap<Integer,Monster>();
 
     public Scene(int sceneId) {
         this.sceneId = sceneId;
@@ -27,18 +30,6 @@ public class Scene {
     public void setSceneId(int sceneId) {
         this.sceneId = sceneId;
     }
-    /*    public Scene(SceneStatic sceneStatic) {
-        this.sceneStatic = sceneStatic;
-        this.id = sceneStatic.getId();
-    }*/
-
-/*    public SceneStatic getSceneStatic() {
-        return sceneStatic;
-    }
-
-    public void setSceneStatic(SceneStatic sceneStatic) {
-        this.sceneStatic = sceneStatic;
-    }*/
 
     public ArrayList<Role> getRoleAll() {
         return roleAll;
@@ -46,5 +37,13 @@ public class Scene {
 
     public void setRoleAll(ArrayList<Role> roleAll) {
         this.roleAll = roleAll;
+    }
+
+    public HashMap<Integer, Monster> getMonsterHashMap() {
+        return monsterHashMap;
+    }
+
+    public void setMonsterHashMap(HashMap<Integer, Monster> monsterHashMap) {
+        this.monsterHashMap = monsterHashMap;
     }
 }

@@ -22,7 +22,6 @@ public class Role {
     private int nowScenesId;
     // 角色存活状态
     private int alive;
-    //private RoleStatic roleStatic;
     // 角色包裹
     private MyPackage myPackage;
     // 角色等级
@@ -83,14 +82,6 @@ public class Role {
     public void setAlive(int alive) {
         this.alive = alive;
     }
-
-/*    public RoleStatic getRoleStatic() {
-        return roleStatic;
-    }
-
-    public void setRoleStatic(RoleStatic roleStatic) {
-        this.roleStatic = roleStatic;
-    }*/
 
     public int getHp() {
         return hp;

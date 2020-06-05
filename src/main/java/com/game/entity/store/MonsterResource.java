@@ -16,7 +16,9 @@ import java.util.HashMap;
  * @create 2020/6/3 21:42
  */
 public class MonsterResource {
+    //包含动态属性的怪物类-需要修改
     public static HashMap<Integer,Monster> monsters = new HashMap<Integer,Monster>();
+    //数值配置表对应的怪物类
     public static HashMap<Integer, MonsterStatic> monstersStatics = new HashMap<Integer,MonsterStatic>();
 
     static JSONArray result;

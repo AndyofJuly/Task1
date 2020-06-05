@@ -16,7 +16,9 @@ import java.util.HashMap;
  * @create 2020/6/3 21:43
  */
 public class NpcResource {
+    //包含动态属性的npc类
     public static HashMap<Integer, Npc> npcs = new HashMap<Integer,Npc>();
+    //数值配置表对应的npc类
     public static HashMap<Integer, NpcStatic> npcsStatics = new HashMap<Integer,NpcStatic>();
 
     static JSONArray result;

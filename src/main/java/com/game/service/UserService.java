@@ -11,12 +11,12 @@ import com.game.dao.ConnectSql;
 
 public class UserService {
 
-    ConnectSql connectSql = new ConnectSql();
+    //ConnectSql connectSql = new ConnectSql();
 
     //用户注册
     public String register(String username, String password){
 
-        if(connectSql.insertRegister(username,password)){
+        if(ConnectSql.sql.insertRegister(username,password)){
             return "注册失败，该用户名已有人使用";
         }else {
             return "注册成功";
@@ -25,7 +25,7 @@ public class UserService {
 
     //用户登录
     public int login(String username, String password){
-        return connectSql.selectLogin(username,password);
+        return ConnectSql.sql.selectLogin(username,password);
 /*        if(connectSql.selectLogin(username,password)!=0){
             //return "登陆成功";
         }else {
@@ -35,7 +35,7 @@ public class UserService {
 
     //角色注册
     public String registerRole(String rolename,int roleId){
-        if(connectSql.insertRegisterRole(rolename,roleId)){
+        if(ConnectSql.sql.insertRegisterRole(rolename,roleId)){
             return "注册失败，该角色名称已有人使用";
         }else {
             return "注册成功，您进入到了游戏世界";
@@ -44,7 +44,7 @@ public class UserService {
 
     //角色登录
     public String loginRole(String rolename,int roleId){
-        if(connectSql.selectLoginRole(rolename,roleId)){
+        if(ConnectSql.sql.selectLoginRole(rolename,roleId)){
             return "登陆成功，您进入到了游戏世界";
         }else {
             return "您没有该角色，登陆失败";

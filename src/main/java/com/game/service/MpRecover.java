@@ -2,8 +2,9 @@ package com.game.service;
 
 import com.game.common.Const;
 import com.game.common.ExcelToJson;
-import com.game.common.InitStaticResource;
+//import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
+import com.game.entity.store.RoleResource;
 
 import java.util.TimerTask;
 
@@ -16,13 +17,23 @@ public class MpRecover extends TimerTask {
     @Override
     public void run() {
         //mp恢复方法；每隔x秒恢复1点；假设这里只回复角色1的mp，待扩展；扩展可用循环读取所有的role，然后分别加mp
-        int mp=FunctionService.roleHashMap.get(1).getMp()+ Const.RECOVER_MP;
-        if(mp >= InitStaticResource.roleStaticHashMap.get(FunctionService.roleHashMap.get(1).getLevelId()).getLevelMp()){
+        for(Integer key : FunctionService.roleHashMap.keySet()){
+            int mp=FunctionService.roleHashMap.get(key).getMp()+ Const.RECOVER_MP;
+            if(mp >= RoleResource.roleStaticHashMap.get(FunctionService.roleHashMap.get(key).getLevelId()).getLevelMp()){
+                //getRoleStatic().getLevelMp()){
+                System.out.println("测试用提示：角色"+FunctionService.roleHashMap.get(key).getName()+"的mp恢复满了");
+                return;
+            }
+            FunctionService.roleHashMap.get(key).setMp(mp);
+            System.out.println("现在"+FunctionService.roleHashMap.get(key).getName()+"的mp为："+FunctionService.roleHashMap.get(key).getMp());
+        }
+/*        int mp=FunctionService.roleHashMap.get(1).getMp()+ Const.RECOVER_MP;
+        if(mp >= RoleResource.roleStaticHashMap.get(FunctionService.roleHashMap.get(1).getLevelId()).getLevelMp()){
                 //getRoleStatic().getLevelMp()){
             System.out.println("测试用提示：mp恢复满了");
             return;
         }
         FunctionService.roleHashMap.get(1).setMp(mp);
-        System.out.println("现在mp为："+FunctionService.roleHashMap.get(1).getMp());
+        System.out.println("现在mp为："+FunctionService.roleHashMap.get(1).getMp());*/
     }
 }

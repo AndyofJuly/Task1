@@ -1,11 +1,11 @@
 package com.game.controller;
 
 import com.game.common.InitRole;
-import com.game.common.InitStaticResource;
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
 import com.game.entity.Role;
 import com.game.entity.User;
+import com.game.entity.store.SceneResource;
 import com.game.service.RoleService;
 import com.game.service.UserService;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class FunctionService {
     UserService userService = new UserService();
     RoleService roleService = new RoleService();
     public static String[] strings = new String[]{};
-    ConnectSql connectSql = new ConnectSql();
+    //ConnectSql connectSql = new ConnectSql();
 
     //用户注册
     @MyAnnontation(MethodName = "register")
@@ -49,23 +49,23 @@ public class FunctionService {
     @MyAnnontation(MethodName = "registerR")
     public String registerRoleMesseage() {
         if(strings.length<=1){return "0";}
-        roleHashMap.put(connectSql.selectRoleIdByName(strings[1]),new Role(strings[1], InitStaticResource.initSceneId));
+        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(strings[1], SceneResource.initSceneId));
         //role = new Role(strings[1], InitStaticResource.initSceneId);
         //user.setRole(role);
         //role.setId(connectSql.selectRoleIdByName(strings[1]));
-        InitRole.init(connectSql.selectRoleIdByName(strings[1]));
-        return userService.registerRole(strings[1],connectSql.selectRoleIdByName(strings[1]));
+        InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
+        return userService.registerRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]));
     }
 
     //角色登录
     @MyAnnontation(MethodName = "loginR")
     public String loginRoleMesseage() {
         if(strings.length<=1){return "0";}
-        roleHashMap.put(connectSql.selectRoleIdByName(strings[1]),new Role(strings[1],connectSql.selectRoleScenesId(strings[1])));
+        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(strings[1],ConnectSql.sql.selectRoleScenesId(strings[1])));
         //role = new Role(strings[1],connectSql.selectRoleScenesId(strings[1]));
         //user.setRole(role);
-        InitRole.init(connectSql.selectRoleIdByName(strings[1]));
-        return userService.loginRole(strings[1],connectSql.selectRoleIdByName(strings[1]));
+        InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
+        return userService.loginRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]));
     }
 
     //角色移动&场景切换
@@ -141,10 +141,18 @@ public class FunctionService {
     @MyAnnontation(MethodName = "getMonster")
     public String getMonster(){
         if(strings.length<=1){return "0";}
-        return roleService.getMonsterInfo(strings[1],Integer.valueOf(strings[1]));
+        return roleService.getMonsterInfo(strings[1],Integer.valueOf(strings[2]));
     }
 
-/*    //扩展方法蓝药缓慢恢复demo
+    //获得药品or装备，使用举例：get 清泉酒 20
+    @MyAnnontation(MethodName = "get")
+    public String getBonus(){
+        if(strings.length<=2){return "0";}
+        return roleService.getBonus(strings[1],strings[2],Integer.valueOf(strings[3]));
+    }
+
+/*   建议技能类放在一个方法中，调整一下
+    //扩展方法蓝药缓慢恢复demo
     @MyAnnontation(MethodName = "sR")
     public String slowlyRecoverd(){
         return roleService.slowlyRecoverd();
@@ -156,4 +164,10 @@ public class FunctionService {
         if(strings.length<=2){return "";}
         return roleService.useSkill(strings[1],strings[2]);
     }*/
+
+    //调试代码用的测试
+    @MyAnnontation(MethodName = "test")
+    public String testCode(){
+        return roleService.testCode();
+    }
 }

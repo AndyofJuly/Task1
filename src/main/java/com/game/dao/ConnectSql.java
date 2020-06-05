@@ -1,8 +1,10 @@
 package com.game.dao;
 
 import com.game.common.Const;
-import com.game.common.InitStaticResource;
+//import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
+import com.game.entity.store.SceneResource;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,13 +17,11 @@ import java.sql.ResultSet;
  */
 
 public class ConnectSql {
-/*    public String url="jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
-    public String user="root";
-    public String pw ="123456";*/
     public Connection conn;
     public boolean result;
     public int nowScenesId;
     public int id;
+    public static ConnectSql sql = new ConnectSql();
 
     public ConnectSql(){
         try {
@@ -118,7 +118,7 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         //初始场景中加入该角色
-        InitStaticResource.scenes.get(Integer.valueOf(InitStaticResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
+        SceneResource.scenes.get(Integer.valueOf(SceneResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return false;
     }
 
@@ -139,7 +139,7 @@ public class ConnectSql {
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
-        InitStaticResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
+        SceneResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return result;
     }
 

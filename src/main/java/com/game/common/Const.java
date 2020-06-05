@@ -16,10 +16,12 @@ public class Const {
     public static final int DURA_MINUS = 1;
     //持有武器时，技能伤害加成
     public static final int WEAPON_BUFF = 2;
+    //击杀怪物时获得2点攻击力加成
+    public static final int ABTAIN_ATK = 2;
     //s转换为ms
     public static final int TO_MS = 1000;
     //MP的持续回复药物，回复的间隔时间
-    public static final int GAP_TIME_POTION = 1000;
+    public static final int GAP_TIME_POTION = 10000;
     //MP的持续回复药物，回复的间隔时间
     public static final int GAP_TIME_SKILL = 1000;
     //延时时间

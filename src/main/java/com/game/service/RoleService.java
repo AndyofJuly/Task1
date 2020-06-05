@@ -1,11 +1,11 @@
 package com.game.service;
 
 import com.game.common.Const;
-import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
 import com.game.entity.Equipment;
 import com.game.entity.Scene;
+import com.game.entity.store.*;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -18,7 +18,7 @@ import java.time.Instant;
  */
 
 public class RoleService {
-    ConnectSql connectSql = new ConnectSql();
+    //ConnectSql connectSql = new ConnectSql();
     public boolean result;
     //扩展方法-中间变量
     static int time = 1;
@@ -37,15 +37,15 @@ public class RoleService {
     //角色移动&场景切换
     public boolean moveTo(String moveTarget,int roleId){
         //获得角色当前所在场景的坐标-通过角色的nowSceneId属性获取，在登录注册时已经获得
-        String nowPlace = InitStaticResource.scenesStatics.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getName();
+        String nowPlace = SceneResource.scenesStatics.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getName();
         //将当前场景坐标与要移动的场景的坐标进行对比
         String[] arr;
-        arr = InitStaticResource.places.get(nowPlace);
+        arr = SceneResource.places.get(nowPlace);
         result = false;
 
         String temp = null;
         for (String value : arr) {
-            if (moveTarget.equals(InitStaticResource.scenesStatics.get(Integer.valueOf(value)).getName())) {
+            if (moveTarget.equals(SceneResource.scenesStatics.get(Integer.valueOf(value)).getName())) {
                 result = true;
                 temp = value;
                 break;
@@ -53,19 +53,19 @@ public class RoleService {
         }
         //如果移动成功，当前场景剔除该角色，目标场景加入该角色
         if(result){
-            InitStaticResource.scenes.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getRoleAll().remove(FunctionService.roleHashMap.get(roleId));
-            InitStaticResource.scenes.get(Integer.valueOf(temp)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
+            SceneResource.scenes.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getRoleAll().remove(FunctionService.roleHashMap.get(roleId));
+            SceneResource.scenes.get(Integer.valueOf(temp)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
             //移动后角色属性的场景id改变
             FunctionService.roleHashMap.get(roleId).setNowScenesId(Integer.valueOf(temp));
-            connectSql.insertRoleScenes(FunctionService.roleHashMap.get(roleId).getNowScenesId(),roleId);
+            //数据库相关操作可以留在用户退出时再调用
+            ConnectSql.sql.insertRoleScenes(FunctionService.roleHashMap.get(roleId).getNowScenesId(),roleId);
         }
         return result;
     }
 
-    //获取当前场景信息-可以修改为直接传id查
+    //获取当前场景信息-可以修改为直接传id查，此处修改时需要的是动态结果，场景中应该生成一些实体怪物，怪物打死后aoi不显示，用alive字段来判断
     public String aoi(int roleId){
-        String scenesName = InitStaticResource.scenesStatics.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getName();
-        //InitStaticResource.scenes.get().getSceneStatic().getName();FunctionService.role.getNowScenesId()
+        String scenesName = SceneResource.scenesStatics.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getName();
         return placeDetail(scenesName);
     }
 
@@ -77,23 +77,27 @@ public class RoleService {
     //获得场景信息
     public String placeDetail(String scenesName){
         StringBuilder stringBuilder = new StringBuilder("要查看的场景为："+scenesName+"；");
-        for(int j = InitStaticResource.initSceneId; j< InitStaticResource.initSceneId+InitStaticResource.scenes.size(); j++){
-            if(InitStaticResource.scenesStatics.get(j).getName().equals(scenesName)){
-                Scene o = InitStaticResource.scenes.get(j);
+        for(int j = SceneResource.initSceneId; j< SceneResource.initSceneId+SceneResource.scenes.size(); j++){
+            if(SceneResource.scenesStatics.get(j).getName().equals(scenesName)){
+                Scene o = SceneResource.scenes.get(j);
                 stringBuilder.append("角色：");
                 for(int i=0;i<o.getRoleAll().size();i++) {
                     stringBuilder.append(o.getRoleAll().get(i).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
                 stringBuilder.append("NPC：");
-                for(int i=0;i<InitStaticResource.scenesStatics.get(o.getSceneId()).getNpcId().length;i++) {
+                for(int i=0;i<SceneResource.scenesStatics.get(o.getSceneId()).getNpcId().length;i++) {
                     //该场景下的所有npc的名字：InitStaticResource.npcstatic.get(这个场景下的npc的key).
-                    stringBuilder.append(InitStaticResource.npcsStatics.get(Integer.valueOf(InitStaticResource.scenesStatics.get(o.getSceneId()).getNpcId()[i])).getName()).append(" ");
+                    stringBuilder.append(NpcResource.npcsStatics.get(Integer.valueOf(SceneResource.scenesStatics.get(o.getSceneId()).getNpcId()[i])).getName()).append(" ");
                 }
                 stringBuilder.append("。 ");
                 stringBuilder.append("怪物：");
-                for(int i=0;i<InitStaticResource.scenesStatics.get(o.getSceneId()).getMonsterId().length;i++) {
-                    stringBuilder.append(InitStaticResource.monstersStatics.get(Integer.valueOf(InitStaticResource.scenesStatics.get(o.getSceneId()).getMonsterId()[i])).getName()).append(" ");
+                //此处改为使用动态的怪物对象
+                //for(int i=0;i<SceneResource.scenesStatics.get(o.getSceneId()).getMonsterId().length;i++) {
+                for(Integer key:SceneResource.scenes.get(j).getMonsterHashMap().keySet()){
+                    if(MonsterResource.monsters.get(key).getAlive()==1){
+                        stringBuilder.append(MonsterResource.monstersStatics.get(key).getName()).append(" ");
+                    }
                 }
                 stringBuilder.append("。 ");
             }
@@ -105,7 +109,7 @@ public class RoleService {
     public String getNpcReply(String npcName,int roleId){
         String replyWords = "该场景没有这个npc";
         int key = CheckIdByName.checkNpcId(npcName,roleId);
-        replyWords = InitStaticResource.npcsStatics.get(key).getWords();
+        replyWords = NpcResource.npcsStatics.get(key).getWords();
         return replyWords;
     }
 
@@ -113,7 +117,7 @@ public class RoleService {
     public String repairEquipment(String equipmentName,int roleId){
         String result = "没有该武器";
         int key = CheckIdByName.checkEquipmentId(equipmentName);
-        FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(key).setDura(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
+        FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(key).setDura(EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
         result = "修理成功！当前武器耐久为："+FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(key).getDura();
         return result;
     }
@@ -122,11 +126,11 @@ public class RoleService {
     public String putOnEquipment(String equipment,int roleId){
         int atk = FunctionService.roleHashMap.get(roleId).getAtk();
         int key = CheckIdByName.checkEquipmentId(equipment);
-        atk = atk + InitStaticResource.equipmentStaticHashMap.get(key).getAtk();
+        atk = atk + EquipmentResource.equipmentStaticHashMap.get(key).getAtk();
         FunctionService.roleHashMap.get(roleId).setAtk(atk);
-        Equipment equipment1 = new Equipment(key,InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
+        Equipment equipment1 = new Equipment(key,EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
         FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().put(key,equipment1);
-        FunctionService.roleHashMap.get(roleId).getMyPackage().getPackageEquipmentHashMap().remove(key);
+        FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().remove(key);
         System.out.println("装备了");
         return "你已成功装备该武器，目前攻击力为："+FunctionService.roleHashMap.get(roleId).getAtk();
     }
@@ -135,11 +139,11 @@ public class RoleService {
     public String takeOffEquipment(String equipment,int roleId){
         int atk = FunctionService.roleHashMap.get(roleId).getAtk();
         int key = CheckIdByName.checkEquipmentId(equipment);
-        atk = atk - InitStaticResource.equipmentStaticHashMap.get(key).getAtk();
+        atk = atk - EquipmentResource.equipmentStaticHashMap.get(key).getAtk();
         FunctionService.roleHashMap.get(roleId).setAtk(atk);
         FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().remove(key);
-        Equipment equipment1 = new Equipment(key,InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
-        FunctionService.roleHashMap.get(roleId).getMyPackage().getPackageEquipmentHashMap().put(key,equipment1);
+        Equipment equipment1 = new Equipment(key,EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
+        FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(key,1);
         return "你已成功卸下该武器，目前攻击力为："+FunctionService.roleHashMap.get(roleId).getAtk();
     }
 
@@ -148,22 +152,22 @@ public class RoleService {
         int hp = FunctionService.roleHashMap.get(roleId).getHp();
         int mp = FunctionService.roleHashMap.get(roleId).getMp();
         int key = CheckIdByName.checkPotionId(drugName);
-        System.out.println("使用药品前，背包中还有此药品数量为："+FunctionService.roleHashMap.get(roleId).getMyPackage().getPotionHashMap().get(key).getNumber());
-        if(FunctionService.roleHashMap.get(roleId).getMyPackage().getPotionHashMap().get(key).getNumber()<=0){
+        System.out.println("使用药品前，背包中还有此药品数量为："+FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key));
+        if(FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key)<=0){
             return "此药品已经没有了！";
         }else {
-            FunctionService.roleHashMap.get(roleId).getMyPackage().getPotionHashMap().get(key).setNumber(FunctionService.roleHashMap.get(roleId).getMyPackage().getPotionHashMap().get(key).getNumber()-1);
+            FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(key,FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key)-1);
         }
-        System.out.println("使用药品后，背包中还有此药品数量为："+FunctionService.roleHashMap.get(roleId).getMyPackage().getPotionHashMap().get(key).getNumber());
-        hp = hp + InitStaticResource.potionStaticHashMap.get(key).getAddHp();
-        mp = mp + InitStaticResource.potionStaticHashMap.get(key).getAddMp();
+        System.out.println("使用药品后，背包中还有此药品数量为："+FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key));
+        hp = hp + PotionResource.potionStaticHashMap.get(key).getAddHp();
+        mp = mp + PotionResource.potionStaticHashMap.get(key).getAddMp();
         FunctionService.roleHashMap.get(roleId).setHp(hp);
         FunctionService.roleHashMap.get(roleId).setMp(mp);
-        if(FunctionService.roleHashMap.get(roleId).getHp()>=InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp()){
-            FunctionService.roleHashMap.get(roleId).setHp(InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp());
+        if(FunctionService.roleHashMap.get(roleId).getHp()>=RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp()){
+            FunctionService.roleHashMap.get(roleId).setHp(RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp());
         }
-        if(FunctionService.roleHashMap.get(roleId).getMp()>=InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp()){
-            FunctionService.roleHashMap.get(roleId).setMp(InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp());
+        if(FunctionService.roleHashMap.get(roleId).getMp()>=RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp()){
+            FunctionService.roleHashMap.get(roleId).setMp(RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp());
         }
         return "使用药品成功，你的当前血量为："+FunctionService.roleHashMap.get(roleId).getHp()+"， 当前的蓝量为："+FunctionService.roleHashMap.get(roleId).getMp();
     }
@@ -182,39 +186,41 @@ public class RoleService {
         Duration between = Duration.between(FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key1).getStart(), nowDate);
         long l = between.toMillis();
         //FunctionService.role.getSkillHashMap().get(key1)
-        if(l>InitStaticResource.skillStaticHashMap.get(key1).getCd()*Const.GAP_TIME_SKILL) {
+        if(l>SkillResource.skillStaticHashMap.get(key1).getCd()*Const.GAP_TIME_SKILL) {
             FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key1).setStart(nowDate);
             //说明技能已经冷却，可以调用该方法，怪物扣血
             int key = CheckIdByName.checkMonsterId(Target,roleId);
-            int hp=InitStaticResource.monstersStatics.get(key).getHp();
+
+            int hp = MonsterResource.monsters.get(key).getMonsterHp();
             int mp=FunctionService.roleHashMap.get(roleId).getMp();
-            //FunctionService.role.getEquipmentHashMap().get(weaponId).getEquipmentId()
             dura=FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(weaponId).getDura();
             System.out.println("武器当前耐久为："+dura);
-            //InitStaticResource.equipmentStaticHashMap.get(weaponId).getDurability();
             //耐久小于等于0或者蓝量不够，退出场景
             if(dura<=0){
                 return "武器耐久不够，请先修理再战斗";
             }
-            if(mp<InitStaticResource.skillStaticHashMap.get(key1).getUseMp()){
+            if(mp<SkillResource.skillStaticHashMap.get(key1).getUseMp()){
                 FunctionService.roleHashMap.get(roleId).setMp(mp);
                 return "角色蓝量不够，请先恢复再战斗";
             }
-            hp=hp-FunctionService.roleHashMap.get(roleId).getAtk()-InitStaticResource.skillStaticHashMap.get(key1).getAtk()-
+            hp=hp-FunctionService.roleHashMap.get(roleId).getAtk()-SkillResource.skillStaticHashMap.get(key1).getAtk()-
                     Const.WEAPON_BUFF;
-            mp=mp-InitStaticResource.skillStaticHashMap.get(key1).getUseMp();
+            mp=mp-SkillResource.skillStaticHashMap.get(key1).getUseMp();
             FunctionService.roleHashMap.get(roleId).setMp(mp);
-            //FunctionService.role.getEquipmentHashMap().get(weaponId).getEquipmentId()
             FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(weaponId).setDura(dura-
                     Const.DURA_MINUS);
             if(hp<=0){
                 hp=0;
-                string = "怪物血量为0，你已经打败该怪物！恭喜获得5000银和一个高级宝箱!";
-                Listen.monsterIsDead=true;
+                string = "怪物血量为0，你已经打败该怪物！恭喜获得5000银和一个高级宝箱!获得2点攻击力加成!";
+                Listen.monsterIsDead=true;  //对全部客户端进行通知
+                MonsterResource.monsters.get(key).setMonsterHp(hp);
+                //同时，这里设置怪物的生存状态为0，表示已被消灭
+                MonsterResource.monsters.get(key).setAlive(0);
+                FunctionService.roleHashMap.get(roleId).setAtk(FunctionService.roleHashMap.get(roleId).getAtk()+Const.ABTAIN_ATK);
                 return string;
             }
             System.out.println("玩家使用了"+skillName+"技能，怪物的血量还有"+hp);
-            InitStaticResource.monstersStatics.get(key).setHp(hp);
+            MonsterResource.monsters.get(key).setMonsterHp(hp);
         }else {
             string = "该技能冷却中";
         }
@@ -232,12 +238,46 @@ public class RoleService {
                 FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(weaponId).getDura()+"。 攻击力："+FunctionService.roleHashMap.get(roleId).getAtk();
     }
 
-    //返回怪物当前状态
+    //返回怪物当前状态-存活，非存活
     public String getMonsterInfo(String monsterName,int roleId){
         int key = CheckIdByName.checkMonsterId(monsterName,roleId);
-        return "你查询的怪物的hp：" + InitStaticResource.monstersStatics.get(key).getHp();
+        return "你查询的怪物的hp：" + MonsterResource.monsters.get(key).getMonsterHp() + "，存活状态："+ MonsterResource.monsters.get(key).getAlive();
+    }
 
-        //return "";
+    //获得一些物品
+    public String getBonus(String goods,String amount,int roleId){
+        //根据物品找到物品id，根据id放入背包，key对应的num加上amount即可；如果是装备，则不增加
+        int number = Integer.valueOf(amount);
+        int key = CheckIdByName.checkPotionId(goods);
+        if(key!=0){  //药品的情况
+            //如果背包中有该key，则数量叠加，如果getkey==null则新增该key，并设置数量
+            if(FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key)!=null){
+                int allAmount = FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key)+number;
+                if(allAmount>=99){  //药品类叠加超过上限，提示最多存99，并设置数量为99
+                    FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(key,99);
+                    System.out.println("你的背包最多只能存放该药物"+99+"瓶");
+                }else{
+                    FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(key,allAmount);
+                    System.out.println("获得药品！");
+                }
+            }else {
+                FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(key,number);
+            }
+            return "目前该物品在背包中的数量为"+ FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key);
+        }else {  //装备的情况
+            //装备类，如果有相同的装备，不操作，如果装备不同，数量+1
+            int keyEquipment = CheckIdByName.checkEquipmentId(goods);
+            if(FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(key)==null){
+                FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().put(keyEquipment,1);
+                System.out.println("获得装备！");
+            }
+            return "目前该物品在背包中的数量为"+ FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap().get(keyEquipment);
+        }
+    }
+
+    public String testCode(){
+
+        return "";
     }
 
     //扩展，毒素和护盾的技能demo，约定技能表中typeId为1时表示毒素类技能，为2时表示护盾类技能；后续可以与前面技能合并；血量不同步是因为用了临时变量
@@ -330,6 +370,7 @@ public class RoleService {
         }, Const.DELAY_TIME, Const.GAP_TIME_POTION);
         return "使用药品成功，缓慢恢复中..";
     }*/
+
 }
 
 

@@ -1,6 +1,7 @@
 package com.game.entity;
 
 import com.game.entity.excel.MonsterStatic;
+import com.game.entity.store.MonsterResource;
 
 /**
  * 怪物类
@@ -9,13 +10,17 @@ import com.game.entity.excel.MonsterStatic;
  */
 public class Monster{
     // 怪物存活状态，1表示存活，0表示被消灭
-    private int alive;
+    private int alive=1;
     //private MonsterStatic monsterStatic;
     // 怪物id-静态属性
     private int monsterId;
 
+    private int monsterHp;
+
     public Monster(int monsterId) {
         this.monsterId = monsterId;
+        //血量初始化
+        this.monsterHp=MonsterResource.monstersStatics.get(this.monsterId).getHp();
     }
 
     public int getMonsterId() {
@@ -25,17 +30,6 @@ public class Monster{
     public void setMonsterId(int monsterId) {
         this.monsterId = monsterId;
     }
-    /*    public Monster(MonsterStatic monsterStatic) {
-        this.monsterStatic = monsterStatic;
-    }
-
-    public MonsterStatic getMonsterStatic() {
-        return monsterStatic;
-    }
-
-    public void setMonsterStatic(MonsterStatic monsterStatic) {
-        this.monsterStatic = monsterStatic;
-    }*/
 
     public int getAlive() {
         return alive;
@@ -43,5 +37,13 @@ public class Monster{
 
     public void setAlive(int alive) {
         this.alive = alive;
+    }
+
+    public int getMonsterHp() {
+        return monsterHp;
+    }
+
+    public void setMonsterHp(int monsterHp) {
+        this.monsterHp = monsterHp;
     }
 }

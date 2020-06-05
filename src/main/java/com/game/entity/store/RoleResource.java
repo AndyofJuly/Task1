@@ -15,6 +15,7 @@ import java.util.HashMap;
  * @create 2020/6/3 21:43
  */
 public class RoleResource {
+    //数值配置表对应的角色类
     public static HashMap<Integer, RoleStatic> roleStaticHashMap = new HashMap<Integer, RoleStatic>();
 
     static JSONArray result;

@@ -1,7 +1,8 @@
 package com.game.netty.server;
 
 import com.game.common.ExcelToJson;
-import com.game.common.InitStaticResource;
+//import com.game.common.InitStaticResource;
+import com.game.entity.store.*;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -24,7 +25,14 @@ public class NettyServer {
 
     public static void startServer(){
         //服务器启动，从数据库/excel配置表中加载场景信息
-        new InitStaticResource();
+        //new InitStaticResource();
+        new EquipmentResource();
+        new MonsterResource();
+        new NpcResource();
+        new PotionResource();
+        new RoleResource();
+        new SceneResource();
+        new SkillResource();
 
         //1.定义server启动类
         ServerBootstrap serverBootstrap = new ServerBootstrap();
