@@ -15,12 +15,15 @@ public class EquipmentStatic {
     private int atk;
     // 装备耐久
     private int durability;
+    // 装备价格
+    private int price;
 
-    public EquipmentStatic(int id, String name, int atk, int durability) {
+    public EquipmentStatic(int id, String name, int atk, int durability ,int price) {
         this.id = id;
         this.name = name;
         this.atk = atk;
         this.durability = durability;
+        this.price = price;
     }
 
     public int getId() {
@@ -53,5 +56,13 @@ public class EquipmentStatic {
 
     public void setDurability(int durability) {
         this.durability = durability;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

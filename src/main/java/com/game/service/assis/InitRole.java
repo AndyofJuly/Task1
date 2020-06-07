@@ -1,14 +1,11 @@
-package com.game.common;
+package com.game.service.assis;
 
+import com.game.common.Const;
 import com.game.controller.FunctionService;
-import com.game.entity.Equipment;
-import com.game.entity.MyPackage;
-import com.game.entity.Potion;
-import com.game.entity.Skill;
+import com.game.entity.*;
 import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SkillResource;
-import com.game.service.MpRecover;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -23,14 +20,15 @@ public class InitRole {
 
     public static void init(int roleId){
         Instant start = Instant.now();
+        Role role = FunctionService.roleHashMap.get(roleId);
         //目前角色拥有四个技能，全都初始化给角色
         for (Integer key : SkillResource.skillStaticHashMap.keySet()) {
-            FunctionService.roleHashMap.get(roleId).getSkillHashMap().put(key,new Skill(key));
-            FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key).setStart(start);
+            role.getSkillHashMap().put(key,new Skill(key));
+            role.getSkillHashMap().get(key).setStart(start);
         }
 
         //角色静态数据信息注入，这里是角色当前等级的血量和蓝量；set后方便get
-        FunctionService.roleHashMap.get(roleId).setLevelId(Const.TYPE_ID);
+        role.setLevelId(Const.TYPE_ID);
 
         //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态，例如角色背包中的物品等
         //目前所有装备和药物都初始化给角色，用于代码测试
@@ -47,7 +45,7 @@ public class InitRole {
             //equipment.setDura(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
             goods.put(key,1);
         }
-        FunctionService.roleHashMap.get(roleId).setMyPackage( new MyPackage(100,goods));
+        role.setMyPackage( new MyPackage(100,goods));
 
         //开始自动恢复mp
         run();

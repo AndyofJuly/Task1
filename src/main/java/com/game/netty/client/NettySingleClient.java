@@ -1,5 +1,6 @@
 package com.game.netty.client;
 
+import com.game.dao.ConnectSql;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -54,9 +55,14 @@ public class NettySingleClient {
             //7.测试输入
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("请输入命令：");
+            String id = "";
             while(true){
                 String msg = bufferedReader.readLine();
-                channelFuture.channel().writeAndFlush(msg+" 1");    
+                if(msg.startsWith("loginR")||msg.startsWith("registerR")){
+                    String[] s = msg.split(" ");
+                    id = " "+ConnectSql.sql.selectRoleIdByName(s[1]);
+                }
+                channelFuture.channel().writeAndFlush(msg+id);
                 if("quit".equals(msg)){
                     break;
                 }

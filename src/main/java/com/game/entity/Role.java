@@ -1,10 +1,6 @@
 package com.game.entity;
 
-import com.game.controller.FunctionService;
-import com.game.entity.excel.EquipmentStatic;
 import com.game.entity.excel.PotionStatic;
-import com.game.entity.excel.RoleStatic;
-import com.game.entity.excel.SkillStatic;
 
 import java.util.HashMap;
 
@@ -31,7 +27,12 @@ public class Role {
     //角色蓝量
     private int mp = 50;
     //角色攻击力
-    private int atk = 2;
+    private int atk = 10;
+    //角色的金钱，初始送100
+    private int money = 100;
+    //角色防御力
+    private int def = 3;
+
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
     //如果后续装备类型变多了，还是需要集合
@@ -145,5 +146,13 @@ public class Role {
 
     public void setLevelId(int levelId) {
         this.levelId = levelId;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

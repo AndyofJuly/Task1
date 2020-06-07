@@ -13,11 +13,10 @@ import java.util.HashMap;
 public class Scene {
     // 场景id-静态属性
     private int sceneId;
-
     //该场景下的角色集合
     private ArrayList<Role> roleAll = new ArrayList<Role>();
     //该场景下的怪物集合
-    private HashMap<Integer,Monster> monsterHashMap = new HashMap<Integer,Monster>();
+    private HashMap<String,Monster> monsterHashMap = new HashMap<String,Monster>();
 
     public Scene(int sceneId) {
         this.sceneId = sceneId;
@@ -39,11 +38,11 @@ public class Scene {
         this.roleAll = roleAll;
     }
 
-    public HashMap<Integer, Monster> getMonsterHashMap() {
+    public HashMap<String, Monster> getMonsterHashMap() {
         return monsterHashMap;
     }
 
-    public void setMonsterHashMap(HashMap<Integer, Monster> monsterHashMap) {
+    public void setMonsterHashMap(HashMap<String, Monster> monsterHashMap) {
         this.monsterHashMap = monsterHashMap;
     }
 }

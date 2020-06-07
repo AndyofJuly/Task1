@@ -2,7 +2,7 @@ package com.game.netty.server;
 
 import com.game.common.ReflectService;
 import com.game.controller.FunctionService;
-import com.game.service.Listen;
+import com.game.service.assis.Listen;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

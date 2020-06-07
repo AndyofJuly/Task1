@@ -1,4 +1,4 @@
-package com.game.service;
+package com.game.service.assis;
 
 import com.game.common.Const;
 import com.game.common.ExcelToJson;
@@ -27,13 +27,5 @@ public class MpRecover extends TimerTask {
             FunctionService.roleHashMap.get(key).setMp(mp);
             System.out.println("现在"+FunctionService.roleHashMap.get(key).getName()+"的mp为："+FunctionService.roleHashMap.get(key).getMp());
         }
-/*        int mp=FunctionService.roleHashMap.get(1).getMp()+ Const.RECOVER_MP;
-        if(mp >= RoleResource.roleStaticHashMap.get(FunctionService.roleHashMap.get(1).getLevelId()).getLevelMp()){
-                //getRoleStatic().getLevelMp()){
-            System.out.println("测试用提示：mp恢复满了");
-            return;
-        }
-        FunctionService.roleHashMap.get(1).setMp(mp);
-        System.out.println("现在mp为："+FunctionService.roleHashMap.get(1).getMp());*/
     }
 }

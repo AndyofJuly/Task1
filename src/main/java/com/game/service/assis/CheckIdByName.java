@@ -1,4 +1,4 @@
-package com.game.service;
+package com.game.service.assis;
 
 //import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
@@ -39,19 +39,43 @@ public class CheckIdByName {
         return 0;
     }
 
-    public static Integer checkMonsterId(String monsterName,int roleId){
-        for (Integer key : MonsterResource.monstersStatics.keySet()) {
-            if (MonsterResource.monstersStatics.get(key).getName().equals(monsterName) &&
-                    FunctionService.roleHashMap.get(roleId).getNowScenesId() == MonsterResource.monstersStatics.get(key).getSceneId()) {
+    public static String checkMonsterId(String monsterName,int roleId){
+        int sceneId = FunctionService.roleHashMap.get(roleId).getNowScenesId();
+        for (String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()) {
+            if (MonsterResource.monstersStatics.get(InitGame.scenes.get(sceneId).getMonsterHashMap().
+                    get(key).getMonsterId()).getName().equals(monsterName)){
+                return key;
+            }
+        }
+        return "";
+    }
+
+    public static Integer checkPotionId(String drugName){
+        for (Integer key : PotionResource.potionStaticHashMap.keySet()) {
+            if (drugName.equals(PotionResource.potionStaticHashMap.get(key).getName())) {
                 return key;
             }
         }
         return 0;
     }
 
-    public static Integer checkPotionId(String drugName){
+    public static Integer checkSceneId(String sceneName){
+        for (Integer key : SceneResource.scenesStatics.keySet()) {
+            if (sceneName.equals(SceneResource.scenesStatics.get(key).getName())) {
+                return key;
+            }
+        }
+        return 0;
+    }
+
+    public static Integer checkGoodsId(String goodsName){
         for (Integer key : PotionResource.potionStaticHashMap.keySet()) {
-            if (drugName.equals(PotionResource.potionStaticHashMap.get(key).getName())) {
+            if (goodsName.equals(PotionResource.potionStaticHashMap.get(key).getName())) {
+                return key;
+            }
+        }
+        for (Integer key : EquipmentResource.equipmentStaticHashMap.keySet()) {
+            if (goodsName.equals(EquipmentResource.equipmentStaticHashMap.get(key).getName())) {
                 return key;
             }
         }

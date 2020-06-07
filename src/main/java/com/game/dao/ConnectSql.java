@@ -4,6 +4,7 @@ import com.game.common.Const;
 //import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
 import com.game.entity.store.SceneResource;
+import com.game.service.assis.InitGame;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -118,7 +119,7 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         //初始场景中加入该角色
-        SceneResource.scenes.get(Integer.valueOf(SceneResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
+        InitGame.scenes.get(Integer.valueOf(SceneResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return false;
     }
 
@@ -139,7 +140,7 @@ public class ConnectSql {
         }
 
         //角色所在的场景id，然后在该id场景中加入该角色
-        SceneResource.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
+        InitGame.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
         return result;
     }
 

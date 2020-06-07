@@ -1,8 +1,8 @@
 package com.game.netty.server;
 
-import com.game.common.ExcelToJson;
 //import com.game.common.InitStaticResource;
 import com.game.entity.store.*;
+import com.game.service.assis.InitGame;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -33,6 +33,7 @@ public class NettyServer {
         new RoleResource();
         new SceneResource();
         new SkillResource();
+        new InitGame();
 
         //1.定义server启动类
         ServerBootstrap serverBootstrap = new ServerBootstrap();

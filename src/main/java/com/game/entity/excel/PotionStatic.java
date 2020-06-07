@@ -13,12 +13,15 @@ public class PotionStatic {
     private int addMp;
     // 药品增加的血量
     private int addHp;
+    // 药品的价格
+    private int price;
 
-    public PotionStatic(int id, String name, int addMp, int addHp) {
+    public PotionStatic(int id, String name, int addMp, int addHp, int price) {
         this.id = id;
         this.name = name;
         this.addMp = addMp;
         this.addHp = addHp;
+        this.price = price;
     }
 
     public int getId() {
@@ -51,5 +54,13 @@ public class PotionStatic {
 
     public void setAddHp(int addHp) {
         this.addHp = addHp;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

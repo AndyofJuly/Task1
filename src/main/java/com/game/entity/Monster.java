@@ -9,6 +9,8 @@ import com.game.entity.store.MonsterResource;
  * @create 2020/5/12 22:32
  */
 public class Monster{
+    //具体对象的id，每个怪物的id不相同
+    private String id;
     // 怪物存活状态，1表示存活，0表示被消灭
     private int alive=1;
     //private MonsterStatic monsterStatic;
@@ -17,10 +19,19 @@ public class Monster{
 
     private int monsterHp;
 
-    public Monster(int monsterId) {
+    public Monster(String id, int monsterId) {
+        this.id = id;
         this.monsterId = monsterId;
         //血量初始化
         this.monsterHp=MonsterResource.monstersStatics.get(this.monsterId).getHp();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getMonsterId() {
