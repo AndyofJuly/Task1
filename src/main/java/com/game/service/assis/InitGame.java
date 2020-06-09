@@ -2,6 +2,8 @@ package com.game.service.assis;
 
 import com.game.entity.Monster;
 import com.game.entity.Scene;
+import com.game.entity.excel.DungeonsStatic;
+import com.game.entity.store.DungeonsResource;
 import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SceneResource;
@@ -17,6 +19,8 @@ public class InitGame {
 
     public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
     public static String goodsList;
+    public static String dungeonsList;
+
     static {
         //场景初始化
         for(Integer keyScene : SceneResource.scenesStatics.keySet()){
@@ -31,17 +35,22 @@ public class InitGame {
                 //此处每个场景生成一个对应静态的怪
                 String monsterId = UUID.randomUUID().toString();
                 //int monsterId = key+i+random.nextInt(100);
-                System.out.println(monsterId);
+                //System.out.println(monsterId);
                 InitGame.scenes.get(i).getMonsterHashMap().put(monsterId, new Monster(monsterId,Integer.valueOf(key)));
-                System.out.println(InitGame.scenes.get(i).getMonsterHashMap().get(monsterId).getMonsterId());
+                //System.out.println(InitGame.scenes.get(i).getMonsterHashMap().get(monsterId).getMonsterId());
             }
             System.out.println();
         }
-        goodsList = getStaticList();
+
+        //商品列表
+        goodsList = getStaticGoodsList();
+
+        //玩家可参与副本
+        dungeonsList = getStaticDungeonsList();
 
     }
     //商店列表初始化
-    public static String getStaticList(){
+    public static String getStaticGoodsList(){
         StringBuilder stringBuilder = new StringBuilder("欢迎光临本商店，商店提供： ");
         for(Integer key : EquipmentResource.equipmentStaticHashMap.keySet()){
             stringBuilder.append(EquipmentResource.equipmentStaticHashMap.get(key).getName()+":"+EquipmentResource.equipmentStaticHashMap.get(key).getPrice()).append("银； ");
@@ -49,6 +58,16 @@ public class InitGame {
         //stringBuilder.append("。 ");
         for(Integer key : PotionResource.potionStaticHashMap.keySet()){
             stringBuilder.append(PotionResource.potionStaticHashMap.get(key).getName()+":"+PotionResource.potionStaticHashMap.get(key).getPrice()).append("银； ");
+        }
+        return stringBuilder.toString();
+    }
+
+    //副本列表初始化，返回副本列表集合元素信息，包括id和副本名
+    public static String getStaticDungeonsList(){
+        StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
+        for(Integer key : DungeonsResource.dungeonsStaticHashMap.keySet()){
+            DungeonsStatic dungeons = DungeonsResource.dungeonsStaticHashMap.get(key);
+            stringBuilder.append(dungeons.getId()+":"+dungeons.getName()+"，限时"+dungeons.getDeadTime()+"秒。\n");
         }
         return stringBuilder.toString();
     }

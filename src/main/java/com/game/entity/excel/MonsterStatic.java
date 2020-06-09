@@ -13,15 +13,15 @@ public class MonsterStatic {
     // 怪物血量
     private int hp;
     // 怪物所在场景id
-    private int sceneId;
+    //private int sceneId;
     // 怪物攻击力
     private int atk;
 
-    public MonsterStatic(int id, String name, int hp, int sceneId, int atk) {
+    public MonsterStatic(int id, String name, int hp, int atk) {
         this.id = id;
         this.name = name;
         this.hp = hp;
-        this.sceneId = sceneId;
+        //this.sceneId = sceneId;
         this.atk = atk;
     }
 
@@ -33,13 +33,13 @@ public class MonsterStatic {
         this.atk = atk;
     }
 
-    public int getSceneId() {
+/*    public int getSceneId() {
         return sceneId;
     }
 
     public void setSceneId(int sceneId) {
         this.sceneId = sceneId;
-    }
+    }*/
 
     public int getHp() {
         return hp;

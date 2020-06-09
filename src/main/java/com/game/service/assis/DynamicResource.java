@@ -1,5 +1,7 @@
 package com.game.service.assis;
 
+import com.game.entity.Team;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +14,9 @@ import java.util.List;
 public class DynamicResource {
 
     // 组队列表，元素为teamId
-    public static List<Integer> teamList = new ArrayList<Integer>();
+    //public static List<String> teamList = new ArrayList<String>();
+    public static HashMap<String, Team> teamList = new HashMap<String, Team>();
 
     // BOSS所在场景列表，元素为BOSS所在场景的id
-    public static List<Integer> sceneOfBossList = new ArrayList<Integer>();
+    public static List<String> sceneOfBossList = new ArrayList<String>();
 }

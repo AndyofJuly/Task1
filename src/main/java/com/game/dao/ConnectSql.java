@@ -72,7 +72,7 @@ public class ConnectSql {
      * @param password 用户密码
      * @return 是否登录成功
      */
-    public int selectLogin(String username, String password) {
+/*    public int selectLogin(String username, String password) {
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT playid FROM user WHERE username=? and password=?");
             preparedStatement.setString(1,username);
@@ -88,6 +88,19 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         return id;
+    }*/
+    public boolean selectLogin(String username, String password) {
+        try {
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM user WHERE username=? and password=?");
+            preparedStatement.setString(1,username);
+            preparedStatement.setString(2,password);
+            ResultSet rs=preparedStatement.executeQuery();
+            result = rs.next();
+            rs.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return result;
     }
 
     /**
@@ -95,7 +108,7 @@ public class ConnectSql {
      * @param rolename 角色名
      * @return 是否角色注册成功
      */
-    public boolean insertRegisterRole(String rolename,int roleId){
+    public boolean insertRegisterRole(String rolename,int roleId,int careerId){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM role WHERE rolename=?");
             preparedStatement.setString(1,rolename);
@@ -109,10 +122,11 @@ public class ConnectSql {
             return true;
         }
         try {
-            PreparedStatement st = conn.prepareStatement("INSERT INTO role(rolename,placeid,alive) VALUES(?,?,?)");
+            PreparedStatement st = conn.prepareStatement("INSERT INTO role(rolename,placeid,alive,careerid) VALUES(?,?,?,?)");
             st.setString(1, rolename);
             st.setInt(2, 10001);
             st.setInt(3, 1);
+            st.setInt(4, careerId);
             st.executeUpdate();
             st.close();
         } catch (Exception e) {
@@ -174,6 +188,7 @@ public class ConnectSql {
             while (rs.next())
             {
                 id=rs.getInt("playid");
+                System.out.println(id);
             }
             rs.close();
         }catch (Exception e){

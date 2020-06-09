@@ -24,18 +24,25 @@ public class UserService {
     }
 
     //用户登录
-    public int login(String username, String password){
+/*    public String login(String username, String password){
         return ConnectSql.sql.selectLogin(username,password);
-/*        if(connectSql.selectLogin(username,password)!=0){
+*//*        if(connectSql.selectLogin(username,password)!=0){
             //return "登陆成功";
         }else {
             //return "用户名或密码错误，登陆失败";
-        }*/
+        }*//*
+    }*/
+    public String login(String username, String password){
+        if(ConnectSql.sql.selectLogin(username,password)){
+            return "登陆成功";
+        }else {
+            return "用户名或密码错误，登陆失败";
+        }
     }
 
     //角色注册
-    public String registerRole(String rolename,int roleId){
-        if(ConnectSql.sql.insertRegisterRole(rolename,roleId)){
+    public String registerRole(String rolename,int roleId,int careerId){
+        if(ConnectSql.sql.insertRegisterRole(rolename,roleId,careerId)){
             return "注册失败，该角色名称已有人使用";
         }else {
             return "注册成功，您进入到了游戏世界";

@@ -9,7 +9,7 @@ public class Const {
     //角色第一次进入游戏时的初始场景
     public static final int INIT_SCENE = 10001;
     //角色等级id，测试用
-    public static final int TYPE_ID = 1;
+    public static final int CAREER_ID = 5001;
     //MP每秒自动回复值
     public static final int RECOVER_MP = 1;
     //技能每次释放，武器耐久下降值
@@ -37,7 +37,9 @@ public class Const {
     public static final String SKILL_CONST_PATH = ".\\src\\main\\resources\\skill.xls";
     public static final String EQUIPMENT_CONST_PATH = ".\\src\\main\\resources\\equipment.xls";
     public static final String POTION_CONST_PATH = ".\\src\\main\\resources\\potion.xls";
-    public static final String ROLE_CONST_PATH = ".\\src\\main\\resources\\role.xls";
+    //public static final String ROLE_CONST_PATH = ".\\src\\main\\resources\\role.xls";
+    public static final String CAREER_CONST_PATH = ".\\src\\main\\resources\\career.xls";
+    public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\dungeons.xls";
 
     //数据库连接信息
     public static final String URL = "jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";

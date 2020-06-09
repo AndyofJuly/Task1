@@ -20,8 +20,8 @@ public class Role {
     private int alive;
     // 角色包裹
     private MyPackage myPackage;
-    // 角色等级
-    private int levelId;
+    // 角色职业id
+    private int careerId;
     //角色血量
     private int hp = 50;
     //角色蓝量
@@ -42,7 +42,8 @@ public class Role {
     // 角色手中药品
     private HashMap<Integer,PotionStatic> potionStaticHashMap = new HashMap<Integer,PotionStatic>();
 
-    public Role(String name, int nowScenesId) {
+    public Role(int id, String name, int nowScenesId) {
+        this.id = id;
         this.name = name;
         this.nowScenesId = nowScenesId;
         this.alive = 1;
@@ -140,12 +141,20 @@ public class Role {
         this.myPackage = myPackage;
     }
 
-    public int getLevelId() {
-        return levelId;
+    public int getCareerId() {
+        return careerId;
     }
 
-    public void setLevelId(int levelId) {
-        this.levelId = levelId;
+    public void setCareerId(int careerId) {
+        this.careerId = careerId;
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
     }
 
     public int getMoney() {

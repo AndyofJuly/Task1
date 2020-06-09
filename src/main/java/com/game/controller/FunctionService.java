@@ -1,6 +1,7 @@
 package com.game.controller;
 
-import com.game.service.assis.CheckIdByName;
+import com.game.service.assis.AssistService;
+import com.game.service.assis.InitGame;
 import com.game.service.assis.InitRole;
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
@@ -29,34 +30,30 @@ public class FunctionService {
     //用户注册，使用举例：register userName password
     @MyAnnontation(MethodName = "register")
     public String registerMesseage() {
-        if(strings.length<=2){return "0";}
         return userService.register(strings[1],strings[2]);
     }
 
     //用户登录，使用举例：login userName password
     @MyAnnontation(MethodName = "login")
     public String loginMesseage() {
-        if(strings.length<=2){return "0";}
         //user = new User(strings[1],strings[2]);
-        int getRoleId = userService.login(strings[1],strings[2]);
-        userHashMap.put(getRoleId,new User(strings[1],strings[2]));
+        //String getRoleId = userService.login(strings[1],strings[2]);
+        //userHashMap.put(Integer.parseInt(getRoleId),new User(strings[1],strings[2]));
         return userService.login(strings[1],strings[2])+"";
     }
 
-    //角色注册，使用举例：registerR roleName
+    //角色注册，使用举例：registerR roleName careerName
     @MyAnnontation(MethodName = "registerR")
     public String registerRoleMesseage() {
-        if(strings.length<=1){return "0";}
-        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(strings[1], SceneResource.initSceneId));
+        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(Integer.parseInt(strings[3]),strings[1], SceneResource.initSceneId));
         InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
-        return userService.registerRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]));
+        return userService.registerRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]),AssistService.checkCareerId(strings[2]));
     }
 
     //角色登录，使用举例：loginR roleName
     @MyAnnontation(MethodName = "loginR")
     public String loginRoleMesseage() {
-        if(strings.length<=1){return "0";}
-        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(strings[1],ConnectSql.sql.selectRoleScenesId(strings[1])));
+        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(Integer.parseInt(strings[2]),strings[1],ConnectSql.sql.selectRoleScenesId(strings[1])));
         InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
         return userService.loginRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]));
     }
@@ -64,7 +61,6 @@ public class FunctionService {
     //角色移动&场景切换，使用举例：move scene
     @MyAnnontation(MethodName = "move")
     public String moveMesseage() {
-        if(strings.length<=1){return "0";}
         return roleService.move(strings[1],Integer.parseInt(strings[2]));
     }
 
@@ -77,50 +73,43 @@ public class FunctionService {
     //查找任意场景信息，使用举例：checkPlace scene
     @MyAnnontation(MethodName = "checkPlace")
     public String checkPlaceMesseage() {
-        if(strings.length<=1){return "0";}
         return roleService.checkPlace(strings[1]);
     }
 
     //与NPC对话，使用举例：talkTo npcName
     @MyAnnontation(MethodName = "talkTo")
     public String talkToNpc(){
-        if(strings.length<=1){return "0";}
         return roleService.getNpcReply(strings[1],Integer.parseInt(strings[2]));
     }
 
     //修理装备，使用举例：repair equipmentName
     @MyAnnontation(MethodName = "repair")
     public String repair(){
-        if(strings.length<=1){return "0";}
         return roleService.repairEquipment(strings[1],Integer.parseInt(strings[2]));
     }
 
     //穿戴装备，使用举例：putOn equipmentName
     @MyAnnontation(MethodName = "putOn")
     public String putOn(){
-        if(strings.length<=1){return "0";}
         return roleService.putOnEquipment(strings[1],Integer.parseInt(strings[2]));
     }
 
     //卸下装备，使用举例：takeOff equipmentName
     @MyAnnontation(MethodName = "takeOff")
     public String takeOff(){
-        if(strings.length<=1){return "0";}
         return roleService.takeOffEquipment(strings[1],Integer.parseInt(strings[2]));
     }
 
     //使用药品，使用举例：use potionName
     @MyAnnontation(MethodName = "use")
     public String use(){
-        if(strings.length<=1){return "0";}
         return roleService.useDrug(strings[1],Integer.parseInt(strings[2]));
     }
 
     //技能攻击，使用举例：skill skillName monsterName
     @MyAnnontation(MethodName = "skill")
     public String useSkillAttack(){
-        if(strings.length<=2){return "0";} // todo
-        String key = CheckIdByName.checkMonsterId(strings[2],Integer.parseInt(strings[3]));//不是在静态资源中找怪物，而是在该场景下找
+        String key = AssistService.checkMonsterId(strings[2],Integer.parseInt(strings[3]));//不是在静态资源中找怪物，而是在该场景下找
         return roleService.useSkillAttack(strings[1],key,Integer.parseInt(strings[3]));
     }
 
@@ -134,11 +123,81 @@ public class FunctionService {
     //返回怪物当前状态，使用举例：getMonster monsterName
     @MyAnnontation(MethodName = "getMonster")
     public String getMonster(){
-        if(strings.length<=1){return "0";}
         return roleService.getMonsterInfo(strings[1],Integer.parseInt(strings[2]));
     }
 
+    //获得商店的商品列表，使用举例：getGoodsList
+    @MyAnnontation(MethodName = "getGoodsList")
+    public String getGoodsList(){
+        return roleService.getGoodsList();
+    }
 
+    //获得当前队伍列表，使用举例：getTeamList
+    @MyAnnontation(MethodName = "getTeamList")
+    public String getTeamList(){
+        return AssistService.getTeamIdList();
+    }
+
+    //获得当副本列表，使用举例：getDungeonsList
+    @MyAnnontation(MethodName = "getDungeonsList")
+    public String getDungeonsList(){
+        return InitGame.dungeonsList;
+    }
+
+    //购买药品or装备，使用举例：buy 清泉酒 20
+    @MyAnnontation(MethodName = "buy")
+    public String buyGoods(){
+        return roleService.buyGoods(strings[1],strings[2],Integer.parseInt(strings[3]));
+    }
+
+    //创建队伍，使用举例：create dungeonesId，返回teamId；
+    @MyAnnontation(MethodName = "create")
+    public String createTeam(){
+        return roleService.createTeam(Integer.parseInt(strings[1]), Integer.parseInt(strings[2]));
+    }
+
+    //加入队伍，使用举例：join 2233(teamId) ；todo 掉线时队伍的状态管理
+    @MyAnnontation(MethodName = "join")
+    public String joinTeam(){
+        return roleService.joinTeam(strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //开始副本，使用举例：start 2233(teamId) dungeonesId；todo 掉线时队伍的状态管理和副本的状态管理
+    @MyAnnontation(MethodName = "start")
+    public String startDungeons(){
+        return roleService.startDungeons(strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //任意场景可以pk玩家，使用举例：pk skillName ss(对方roleId)
+    @MyAnnontation(MethodName = "pk")
+    public String pkPlayer(){
+        return roleService.pkPlayer(strings[1],ConnectSql.sql.selectRoleIdByName(strings[2]),Integer.parseInt(strings[3]));
+    }
+
+    //全服聊天，使用举例：say words...
+    @MyAnnontation(MethodName = "say")
+    public String sayToAllPlayer(){
+        return roleService.sayToAllPlayer(strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //私人聊天，使用举例：sayTo ss(roleId) words...
+    @MyAnnontation(MethodName = "sayTo")
+    public String sayToOnePlayer(){
+        return roleService.sayToOnePlayer(Integer.parseInt(strings[1]),strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //发送邮件，使用举例：email ss(roleId) words... goods；假设一次只能邮寄一个物品
+    @MyAnnontation(MethodName = "email")
+    public String emailToPlayer(){
+        return roleService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]));
+    }
+
+    // TODO: 2020/6/6 本类需要按系统进行拆分了，否则过长
+    //选择职业，使用举例：choose careerName
+    @MyAnnontation(MethodName = "choose")
+    public String chooseCareer(){
+        return roleService.chooseCareer(strings[1],Integer.parseInt(strings[2]));
+    }
 
 /*   建议技能类放在一个方法中，调整一下
     //扩展方法蓝药缓慢恢复demo
@@ -150,7 +209,6 @@ public class FunctionService {
     //扩展方法毒素技能和护盾技能
     @MyAnnontation(MethodName = "sK")
     public String useSkill(){
-        if(strings.length<=2){return "";}
         return roleService.useSkill(strings[1],strings[2]);
     }*/
 

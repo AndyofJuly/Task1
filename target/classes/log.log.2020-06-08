@@ -1,0 +1,735 @@
+2020-06-08 10:58:13  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 10:58:13  [ main:10 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 10:58:13  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 10:58:13  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 10:58:13  [ main:46 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 10:58:13  [ main:46 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 10:58:13  [ main:63 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 10:58:13  [ main:65 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 10:58:13  [ main:65 ] - [ DEBUG ]  Java version: 8
+2020-06-08 10:58:13  [ main:75 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 10:58:13  [ main:75 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 10:58:13  [ main:76 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 10:58:13  [ main:76 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 10:58:13  [ main:77 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 10:58:13  [ main:79 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 10:58:13  [ main:79 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 10:58:13  [ main:81 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 10:58:13  [ main:81 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 10:58:13  [ main:89 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 10:58:13  [ main:183 ] - [ DEBUG ]  -Dio.netty.processId: 16020 (auto-detected)
+2020-06-08 10:58:13  [ main:185 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 10:58:13  [ main:185 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 10:58:13  [ main:422 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 10:58:13  [ main:423 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 10:58:14  [ main:678 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 10:58:14  [ main:694 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 10:58:14  [ main:695 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 10:58:14  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 10:58:14  [ main:726 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 10:58:14  [ main:726 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 10:58:14  [ main:726 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 10:58:16  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 10:58:16  [ main:11 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 10:58:16  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 10:58:16  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 10:58:16  [ main:45 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 10:58:16  [ main:45 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 10:58:16  [ main:63 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 10:58:16  [ main:65 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 10:58:16  [ main:65 ] - [ DEBUG ]  Java version: 8
+2020-06-08 10:58:16  [ main:67 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 10:58:16  [ main:69 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 10:58:16  [ main:70 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 10:58:16  [ main:70 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 10:58:16  [ main:71 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 10:58:16  [ main:71 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 10:58:16  [ main:71 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 10:58:16  [ main:71 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 10:58:16  [ main:72 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 10:58:16  [ main:72 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 10:58:16  [ main:74 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 10:58:16  [ main:74 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 10:58:16  [ main:75 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 10:58:16  [ main:75 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 10:58:16  [ main:84 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 10:58:17  [ main:578 ] - [ DEBUG ]  -Dio.netty.processId: 23868 (auto-detected)
+2020-06-08 10:58:17  [ main:580 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 10:58:17  [ main:580 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 10:58:17  [ main:879 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 10:58:17  [ main:879 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 10:58:17  [ main:1153 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 10:58:17  [ main:1168 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 10:58:17  [ main:1168 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 10:58:17  [ main:1187 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 10:58:17  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 10:58:17  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 10:58:17  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 10:58:17  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 10:58:17  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 10:58:17  [ main:1194 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 10:58:17  [ main:1194 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 10:58:17  [ main:1194 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 10:58:31  [ main:15288 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 10:58:31  [ main:15288 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 10:58:31  [ main:15288 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 10:58:31  [ main:15288 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 10:58:31  [ nioEventLoopGroup-2-1:15299 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 10:58:31  [ nioEventLoopGroup-2-1:15300 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 10:58:31  [ nioEventLoopGroup-2-1:15300 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1ea01b5f
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18423 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18423 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18423 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18423 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18428 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18429 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 10:58:31  [ nioEventLoopGroup-3-1:18429 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@73bd6d1d
+2020-06-08 10:58:32  [ nioEventLoopGroup-3-1:18503 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:32  [ nioEventLoopGroup-3-1:18571 ] - [ INFO ]  Reflections took 67 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:32  [ nioEventLoopGroup-3-1:19280 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:32  [ nioEventLoopGroup-3-1:19286 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:58:35  [ nioEventLoopGroup-3-1:22088 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:35  [ nioEventLoopGroup-3-1:22095 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:35  [ nioEventLoopGroup-3-1:22111 ] - [ DEBUG ]  Discarded inbound message loginR andy 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:35  [ nioEventLoopGroup-3-1:22112 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:58:38  [ nioEventLoopGroup-3-1:24931 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:38  [ nioEventLoopGroup-3-1:24934 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:38  [ nioEventLoopGroup-3-1:24936 ] - [ DEBUG ]  Discarded inbound message putOn 钢剑 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:38  [ nioEventLoopGroup-3-1:24936 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:58:42  [ nioEventLoopGroup-3-1:28862 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:42  [ nioEventLoopGroup-3-1:28866 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:42  [ nioEventLoopGroup-3-1:28867 ] - [ DEBUG ]  Discarded inbound message getInfo 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:42  [ nioEventLoopGroup-3-1:28867 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:58:46  [ nioEventLoopGroup-3-1:32550 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:46  [ nioEventLoopGroup-3-1:32554 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:46  [ nioEventLoopGroup-3-1:32555 ] - [ DEBUG ]  Discarded inbound message aoi 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:46  [ nioEventLoopGroup-3-1:32555 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:58:53  [ nioEventLoopGroup-3-1:39885 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:53  [ nioEventLoopGroup-3-1:39887 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:53  [ nioEventLoopGroup-3-1:39898 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:35)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-08 10:58:56  [ nioEventLoopGroup-3-1:42972 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:58:56  [ nioEventLoopGroup-3-1:42974 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:58:56  [ nioEventLoopGroup-3-1:42975 ] - [ DEBUG ]  Discarded inbound message skill 横扫千军 小偷 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:58:56  [ nioEventLoopGroup-3-1:42975 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:04  [ nioEventLoopGroup-3-1:50679 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:04  [ nioEventLoopGroup-3-1:50681 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:04  [ nioEventLoopGroup-3-1:50682 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:04  [ nioEventLoopGroup-3-1:50682 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:07  [ nioEventLoopGroup-3-1:53603 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:07  [ nioEventLoopGroup-3-1:53606 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:07  [ nioEventLoopGroup-3-1:53607 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:07  [ nioEventLoopGroup-3-1:53607 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:08  [ nioEventLoopGroup-3-1:54910 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:08  [ nioEventLoopGroup-3-1:54913 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:08  [ nioEventLoopGroup-3-1:54913 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:08  [ nioEventLoopGroup-3-1:54914 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:11  [ nioEventLoopGroup-3-1:58062 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:11  [ nioEventLoopGroup-3-1:58064 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:11  [ nioEventLoopGroup-3-1:58065 ] - [ DEBUG ]  Discarded inbound message repair 钢剑 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:11  [ nioEventLoopGroup-3-1:58065 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:14  [ nioEventLoopGroup-3-1:61353 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:14  [ nioEventLoopGroup-3-1:61355 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:14  [ nioEventLoopGroup-3-1:61356 ] - [ DEBUG ]  Discarded inbound message getMonster 小偷 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:14  [ nioEventLoopGroup-3-1:61356 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:17  [ nioEventLoopGroup-3-1:64393 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:17  [ nioEventLoopGroup-3-1:64396 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:17  [ nioEventLoopGroup-3-1:64396 ] - [ DEBUG ]  Discarded inbound message checkPlace 城堡 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:17  [ nioEventLoopGroup-3-1:64396 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:26  [ nioEventLoopGroup-3-1:73272 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:26  [ nioEventLoopGroup-3-1:73275 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:26  [ nioEventLoopGroup-3-1:73275 ] - [ DEBUG ]  Discarded inbound message aoi 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:26  [ nioEventLoopGroup-3-1:73275 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:30  [ nioEventLoopGroup-3-1:76940 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:30  [ nioEventLoopGroup-3-1:76943 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:30  [ nioEventLoopGroup-3-1:76943 ] - [ DEBUG ]  Discarded inbound message getInfo 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:30  [ nioEventLoopGroup-3-1:76943 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:41  [ nioEventLoopGroup-3-1:88143 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:41  [ nioEventLoopGroup-3-1:88146 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:41  [ nioEventLoopGroup-3-1:88147 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 10 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:41  [ nioEventLoopGroup-3-1:88147 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 10:59:48  [ nioEventLoopGroup-3-1:95080 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 10:59:48  [ nioEventLoopGroup-3-1:95083 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 10:59:48  [ nioEventLoopGroup-3-1:95084 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 5 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 10:59:48  [ nioEventLoopGroup-3-1:95084 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x1357cffd, L:/127.0.0.1:8080 - R:/127.0.0.1:59242].
+2020-06-08 11:36:04  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 11:36:04  [ main:21 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 11:36:04  [ main:43 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 11:36:04  [ main:43 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 11:36:04  [ main:52 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 11:36:04  [ main:53 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 11:36:04  [ main:69 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 11:36:04  [ main:70 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 11:36:04  [ main:71 ] - [ DEBUG ]  Java version: 8
+2020-06-08 11:36:04  [ main:72 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 11:36:04  [ main:72 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 11:36:04  [ main:73 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 11:36:04  [ main:73 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 11:36:04  [ main:74 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 11:36:04  [ main:75 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 11:36:04  [ main:75 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 11:36:04  [ main:76 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 11:36:04  [ main:76 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 11:36:04  [ main:81 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 11:36:04  [ main:172 ] - [ DEBUG ]  -Dio.netty.processId: 13292 (auto-detected)
+2020-06-08 11:36:04  [ main:173 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 11:36:04  [ main:173 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 11:36:04  [ main:413 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 11:36:04  [ main:413 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 11:36:05  [ main:679 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 11:36:05  [ main:696 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 11:36:05  [ main:696 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 11:36:05  [ main:717 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 11:36:05  [ main:718 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 11:36:05  [ main:724 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 11:36:05  [ main:724 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 11:36:05  [ main:724 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 11:37:23  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 11:37:23  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 11:37:23  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 11:37:23  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 11:37:23  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 11:37:23  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 11:37:23  [ main:44 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 11:37:23  [ main:46 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 11:37:23  [ main:46 ] - [ DEBUG ]  Java version: 8
+2020-06-08 11:37:23  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 11:37:23  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 11:37:23  [ main:50 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 11:37:23  [ main:50 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 11:37:23  [ main:51 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 11:37:23  [ main:51 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 11:37:23  [ main:51 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 11:37:23  [ main:51 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 11:37:23  [ main:52 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 11:37:23  [ main:52 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 11:37:23  [ main:53 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 11:37:23  [ main:53 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 11:37:23  [ main:54 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 11:37:23  [ main:54 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 11:37:23  [ main:60 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 11:37:23  [ main:567 ] - [ DEBUG ]  -Dio.netty.processId: 23324 (auto-detected)
+2020-06-08 11:37:23  [ main:569 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 11:37:23  [ main:569 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 11:37:24  [ main:861 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 11:37:24  [ main:862 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 11:37:24  [ main:1160 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 11:37:24  [ main:1172 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 11:37:24  [ main:1172 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 11:37:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 11:37:24  [ main:1191 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 11:37:24  [ main:1191 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 11:37:24  [ main:1191 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 11:37:24  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 11:37:24  [ main:1197 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 11:37:24  [ main:1197 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 11:37:30  [ main:6837 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 11:37:30  [ main:6838 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 11:37:30  [ main:6838 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 11:37:30  [ main:6838 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 11:37:30  [ nioEventLoopGroup-2-1:6850 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 11:37:30  [ nioEventLoopGroup-2-1:6850 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 11:37:30  [ nioEventLoopGroup-2-1:6850 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@b775b96
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85666 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85666 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85666 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85666 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85672 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85672 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85672 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@600c8ac5
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85841 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:30  [ nioEventLoopGroup-3-1:85924 ] - [ INFO ]  Reflections took 81 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:31  [ nioEventLoopGroup-3-1:86466 ] - [ DEBUG ]  Discarded inbound message login m m that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:31  [ nioEventLoopGroup-3-1:86472 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:37:33  [ nioEventLoopGroup-3-1:89316 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:33  [ nioEventLoopGroup-3-1:89323 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:33  [ nioEventLoopGroup-3-1:89407 ] - [ DEBUG ]  Discarded inbound message loginR andy 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:33  [ nioEventLoopGroup-3-1:89407 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:37:36  [ nioEventLoopGroup-3-1:91910 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:36  [ nioEventLoopGroup-3-1:91916 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:36  [ nioEventLoopGroup-3-1:91920 ] - [ DEBUG ]  Discarded inbound message putOn 钢剑 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:36  [ nioEventLoopGroup-3-1:91920 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:37:39  [ nioEventLoopGroup-3-1:94670 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:39  [ nioEventLoopGroup-3-1:94675 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:39  [ nioEventLoopGroup-3-1:94676 ] - [ DEBUG ]  Discarded inbound message getInfo 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:39  [ nioEventLoopGroup-3-1:94676 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:37:43  [ nioEventLoopGroup-3-1:98855 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:43  [ nioEventLoopGroup-3-1:98859 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:43  [ nioEventLoopGroup-3-1:98860 ] - [ DEBUG ]  Discarded inbound message aoi 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:43  [ nioEventLoopGroup-3-1:98860 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:37:50  [ nioEventLoopGroup-3-1:106445 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:37:50  [ nioEventLoopGroup-3-1:106449 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:37:50  [ nioEventLoopGroup-3-1:106450 ] - [ DEBUG ]  Discarded inbound message getDungeonsList 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:37:50  [ nioEventLoopGroup-3-1:106450 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:38:12  [ nioEventLoopGroup-3-1:128404 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:38:12  [ nioEventLoopGroup-3-1:128407 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:38:13  [ nioEventLoopGroup-3-1:128510 ] - [ DEBUG ]  Discarded inbound message getTeamList 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:38:13  [ nioEventLoopGroup-3-1:128511 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:39:02  [ nioEventLoopGroup-3-1:178038 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:39:02  [ nioEventLoopGroup-3-1:178040 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:39:02  [ nioEventLoopGroup-3-1:178143 ] - [ DEBUG ]  Discarded inbound message create 4001 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:39:02  [ nioEventLoopGroup-3-1:178143 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 11:39:08  [ nioEventLoopGroup-3-1:184403 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 11:39:08  [ nioEventLoopGroup-3-1:184406 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 11:39:08  [ nioEventLoopGroup-3-1:184407 ] - [ DEBUG ]  Discarded inbound message getTeamList 1 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 11:39:08  [ nioEventLoopGroup-3-1:184407 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x37735a77, L:/127.0.0.1:8080 - R:/127.0.0.1:60900].
+2020-06-08 21:47:49  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 21:47:49  [ main:13 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 21:47:49  [ main:51 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 21:47:49  [ main:51 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 21:47:49  [ main:59 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 21:47:49  [ main:60 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 21:47:49  [ main:78 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 21:47:49  [ main:81 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 21:47:49  [ main:81 ] - [ DEBUG ]  Java version: 8
+2020-06-08 21:47:49  [ main:83 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 21:47:49  [ main:84 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 21:47:49  [ main:84 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 21:47:49  [ main:85 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 21:47:49  [ main:86 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 21:47:49  [ main:86 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 21:47:49  [ main:86 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 21:47:49  [ main:86 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 21:47:49  [ main:87 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 21:47:49  [ main:87 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 21:47:49  [ main:89 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 21:47:49  [ main:90 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 21:47:49  [ main:91 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 21:47:49  [ main:91 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 21:47:49  [ main:101 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 21:47:49  [ main:251 ] - [ DEBUG ]  -Dio.netty.processId: 20952 (auto-detected)
+2020-06-08 21:47:49  [ main:253 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 21:47:49  [ main:253 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 21:47:50  [ main:548 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 21:47:50  [ main:549 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 21:47:50  [ main:851 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 21:47:50  [ main:859 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 21:47:50  [ main:860 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 21:47:50  [ main:876 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 21:47:50  [ main:877 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 21:47:50  [ main:877 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 21:47:50  [ main:877 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 21:47:50  [ main:878 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 21:47:50  [ main:884 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 21:47:50  [ main:885 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 21:47:50  [ main:885 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 21:48:09  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-08 21:48:09  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-08 21:48:09  [ main:37 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-08 21:48:09  [ main:37 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-08 21:48:09  [ main:43 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-08 21:48:09  [ main:43 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-08 21:48:09  [ main:60 ] - [ DEBUG ]  Platform: Windows
+2020-06-08 21:48:09  [ main:62 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-08 21:48:09  [ main:62 ] - [ DEBUG ]  Java version: 8
+2020-06-08 21:48:09  [ main:63 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-08 21:48:09  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-08 21:48:09  [ main:65 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-08 21:48:09  [ main:65 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-08 21:48:09  [ main:66 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-08 21:48:09  [ main:66 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-08 21:48:09  [ main:66 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-08 21:48:09  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-08 21:48:09  [ main:66 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-08 21:48:09  [ main:67 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-08 21:48:09  [ main:68 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-08 21:48:09  [ main:68 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-08 21:48:09  [ main:68 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-08 21:48:09  [ main:69 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-08 21:48:09  [ main:81 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-08 21:48:10  [ main:553 ] - [ DEBUG ]  -Dio.netty.processId: 24736 (auto-detected)
+2020-06-08 21:48:10  [ main:554 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-08 21:48:10  [ main:554 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-08 21:48:10  [ main:895 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-08 21:48:10  [ main:895 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-08 21:48:11  [ main:1258 ] - [ DEBUG ]  -Dio.netty.machineId: 98:e7:43:ff:fe:45:b4:5d (auto-detected)
+2020-06-08 21:48:11  [ main:1267 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-08 21:48:11  [ main:1267 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-08 21:48:11  [ main:1285 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-08 21:48:11  [ main:1285 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-08 21:48:11  [ main:1285 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-08 21:48:11  [ main:1285 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-08 21:48:11  [ main:1285 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-08 21:48:11  [ main:1286 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-08 21:48:11  [ main:1292 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-08 21:48:11  [ main:1292 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-08 21:48:11  [ main:1292 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-08 21:48:27  [ main:17511 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 21:48:27  [ main:17511 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 21:48:27  [ main:17511 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 21:48:27  [ main:17511 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 21:48:27  [ nioEventLoopGroup-2-1:17522 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 21:48:27  [ nioEventLoopGroup-2-1:17522 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 21:48:27  [ nioEventLoopGroup-2-1:17523 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@508699c8
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37796 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37796 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37796 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37796 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37802 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37802 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37802 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@322d6eb4
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37831 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:37865 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:38219 ] - [ DEBUG ]  Discarded inbound message register d d that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:48:27  [ nioEventLoopGroup-3-1:38225 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:48:40  [ nioEventLoopGroup-3-1:50889 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:48:40  [ nioEventLoopGroup-3-1:50895 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:48:40  [ nioEventLoopGroup-3-1:51036 ] - [ DEBUG ]  Discarded inbound message registerR to 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:48:40  [ nioEventLoopGroup-3-1:51037 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:48:49  [ nioEventLoopGroup-3-1:59788 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:48:49  [ nioEventLoopGroup-3-1:59793 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:48:49  [ nioEventLoopGroup-3-1:59795 ] - [ DEBUG ]  Discarded inbound message aoi 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:48:49  [ nioEventLoopGroup-3-1:59795 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:49:20  [ nioEventLoopGroup-3-1:90616 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:49:20  [ nioEventLoopGroup-3-1:90619 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:49:20  [ nioEventLoopGroup-3-1:90620 ] - [ DEBUG ]  Discarded inbound message checkPlace 城堡 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:49:20  [ nioEventLoopGroup-3-1:90621 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:49:44  [ nioEventLoopGroup-3-1:114926 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:49:44  [ nioEventLoopGroup-3-1:114929 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:49:44  [ nioEventLoopGroup-3-1:114931 ] - [ DEBUG ]  Discarded inbound message getMonster 飞鹰 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:49:44  [ nioEventLoopGroup-3-1:114931 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:49:52  [ nioEventLoopGroup-3-1:123166 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:49:52  [ nioEventLoopGroup-3-1:123173 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:49:52  [ nioEventLoopGroup-3-1:123175 ] - [ DEBUG ]  Discarded inbound message putOn 钢剑 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:49:52  [ nioEventLoopGroup-3-1:123175 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:50:06  [ nioEventLoopGroup-3-1:136751 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:50:06  [ nioEventLoopGroup-3-1:136755 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:50:06  [ nioEventLoopGroup-3-1:136757 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:35)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-08 21:50:31  [ nioEventLoopGroup-3-1:162290 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:50:31  [ nioEventLoopGroup-3-1:162295 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:50:31  [ nioEventLoopGroup-3-1:162296 ] - [ DEBUG ]  Discarded inbound message aoi 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:50:31  [ nioEventLoopGroup-3-1:162296 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:50:42  [ nioEventLoopGroup-3-1:173327 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:50:42  [ nioEventLoopGroup-3-1:173330 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:50:42  [ nioEventLoopGroup-3-1:173340 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:35)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-08 21:50:54  [ nioEventLoopGroup-3-1:184954 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:50:54  [ nioEventLoopGroup-3-1:184957 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:50:54  [ nioEventLoopGroup-3-1:184957 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:35)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-08 21:51:53  [ nioEventLoopGroup-3-1:243561 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:51:53  [ nioEventLoopGroup-3-1:243564 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:51:53  [ nioEventLoopGroup-3-1:243565 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.channelRead(ServerHandler.java:35)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-08 21:52:00  [ nioEventLoopGroup-3-1:250802 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:00  [ nioEventLoopGroup-3-1:250805 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:00  [ nioEventLoopGroup-3-1:250805 ] - [ DEBUG ]  Discarded inbound message skill 突刺攻击 史莱姆 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:00  [ nioEventLoopGroup-3-1:250805 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:06  [ nioEventLoopGroup-3-1:257449 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:06  [ nioEventLoopGroup-3-1:257452 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:06  [ nioEventLoopGroup-3-1:257452 ] - [ DEBUG ]  Discarded inbound message skill 突刺攻击 飞鹰 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:06  [ nioEventLoopGroup-3-1:257452 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:11  [ nioEventLoopGroup-3-1:262097 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:11  [ nioEventLoopGroup-3-1:262100 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:11  [ nioEventLoopGroup-3-1:262101 ] - [ DEBUG ]  Discarded inbound message skill 突刺攻击 野猪 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:11  [ nioEventLoopGroup-3-1:262101 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:13  [ nioEventLoopGroup-3-1:264467 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:13  [ nioEventLoopGroup-3-1:264470 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:13  [ nioEventLoopGroup-3-1:264471 ] - [ DEBUG ]  Discarded inbound message aoi 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:13  [ nioEventLoopGroup-3-1:264471 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:16  [ nioEventLoopGroup-3-1:267290 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:16  [ nioEventLoopGroup-3-1:267293 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:16  [ nioEventLoopGroup-3-1:267294 ] - [ DEBUG ]  Discarded inbound message getInfo 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:16  [ nioEventLoopGroup-3-1:267294 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:27  [ nioEventLoopGroup-3-1:277878 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:27  [ nioEventLoopGroup-3-1:277881 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:27  [ nioEventLoopGroup-3-1:277882 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:27  [ nioEventLoopGroup-3-1:277882 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:30  [ nioEventLoopGroup-3-1:280895 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:30  [ nioEventLoopGroup-3-1:280901 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:30  [ nioEventLoopGroup-3-1:280902 ] - [ DEBUG ]  Discarded inbound message repair 钢剑 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:30  [ nioEventLoopGroup-3-1:280902 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:33  [ nioEventLoopGroup-3-1:283671 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:33  [ nioEventLoopGroup-3-1:283673 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:33  [ nioEventLoopGroup-3-1:283674 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:33  [ nioEventLoopGroup-3-1:283674 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:34  [ nioEventLoopGroup-3-1:285437 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:34  [ nioEventLoopGroup-3-1:285440 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:34  [ nioEventLoopGroup-3-1:285440 ] - [ DEBUG ]  Discarded inbound message use 清泉酒 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:34  [ nioEventLoopGroup-3-1:285440 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:39  [ nioEventLoopGroup-3-1:289817 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:39  [ nioEventLoopGroup-3-1:289820 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:39  [ nioEventLoopGroup-3-1:289821 ] - [ DEBUG ]  Discarded inbound message getGoodsList 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:39  [ nioEventLoopGroup-3-1:289821 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:48  [ nioEventLoopGroup-3-1:299214 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:48  [ nioEventLoopGroup-3-1:299216 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:48  [ nioEventLoopGroup-3-1:299217 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 5 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:48  [ nioEventLoopGroup-3-1:299217 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:51  [ nioEventLoopGroup-3-1:302406 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:51  [ nioEventLoopGroup-3-1:302408 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:51  [ nioEventLoopGroup-3-1:302409 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 5 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:51  [ nioEventLoopGroup-3-1:302409 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:55  [ nioEventLoopGroup-3-1:305685 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:55  [ nioEventLoopGroup-3-1:305688 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:55  [ nioEventLoopGroup-3-1:305688 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 3 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:55  [ nioEventLoopGroup-3-1:305688 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:52:57  [ nioEventLoopGroup-3-1:308323 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:52:57  [ nioEventLoopGroup-3-1:308325 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:52:57  [ nioEventLoopGroup-3-1:308326 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 2 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:52:57  [ nioEventLoopGroup-3-1:308326 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:53:00  [ nioEventLoopGroup-3-1:311100 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:53:00  [ nioEventLoopGroup-3-1:311103 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:53:00  [ nioEventLoopGroup-3-1:311103 ] - [ DEBUG ]  Discarded inbound message buy 清泉酒 1 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:53:00  [ nioEventLoopGroup-3-1:311103 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:53:08  [ nioEventLoopGroup-3-1:318543 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:53:08  [ nioEventLoopGroup-3-1:318546 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:53:08  [ nioEventLoopGroup-3-1:318547 ] - [ DEBUG ]  Discarded inbound message getInfo 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:53:08  [ nioEventLoopGroup-3-1:318547 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].
+2020-06-08 21:53:20  [ nioEventLoopGroup-3-1:331234 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-08 21:53:20  [ nioEventLoopGroup-3-1:331237 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-08 21:53:20  [ nioEventLoopGroup-3-1:331237 ] - [ DEBUG ]  Discarded inbound message getDungeonsList 0 that reached at the tail of the pipeline. Please check your pipeline configuration.
+2020-06-08 21:53:20  [ nioEventLoopGroup-3-1:331237 ] - [ DEBUG ]  Discarded message pipeline : [StringDecoder#0, serverHandler1, StringEncoder#0, DefaultChannelPipeline$TailContext#0]. Channel : [id: 0x49075118, L:/127.0.0.1:8080 - R:/127.0.0.1:56964].

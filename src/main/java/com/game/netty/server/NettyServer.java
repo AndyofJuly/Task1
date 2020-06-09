@@ -25,15 +25,16 @@ public class NettyServer {
 
     public static void startServer(){
         //服务器启动，从数据库/excel配置表中加载场景信息
-        //new InitStaticResource();
+        //new InitStaticResource(); 待优化
         new EquipmentResource();
         new MonsterResource();
         new NpcResource();
         new PotionResource();
-        new RoleResource();
+        new CareerResource();
         new SceneResource();
         new SkillResource();
         new InitGame();
+        new DungeonsResource();
 
         //1.定义server启动类
         ServerBootstrap serverBootstrap = new ServerBootstrap();

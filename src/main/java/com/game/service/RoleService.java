@@ -3,17 +3,14 @@ package com.game.service;
 import com.game.common.Const;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
-import com.game.entity.Equipment;
-import com.game.entity.Monster;
-import com.game.entity.Role;
-import com.game.entity.Scene;
+import com.game.entity.*;
 import com.game.entity.store.*;
-import com.game.service.assis.CheckIdByName;
-import com.game.service.assis.InitGame;
-import com.game.service.assis.Listen;
+import com.game.service.assis.*;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.HashMap;
+import java.util.Timer;
 
 
 /**
@@ -102,8 +99,8 @@ public class RoleService {
                 //此处改为使用动态的怪物对象
                 for(String key: InitGame.scenes.get(j).getMonsterHashMap().keySet()){
                     //if(MonsterResource.monsters.get(key).getAlive()==1){ todo
-                    if(InitGame.scenes.get(CheckIdByName.checkSceneId(scenesName)).getMonsterHashMap().get(key).getAlive()==1){
-                        stringBuilder.append(MonsterResource.monstersStatics.get(InitGame.scenes.get(CheckIdByName.checkSceneId(scenesName)).getMonsterHashMap().get(key).getMonsterId()).getName()).append(" ");
+                    if(InitGame.scenes.get(AssistService.checkSceneId(scenesName)).getMonsterHashMap().get(key).getAlive()==1){
+                        stringBuilder.append(MonsterResource.monstersStatics.get(InitGame.scenes.get(AssistService.checkSceneId(scenesName)).getMonsterHashMap().get(key).getMonsterId()).getName()).append(" ");
                     }
                 }
                 stringBuilder.append("。 ");
@@ -115,7 +112,7 @@ public class RoleService {
     //与NPC对话
     public String getNpcReply(String npcName,int roleId){
         String replyWords = "该场景没有这个npc";
-        int key = CheckIdByName.checkNpcId(npcName,roleId);
+        int key = AssistService.checkNpcId(npcName,roleId);
         replyWords = NpcResource.npcsStatics.get(key).getWords();
         return replyWords;
     }
@@ -123,7 +120,7 @@ public class RoleService {
     //修理装备
     public String repairEquipment(String equipmentName,int roleId){
         String result = "没有该武器";
-        int key = CheckIdByName.checkEquipmentId(equipmentName);
+        int key = AssistService.checkEquipmentId(equipmentName);
         equipment = FunctionService.roleHashMap.get(roleId).getEquipmentHashMap().get(key);
         equipment.setDura(EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
         result = "修理成功！当前武器耐久为："+equipment.getDura();
@@ -134,7 +131,7 @@ public class RoleService {
     public String putOnEquipment(String equipment,int roleId){
         role = FunctionService.roleHashMap.get(roleId);
         int atk = role.getAtk();
-        int key = CheckIdByName.checkEquipmentId(equipment);
+        int key = AssistService.checkEquipmentId(equipment);
         atk = atk + EquipmentResource.equipmentStaticHashMap.get(key).getAtk();
         role.setAtk(atk);
         Equipment equipment1 = new Equipment(key,EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
@@ -148,7 +145,7 @@ public class RoleService {
     public String takeOffEquipment(String equipment,int roleId){
         role = FunctionService.roleHashMap.get(roleId);
         int atk = role.getAtk();
-        int key = CheckIdByName.checkEquipmentId(equipment);
+        int key = AssistService.checkEquipmentId(equipment);
         atk = atk - EquipmentResource.equipmentStaticHashMap.get(key).getAtk();
         role.setAtk(atk);
         role.getEquipmentHashMap().remove(key);
@@ -162,7 +159,7 @@ public class RoleService {
         role = FunctionService.roleHashMap.get(roleId);
         int hp = role.getHp();
         int mp = role.getMp();
-        int key = CheckIdByName.checkPotionId(drugName);
+        int key = AssistService.checkPotionId(drugName);
         System.out.println("使用药品前，背包中还有此药品数量为："+role.getMyPackage().getGoodsHashMap().get(key));
         if(role.getMyPackage().getGoodsHashMap().get(key)<=0){
             return "此药品已经没有了！";
@@ -174,11 +171,12 @@ public class RoleService {
         mp = mp + PotionResource.potionStaticHashMap.get(key).getAddMp();
         role.setHp(hp);
         role.setMp(mp);
-        if(role.getHp()>=RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp()){
-            role.setHp(RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp());
+        if(role.getHp()>=CareerResource.careerStaticHashMap.get(Const.CAREER_ID).getHp()){
+                //RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelHp()){
+            role.setHp(CareerResource.careerStaticHashMap.get(Const.CAREER_ID).getHp());
         }
-        if(role.getMp()>=RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp()){
-            role.setMp(RoleResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp());
+        if(role.getMp()>=CareerResource.careerStaticHashMap.get(Const.CAREER_ID).getMp()){
+            role.setMp(CareerResource.careerStaticHashMap.get(Const.CAREER_ID).getMp());
         }
         return "使用药品成功，你的当前血量为："+role.getHp()+"， 当前的蓝量为："+role.getMp();
     }
@@ -192,7 +190,7 @@ public class RoleService {
         for (Integer temp : role.getEquipmentHashMap().keySet()) {
             weaponId = temp;
         }
-        int key1 = CheckIdByName.checkSkillId(skillName);
+        int key1 = AssistService.checkSkillId(skillName);
         //使用该技能，记录当前时间，set方法传给角色的集合的技能对象的属性，同时判断时间是否合理满足CD
         Instant nowDate = Instant.now();
         Duration between = Duration.between(FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key1).getStart(), nowDate);
@@ -236,6 +234,61 @@ public class RoleService {
         return string;
     }
 
+    //选择：任意同场景可以pk玩家 todo 可选，仅限竞技场pk玩家
+    //假设可随意使用技能攻击String skillName,String monsterId,int roleId
+    public String pkPlayer (String skillName,int TargetRoleId, int roleId){
+        role = FunctionService.roleHashMap.get(roleId);
+        String string = "你对玩家发起了pk，对其进行攻击";
+        int dura;
+        int weaponId =0;
+        for (Integer temp : role.getEquipmentHashMap().keySet()) {
+            weaponId = temp;
+        }
+        int key1 = AssistService.checkSkillId(skillName);
+        //使用该技能，记录当前时间，set方法传给角色的集合的技能对象的属性，同时判断时间是否合理满足CD
+        Instant nowDate = Instant.now();
+        Duration between = Duration.between(FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key1).getStart(), nowDate);
+        long l = between.toMillis();
+        if(l>SkillResource.skillStaticHashMap.get(key1).getCd()*Const.GAP_TIME_SKILL) {
+            role.getSkillHashMap().get(key1).setStart(nowDate);
+            //说明技能已经冷却，可以调用该方法，对方扣血
+            Role enemy = FunctionService.roleHashMap.get(TargetRoleId);
+                    //InitGame.scenes.get(role.getNowScenesId()).getRoleAll().get(TargetRoleId);
+            int hp = enemy.getHp();
+            int mp=role.getMp();
+            dura=role.getEquipmentHashMap().get(weaponId).getDura();
+            //耐久小于等于0或者蓝量不够，退出场景
+            if(dura<=0){
+                return "武器耐久不够，请先修理再战斗";
+            }
+            if(mp<SkillResource.skillStaticHashMap.get(key1).getUseMp()){
+                role.setMp(mp);
+                return "角色蓝量不够，请先恢复再战斗";
+            }
+            hp=hp-role.getAtk()-SkillResource.skillStaticHashMap.get(key1).getAtk()-
+                    Const.WEAPON_BUFF;
+            mp=mp-SkillResource.skillStaticHashMap.get(key1).getUseMp();
+            role.setMp(mp);
+            role.getEquipmentHashMap().get(weaponId).setDura(dura-
+                    Const.DURA_MINUS);
+            if(hp<=0){
+                hp=0;
+                string = "对方血量为0，你已经pk掉对方！恭喜获得对方50银，获得2点攻击力加成!";
+                //Listen.monsterIsDead=true;  //对全部客户端进行通知
+                enemy.setHp(hp);
+                //同时，这里设置怪物的生存状态为0，表示已被消灭
+                //enemy.setAlive(0);
+                role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
+                return string;
+            }
+            System.out.println("玩家使用了"+skillName+"技能，对方的血量还有"+hp);
+            enemy.setHp(hp);
+        }else {
+            string = "该技能冷却中";
+        }
+        return string;
+    }
+
     //返回角色的hp，mp，武器耐久，当前攻击力
     public String getRoleInfo(int roleId){
         role = FunctionService.roleHashMap.get(roleId);
@@ -250,116 +303,171 @@ public class RoleService {
 
     //返回怪物当前状态-存活，非存活
     public String getMonsterInfo(String monsterName,int roleId){
-        String key = CheckIdByName.checkMonsterId(monsterName,roleId);// todo
+        String key = AssistService.checkMonsterId(monsterName,roleId);// todo
         Monster nowMonster = InitGame.scenes.get(FunctionService.roleHashMap.get(roleId).getNowScenesId()).getMonsterHashMap().get(key);
         return "你查询的怪物的hp：" + nowMonster.getMonsterHp() + "，存活状态："+ nowMonster.getAlive();
     }
 
-
-
-    //购买物品，计算金钱，提示金钱不够or购买成功
-/*    public String buyGoods(String GoodsName,int n){
-
-    }*/
-
-    public String testCode(){
-
-        return "";
-    }
-
-
-
-    //扩展，毒素和护盾的技能demo，约定技能表中typeId为1时表示毒素类技能，为2时表示护盾类技能；后续可以与前面技能合并；血量不同步是因为用了临时变量
-    /*public String useSkill(String skillName,String Target){
-        String string = null;
-        for (Integer key1 : InitStaticResource.skillStaticHashMap.keySet()) {
-            if (skillName.equals(InitStaticResource.skillStaticHashMap.get(key1).getName())) {
-                Instant nowDate = Instant.now();
-                Duration between = Duration.between(FunctionService.role.getSkillHashMap().get(key1).getStart(), nowDate);
-                long l = between.toMillis();
-                if(l>InitStaticResource.skillStaticHashMap.get(FunctionService.role.getSkillHashMap().get(key1)).getCd()*Const.TO_MS){
-                    FunctionService.role.getSkillHashMap().get(key1).setStart(nowDate);
-                    //如果是中毒类技能，初步思路如下
-                    if(InitStaticResource.skillStaticHashMap.get(key1).getTypeId()==Const.POISON_TYPE){
-                        //每隔1s怪物扣血，扣的血量为技能基础攻击力
-                        for (Integer key : InitStaticResource.monstersStatics.keySet()) {
-                            if (InitStaticResource.monstersStatics.get(key).getName().equals(Target) &&
-                                    FunctionService.role.getNowScenesId() == InitStaticResource.monstersStatics.get(key).getSceneId()) {
-                                monsterHp = InitStaticResource.monstersStatics.get(key).getHp();
-                                int mp=FunctionService.role.getMp();
-                                //耐久小于等于0或者蓝量不够，退出场景
-                                if(mp<InitStaticResource.skillStaticHashMap.get(key1).getUseMp()){
-                                    FunctionService.role.setMp(mp);
-                                    return "角色蓝量不够，请先恢复再战斗";
-                                }
-                                Timer timer = new Timer();
-                                timer.schedule(new TimerTask() {
-                                    @Override
-                                    public void run() {
-                                        //延时time秒后，开始执行
-                                        time++;
-                                        if(time > InitStaticResource.skillStaticHashMap.get(key1).getDuration()){
-                                            time=0;
-                                            timer.cancel();
-                                        }
-                                        //怪物持续扣血
-                                        monsterHp=monsterHp-InitStaticResource.skillStaticHashMap.get(key1).getAtk();
-                                        InitStaticResource.monstersStatics.get(key).setHp(monsterHp);
-                                        System.out.println("正在使用"+skillName+"技能，怪物的血量还有"+monsterHp);
-                                    }
-                                }, Const.DELAY_TIME, Const.GAP_TIME_SKILL);
-                                mp=mp-InitStaticResource.skillStaticHashMap.get(key1).getUseMp();
-                                FunctionService.role.setMp(mp);
-                                if(monsterHp<=0){
-                                    monsterHp=0;
-                                    string = "怪物血量为0，你已经打败该怪物！恭喜获得5000银和一个高级宝箱!";
-                                    Listen.monsterIsDead=true;
-                                    return string;
-                                }
-                            }
-                        }
-                    }
-                    //如果是护盾类技能，初步思路如下
-                    else if(InitStaticResource.skillStaticHashMap.get(key1).getTypeId()==Const.SHIELD_TYPE){
-                        //如果护盾为承伤护盾，角色增加对应血量，持续10s，要判断护盾能承受的伤害与怪物对角色的攻击伤害，如果能承受住，最后恢复原血量，如果不能承受住，最后血量为原血量+护盾血量-怪物伤害
-                        //此处假设每次使用完毕，角色恢复原血量
-                        int hp = FunctionService.role.getHp();
-                        FunctionService.role.setHp(InitStaticResource.skillStaticHashMap.get(key1).getAddHp());
-                        //此处，角色与怪物之间的攻击过程，待做
-                        System.out.println("互相攻击");
-                        //结束后，恢复为初始血量
-                        FunctionService.role.setHp(hp);
-                    }
-                }else {
-                    string = "该技能冷却中";
-                }
+    //获得一些物品 todo 优化条件语句；建议药品查询与装备查询放在一起
+    //购买物品，计算金钱，提示金钱不够or购买成功；角色金钱>物品价格*数量
+    public String buyGoods(String goods,String amount,int roleId){
+        role = FunctionService.roleHashMap.get(roleId);
+        //根据物品找到物品id，根据id放入背包，key对应的num加上amount即可；如果是装备，则不增加
+        int number = Integer.parseInt(amount);
+        //该商品可能是药品，也可能是装备
+        int key = AssistService.checkGoodsId(goods);
+        if(String.valueOf(key).startsWith("2")){  //药品的情况
+            //先计算是否买得起，买不起直接提示
+            int cost = PotionResource.potionStaticHashMap.get(key).getPrice()*number;
+            if(role.getMoney()<cost){
+                return "您所携带的银两不够，无法够买";
+            }else {
+                //够买成功，角色金钱变少
+                role.setMoney(role.getMoney()-cost);
             }
+            //如果背包中有该key，则数量叠加，如果getkey==null则新增该key，并设置数量
+            if(role.getMyPackage().getGoodsHashMap().get(key)!=null){
+                int allAmount = role.getMyPackage().getGoodsHashMap().get(key)+number;
+                if(allAmount>=99){  //药品类叠加超过上限，提示最多存99，并设置数量为99
+                    role.getMyPackage().getGoodsHashMap().put(key,99);
+                    System.out.println("你的背包最多只能存放该药物"+99+"瓶");
+                }else{
+                    role.getMyPackage().getGoodsHashMap().put(key,allAmount);
+                    System.out.println("获得药品！");
+                }
+            }else {  //没有该物品，直接放入背包
+                role.getMyPackage().getGoodsHashMap().put(key,number);
+            }
+            return "够买成功，目前该药品在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(key);
+        }else {  //装备的情况
+            //先计算是否买得起，买不起直接提示
+            int cost = EquipmentResource.equipmentStaticHashMap.get(key).getPrice()*number;
+            if(role.getMoney()<cost){
+                return "您所携带的银两不够，无法够买";
+            }else {
+                //够买成功，角色金钱变少
+                role.setMoney(role.getMoney()-cost);
+            }
+            //装备类，如果有相同的装备，不操作，如果装备不同，数量+1
+            int keyEquipment = AssistService.checkEquipmentId(goods);
+            if(role.getMyPackage().getGoodsHashMap().get(key)==null){
+                role.getMyPackage().getGoodsHashMap().put(keyEquipment,1);
+                System.out.println("获得装备！");
+            }
+            return "够买成功，目前该装备在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(keyEquipment);
         }
-        return string;
     }
 
-    //蓝药缓慢恢复demo
-    public String slowlyRecoverd(){
-        //使用Timer定时器，每隔1s恢复1点mp，药品恢复10点mp后，使用cancel取消定时任务
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                t++;
-                if(t> InitStaticResource.potionStaticHashMap.get(Const.MP_ID).getAddMp()){
-                    t=0;
-                    timer.cancel();
-                }
-                //增加蓝量，但不会超过等级的蓝量上限
-                if(FunctionService.role.getMp()<InitStaticResource.roleStaticHashMap.get(Const.TYPE_ID).getLevelMp()){
-                    FunctionService.role.setMp(FunctionService.role.getMp()+Const.RECOVER_MP);
-                }
-                System.out.println(FunctionService.role.getMp());
-            }
-        }, Const.DELAY_TIME, Const.GAP_TIME_POTION);
-        return "使用药品成功，缓慢恢复中..";
-    }*/
+    //获得所有商品列表，并附上价格，这里遍历药品和装备的静态列表即可，商店物品可用字符串存起来
+    public String getGoodsList(){
+        return InitGame.goodsList;
+    }
 
+    //创建队伍，返回一个队伍id，并将该id加入到全局的teamList中
+    public String createTeam(int dungeonesId, int roleId){
+        String teamId = "0000"+roleId;
+        Team team = new Team(teamId,dungeonesId);
+        DynamicResource.teamList.put(teamId,team);
+        //房主自动加入队伍中
+        DynamicResource.teamList.get(teamId).getRoleList().add(roleId);
+        return "你已经创建了队伍，队伍id为："+teamId+"，快告诉你的小伙伴加入吧";
+    }
+
+    //加入队伍，角色放入队伍集合中，返回队伍中的角色列表 todo 待扩展，测试队员掉线时的变化，分为房主掉线和成员掉线
+    public String joinTeam(String teamId, int roleId){
+        DynamicResource.teamList.get(teamId).getRoleList().add(roleId);
+        return "你已经加入了队伍，当前队伍列表中角色有："+AssistService.getRoleList(teamId);
+    }
+
+    //难度最大的方法，其中还涉及了其他比较多的方法，这些方法需要提取到外部，统一化管理
+    //开始副本，玩家一起攻打BOSS  todo 待扩展，测试队员掉线时的变化，分为房主掉线和成员掉线；掉线时队伍的状态管理和副本的状态管理；是否要考虑重连的情况？
+    // 是否要考虑多线程？不同角色（线程）如何对同一个值进行修改操作
+    public String startDungeons (String teamId, int roleId){//这里直接放入团队的id？或者不放
+        if(!teamId.equals("0000"+roleId)){return "只有房主才有开启副本的权限";}
+        //创建场景，角色加入该场景，怪物加入该场景
+        //角色调用move方法，传送到副本场景中
+        Team team = DynamicResource.teamList.get(teamId);
+        for(int i=0;i<team.getRoleList().size();i++){
+            //move(MonsterResource.monstersStatics.get(DungeonsResource.dungeonsStaticHashMap.get(team.getDungeonsId()).getBossId()).getName(),team.getRoleList().get(i));
+            move(SceneResource.scenesStatics.get(DungeonsResource.dungeonsStaticHashMap.get(team.getDungeonsId()).getSceneId()).getName(),team.getRoleList().get(i));
+        }
+
+        //调用boss定时攻击角色的方法
+        bossAttackRole();
+
+        //期间角色可以对boss进行攻击
+
+        //发现成员掉线了，分为队长和普通成员两种情况。成员掉线，场景队长切换为队员，同时队伍的角色列表中去除名字；队员掉线直接在列表中去除名字，
+
+
+        //角色可以使用自己的技能攻击BOSS，skill命令，todo 该命令需要重构并扩展
+        //调用skill方法，传入参数包含roleId，通过循环遍历队伍中的角色获取
+
+
+        //BOSS自动攻击角色，选取目标，优先选择宝宝，其次选择战士，其他随机；BOSS被嘲讽技能命中时，优先选择释放命令的角色
+        String careerName = "";
+        //伪代码-后续扩展可使用状态设计模式
+/*        if(careerName.equals("被嘲讽")){
+
+        }else if(careerName.equals("宝宝")){
+
+        }else if(careerName.equals("战士")){
+
+        }else {
+            //剩余角色中随机选取
+        }*/
+        //角色被击杀，或规定时间内未完成任务
+
+        //BOSS被打败，团队每人都获得1-2件装备，500-800银两，每个人一样多
+
+        //退出时，回收该地图场景
+
+        return "副本已开启，尽情攻打BOSS，获得更多奖励吧";
+    }
+
+    //全服聊天
+    public String sayToAllPlayer (String words, int roleId){
+        //当前全局通信的基础上进行修改
+
+        return "你已发送消息xx给大家";
+    }
+
+    //私人聊天
+    public String sayToOnePlayer (int TargetRoleId, String words, int roleId){
+
+        return "你已发送消息xx给对方";
+    }
+
+    //发送邮件
+    public String emailToPlayer (int TargetRoleId, String words, String goods, int roleId){
+
+        //邮寄的话，同上
+
+        //邮寄的物品，对方背包中追加该物品，自己背包中减少该物品
+
+        return "你已发送邮件xx给对方";
+    }
+
+    //选择职业，放到前面注册角色后
+    public String chooseCareer (String careerName, int roleId){
+
+        return "你选择了xx职业";
+    }
+
+    //测试用命令
+    public String testCode(){
+        return AssistService.getTeamIdList()+InitGame.dungeonsList;
+    }
+
+    //盾类和蓝药缓慢恢复技能6.9版本
+
+    //boss定时使用技能攻击角色方法
+    public static void bossAttackRole(){
+        Timer timer = new Timer();
+        BossAttack bossAttack = new BossAttack(timer);
+        timer.schedule(bossAttack, Const.DELAY_TIME, Const.GAP_TIME_POTION);
+
+    }
 }
 
 

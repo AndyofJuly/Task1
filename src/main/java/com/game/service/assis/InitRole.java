@@ -2,7 +2,9 @@ package com.game.service.assis;
 
 import com.game.common.Const;
 import com.game.controller.FunctionService;
-import com.game.entity.*;
+import com.game.entity.MyPackage;
+import com.game.entity.Role;
+import com.game.entity.Skill;
 import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SkillResource;
@@ -28,7 +30,7 @@ public class InitRole {
         }
 
         //角色静态数据信息注入，这里是角色当前等级的血量和蓝量；set后方便get
-        role.setLevelId(Const.TYPE_ID);
+        role.setCareerId(Const.CAREER_ID);
 
         //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态，例如角色背包中的物品等
         //目前所有装备和药物都初始化给角色，用于代码测试
