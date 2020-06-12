@@ -8,6 +8,7 @@ import com.game.entity.Skill;
 import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SkillResource;
+import com.game.service.RoleService;
 
 import java.time.Instant;
 import java.util.HashMap;
@@ -51,6 +52,11 @@ public class InitRole {
 
         //开始自动恢复mp
         run();
+
+        //自动告知当前位置，自动装上装备，便于测试
+        RoleService roleService = new RoleService();
+        System.out.println(roleService.aoi(roleId));
+        roleService.putOnEquipment("钢剑",roleId);
     }
 
     private static void run() {

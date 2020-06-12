@@ -25,12 +25,4 @@ public class Listen {
         monsterIsDead=false;
     }
 
-/*    //监听用户输入，记录用户id，在进行其他操作时带上此id，从而实现自动区分每个客户端的角色是哪个id
-    public static String getRoleIdFromInput(String msg,String roleId){
-        if(msg.startsWith("loginR")||msg.startsWith("registerR")){
-            String[] s = msg.split(" ");
-            roleId = " "+ ConnectSql.sql.selectRoleIdByName(s[1]);
-        }
-        return roleId;
-    }*/
 }

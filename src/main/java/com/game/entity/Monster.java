@@ -16,7 +16,7 @@ public class Monster{
     //private MonsterStatic monsterStatic;
     // 怪物id-静态属性
     private int monsterId;
-
+    // 怪物血量
     private int monsterHp;
 
     public Monster(String id, int monsterId) {

@@ -1,6 +1,7 @@
 package com.game.entity;
 
 import com.game.entity.excel.PotionStatic;
+import io.netty.channel.Channel;
 
 import java.util.HashMap;
 
@@ -32,7 +33,10 @@ public class Role {
     private int money = 100;
     //角色防御力
     private int def = 3;
-
+    //是否使用嘲讽技能
+    private boolean useTaunt = false;
+    //召唤师特有属性-宝宝-怪物类
+    private Baby baby;
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
     //如果后续装备类型变多了，还是需要集合
@@ -163,5 +167,21 @@ public class Role {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    public boolean isUseTaunt() {
+        return useTaunt;
+    }
+
+    public void setUseTaunt(boolean useTaunt) {
+        this.useTaunt = useTaunt;
+    }
+
+    public Baby getBaby() {
+        return baby;
+    }
+
+    public void setBaby(Baby baby) {
+        this.baby = baby;
     }
 }

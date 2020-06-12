@@ -188,7 +188,7 @@ public class ConnectSql {
             while (rs.next())
             {
                 id=rs.getInt("playid");
-                System.out.println(id);
+                //System.out.println(id);
             }
             rs.close();
         }catch (Exception e){

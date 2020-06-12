@@ -4,13 +4,16 @@ import com.game.common.Const;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
 import com.game.entity.*;
+import com.game.entity.excel.SceneStatic;
 import com.game.entity.store.*;
 import com.game.service.assis.*;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
+import java.util.UUID;
 
 
 /**
@@ -25,6 +28,7 @@ public class RoleService {
     static int time = 1;
     static int t = 0;
     static int monsterHp;
+    public static Instant useTauntDate;
     Role role;
     Equipment equipment;
 
@@ -63,6 +67,11 @@ public class RoleService {
             role.setNowScenesId(Integer.parseInt(temp));
             //数据库相关操作可以留在用户退出时再调用
             ConnectSql.sql.insertRoleScenes(role.getNowScenesId(),roleId);
+
+            //宝宝进行跟随
+            if(role.getBaby()!=null){
+                role.getBaby().setScenneId(Integer.parseInt(temp));
+            }
         }
         return result;
     }
@@ -81,7 +90,8 @@ public class RoleService {
     //获得场景信息
     public String placeDetail(String scenesName){
         StringBuilder stringBuilder = new StringBuilder("要查看的场景为："+scenesName+"；");
-        for(int j = SceneResource.initSceneId; j< SceneResource.initSceneId+SceneResource.scenesStatics.size(); j++){
+        //for(int j = SceneResource.initSceneId; j< SceneResource.initSceneId+SceneResource.scenesStatics.size(); j++){
+        for(Integer j :SceneResource.scenesStatics.keySet()){
             if(SceneResource.scenesStatics.get(j).getName().equals(scenesName)){
                 Scene o = InitGame.scenes.get(j);
                 stringBuilder.append("角色：");
@@ -181,10 +191,10 @@ public class RoleService {
         return "使用药品成功，你的当前血量为："+role.getHp()+"， 当前的蓝量为："+role.getMp();
     }
 
-    //技能攻击
+    //技能攻击 todo 该命令需要重构并扩展
     public String useSkillAttack(String skillName,String monsterId,int roleId){
         role = FunctionService.roleHashMap.get(roleId);
-        String string = null;
+        String string = "成功使用了技能";
         int dura;
         int weaponId =0;
         for (Integer temp : role.getEquipmentHashMap().keySet()) {
@@ -234,7 +244,7 @@ public class RoleService {
         return string;
     }
 
-    //选择：任意同场景可以pk玩家 todo 可选，仅限竞技场pk玩家
+    //选择：任意同场景可以pk玩家 todo 可选，仅限竞技场pk玩家 todo 该命令需要重构并扩展
     //假设可随意使用技能攻击String skillName,String monsterId,int roleId
     public String pkPlayer (String skillName,int TargetRoleId, int roleId){
         role = FunctionService.roleHashMap.get(roleId);
@@ -248,7 +258,7 @@ public class RoleService {
         //使用该技能，记录当前时间，set方法传给角色的集合的技能对象的属性，同时判断时间是否合理满足CD
         Instant nowDate = Instant.now();
         Duration between = Duration.between(FunctionService.roleHashMap.get(roleId).getSkillHashMap().get(key1).getStart(), nowDate);
-        long l = between.toMillis();
+        long l = between.toMillis();//获取毫秒数
         if(l>SkillResource.skillStaticHashMap.get(key1).getCd()*Const.GAP_TIME_SKILL) {
             role.getSkillHashMap().get(key1).setStart(nowDate);
             //说明技能已经冷却，可以调用该方法，对方扣血
@@ -338,7 +348,7 @@ public class RoleService {
             }else {  //没有该物品，直接放入背包
                 role.getMyPackage().getGoodsHashMap().put(key,number);
             }
-            return "够买成功，目前该药品在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(key);
+            return "购买成功，目前该药品在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(key);
         }else {  //装备的情况
             //先计算是否买得起，买不起直接提示
             int cost = EquipmentResource.equipmentStaticHashMap.get(key).getPrice()*number;
@@ -354,7 +364,7 @@ public class RoleService {
                 role.getMyPackage().getGoodsHashMap().put(keyEquipment,1);
                 System.out.println("获得装备！");
             }
-            return "够买成功，目前该装备在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(keyEquipment);
+            return "购买成功，目前该装备在背包中的数量为"+ role.getMyPackage().getGoodsHashMap().get(keyEquipment);
         }
     }
 
@@ -387,65 +397,43 @@ public class RoleService {
         //创建场景，角色加入该场景，怪物加入该场景
         //角色调用move方法，传送到副本场景中
         Team team = DynamicResource.teamList.get(teamId);
+        //创建临时副本
+        String target = SceneResource.scenesStatics.get(TempSceneCreate.createTempScene(team.getDungeonsId())).getName();
+        //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
-            //move(MonsterResource.monstersStatics.get(DungeonsResource.dungeonsStaticHashMap.get(team.getDungeonsId()).getBossId()).getName(),team.getRoleList().get(i));
-            move(SceneResource.scenesStatics.get(DungeonsResource.dungeonsStaticHashMap.get(team.getDungeonsId()).getSceneId()).getName(),team.getRoleList().get(i));
+            move(target,team.getRoleList().get(i));
         }
-
         //调用boss定时攻击角色的方法
-        bossAttackRole();
-
-        //期间角色可以对boss进行攻击
-
-        //发现成员掉线了，分为队长和普通成员两种情况。成员掉线，场景队长切换为队员，同时队伍的角色列表中去除名字；队员掉线直接在列表中去除名字，
-
-
-        //角色可以使用自己的技能攻击BOSS，skill命令，todo 该命令需要重构并扩展
-        //调用skill方法，传入参数包含roleId，通过循环遍历队伍中的角色获取
-
-
-        //BOSS自动攻击角色，选取目标，优先选择宝宝，其次选择战士，其他随机；BOSS被嘲讽技能命中时，优先选择释放命令的角色
-        String careerName = "";
-        //伪代码-后续扩展可使用状态设计模式
-/*        if(careerName.equals("被嘲讽")){
-
-        }else if(careerName.equals("宝宝")){
-
-        }else if(careerName.equals("战士")){
-
-        }else {
-            //剩余角色中随机选取
-        }*/
-        //角色被击杀，或规定时间内未完成任务
-
-        //BOSS被打败，团队每人都获得1-2件装备，500-800银两，每个人一样多
-
-        //退出时，回收该地图场景
-
+        bossAttackRole(teamId,team.getDungeonsId(),FunctionService.roleHashMap.get(roleId).getNowScenesId());
+        // todo 队员离线时队伍状态维护
         return "副本已开启，尽情攻打BOSS，获得更多奖励吧";
     }
 
     //全服聊天
     public String sayToAllPlayer (String words, int roleId){
-        //当前全局通信的基础上进行修改
-
+        //当前全局通信的基础上进行修改，进行封装
+        //使用all命令发送
         return "你已发送消息xx给大家";
     }
 
     //私人聊天
     public String sayToOnePlayer (int TargetRoleId, String words, int roleId){
-
+        //使用协议号#发送，客户端之间的通信，对外部通信进行封装
         return "你已发送消息xx给对方";
     }
 
     //发送邮件
     public String emailToPlayer (int TargetRoleId, String words, String goods, int roleId){
-
-        //邮寄的话，同上
+        //对外部通信进行封装
 
         //邮寄的物品，对方背包中追加该物品，自己背包中减少该物品
-
-        return "你已发送邮件xx给对方";
+        HashMap<Integer,Integer> goodsHashMap = FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap();
+        //发送邮件的角色背包中减少该物品
+        goodsHashMap.put(AssistService.checkGoodsId(goods),goodsHashMap.get(AssistService.checkGoodsId(goods))-1);
+        //接收邮件的角色背包中增加该物品
+        HashMap<Integer,Integer> goodsHashMapRec = FunctionService.roleHashMap.get(TargetRoleId).getMyPackage().getGoodsHashMap();
+        goodsHashMapRec.put(AssistService.checkGoodsId(goods),goodsHashMapRec.get(AssistService.checkGoodsId(goods))+1);
+        return "你已发送邮件给对方，邮件中包含"+goods;
     }
 
     //选择职业，放到前面注册角色后
@@ -454,19 +442,79 @@ public class RoleService {
         return "你选择了xx职业";
     }
 
-    //测试用命令
-    public String testCode(){
-        return AssistService.getTeamIdList()+InitGame.dungeonsList;
+    //盾类和蓝药缓慢恢复技能6.9版本，暂未重写
+
+    //普通攻击技能 todo 与前面的skill命令合并
+    public String atkSkill(String skillName,String monsterName,int roleId){
+        int damage = SkillResource.skillStaticHashMap.get(AssistService.checkSkillId(skillName)).getAtk();
+        Monster monster = InitGame.scenes.get(FunctionService.roleHashMap.get(roleId)).getMonsterHashMap().get(AssistService.checkMonsterId(monsterName,roleId));
+        monster.setMonsterHp(monster.getMonsterHp()-damage);
+        return "使用了普通攻击技能，对怪物造成了伤害";
     }
 
-    //盾类和蓝药缓慢恢复技能6.9版本
+    //战士的嘲讽技能
+    public String tauntSkill(int roleId){
+        useTauntDate = Instant.now();
+        FunctionService.roleHashMap.get(roleId).setUseTaunt(true);
+        //BossAttack类中的首要条件被激活
+        return "怪物收到嘲讽，转向攻击释放嘲讽技能的角色";
+    }
 
-    //boss定时使用技能攻击角色方法
-    public static void bossAttackRole(){
+    //法师的群伤技能
+    public String groupAtkSkill(String skillName,int roleId){
+        int skey = AssistService.checkSkillId(skillName);
+        int sceneId = FunctionService.roleHashMap.get(roleId).getNowScenesId();
+        for(String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()){
+            Monster monster = InitGame.scenes.get(sceneId).getMonsterHashMap().get(key);
+            //这个怪物列表是开启副本时的场景中的怪物，或者任何场景下的怪物集合
+            monster.setMonsterHp(monster.getMonsterHp()-SkillResource.skillStaticHashMap.get(skey).getAtk());
+        }
+        return "使用了群体伤害技能，场景怪物均受到攻击";
+    }
+
+    //法师的群体恢复技能
+    public String groupCureSkill(String skillName,int roleId){
+        int skey = AssistService.checkSkillId(skillName);
+        int sceneId = FunctionService.roleHashMap.get(roleId).getNowScenesId();
+        for(Role role : InitGame.scenes.get(sceneId).getRoleAll()){
+            role.setHp(role.getHp()+SkillResource.skillStaticHashMap.get(skey).getAddHp());
+        }
+        return "使用了群体恢复技能，角色得到治疗";
+    }
+
+    //对怪物使用召唤技能时自动触发宝宝攻击
+    //技能攻击
+    public String summonSkill(String monsterName,int roleId){
+        Role role = FunctionService.roleHashMap.get(roleId);
+        if(role.getBaby()==null){ //角色没有baby，则创建一个
+            Baby baby = new Baby(Const.BABY_RAND_ID,Const.BABY_ID,role);
+            role.setBaby(baby);
+        }
+        babyAttackMonster(AssistService.checkMonsterId(monsterName,roleId),role.getNowScenesId());
+        return "宝宝开始自动释放技能攻击怪物";
+    }
+
+    //boss定时使用技能攻击角色方法，简单AI
+    public static void bossAttackRole(String teamId,int dungeonsId,int sceneId){
         Timer timer = new Timer();
-        BossAttack bossAttack = new BossAttack(timer);
-        timer.schedule(bossAttack, Const.DELAY_TIME, Const.GAP_TIME_POTION);
+        BossAttack bossAttack = new BossAttack(timer,teamId,dungeonsId,sceneId);
+        timer.schedule(bossAttack, Const.DELAY_TIME, Const.GAP_TIME_BOSS);
+    }
 
+    //宝宝定时使用技能攻击怪物方法，简单AI
+    public static void babyAttackMonster(String monsterId,int sceneId){
+        Timer timer = new Timer();
+        BabyAttack babyAttack = new BabyAttack(timer,monsterId,sceneId);
+        timer.schedule(babyAttack, Const.DELAY_TIME, Const.GAP_TIME_BABY);//1s一次，Const.GAP_TIME_POTION为10s一次
+    }
+
+    //测试用命令
+    public String testCode(int roleId){
+        //在对角色使用move指令后，获得当前宝宝的场景，测试宝宝是否跟随
+/*        Role role = FunctionService.roleHashMap.get(roleId);
+        System.out.println(role.getBaby().getScenneId());
+        return "宝宝跟随了，宝宝当前场景为"+role.getBaby().getScenneId()+"宝宝的id"+role.getBaby().getBabyId();*/
+        return BabyResource.babyStatics.get(6001).getHp()+"";
     }
 }
 

@@ -10,6 +10,7 @@ import com.game.entity.User;
 import com.game.entity.store.SceneResource;
 import com.game.service.RoleService;
 import com.game.service.UserService;
+import com.game.service.assis.TempSceneCreate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -199,7 +200,7 @@ public class FunctionService {
         return roleService.chooseCareer(strings[1],Integer.parseInt(strings[2]));
     }
 
-/*   建议技能类放在一个方法中，调整一下
+/*   待调整
     //扩展方法蓝药缓慢恢复demo
     @MyAnnontation(MethodName = "sR")
     public String slowlyRecoverd(){
@@ -212,9 +213,43 @@ public class FunctionService {
         return roleService.useSkill(strings[1],strings[2]);
     }*/
 
+    //普通攻击技能测试，使用举例：atk skillName monsterName todo 与前面的skill命令合并
+    @MyAnnontation(MethodName = "atk")
+    public String atkSkill(){
+        return roleService.atkSkill(strings[1],strings[2],Integer.parseInt(strings[3]));
+    }
+
+    //嘲讽技能测试，使用举例：taunt
+    @MyAnnontation(MethodName = "taunt")
+    public String tauntSkill(){
+        return roleService.tauntSkill(Integer.parseInt(strings[1]));
+    }
+
+    //群伤技能测试，使用举例：groupAtk skillName 默认对当前场景的所有怪物造成群伤，可扩展：传参为怪物集合
+    @MyAnnontation(MethodName = "groupAtk")
+    public String groupAtkSkill(){
+        return roleService.groupAtkSkill(strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //群回复技能测试，使用举例：groupHile skillName 默认对当前场景的所有角色，可扩展：传参为角色集合
+    @MyAnnontation(MethodName = "groupCure")
+    public String groupCureSkill(){
+        return roleService.groupCureSkill(strings[1],Integer.parseInt(strings[2]));
+    }
+
+    //召唤技能测试，使用举例：summon monsterName
+    @MyAnnontation(MethodName = "summon")
+    public String summonSkill(){
+        return roleService.summonSkill(strings[1],Integer.parseInt(strings[2]));
+    }
+
     //调试代码用的测试
     @MyAnnontation(MethodName = "test")
     public String testCode(){
-        return roleService.testCode();
+        return roleService.testCode(Integer.parseInt(strings[1]));
+        //TempSceneCreate.deleteTempScene(11001);
+        //return "已回收";
     }
+
+
 }

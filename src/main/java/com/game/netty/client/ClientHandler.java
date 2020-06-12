@@ -1,7 +1,7 @@
 package com.game.netty.client;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
  * netty客户端业务逻辑
@@ -10,11 +10,11 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * @create 2020/5/12 22:32
  */
 
-public class ClientHandler extends ChannelInboundHandlerAdapter {
-    @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+public class ClientHandler extends SimpleChannelInboundHandler<String> {
 
-        //此处的msg.toString来自ServerHandler的flush刷新后的通道信息
-        System.out.println(msg.toString());
+    @Override
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
+        System.out.println(s.trim());
     }
 }
+

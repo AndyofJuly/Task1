@@ -2,14 +2,16 @@ package com.game.netty.client;
 
 import com.game.dao.ConnectSql;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.*;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * netty客户端
@@ -20,58 +22,61 @@ import java.io.InputStreamReader;
 
 public class NettySingleClient {
 
-    public static void main(String[] args) {
-        startClient();
+    private final String HOST_IP;
+    private final int PORT;
+
+    public NettySingleClient(String host, int port){
+        this.HOST_IP = host;
+        this.PORT = port;
     }
 
-    public static void startClient(){
-        //1.定义服务类
-        Bootstrap clientBootstap = new Bootstrap();
+    public void run() throws InterruptedException {
+        NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
 
-        //2.定义执行线程组
-        EventLoopGroup worker = new NioEventLoopGroup();
-
-        //3.设置线程池
-        clientBootstap.group(worker);
-
-        //4.设置通道
-        clientBootstap.channel(NioSocketChannel.class);
-
-        //5.添加Handler
-        clientBootstap.handler(new ChannelInitializer<Channel>() {
-            @Override
-            protected void initChannel(Channel channel) {
-                System.out.println("client channel init!");
-                ChannelPipeline pipeline = channel.pipeline();
-                pipeline.addLast("StringDecoder",new StringDecoder());
-                pipeline.addLast("StringEncoder",new StringEncoder());
-                pipeline.addLast("ClientHandler",new ClientHandler());
-            }
-        });
-
-        //6.建立连接
-        ChannelFuture channelFuture = clientBootstap.connect("127.0.0.1",8080);
         try {
-            //7.测试输入
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("请输入命令：");
-            String id = "";
-            while(true){
-                String msg = bufferedReader.readLine();
-                if(msg.startsWith("loginR")||msg.startsWith("registerR")){
-                    String[] s = msg.split(" ");
-                    id = " "+ConnectSql.sql.selectRoleIdByName(s[1]);
-                }
-                channelFuture.channel().writeAndFlush(msg+id);
-                if("quit".equals(msg)){
-                    break;
+            Bootstrap bootstrap = new Bootstrap();
+
+            bootstrap.group(eventExecutors)
+                    .channel(NioSocketChannel.class)
+                    .handler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        protected void initChannel(SocketChannel ch) throws Exception {
+                            ChannelPipeline pipeline = ch.pipeline();
+                            //向pipeline加入一个解码器
+                            pipeline.addLast("decoder",new StringDecoder());
+
+                            //向pipeline加入编码器
+                            pipeline.addLast("encode",new StringEncoder());
+
+                            //加入自己的处理器
+                            pipeline.addLast(new ClientHandler());
+
+                        }
+                    });
+
+            ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
+            if (channelFuture.isSuccess()){
+                Scanner scanner = new Scanner(System.in);
+                String id = "";
+                while (scanner.hasNextLine()){
+                    String msg = scanner.nextLine();
+                    if(msg.startsWith("loginR")||msg.startsWith("registerR")){
+                        String[] s = msg.split(" ");
+                        id = " "+ ConnectSql.sql.selectRoleIdByName(s[1]);
+                    }
+                    channelFuture.channel().writeAndFlush(msg+id);
+                    if("quit".equals(msg)){
+                        break;
+                    }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }finally {
-            //8.关闭连接
-            worker.shutdownGracefully();
+            eventExecutors.shutdownGracefully();
         }
     }
+
+    public static void main(String[] args) throws InterruptedException {
+        new NettySingleClient("127.0.0.1",7000).run();
+    }
 }
+

@@ -20,15 +20,27 @@ public class Const {
     public static final int ABTAIN_ATK = 2;
     //s转换为ms
     public static final int TO_MS = 1000;
-    //MP的持续回复药物，回复的间隔时间
+    //MP的持续回复药物，回复的定时间隔时间
     public static final int GAP_TIME_POTION = 10000;
-    //MP的持续回复药物，回复的间隔时间
+    //技能定时时间
     public static final int GAP_TIME_SKILL = 1000;
+    //测试怪物攻击定时时间
+    public static final int GAP_TIME_BOSS = 2000;
+    //测试宝宝攻击定时时间
+    public static final int GAP_TIME_BABY = 4000;
     //延时时间
     public static final int DELAY_TIME = 0;
 
     //怪物死后，通知消息
-    public static final String MONSTER_MESSEAGE = "the monster is dead. \n";
+    public static final String MONSTER_MESSEAGE = "系统提示：boss已被玩家击败！";
+
+    //宝宝测试随机id
+    public static final String BABY_RAND_ID = "101";
+    //宝宝测试静态id
+    public static final int BABY_ID = 6001;
+
+    //副本出发点-统一在此处
+    public static final String DUNGEONS_START_SCENE = "副本传送点";
 
     //excel常量数据配置表地址
     public static final String SCENE_CONST_PATH = ".\\src\\main\\resources\\scenes.xls";
@@ -40,6 +52,7 @@ public class Const {
     //public static final String ROLE_CONST_PATH = ".\\src\\main\\resources\\role.xls";
     public static final String CAREER_CONST_PATH = ".\\src\\main\\resources\\career.xls";
     public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\dungeons.xls";
+    public static final String BABY_CONST_PATH = ".\\src\\main\\resources\\baby.xls";
 
     //数据库连接信息
     public static final String URL = "jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";

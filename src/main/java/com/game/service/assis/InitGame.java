@@ -29,7 +29,8 @@ public class InitGame {
 
         //场景中生成少量怪物-以下可拆分到其他类例如场景初始化类
         //两重循环，n个场景，每个场景遍历含有的怪物，实例化这些怪物
-        for(int i = SceneResource.initSceneId; i< SceneResource.initSceneId+SceneResource.scenesStatics.size(); i++) {
+        //for(int i = SceneResource.initSceneId; i< SceneResource.initSceneId+SceneResource.scenesStatics.size(); i++) {
+        for(Integer i : SceneResource.scenesStatics.keySet()){
             for(int j=0;j<SceneResource.scenesStatics.get(i).getMonsterId().length;j++) {
                 String key = SceneResource.scenesStatics.get(i).getMonsterId()[j];//静态资源的怪物id
                 //此处每个场景生成一个对应静态的怪
@@ -39,7 +40,7 @@ public class InitGame {
                 InitGame.scenes.get(i).getMonsterHashMap().put(monsterId, new Monster(monsterId,Integer.valueOf(key)));
                 //System.out.println(InitGame.scenes.get(i).getMonsterHashMap().get(monsterId).getMonsterId());
             }
-            System.out.println();
+            //System.out.println();
         }
 
         //商品列表

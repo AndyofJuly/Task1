@@ -18,5 +18,5 @@ public class DynamicResource {
     public static HashMap<String, Team> teamList = new HashMap<String, Team>();
 
     // BOSS所在场景列表，元素为BOSS所在场景的id
-    public static List<String> sceneOfBossList = new ArrayList<String>();
+    public static ArrayList<String> sceneOfBossList = new ArrayList<String>();
 }

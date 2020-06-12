@@ -49,6 +49,7 @@ public class AssistService {
         return 0;
     }
 
+    //此id为UUID
     public static String checkMonsterId(String monsterName,int roleId){
         int sceneId = FunctionService.roleHashMap.get(roleId).getNowScenesId();
         for (String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()) {

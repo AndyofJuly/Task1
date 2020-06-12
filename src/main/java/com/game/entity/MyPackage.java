@@ -21,6 +21,7 @@ public class MyPackage {
 //    private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
     // 背包中的装备，使用map集合，元素不可重复
 //    private HashMap<Integer,Equipment> packageEquipmentHashMap = new HashMap<Integer,Equipment>();
+    //物品id和物品数量
     private HashMap<Integer,Integer> goodsHashMap = new HashMap<Integer,Integer>();
 
 /*    public MyPackage(int size, HashMap<Integer, Potion> potionHashMap, HashMap<Integer, Equipment> packageEquipmentHashMap) {

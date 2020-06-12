@@ -1,7 +1,6 @@
 package com.game.service.assis;
 
 import com.game.common.Const;
-//import com.game.common.InitStaticResource;
 import com.game.controller.FunctionService;
 import com.game.entity.store.CareerResource;
 
@@ -19,13 +18,11 @@ public class MpRecover extends TimerTask {
         for(Integer key : FunctionService.roleHashMap.keySet()){
             int mp=FunctionService.roleHashMap.get(key).getMp()+ Const.RECOVER_MP;
             if(mp >= CareerResource.careerStaticHashMap.get(FunctionService.roleHashMap.get(key).getCareerId()).getMp()){
-                    //RoleResource.roleStaticHashMap.get(FunctionService.roleHashMap.get(key).getLevelId()).getLevelMp()){
-                //getRoleStatic().getLevelMp()){
                 //System.out.println("测试用提示：角色"+FunctionService.roleHashMap.get(key).getName()+"的mp恢复满了");
                 return;
             }
             FunctionService.roleHashMap.get(key).setMp(mp);
-            System.out.println("现在"+FunctionService.roleHashMap.get(key).getName()+"的mp为："+FunctionService.roleHashMap.get(key).getMp());
+            //System.out.println("现在"+FunctionService.roleHashMap.get(key).getName()+"的mp为："+FunctionService.roleHashMap.get(key).getMp());
         }
     }
 }

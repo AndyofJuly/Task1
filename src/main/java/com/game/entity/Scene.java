@@ -45,4 +45,5 @@ public class Scene {
     public void setMonsterHashMap(HashMap<String, Monster> monsterHashMap) {
         this.monsterHashMap = monsterHashMap;
     }
+
 }

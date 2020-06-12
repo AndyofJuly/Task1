@@ -14,7 +14,7 @@ public class Team {
     //队伍id
     String id;
     //队伍中的角色集合，存放角色id
-    List<Integer> roleList = new ArrayList<Integer>();
+    ArrayList<Integer> roleList = new ArrayList<Integer>();
     //选择的副本id
     int dungeonsId;
 
@@ -26,11 +26,11 @@ public class Team {
         this.dungeonsId = dungeonsId;
     }
 
-    public List<Integer> getRoleList() {
+    public ArrayList<Integer> getRoleList() {
         return roleList;
     }
 
-    public void setRoleList(List<Integer> roleList) {
+    public void setRoleList(ArrayList<Integer> roleList) {
         this.roleList = roleList;
     }
 
