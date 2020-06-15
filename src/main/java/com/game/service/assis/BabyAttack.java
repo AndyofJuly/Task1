@@ -29,14 +29,15 @@ public class BabyAttack extends TimerTask {
     static int k = 0;
     @Override
     public void run() {
-        int damage = SkillService.normalAttackSkill(1008);
+        int damage = SkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
         k++;
-        if(InitGame.scenes.get(sceneId)==null){//不在场景中了
+        //不在场景中了
+        if(InitGame.scenes.get(sceneId)==null){
             System.out.println(Const.DUNGEONS_START_SCENE);
             this.timer.cancel();
             return;
         }
-        //表现效果就是，怪物定时收到技能伤害，但是Timer定时器没有传参也没有输出，可能需要用其他定时器来替换----似乎可以用构造方法来传参
+        //表现效果就是，怪物定时收到技能伤害，该类使用构造方法来传参
         Monster monster = InitGame.scenes.get(sceneId).getMonsterHashMap().get(monsterId);
         monster.setMonsterHp(monster.getMonsterHp()-damage);
         if(monster.getMonsterHp()<=0){

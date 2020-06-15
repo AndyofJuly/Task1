@@ -1,16 +1,13 @@
 package com.game.controller;
 
-import com.game.service.assis.AssistService;
-import com.game.service.assis.InitGame;
-import com.game.service.assis.InitRole;
 import com.game.common.MyAnnontation;
 import com.game.dao.ConnectSql;
 import com.game.entity.Role;
 import com.game.entity.User;
-import com.game.entity.store.SceneResource;
 import com.game.service.RoleService;
 import com.game.service.UserService;
-import com.game.service.assis.TempSceneCreate;
+import com.game.service.assis.AssistService;
+import com.game.service.assis.InitGame;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -37,25 +34,18 @@ public class FunctionService {
     //用户登录，使用举例：login userName password
     @MyAnnontation(MethodName = "login")
     public String loginMesseage() {
-        //user = new User(strings[1],strings[2]);
-        //String getRoleId = userService.login(strings[1],strings[2]);
-        //userHashMap.put(Integer.parseInt(getRoleId),new User(strings[1],strings[2]));
         return userService.login(strings[1],strings[2])+"";
     }
 
-    //角色注册，使用举例：registerR roleName careerName
+    //角色注册，使用举例（新增职业选择，插入数据库中，并进入游戏时拿到缓存里）：registerR roleName careerName
     @MyAnnontation(MethodName = "registerR")
-    public String registerRoleMesseage() {
-        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(Integer.parseInt(strings[3]),strings[1], SceneResource.initSceneId));
-        InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
-        return userService.registerRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]),AssistService.checkCareerId(strings[2]));
+    public String registerRoleMesseage() { //注册时没有id，id从数据库中拿
+        return userService.registerRole(strings[1],AssistService.checkCareerId(strings[2]));
     }
 
     //角色登录，使用举例：loginR roleName
     @MyAnnontation(MethodName = "loginR")
     public String loginRoleMesseage() {
-        roleHashMap.put(ConnectSql.sql.selectRoleIdByName(strings[1]),new Role(Integer.parseInt(strings[2]),strings[1],ConnectSql.sql.selectRoleScenesId(strings[1])));
-        InitRole.init(ConnectSql.sql.selectRoleIdByName(strings[1]));
         return userService.loginRole(strings[1],ConnectSql.sql.selectRoleIdByName(strings[1]));
     }
 
@@ -175,29 +165,13 @@ public class FunctionService {
         return roleService.pkPlayer(strings[1],ConnectSql.sql.selectRoleIdByName(strings[2]),Integer.parseInt(strings[3]));
     }
 
-    //全服聊天，使用举例：say words...
-    @MyAnnontation(MethodName = "say")
-    public String sayToAllPlayer(){
-        return roleService.sayToAllPlayer(strings[1],Integer.parseInt(strings[2]));
-    }
-
-    //私人聊天，使用举例：sayTo ss(roleId) words...
-    @MyAnnontation(MethodName = "sayTo")
-    public String sayToOnePlayer(){
-        return roleService.sayToOnePlayer(Integer.parseInt(strings[1]),strings[1],Integer.parseInt(strings[2]));
-    }
+    // 全服聊天：在netty服务端进行处理：say words...
+    // 私人聊天：在netty服务端进行处理：sayTo roleName words...
 
     //发送邮件，使用举例：email ss(roleId) words... goods；假设一次只能邮寄一个物品
     @MyAnnontation(MethodName = "email")
     public String emailToPlayer(){
         return roleService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]));
-    }
-
-    // TODO: 2020/6/6 本类需要按系统进行拆分了，否则过长
-    //选择职业，使用举例：choose careerName
-    @MyAnnontation(MethodName = "choose")
-    public String chooseCareer(){
-        return roleService.chooseCareer(strings[1],Integer.parseInt(strings[2]));
     }
 
 /*   待调整
@@ -212,6 +186,12 @@ public class FunctionService {
     public String useSkill(){
         return roleService.useSkill(strings[1],strings[2]);
     }*/
+
+    //显示当前自己的职业有什么技能
+    @MyAnnontation(MethodName = "skillList")
+    public String getSkillList(){
+        return roleService.getSkillList(Integer.parseInt(strings[1]));
+    }
 
     //普通攻击技能测试，使用举例：atk skillName monsterName todo 与前面的skill命令合并
     @MyAnnontation(MethodName = "atk")
@@ -247,8 +227,6 @@ public class FunctionService {
     @MyAnnontation(MethodName = "test")
     public String testCode(){
         return roleService.testCode(Integer.parseInt(strings[1]));
-        //TempSceneCreate.deleteTempScene(11001);
-        //return "已回收";
     }
 
 

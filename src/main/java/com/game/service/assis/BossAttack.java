@@ -3,10 +3,7 @@ package com.game.service.assis;
 import com.game.common.Const;
 import com.game.controller.FunctionService;
 import com.game.entity.Baby;
-import com.game.entity.Monster;
 import com.game.entity.Role;
-import com.game.entity.Skill;
-import com.game.entity.store.CareerResource;
 import com.game.entity.store.DungeonsResource;
 import com.game.entity.store.SkillResource;
 import com.game.service.RoleService;
@@ -14,7 +11,6 @@ import com.game.service.RoleService;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,7 +21,6 @@ import java.util.TimerTask;
  */
 public class BossAttack extends TimerTask {
     private Timer timer;
-    //private HashMap<Integer, Role> roleHashMap;
     private String teamId;
     private int dungeonsId;
     private int sceneId;
@@ -41,7 +36,7 @@ public class BossAttack extends TimerTask {
     static int seconds = 0;
     @Override
     public void run() {
-        int damage = SkillService.normalAttackSkill(1008);
+        int damage = SkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
         //for(String teamId : DynamicResource.teamList.keySet()){
         //轮流攻击玩家，暂定用if..else结构
         boolean flagt=false,flagb=false,flagr=false,flago=false;
@@ -50,14 +45,12 @@ public class BossAttack extends TimerTask {
         ArrayList<Integer> list = DynamicResource.teamList.get(teamId).getRoleList();
         //baby待修改
         Baby baby = null;
-        //Monster baby = InitGame.scenes.get(sceneId).getMonsterHashMap().get("101");
         //记录当前场景id，用于回收 todo 应考虑角色离线的情况
         int tempSceneId = sceneId;
         int allHp=0;
         for(int i = 0; i< list.size(); i++){
             Role role = FunctionService.roleHashMap.get(list.get(i));
             baby = role.getBaby();
-           //后面可扩展优化为状态设计模式，目前代码扩展能力弱
             if(role.isUseTaunt()){
                 flagt=true;
                 tkey=i;
@@ -68,7 +61,7 @@ public class BossAttack extends TimerTask {
                 continue;
             }else if(role.getCareerId()==5001 && role.getHp()>0){//战士role.getAlive()==1
                 flagr=true;
-                rkey = i;//三个都是战士，记录了最后一个战士
+                rkey = i;
                 continue;
             }else if(role.getHp()>0){  //剩余职业，怪物任意选择攻击
                 flago=true;
@@ -85,7 +78,7 @@ public class BossAttack extends TimerTask {
             Duration between = Duration.between(RoleService.useTauntDate, nowDate);
             long l = between.toMillis()/1000;
             System.out.println(l);
-            if(l>= SkillResource.skillStaticHashMap.get(1010).getDuration()){ //测试时间后嘲讽技能失效 todo 问题
+            if(l>= SkillResource.skillStaticHashMap.get(1010).getDuration()){
                 role.setUseTaunt(false);
             }
             if(role.getHp()<=0){
@@ -131,11 +124,11 @@ public class BossAttack extends TimerTask {
                 roleService.move(Const.DUNGEONS_START_SCENE,role.getId());
             }
             this.timer.cancel();
-            TempSceneCreate.deleteTempScene(tempSceneId);
+            TempSceneService.deleteTempScene(tempSceneId);
             return;
         }
 
-        // todo 当角色都被boss打败时，挑战失败退出副本
+        // 当角色都被boss打败时，挑战失败退出副本
         for(int i = 0; i< list.size(); i++) {
             Role role = FunctionService.roleHashMap.get(list.get(i));
             allHp = allHp+role.getHp();
@@ -148,7 +141,7 @@ public class BossAttack extends TimerTask {
                 roleService.move(Const.DUNGEONS_START_SCENE,role.getId());
             }
             this.timer.cancel();
-            TempSceneCreate.deleteTempScene(tempSceneId);
+            TempSceneService.deleteTempScene(tempSceneId);
             return;
         }
 
@@ -164,13 +157,13 @@ public class BossAttack extends TimerTask {
                     roleService.move(Const.DUNGEONS_START_SCENE,role.getId());
                 }
                 this.timer.cancel();
-                TempSceneCreate.deleteTempScene(tempSceneId);
+                TempSceneService.deleteTempScene(tempSceneId);
                 return;
             }
         }
     }
 
     public static int bossAttack(){
-        return SkillService.normalAttackSkill(1008);
+        return SkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
     }
 }

@@ -1,7 +1,10 @@
 package com.game.netty.client;
 
 import com.game.dao.ConnectSql;
+import com.game.netty.server.ServerHandler;
+import com.game.service.assis.DynamicResource;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -53,18 +56,18 @@ public class NettySingleClient {
 
                         }
                     });
-
             ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
             if (channelFuture.isSuccess()){
                 Scanner scanner = new Scanner(System.in);
                 String id = "";
                 while (scanner.hasNextLine()){
                     String msg = scanner.nextLine();
-                    if(msg.startsWith("loginR")||msg.startsWith("registerR")){
+                    if(msg.startsWith("loginR")){
                         String[] s = msg.split(" ");
                         id = " "+ ConnectSql.sql.selectRoleIdByName(s[1]);
                     }
                     channelFuture.channel().writeAndFlush(msg+id);
+
                     if("quit".equals(msg)){
                         break;
                     }

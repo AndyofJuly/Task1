@@ -1,0 +1,1929 @@
+2020-06-14 09:33:44  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:33:44  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:33:44  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:33:44  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:33:44  [ main:34 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:33:44  [ main:34 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:33:44  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:33:44  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:33:44  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:33:44  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:33:44  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:33:44  [ main:60 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:33:44  [ main:61 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:33:44  [ main:61 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:33:44  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:33:44  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:33:44  [ main:62 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:33:44  [ main:62 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:33:44  [ main:62 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:33:44  [ main:64 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:33:44  [ main:64 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:33:44  [ main:65 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:33:44  [ main:65 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:33:44  [ main:72 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:33:45  [ main:586 ] - [ DEBUG ]  -Dio.netty.processId: 15980 (auto-detected)
+2020-06-14 09:33:45  [ main:588 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:33:45  [ main:588 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:33:45  [ main:884 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:33:45  [ main:885 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:33:45  [ main:1144 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:33:45  [ main:1163 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:33:45  [ main:1163 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:33:46  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:33:46  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:33:46  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:33:46  [ main:1197 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:33:46  [ main:1197 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:33:48  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:33:48  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:33:48  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:33:48  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:33:48  [ main:32 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:33:48  [ main:32 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:33:48  [ main:54 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:33:48  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:33:48  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:33:48  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:33:48  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:33:48  [ main:60 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:33:48  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:33:48  [ main:61 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:33:48  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:33:48  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:33:48  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:33:48  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:33:48  [ main:62 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:33:48  [ main:63 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:33:48  [ main:63 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:33:48  [ main:64 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:33:48  [ main:64 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:33:48  [ main:74 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:33:48  [ main:567 ] - [ DEBUG ]  -Dio.netty.processId: 13428 (auto-detected)
+2020-06-14 09:33:48  [ main:569 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:33:48  [ main:569 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:33:49  [ main:864 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:33:49  [ main:865 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:33:49  [ main:1171 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:33:49  [ main:1188 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:33:49  [ main:1188 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:33:49  [ main:1226 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:33:49  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:33:49  [ main:1237 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:33:49  [ main:1237 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:33:49  [ main:1237 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:34:05  [ main:17011 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:34:05  [ main:17012 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:34:05  [ main:17012 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:34:05  [ main:17012 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:34:05  [ nioEventLoopGroup-2-1:17033 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:34:05  [ nioEventLoopGroup-2-1:17034 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:34:05  [ nioEventLoopGroup-2-1:17034 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@6e35d755
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20419 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20419 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20419 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20419 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20425 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20425 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20425 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1a32da9b
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20474 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:20527 ] - [ INFO ]  Reflections took 53 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:34:05  [ nioEventLoopGroup-3-1:21123 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:76)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:71)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:29)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-14 09:36:43  [ main:1 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:36:43  [ main:6 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:36:44  [ main:76 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:36:44  [ main:76 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:36:44  [ main:90 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:36:44  [ main:90 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:36:44  [ main:114 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:36:44  [ main:118 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:36:44  [ main:118 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:36:44  [ main:121 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:36:44  [ main:122 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:36:44  [ main:123 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:36:44  [ main:125 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:36:44  [ main:126 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:36:44  [ main:126 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:36:44  [ main:127 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:36:44  [ main:127 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:36:44  [ main:127 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:36:44  [ main:128 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:36:44  [ main:130 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:36:44  [ main:130 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:36:44  [ main:132 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:36:44  [ main:133 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:36:44  [ main:153 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:36:44  [ main:587 ] - [ DEBUG ]  -Dio.netty.processId: 12904 (auto-detected)
+2020-06-14 09:36:44  [ main:589 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:36:44  [ main:589 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:36:44  [ main:856 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:36:44  [ main:857 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:36:45  [ main:1123 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:36:45  [ main:1135 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:36:45  [ main:1135 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:36:45  [ main:1156 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:36:45  [ main:1164 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:36:45  [ main:1164 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:36:45  [ main:1164 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:36:50  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:36:50  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:36:50  [ main:32 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:36:50  [ main:32 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:36:50  [ main:38 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:36:50  [ main:39 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:36:50  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:36:50  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:36:50  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:36:50  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:36:50  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:36:50  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:36:50  [ main:59 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:36:50  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:36:50  [ main:60 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:36:50  [ main:60 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:36:50  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:36:50  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:36:50  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:36:50  [ main:62 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:36:50  [ main:62 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:36:50  [ main:63 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:36:50  [ main:63 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:36:50  [ main:72 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:36:50  [ main:529 ] - [ DEBUG ]  -Dio.netty.processId: 13600 (auto-detected)
+2020-06-14 09:36:50  [ main:530 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:36:50  [ main:531 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:36:50  [ main:801 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:36:50  [ main:801 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:36:51  [ main:1123 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:36:51  [ main:1133 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:36:51  [ main:1133 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:36:51  [ main:1153 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:36:51  [ main:1159 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:36:51  [ main:1160 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:36:51  [ main:1160 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:36:51  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:36:51  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:36:51  [ main:29 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:36:51  [ main:29 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:36:51  [ main:35 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:36:51  [ main:35 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:36:51  [ main:57 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:36:51  [ main:58 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:36:51  [ main:58 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:36:51  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:36:51  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:36:51  [ main:62 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:36:51  [ main:62 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:36:51  [ main:63 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:36:51  [ main:63 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:36:51  [ main:63 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:36:51  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:36:51  [ main:64 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:36:51  [ main:64 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:36:51  [ main:66 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:36:51  [ main:66 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:36:51  [ main:67 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:36:51  [ main:67 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:36:51  [ main:76 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:36:52  [ main:556 ] - [ DEBUG ]  -Dio.netty.processId: 9060 (auto-detected)
+2020-06-14 09:36:52  [ main:557 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:36:52  [ main:557 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:36:52  [ main:855 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:36:52  [ main:855 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:36:53  [ main:1178 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:36:53  [ main:1188 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:36:53  [ main:1188 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:36:53  [ main:1207 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:36:53  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:36:53  [ main:1213 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:36:53  [ main:1213 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:37:00  [ main:8315 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:37:00  [ main:8315 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:37:00  [ main:8315 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:37:00  [ main:8315 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:37:00  [ nioEventLoopGroup-2-1:8323 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:37:00  [ nioEventLoopGroup-2-1:8324 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:37:00  [ nioEventLoopGroup-2-1:8324 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1a9230eb
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10177 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10177 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10178 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10178 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10183 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10183 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10184 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@741a4e4e
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10215 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:37:00  [ nioEventLoopGroup-3-1:10249 ] - [ INFO ]  Reflections took 34 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:46:33  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:46:33  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:46:33  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:46:33  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:46:33  [ main:39 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:46:33  [ main:39 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:46:33  [ main:56 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:46:33  [ main:57 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:46:33  [ main:57 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:46:33  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:46:33  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:46:33  [ main:60 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:46:33  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:46:33  [ main:61 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:46:33  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:46:33  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:46:33  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:46:33  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:46:33  [ main:62 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:46:33  [ main:65 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:46:33  [ main:66 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:46:33  [ main:67 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:46:33  [ main:67 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:46:33  [ main:75 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:46:34  [ main:528 ] - [ DEBUG ]  -Dio.netty.processId: 14396 (auto-detected)
+2020-06-14 09:46:34  [ main:529 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:46:34  [ main:530 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:46:34  [ main:837 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:46:34  [ main:838 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:46:35  [ main:1179 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:46:35  [ main:1189 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:46:35  [ main:1189 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:46:35  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:46:35  [ main:1210 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:46:35  [ main:1210 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:46:35  [ main:1215 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:46:35  [ main:1216 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:46:35  [ main:1216 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:46:35  [ main:1 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:46:35  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:46:35  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:46:35  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:46:35  [ main:30 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:46:35  [ main:30 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:46:35  [ main:48 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:46:35  [ main:50 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:46:35  [ main:50 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:46:35  [ main:51 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:46:35  [ main:53 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:46:35  [ main:54 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:46:35  [ main:54 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:46:35  [ main:55 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:46:35  [ main:55 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:46:35  [ main:62 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:46:36  [ main:537 ] - [ DEBUG ]  -Dio.netty.processId: 21464 (auto-detected)
+2020-06-14 09:46:36  [ main:539 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:46:36  [ main:539 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:46:36  [ main:802 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:46:36  [ main:803 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:46:37  [ main:1121 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:46:37  [ main:1133 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:46:37  [ main:1133 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:46:37  [ main:1154 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:46:37  [ main:1155 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:46:37  [ main:1155 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:46:37  [ main:1155 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:46:37  [ main:1162 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:46:37  [ main:1162 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:46:37  [ main:1162 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:46:40  [ main:4524 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:46:40  [ main:4525 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:46:40  [ main:4525 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:46:40  [ main:4525 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:46:40  [ nioEventLoopGroup-2-1:4533 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:46:40  [ nioEventLoopGroup-2-1:4533 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:46:40  [ nioEventLoopGroup-2-1:4534 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6639 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6639 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6639 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6639 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6645 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6645 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6646 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6675 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:46:40  [ nioEventLoopGroup-3-1:6710 ] - [ INFO ]  Reflections took 35 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:47:10  [ nioEventLoopGroup-3-1:36286 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:47:10  [ nioEventLoopGroup-3-1:36293 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:47:10  [ nioEventLoopGroup-3-1:36294 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:76)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:71)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:29)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-14 09:47:28  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:47:28  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:47:28  [ main:23 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:47:28  [ main:24 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:47:28  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:47:28  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:47:28  [ main:49 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:47:28  [ main:51 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:47:28  [ main:51 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:47:28  [ main:52 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:47:28  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:47:28  [ main:55 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:47:28  [ main:55 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:47:28  [ main:56 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:47:28  [ main:56 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:47:28  [ main:56 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:47:28  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:47:28  [ main:57 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:47:28  [ main:57 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:47:28  [ main:58 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:47:28  [ main:58 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:47:28  [ main:59 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:47:28  [ main:59 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:47:28  [ main:68 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:47:29  [ main:587 ] - [ DEBUG ]  -Dio.netty.processId: 21676 (auto-detected)
+2020-06-14 09:47:29  [ main:589 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:47:29  [ main:589 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:47:29  [ main:877 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:47:29  [ main:878 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:47:29  [ main:1199 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:47:29  [ main:1209 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:47:29  [ main:1209 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:47:29  [ main:1227 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:47:29  [ main:1228 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:47:29  [ main:1234 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:47:29  [ main:1234 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:47:29  [ main:1234 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:47:31  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:47:31  [ main:7 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:47:32  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:47:32  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:47:32  [ main:40 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:47:32  [ main:40 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:47:32  [ main:58 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:47:32  [ main:59 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:47:32  [ main:59 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:47:32  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:47:32  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:47:32  [ main:62 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:47:32  [ main:63 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:47:32  [ main:63 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:47:32  [ main:64 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:47:32  [ main:64 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:47:32  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:47:32  [ main:64 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:47:32  [ main:64 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:47:32  [ main:66 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:47:32  [ main:66 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:47:32  [ main:67 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:47:32  [ main:68 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:47:32  [ main:74 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:47:32  [ main:557 ] - [ DEBUG ]  -Dio.netty.processId: 16652 (auto-detected)
+2020-06-14 09:47:32  [ main:559 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:47:32  [ main:559 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:47:32  [ main:849 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:47:32  [ main:850 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:47:33  [ main:1167 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:47:33  [ main:1178 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:47:33  [ main:1179 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:47:33  [ main:1197 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:47:33  [ main:1203 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:47:33  [ main:1203 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:47:33  [ main:1203 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:47:43  [ main:11500 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:47:43  [ main:11500 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:47:43  [ main:11500 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:47:43  [ main:11500 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:47:43  [ nioEventLoopGroup-2-1:11509 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:47:43  [ nioEventLoopGroup-2-1:11509 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:47:43  [ nioEventLoopGroup-2-1:11510 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1a9230eb
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14805 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14805 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14805 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14805 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14811 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14811 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14812 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@729bb017
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14842 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:47:43  [ nioEventLoopGroup-3-1:14875 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:47:49  [ nioEventLoopGroup-3-1:20567 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:47:49  [ nioEventLoopGroup-3-1:20575 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:49:49  [ nioEventLoopGroup-3-1:140603 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:49:49  [ nioEventLoopGroup-3-1:140608 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:51:12  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:51:12  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:51:12  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:51:12  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:51:12  [ main:34 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:51:12  [ main:34 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:51:12  [ main:51 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:51:12  [ main:52 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:51:12  [ main:52 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:51:12  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:51:12  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:51:12  [ main:56 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:51:12  [ main:57 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:51:12  [ main:57 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:51:12  [ main:57 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:51:12  [ main:57 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:51:12  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:51:12  [ main:58 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:51:12  [ main:58 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:51:12  [ main:59 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:51:12  [ main:59 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:51:12  [ main:60 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:51:12  [ main:60 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:51:12  [ main:67 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:51:12  [ main:535 ] - [ DEBUG ]  -Dio.netty.processId: 21376 (auto-detected)
+2020-06-14 09:51:12  [ main:538 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:51:12  [ main:538 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:51:13  [ main:856 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:51:13  [ main:857 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:51:13  [ main:1201 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:51:13  [ main:1212 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:51:13  [ main:1212 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:51:13  [ main:1232 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:51:13  [ main:1232 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:51:13  [ main:1233 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:51:13  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:51:13  [ main:1244 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:51:13  [ main:1244 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:51:13  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 09:51:13  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 09:51:13  [ main:23 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 09:51:13  [ main:23 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 09:51:13  [ main:29 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 09:51:13  [ main:29 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 09:51:13  [ main:47 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 09:51:13  [ main:49 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 09:51:13  [ main:49 ] - [ DEBUG ]  Java version: 8
+2020-06-14 09:51:13  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 09:51:13  [ main:51 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 09:51:13  [ main:52 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 09:51:13  [ main:52 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 09:51:13  [ main:53 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 09:51:13  [ main:53 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 09:51:13  [ main:53 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 09:51:13  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 09:51:13  [ main:53 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 09:51:13  [ main:54 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 09:51:13  [ main:55 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 09:51:13  [ main:55 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 09:51:13  [ main:56 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 09:51:13  [ main:56 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 09:51:13  [ main:64 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 09:51:14  [ main:517 ] - [ DEBUG ]  -Dio.netty.processId: 18104 (auto-detected)
+2020-06-14 09:51:14  [ main:519 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 09:51:14  [ main:519 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 09:51:14  [ main:789 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 09:51:14  [ main:789 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 09:51:14  [ main:1103 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 09:51:14  [ main:1113 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 09:51:14  [ main:1113 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 09:51:14  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 09:51:14  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 09:51:14  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 09:51:14  [ main:1131 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 09:51:14  [ main:1137 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 09:51:14  [ main:1137 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 09:51:14  [ main:1137 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 09:51:27  [ main:13864 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:51:27  [ main:13864 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:51:27  [ main:13864 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:51:27  [ main:13864 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:51:27  [ nioEventLoopGroup-2-1:13873 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:51:27  [ nioEventLoopGroup-2-1:13873 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:51:27  [ nioEventLoopGroup-2-1:13874 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15515 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15515 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15515 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15515 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15520 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15520 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15521 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15550 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:51:27  [ nioEventLoopGroup-3-1:15586 ] - [ INFO ]  Reflections took 36 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 09:51:52  [ nioEventLoopGroup-3-1:40245 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 09:51:52  [ nioEventLoopGroup-3-1:40252 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:20:21  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:20:21  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:20:21  [ main:25 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:20:21  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:20:21  [ main:35 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:20:21  [ main:35 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:20:21  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:20:21  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:20:21  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:20:21  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:20:21  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:20:21  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:20:21  [ main:59 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:20:21  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:20:21  [ main:60 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:20:21  [ main:60 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:20:21  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:20:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:20:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:20:21  [ main:62 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:20:21  [ main:62 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:20:21  [ main:63 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:20:21  [ main:63 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:20:21  [ main:70 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:20:21  [ main:528 ] - [ DEBUG ]  -Dio.netty.processId: 16092 (auto-detected)
+2020-06-14 10:20:21  [ main:530 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:20:21  [ main:530 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:20:22  [ main:804 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:20:22  [ main:804 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:20:22  [ main:1101 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:20:22  [ main:1110 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:20:22  [ main:1110 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:20:22  [ main:1130 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:20:22  [ main:1137 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:20:22  [ main:1137 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:20:22  [ main:1137 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:20:28  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:20:28  [ main:8 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:20:28  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:20:28  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:20:28  [ main:42 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:20:28  [ main:42 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:20:28  [ main:58 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:20:28  [ main:58 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:20:28  [ main:58 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:20:28  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:20:28  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:20:28  [ main:61 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:20:28  [ main:62 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:20:28  [ main:62 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:20:28  [ main:63 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:20:28  [ main:63 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:20:28  [ main:63 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:20:28  [ main:63 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:20:28  [ main:64 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:20:28  [ main:65 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:20:28  [ main:65 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:20:28  [ main:66 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:20:28  [ main:66 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:20:28  [ main:77 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:20:28  [ main:540 ] - [ DEBUG ]  -Dio.netty.processId: 11856 (auto-detected)
+2020-06-14 10:20:28  [ main:542 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:20:28  [ main:542 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:20:29  [ main:810 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:20:29  [ main:810 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:20:29  [ main:1120 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:20:29  [ main:1131 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:20:29  [ main:1131 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:20:29  [ main:1151 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:20:29  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:20:29  [ main:1158 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:20:29  [ main:1158 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:20:43  [ main:15521 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:20:43  [ main:15521 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:20:43  [ main:15521 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:20:43  [ main:15521 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:20:43  [ nioEventLoopGroup-2-1:15531 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:20:43  [ nioEventLoopGroup-2-1:15531 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:20:43  [ nioEventLoopGroup-2-1:15532 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22530 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22530 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22530 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22530 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22536 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22536 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22536 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@200dcd17
+2020-06-14 10:20:43  [ nioEventLoopGroup-3-1:22542 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "召唤师"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:45)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:29)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-14 10:30:10  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:30:10  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:30:10  [ main:21 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:30:10  [ main:22 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:30:10  [ main:27 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:30:10  [ main:27 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:30:10  [ main:45 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:30:10  [ main:46 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:30:10  [ main:46 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:30:10  [ main:47 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:30:10  [ main:49 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:30:10  [ main:49 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:30:10  [ main:49 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:30:10  [ main:50 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:30:10  [ main:50 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:30:10  [ main:50 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:30:10  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:30:10  [ main:50 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:30:10  [ main:51 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:30:10  [ main:52 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:30:10  [ main:52 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:30:10  [ main:53 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:30:10  [ main:53 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:30:10  [ main:59 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:30:10  [ main:527 ] - [ DEBUG ]  -Dio.netty.processId: 788 (auto-detected)
+2020-06-14 10:30:10  [ main:529 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:30:10  [ main:529 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:30:11  [ main:819 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:30:11  [ main:819 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:30:11  [ main:1149 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:30:11  [ main:1165 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:30:11  [ main:1166 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:30:11  [ main:1192 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:30:11  [ main:1193 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:30:11  [ main:1209 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:30:11  [ main:1209 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:30:11  [ main:1209 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:30:11  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:30:11  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:30:11  [ main:34 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:30:11  [ main:34 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:30:11  [ main:41 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:30:11  [ main:42 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:30:11  [ main:61 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:30:11  [ main:62 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:30:11  [ main:62 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:30:11  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:30:11  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:30:11  [ main:66 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:30:11  [ main:67 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:30:11  [ main:68 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:30:11  [ main:68 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:30:11  [ main:68 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:30:11  [ main:68 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:30:11  [ main:69 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:30:11  [ main:69 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:30:11  [ main:71 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:30:11  [ main:71 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:30:11  [ main:72 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:30:11  [ main:72 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:30:11  [ main:83 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:30:12  [ main:538 ] - [ DEBUG ]  -Dio.netty.processId: 21840 (auto-detected)
+2020-06-14 10:30:12  [ main:540 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:30:12  [ main:540 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:30:12  [ main:806 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:30:12  [ main:807 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:30:12  [ main:1114 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:30:12  [ main:1125 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:30:12  [ main:1125 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:30:13  [ main:1144 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:30:13  [ main:1145 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:30:13  [ main:1152 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:30:13  [ main:1152 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:30:13  [ main:1152 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:30:15  [ main:3549 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:30:15  [ main:3549 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:30:15  [ main:3549 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:30:15  [ main:3550 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:30:15  [ nioEventLoopGroup-2-1:3558 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:30:15  [ nioEventLoopGroup-2-1:3558 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:30:15  [ nioEventLoopGroup-2-1:3558 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@62d098f4
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5077 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5077 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5077 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5077 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5082 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5083 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5083 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@729bb017
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5117 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:30:15  [ nioEventLoopGroup-3-1:5157 ] - [ INFO ]  Reflections took 39 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:32:23  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:32:23  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:32:23  [ main:32 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:32:23  [ main:32 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:32:23  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:32:23  [ main:37 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:32:23  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:32:23  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:32:23  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:32:23  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:32:23  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:32:23  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:32:23  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:32:23  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:32:23  [ main:60 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:32:23  [ main:60 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:32:23  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:32:23  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:32:23  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:32:23  [ main:62 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:32:23  [ main:62 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:32:23  [ main:63 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:32:23  [ main:63 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:32:23  [ main:71 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:32:23  [ main:541 ] - [ DEBUG ]  -Dio.netty.processId: 9900 (auto-detected)
+2020-06-14 10:32:23  [ main:543 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:32:23  [ main:543 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:32:23  [ main:834 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:32:23  [ main:835 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:32:24  [ main:1154 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:32:24  [ main:1163 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:32:24  [ main:1163 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:32:24  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:32:24  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:32:24  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:32:24  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:32:24  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:32:24  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:32:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:32:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:32:24  [ main:1190 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:32:24  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:32:24  [ main:13 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:32:24  [ main:37 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:32:24  [ main:37 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:32:24  [ main:43 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:32:24  [ main:43 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:32:24  [ main:60 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:32:24  [ main:61 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:32:24  [ main:61 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:32:24  [ main:62 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:32:24  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:32:24  [ main:64 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:32:24  [ main:65 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:32:24  [ main:65 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:32:24  [ main:65 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:32:24  [ main:65 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:32:24  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:32:24  [ main:66 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:32:24  [ main:66 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:32:24  [ main:67 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:32:24  [ main:67 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:32:24  [ main:69 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:32:24  [ main:69 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:32:24  [ main:76 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:32:25  [ main:542 ] - [ DEBUG ]  -Dio.netty.processId: 15728 (auto-detected)
+2020-06-14 10:32:25  [ main:544 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:32:25  [ main:544 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:32:25  [ main:876 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:32:25  [ main:876 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:32:25  [ main:1198 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:32:25  [ main:1215 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:32:25  [ main:1215 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:32:25  [ main:1243 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:32:25  [ main:1244 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:32:25  [ main:1253 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:32:25  [ main:1253 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:32:25  [ main:1253 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:32:27  [ main:2680 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:32:27  [ main:2680 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:32:27  [ main:2680 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:32:27  [ main:2680 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:32:27  [ nioEventLoopGroup-2-1:2688 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:32:27  [ nioEventLoopGroup-2-1:2688 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:32:27  [ nioEventLoopGroup-2-1:2689 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4345 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4345 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4345 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4345 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4350 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4350 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4350 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4a25e049
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4380 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:32:27  [ nioEventLoopGroup-3-1:4416 ] - [ INFO ]  Reflections took 36 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:32:31  [ nioEventLoopGroup-3-1:8278 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:32:31  [ nioEventLoopGroup-3-1:8288 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:32:35  [ nioEventLoopGroup-3-1:12778 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:32:35  [ nioEventLoopGroup-3-1:12784 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:32:43  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:32:43  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:32:43  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:32:43  [ main:20 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:32:43  [ main:25 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:32:43  [ main:26 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:32:43  [ main:39 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:32:43  [ main:40 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:32:43  [ main:40 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:32:43  [ main:41 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:32:43  [ main:43 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:32:43  [ main:43 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:32:43  [ main:44 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:32:43  [ main:44 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:32:43  [ main:44 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:32:43  [ main:45 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:32:43  [ main:45 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:32:43  [ main:45 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:32:43  [ main:45 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:32:43  [ main:46 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:32:43  [ main:46 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:32:43  [ main:47 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:32:43  [ main:47 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:32:43  [ main:54 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:32:43  [ main:485 ] - [ DEBUG ]  -Dio.netty.processId: 1192 (auto-detected)
+2020-06-14 10:32:43  [ main:487 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:32:43  [ main:487 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:32:44  [ main:788 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:32:44  [ main:789 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:32:44  [ main:1081 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:32:44  [ main:1093 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:32:44  [ main:1093 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:32:44  [ main:1112 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:32:44  [ main:1118 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:32:44  [ main:1118 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:32:44  [ main:1118 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:32:48  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:32:48  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:32:48  [ main:28 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:32:48  [ main:28 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:32:48  [ main:33 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:32:48  [ main:33 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:32:48  [ main:50 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:32:48  [ main:51 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:32:48  [ main:52 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:32:48  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:32:48  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:32:48  [ main:54 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:32:48  [ main:55 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:32:48  [ main:55 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:32:48  [ main:55 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:32:48  [ main:55 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:32:48  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:32:48  [ main:56 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:32:48  [ main:56 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:32:48  [ main:58 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:32:48  [ main:58 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:32:48  [ main:59 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:32:48  [ main:59 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:32:48  [ main:66 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:32:49  [ main:489 ] - [ DEBUG ]  -Dio.netty.processId: 10624 (auto-detected)
+2020-06-14 10:32:49  [ main:491 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:32:49  [ main:491 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:32:49  [ main:756 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:32:49  [ main:757 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:32:49  [ main:1080 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:32:49  [ main:1091 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:32:49  [ main:1092 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:32:49  [ main:1109 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:32:49  [ main:1110 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:32:49  [ main:1110 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:32:49  [ main:1110 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:32:49  [ main:1110 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:32:49  [ main:1110 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:32:50  [ main:1116 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:32:50  [ main:1116 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:32:50  [ main:1116 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:32:58  [ main:9735 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:32:58  [ main:9735 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:32:58  [ main:9735 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:32:58  [ main:9735 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:32:58  [ nioEventLoopGroup-2-1:9743 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:32:58  [ nioEventLoopGroup-2-1:9744 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:32:58  [ nioEventLoopGroup-2-1:9744 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15233 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15233 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15233 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15233 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15238 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15238 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15239 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15268 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:32:58  [ nioEventLoopGroup-3-1:15302 ] - [ INFO ]  Reflections took 34 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:33:10  [ nioEventLoopGroup-3-1:26993 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:33:10  [ nioEventLoopGroup-3-1:27001 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:33:12  [ nioEventLoopGroup-3-1:29004 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:33:12  [ nioEventLoopGroup-3-1:29009 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:33:19  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:33:19  [ main:7 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:33:19  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:33:19  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:33:19  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:33:19  [ main:37 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:33:19  [ main:53 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:33:19  [ main:54 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:33:19  [ main:54 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:33:19  [ main:55 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:33:19  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:33:19  [ main:57 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:33:19  [ main:57 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:33:19  [ main:58 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:33:19  [ main:58 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:33:19  [ main:58 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:33:19  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:33:19  [ main:59 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:33:19  [ main:59 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:33:19  [ main:61 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:33:19  [ main:61 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:33:19  [ main:62 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:33:19  [ main:62 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:33:19  [ main:69 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:33:20  [ main:523 ] - [ DEBUG ]  -Dio.netty.processId: 20948 (auto-detected)
+2020-06-14 10:33:20  [ main:525 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:33:20  [ main:525 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:33:20  [ main:807 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:33:20  [ main:808 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:33:20  [ main:1132 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:33:20  [ main:1143 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:33:20  [ main:1143 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:33:20  [ main:1165 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:33:20  [ main:1166 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:33:20  [ main:1166 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:33:20  [ main:1166 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:33:20  [ main:1166 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:33:20  [ main:1166 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:33:20  [ main:1173 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:33:20  [ main:1173 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:33:20  [ main:1173 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:33:21  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:33:21  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:33:21  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:33:21  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:33:21  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:33:21  [ main:37 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:33:21  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:33:21  [ main:57 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:33:21  [ main:57 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:33:21  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:33:21  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:33:21  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:33:21  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:33:21  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:33:21  [ main:60 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:33:21  [ main:60 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:33:21  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:33:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:33:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:33:21  [ main:62 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:33:21  [ main:62 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:33:21  [ main:63 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:33:21  [ main:63 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:33:21  [ main:72 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:33:21  [ main:532 ] - [ DEBUG ]  -Dio.netty.processId: 12036 (auto-detected)
+2020-06-14 10:33:21  [ main:534 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:33:21  [ main:534 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:33:22  [ main:818 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:33:22  [ main:818 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:33:22  [ main:1147 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:33:22  [ main:1157 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:33:22  [ main:1157 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:33:22  [ main:1174 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:33:22  [ main:1175 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:33:22  [ main:1181 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:33:22  [ main:1181 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:33:22  [ main:1181 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:33:28  [ main:7457 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:33:28  [ main:7457 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:33:28  [ main:7458 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:33:28  [ main:7458 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:33:28  [ nioEventLoopGroup-2-1:7467 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:33:28  [ nioEventLoopGroup-2-1:7467 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:33:28  [ nioEventLoopGroup-2-1:7468 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9035 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9035 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9035 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9035 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9041 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9041 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9041 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@729bb017
+2020-06-14 10:33:28  [ nioEventLoopGroup-3-1:9047 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "牧师"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:45)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:29)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-14 10:48:08  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:48:08  [ main:14 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:48:08  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:48:08  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:48:08  [ main:44 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:48:08  [ main:44 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:48:08  [ main:60 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:48:08  [ main:62 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:48:08  [ main:62 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:48:08  [ main:63 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:48:08  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:48:08  [ main:65 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:48:08  [ main:65 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:48:08  [ main:66 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:48:08  [ main:68 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:48:08  [ main:68 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:48:08  [ main:69 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:48:08  [ main:69 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:48:08  [ main:76 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:48:09  [ main:548 ] - [ DEBUG ]  -Dio.netty.processId: 20084 (auto-detected)
+2020-06-14 10:48:09  [ main:550 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:48:09  [ main:550 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:48:09  [ main:841 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:48:09  [ main:842 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:48:09  [ main:1178 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:48:09  [ main:1190 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:48:09  [ main:1190 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:48:09  [ main:1212 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:48:09  [ main:1212 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:48:09  [ main:1213 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:48:09  [ main:1220 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:48:09  [ main:1220 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:48:09  [ main:1220 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:48:21  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:48:21  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:48:21  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:48:21  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:48:21  [ main:33 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:48:21  [ main:33 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:48:21  [ main:51 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:48:21  [ main:53 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:48:21  [ main:53 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:48:21  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:48:21  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:48:21  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:48:21  [ main:59 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:48:21  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:48:21  [ main:60 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:48:21  [ main:60 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:48:21  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:48:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:48:21  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:48:21  [ main:63 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:48:21  [ main:63 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:48:21  [ main:64 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:48:21  [ main:64 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:48:21  [ main:70 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:48:21  [ main:572 ] - [ DEBUG ]  -Dio.netty.processId: 2224 (auto-detected)
+2020-06-14 10:48:21  [ main:574 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:48:21  [ main:574 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:48:22  [ main:878 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:48:22  [ main:879 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:48:22  [ main:1159 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:48:22  [ main:1170 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:48:22  [ main:1170 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:48:22  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:48:22  [ main:1188 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:48:22  [ main:1189 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:48:22  [ main:1194 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:48:22  [ main:1194 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:48:22  [ main:1194 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:48:30  [ main:8938 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:48:30  [ main:8939 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:48:30  [ main:8939 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:48:30  [ main:8939 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:48:30  [ nioEventLoopGroup-2-1:8948 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:48:30  [ nioEventLoopGroup-2-1:8948 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:48:30  [ nioEventLoopGroup-2-1:8948 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@1a9230eb
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21592 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21592 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21592 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21592 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21598 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21598 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21598 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21628 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:48:30  [ nioEventLoopGroup-3-1:21661 ] - [ INFO ]  Reflections took 32 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:51:46  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:51:46  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:51:46  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:51:46  [ main:31 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:51:46  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:51:46  [ main:37 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:51:46  [ main:50 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:51:46  [ main:52 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:51:46  [ main:52 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:51:46  [ main:53 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:51:46  [ main:54 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:51:46  [ main:55 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:51:46  [ main:55 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:51:46  [ main:56 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:51:46  [ main:58 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:51:46  [ main:58 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:51:46  [ main:58 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:51:46  [ main:58 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:51:46  [ main:65 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:51:46  [ main:550 ] - [ DEBUG ]  -Dio.netty.processId: 10620 (auto-detected)
+2020-06-14 10:51:46  [ main:552 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:51:46  [ main:552 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:51:47  [ main:864 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:51:47  [ main:865 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:51:47  [ main:1229 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:51:47  [ main:1249 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:51:47  [ main:1249 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:51:47  [ main:1271 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:51:47  [ main:1272 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:51:47  [ main:1272 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:51:47  [ main:1279 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:51:47  [ main:1279 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:51:47  [ main:1279 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:51:47  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:51:47  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:51:48  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:51:48  [ main:33 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:51:48  [ main:40 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:51:48  [ main:40 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:51:48  [ main:56 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:51:48  [ main:57 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:51:48  [ main:57 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:51:48  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:51:48  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:51:48  [ main:60 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:51:48  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:51:48  [ main:61 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:51:48  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:51:48  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:51:48  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:51:48  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:51:48  [ main:62 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:51:48  [ main:63 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:51:48  [ main:63 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:51:48  [ main:64 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:51:48  [ main:64 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:51:48  [ main:71 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:51:48  [ main:521 ] - [ DEBUG ]  -Dio.netty.processId: 11184 (auto-detected)
+2020-06-14 10:51:48  [ main:523 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:51:48  [ main:523 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:51:48  [ main:810 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:51:48  [ main:810 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:51:49  [ main:1128 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:51:49  [ main:1139 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:51:49  [ main:1140 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:51:49  [ main:1157 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:51:49  [ main:1163 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:51:49  [ main:1164 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:51:49  [ main:1164 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:52:01  [ main:13397 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:52:01  [ main:13397 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:52:01  [ main:13397 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:52:01  [ main:13397 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:52:01  [ nioEventLoopGroup-2-1:13418 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:52:01  [ nioEventLoopGroup-2-1:13418 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:52:01  [ nioEventLoopGroup-2-1:13419 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15037 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15037 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15037 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15038 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15044 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15044 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15045 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15077 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:52:01  [ nioEventLoopGroup-3-1:15115 ] - [ INFO ]  Reflections took 38 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:52:29  [ nioEventLoopGroup-3-1:43398 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:52:29  [ nioEventLoopGroup-3-1:43405 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:54:05  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:54:05  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:54:05  [ main:25 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:54:05  [ main:26 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:54:05  [ main:34 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:54:05  [ main:35 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:54:05  [ main:58 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:54:05  [ main:60 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:54:05  [ main:60 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:54:05  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:54:05  [ main:63 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:54:05  [ main:63 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:54:05  [ main:63 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:54:05  [ main:64 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:54:05  [ main:66 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:54:05  [ main:66 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:54:05  [ main:67 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:54:05  [ main:67 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:54:05  [ main:76 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:54:05  [ main:504 ] - [ DEBUG ]  -Dio.netty.processId: 17232 (auto-detected)
+2020-06-14 10:54:05  [ main:506 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:54:05  [ main:506 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:54:05  [ main:785 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:54:05  [ main:786 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:54:06  [ main:1150 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:54:06  [ main:1162 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:54:06  [ main:1162 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:54:06  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:54:06  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:54:06  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:54:06  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:54:06  [ main:1184 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:54:06  [ main:1185 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:54:06  [ main:1195 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:54:06  [ main:1195 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:54:06  [ main:1195 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:54:06  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 10:54:06  [ main:4 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 10:54:06  [ main:23 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 10:54:06  [ main:23 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 10:54:06  [ main:30 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 10:54:06  [ main:30 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 10:54:06  [ main:44 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 10:54:06  [ main:45 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 10:54:06  [ main:45 ] - [ DEBUG ]  Java version: 8
+2020-06-14 10:54:06  [ main:46 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 10:54:06  [ main:48 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 10:54:06  [ main:49 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 10:54:06  [ main:49 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 10:54:06  [ main:50 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 10:54:06  [ main:50 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 10:54:06  [ main:50 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 10:54:06  [ main:50 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 10:54:06  [ main:51 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 10:54:06  [ main:51 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 10:54:06  [ main:52 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 10:54:06  [ main:52 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 10:54:06  [ main:53 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 10:54:06  [ main:53 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 10:54:06  [ main:60 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 10:54:07  [ main:547 ] - [ DEBUG ]  -Dio.netty.processId: 21684 (auto-detected)
+2020-06-14 10:54:07  [ main:549 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 10:54:07  [ main:549 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 10:54:07  [ main:833 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 10:54:07  [ main:834 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 10:54:07  [ main:1137 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 10:54:07  [ main:1152 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 10:54:07  [ main:1152 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 10:54:08  [ main:1172 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 10:54:08  [ main:1178 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 10:54:08  [ main:1178 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 10:54:08  [ main:1178 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 10:54:09  [ main:2901 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:54:09  [ main:2901 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:54:09  [ main:2902 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:54:09  [ main:2902 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:54:09  [ nioEventLoopGroup-2-1:2918 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:54:09  [ nioEventLoopGroup-2-1:2918 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:54:09  [ nioEventLoopGroup-2-1:2918 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@6e35d755
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4556 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4556 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4556 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4556 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4561 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4562 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4562 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@41af677e
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4593 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:54:09  [ nioEventLoopGroup-3-1:4630 ] - [ INFO ]  Reflections took 36 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:54:14  [ nioEventLoopGroup-3-1:9267 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NumberFormatException: For input string: "aoi"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)
+	at java.lang.Integer.parseInt(Integer.java:580)
+	at java.lang.Integer.parseInt(Integer.java:615)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:46)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:29)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-14 10:54:25  [ nioEventLoopGroup-3-1:20551 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:54:25  [ nioEventLoopGroup-3-1:20559 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:54:43  [ nioEventLoopGroup-3-1:38392 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:54:43  [ nioEventLoopGroup-3-1:38396 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 10:54:45  [ nioEventLoopGroup-3-1:40445 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 10:54:45  [ nioEventLoopGroup-3-1:40452 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 11:07:28  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 11:07:28  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 11:07:28  [ main:29 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 11:07:28  [ main:30 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 11:07:28  [ main:37 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 11:07:28  [ main:37 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 11:07:28  [ main:55 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 11:07:28  [ main:56 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 11:07:28  [ main:56 ] - [ DEBUG ]  Java version: 8
+2020-06-14 11:07:28  [ main:57 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 11:07:28  [ main:59 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 11:07:28  [ main:59 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 11:07:28  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 11:07:28  [ main:60 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 11:07:28  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 11:07:28  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 11:07:28  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 11:07:28  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 11:07:28  [ main:61 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 11:07:28  [ main:63 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 11:07:28  [ main:63 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 11:07:28  [ main:64 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 11:07:28  [ main:64 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 11:07:28  [ main:79 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 11:07:29  [ main:538 ] - [ DEBUG ]  -Dio.netty.processId: 6088 (auto-detected)
+2020-06-14 11:07:29  [ main:539 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 11:07:29  [ main:539 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 11:07:29  [ main:831 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 11:07:29  [ main:831 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 11:07:29  [ main:1171 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 11:07:29  [ main:1182 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 11:07:29  [ main:1182 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 11:07:29  [ main:1200 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 11:07:29  [ main:1206 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 11:07:29  [ main:1206 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 11:07:29  [ main:1206 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 11:07:30  [ main:1 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 11:07:30  [ main:9 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 11:07:30  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 11:07:30  [ main:35 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 11:07:30  [ main:40 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 11:07:30  [ main:40 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 11:07:30  [ main:60 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 11:07:30  [ main:61 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 11:07:30  [ main:61 ] - [ DEBUG ]  Java version: 8
+2020-06-14 11:07:30  [ main:62 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 11:07:30  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 11:07:30  [ main:64 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 11:07:30  [ main:65 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 11:07:30  [ main:65 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 11:07:30  [ main:65 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 11:07:30  [ main:65 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 11:07:30  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 11:07:30  [ main:66 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 11:07:30  [ main:66 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 11:07:30  [ main:68 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 11:07:30  [ main:68 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 11:07:30  [ main:69 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 11:07:30  [ main:69 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 11:07:30  [ main:77 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 11:07:31  [ main:559 ] - [ DEBUG ]  -Dio.netty.processId: 10580 (auto-detected)
+2020-06-14 11:07:31  [ main:561 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 11:07:31  [ main:561 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 11:07:31  [ main:865 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 11:07:31  [ main:866 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 11:07:31  [ main:1227 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 11:07:31  [ main:1245 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 11:07:31  [ main:1245 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 11:07:31  [ main:1273 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 11:07:31  [ main:1274 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 11:07:31  [ main:1274 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 11:07:31  [ main:1274 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 11:07:31  [ main:1274 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 11:07:31  [ main:1274 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 11:07:31  [ main:1282 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 11:07:31  [ main:1282 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 11:07:31  [ main:1282 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 11:07:35  [ main:5004 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 11:07:35  [ main:5004 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 11:07:35  [ main:5004 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 11:07:35  [ main:5004 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 11:07:35  [ nioEventLoopGroup-2-1:5013 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 11:07:35  [ nioEventLoopGroup-2-1:5013 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 11:07:35  [ nioEventLoopGroup-2-1:5013 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6918 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6918 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6918 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6918 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6923 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6923 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6924 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@729bb017
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6954 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 11:07:35  [ nioEventLoopGroup-3-1:6988 ] - [ INFO ]  Reflections took 34 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 11:07:40  [ nioEventLoopGroup-3-1:12244 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 11:07:40  [ nioEventLoopGroup-3-1:12257 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 11:10:02  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 11:10:02  [ main:5 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 11:10:02  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 11:10:02  [ main:38 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 11:10:02  [ main:44 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 11:10:02  [ main:45 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 11:10:02  [ main:62 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 11:10:02  [ main:63 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 11:10:02  [ main:63 ] - [ DEBUG ]  Java version: 8
+2020-06-14 11:10:02  [ main:64 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 11:10:02  [ main:65 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 11:10:02  [ main:65 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 11:10:02  [ main:66 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 11:10:02  [ main:66 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 11:10:02  [ main:66 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 11:10:02  [ main:66 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 11:10:02  [ main:66 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 11:10:02  [ main:67 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 11:10:02  [ main:67 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 11:10:02  [ main:70 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 11:10:02  [ main:70 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 11:10:02  [ main:71 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 11:10:02  [ main:71 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 11:10:02  [ main:81 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 11:10:03  [ main:542 ] - [ DEBUG ]  -Dio.netty.processId: 22492 (auto-detected)
+2020-06-14 11:10:03  [ main:544 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 11:10:03  [ main:544 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 11:10:03  [ main:849 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 11:10:03  [ main:849 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 11:10:03  [ main:1172 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 11:10:03  [ main:1182 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 11:10:03  [ main:1182 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 11:10:03  [ main:1199 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 11:10:03  [ main:1199 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 11:10:03  [ main:1199 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 11:10:03  [ main:1199 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 11:10:03  [ main:1201 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 11:10:03  [ main:1206 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 11:10:03  [ main:1206 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 11:10:03  [ main:1207 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 11:10:06  [ main:0 ] - [ DEBUG ]  Using SLF4J as the default logging framework
+2020-06-14 11:10:06  [ main:3 ] - [ DEBUG ]  -Dio.netty.eventLoopThreads: 16
+2020-06-14 11:10:06  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.initialSize: 1024
+2020-06-14 11:10:06  [ main:27 ] - [ DEBUG ]  -Dio.netty.threadLocalMap.stringBuilder.maxSize: 4096
+2020-06-14 11:10:06  [ main:34 ] - [ DEBUG ]  -Dio.netty.noKeySetOptimization: false
+2020-06-14 11:10:06  [ main:34 ] - [ DEBUG ]  -Dio.netty.selectorAutoRebuildThreshold: 512
+2020-06-14 11:10:06  [ main:56 ] - [ DEBUG ]  Platform: Windows
+2020-06-14 11:10:06  [ main:57 ] - [ DEBUG ]  -Dio.netty.noUnsafe: false
+2020-06-14 11:10:06  [ main:57 ] - [ DEBUG ]  Java version: 8
+2020-06-14 11:10:06  [ main:58 ] - [ DEBUG ]  sun.misc.Unsafe.theUnsafe: available
+2020-06-14 11:10:06  [ main:60 ] - [ DEBUG ]  sun.misc.Unsafe.copyMemory: available
+2020-06-14 11:10:06  [ main:60 ] - [ DEBUG ]  java.nio.Buffer.address: available
+2020-06-14 11:10:06  [ main:60 ] - [ DEBUG ]  direct buffer constructor: available
+2020-06-14 11:10:06  [ main:61 ] - [ DEBUG ]  java.nio.Bits.unaligned: available, true
+2020-06-14 11:10:06  [ main:61 ] - [ DEBUG ]  jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable prior to Java9
+2020-06-14 11:10:06  [ main:61 ] - [ DEBUG ]  java.nio.DirectByteBuffer.<init>(long, int): available
+2020-06-14 11:10:06  [ main:61 ] - [ DEBUG ]  sun.misc.Unsafe: available
+2020-06-14 11:10:06  [ main:61 ] - [ DEBUG ]  -Dio.netty.tmpdir: C:\Users\andy\AppData\Local\Temp (java.io.tmpdir)
+2020-06-14 11:10:06  [ main:62 ] - [ DEBUG ]  -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2020-06-14 11:10:06  [ main:63 ] - [ DEBUG ]  -Dio.netty.maxDirectMemory: 1875378176 bytes
+2020-06-14 11:10:06  [ main:63 ] - [ DEBUG ]  -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2020-06-14 11:10:06  [ main:63 ] - [ DEBUG ]  java.nio.ByteBuffer.cleaner(): available
+2020-06-14 11:10:06  [ main:64 ] - [ DEBUG ]  -Dio.netty.noPreferDirect: false
+2020-06-14 11:10:06  [ main:70 ] - [ DEBUG ]  org.jctools-core.MpscChunkedArrayQueue: available
+2020-06-14 11:10:07  [ main:556 ] - [ DEBUG ]  -Dio.netty.processId: 1364 (auto-detected)
+2020-06-14 11:10:07  [ main:558 ] - [ DEBUG ]  -Djava.net.preferIPv4Stack: false
+2020-06-14 11:10:07  [ main:558 ] - [ DEBUG ]  -Djava.net.preferIPv6Addresses: false
+2020-06-14 11:10:07  [ main:864 ] - [ DEBUG ]  Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2020-06-14 11:10:07  [ main:864 ] - [ DEBUG ]  Failed to get SOMAXCONN from sysctl and file \proc\sys\net\core\somaxconn. Default: 200
+2020-06-14 11:10:08  [ main:1206 ] - [ DEBUG ]  -Dio.netty.machineId: 4c:eb:bd:ff:fe:5e:c0:07 (auto-detected)
+2020-06-14 11:10:08  [ main:1215 ] - [ DEBUG ]  -Dio.netty.leakDetection.level: simple
+2020-06-14 11:10:08  [ main:1216 ] - [ DEBUG ]  -Dio.netty.leakDetection.targetRecords: 4
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.numHeapArenas: 16
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.numDirectArenas: 16
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.pageSize: 8192
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.maxOrder: 11
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.chunkSize: 16777216
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.tinyCacheSize: 512
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.smallCacheSize: 256
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.normalCacheSize: 64
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimInterval: 8192
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.cacheTrimIntervalMillis: 0
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.useCacheForAllThreads: true
+2020-06-14 11:10:08  [ main:1235 ] - [ DEBUG ]  -Dio.netty.allocator.maxCachedByteBuffersPerChunk: 1023
+2020-06-14 11:10:08  [ main:1243 ] - [ DEBUG ]  -Dio.netty.allocator.type: pooled
+2020-06-14 11:10:08  [ main:1243 ] - [ DEBUG ]  -Dio.netty.threadLocalDirectBufferSize: 0
+2020-06-14 11:10:08  [ main:1243 ] - [ DEBUG ]  -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2020-06-14 11:10:12  [ main:5540 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 11:10:12  [ main:5540 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 11:10:12  [ main:5540 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 11:10:12  [ main:5540 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 11:10:12  [ nioEventLoopGroup-2-1:5551 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 11:10:12  [ nioEventLoopGroup-2-1:5551 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 11:10:12  [ nioEventLoopGroup-2-1:5552 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@4e0819eb
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9603 ] - [ DEBUG ]  -Dio.netty.recycler.maxCapacityPerThread: 4096
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9604 ] - [ DEBUG ]  -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9604 ] - [ DEBUG ]  -Dio.netty.recycler.linkCapacity: 16
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9604 ] - [ DEBUG ]  -Dio.netty.recycler.ratio: 8
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9609 ] - [ DEBUG ]  -Dio.netty.buffer.checkAccessible: true
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9609 ] - [ DEBUG ]  -Dio.netty.buffer.checkBounds: true
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9610 ] - [ DEBUG ]  Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@200dcd17
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9640 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 11:10:12  [ nioEventLoopGroup-3-1:9676 ] - [ INFO ]  Reflections took 35 ms to scan 1 urls, producing 1 keys and 1 values 
+2020-06-14 11:10:15  [ nioEventLoopGroup-3-1:13084 ] - [ DEBUG ]  going to scan these urls:
+file:/D:/ItSoft/IdeaProjects/GameDesign/target/classes/
+2020-06-14 11:10:15  [ nioEventLoopGroup-3-1:13091 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 1 values 

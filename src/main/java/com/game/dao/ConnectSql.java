@@ -108,7 +108,7 @@ public class ConnectSql {
      * @param rolename 角色名
      * @return 是否角色注册成功
      */
-    public boolean insertRegisterRole(String rolename,int roleId,int careerId){
+    public boolean insertRegisterRole(String rolename,int careerId){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM role WHERE rolename=?");
             preparedStatement.setString(1,rolename);
@@ -119,7 +119,8 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         if(result){
-            return true;
+            //数据库中有该名字，注册失败，退出，不进行数据库插入操作
+            return false;
         }
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO role(rolename,placeid,alive,careerid) VALUES(?,?,?,?)");
@@ -132,9 +133,7 @@ public class ConnectSql {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        //初始场景中加入该角色
-        InitGame.scenes.get(Integer.valueOf(SceneResource.initSceneId)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
-        return false;
+        return true;
     }
 
     /**
@@ -142,20 +141,20 @@ public class ConnectSql {
      * @param rolename 角色名
      * @return 是否角色登录成功
      */
-    public boolean selectLoginRole(String rolename,int roleId){
+    public int selectLoginRole(String rolename,int roleId){
         try {
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM role WHERE rolename=?");
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT careerid FROM role WHERE rolename=?");
             preparedStatement.setString(1,rolename);
             ResultSet rs=preparedStatement.executeQuery();
-            result = rs.next();
+            while (rs.next())
+            {
+                id=rs.getInt("careerid");//职业id
+            }
             rs.close();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
-        //角色所在的场景id，然后在该id场景中加入该角色
-        InitGame.scenes.get(selectRoleScenesId(rolename)).getRoleAll().add(FunctionService.roleHashMap.get(roleId));
-        return result;
+        return id;
     }
 
     /**
@@ -188,7 +187,6 @@ public class ConnectSql {
             while (rs.next())
             {
                 id=rs.getInt("playid");
-                //System.out.println(id);
             }
             rs.close();
         }catch (Exception e){

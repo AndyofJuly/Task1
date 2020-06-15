@@ -1,6 +1,7 @@
 package com.game.service.assis;
 
 import com.game.entity.Team;
+import io.netty.channel.Channel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,4 +20,5 @@ public class DynamicResource {
 
     // BOSS所在场景列表，元素为BOSS所在场景的id
     public static ArrayList<String> sceneOfBossList = new ArrayList<String>();
+
 }

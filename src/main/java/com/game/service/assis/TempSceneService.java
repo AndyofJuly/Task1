@@ -14,15 +14,15 @@ import java.util.UUID;
  * @Author andy
  * @create 2020/6/12 10:32
  */
-public class TempSceneCreate {
+public class TempSceneService {
     //生成的场景id，下次生成临时场景时加1，保持每个临时场景id不同
     public static int count = 11000;
     //SceneStatic(int id, String name, String[] sceneRelation, String[] npcId, String[] monsterId)
-    public static String[] sceneRelation = {"10006"};//固定不变，副本传送点的id
+    public static String[] sceneRelation = {Const.DUNGEONS_START_SCENEID};//固定不变，副本传送点的id
     public static String[] npcId = new String[0];
     public static String[] monsterStaticId = new String[1];
 
-    //SceneResource.scenesStatics静态属性中加入，SceneResource.places静态属性中加入，InitGame.scenes动态属性中加入
+    //SceneResource.scenesStatics属性中加入，SceneResource.places属性中加入，InitGame.scenes属性中加入
     public static int createTempScene(int dungeonsId){ //传参为队伍要攻打的副本id
         //自动化
         count++;//从11001开始
@@ -30,7 +30,6 @@ public class TempSceneCreate {
         Monster monster = null;
         String tempSceneName = UUID.randomUUID().toString();
         String monsterId = UUID.randomUUID().toString();
-        //待优化，实现增加副本无需修改
         for(Integer key : DungeonsResource.dungeonsStaticHashMap.keySet()){
             if(dungeonsId==key){ //蜘蛛副本/白虎副本/狼副本/龙副本
                 monsterStaticId[0] = DungeonsResource.dungeonsStaticHashMap.get(key).getBossId()+"";
@@ -50,7 +49,6 @@ public class TempSceneCreate {
         InitGame.scenes.put(tempSceneStatic.getId(),new Scene(tempSceneStatic.getId()));
         //生成boss放入临时场景
         InitGame.scenes.get(count).getMonsterHashMap().put(monsterId, monster);
-        System.out.println("场景id和临时场景名"+InitGame.scenes.get(count).getSceneId()+"，"+SceneResource.scenesStatics.get(count).getName());
         //返回该场景id，根据id可获取场景名，供角色移动使用
         return count;
     }

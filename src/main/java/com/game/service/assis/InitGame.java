@@ -32,15 +32,13 @@ public class InitGame {
         //for(int i = SceneResource.initSceneId; i< SceneResource.initSceneId+SceneResource.scenesStatics.size(); i++) {
         for(Integer i : SceneResource.scenesStatics.keySet()){
             for(int j=0;j<SceneResource.scenesStatics.get(i).getMonsterId().length;j++) {
-                String key = SceneResource.scenesStatics.get(i).getMonsterId()[j];//静态资源的怪物id
+                //静态资源的怪物id
+                String key = SceneResource.scenesStatics.get(i).getMonsterId()[j];
                 //此处每个场景生成一个对应静态的怪
                 String monsterId = UUID.randomUUID().toString();
                 //int monsterId = key+i+random.nextInt(100);
-                //System.out.println(monsterId);
                 InitGame.scenes.get(i).getMonsterHashMap().put(monsterId, new Monster(monsterId,Integer.valueOf(key)));
-                //System.out.println(InitGame.scenes.get(i).getMonsterHashMap().get(monsterId).getMonsterId());
             }
-            //System.out.println();
         }
 
         //商品列表

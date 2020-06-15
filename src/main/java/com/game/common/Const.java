@@ -25,7 +25,7 @@ public class Const {
     //技能定时时间
     public static final int GAP_TIME_SKILL = 1000;
     //测试怪物攻击定时时间
-    public static final int GAP_TIME_BOSS = 2000;
+    public static final int GAP_TIME_BOSS = 4000;
     //测试宝宝攻击定时时间
     public static final int GAP_TIME_BABY = 4000;
     //延时时间
@@ -41,6 +41,12 @@ public class Const {
 
     //副本出发点-统一在此处
     public static final String DUNGEONS_START_SCENE = "副本传送点";
+    public static final String DUNGEONS_START_SCENEID = "10006";
+    //Boss使用技能-测试
+    public static final int BOSS_SKILL_ID = 1008;
+
+    //pk收益与损失
+    public static final int PK_GET_LOST = 50;
 
     //excel常量数据配置表地址
     public static final String SCENE_CONST_PATH = ".\\src\\main\\resources\\scenes.xls";

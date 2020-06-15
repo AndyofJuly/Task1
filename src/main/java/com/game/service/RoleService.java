@@ -4,16 +4,13 @@ import com.game.common.Const;
 import com.game.controller.FunctionService;
 import com.game.dao.ConnectSql;
 import com.game.entity.*;
-import com.game.entity.excel.SceneStatic;
 import com.game.entity.store.*;
 import com.game.service.assis.*;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Timer;
-import java.util.UUID;
 
 
 /**
@@ -263,7 +260,6 @@ public class RoleService {
             role.getSkillHashMap().get(key1).setStart(nowDate);
             //说明技能已经冷却，可以调用该方法，对方扣血
             Role enemy = FunctionService.roleHashMap.get(TargetRoleId);
-                    //InitGame.scenes.get(role.getNowScenesId()).getRoleAll().get(TargetRoleId);
             int hp = enemy.getHp();
             int mp=role.getMp();
             dura=role.getEquipmentHashMap().get(weaponId).getDura();
@@ -289,6 +285,8 @@ public class RoleService {
                 //同时，这里设置怪物的生存状态为0，表示已被消灭
                 //enemy.setAlive(0);
                 role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
+                role.setMoney(role.getMoney()+Const.PK_GET_LOST);
+                enemy.setMoney(enemy.getMoney()-Const.PK_GET_LOST);
                 return string;
             }
             System.out.println("玩家使用了"+skillName+"技能，对方的血量还有"+hp);
@@ -383,22 +381,21 @@ public class RoleService {
         return "你已经创建了队伍，队伍id为："+teamId+"，快告诉你的小伙伴加入吧";
     }
 
-    //加入队伍，角色放入队伍集合中，返回队伍中的角色列表 todo 待扩展，测试队员掉线时的变化，分为房主掉线和成员掉线
+    //加入队伍，角色放入队伍集合中，返回队伍中的角色列表
     public String joinTeam(String teamId, int roleId){
         DynamicResource.teamList.get(teamId).getRoleList().add(roleId);
         return "你已经加入了队伍，当前队伍列表中角色有："+AssistService.getRoleList(teamId);
     }
 
     //难度最大的方法，其中还涉及了其他比较多的方法，这些方法需要提取到外部，统一化管理
-    //开始副本，玩家一起攻打BOSS  todo 待扩展，测试队员掉线时的变化，分为房主掉线和成员掉线；掉线时队伍的状态管理和副本的状态管理；是否要考虑重连的情况？
-    // 是否要考虑多线程？不同角色（线程）如何对同一个值进行修改操作
+    //开始副本，玩家一起攻打BOSS
     public String startDungeons (String teamId, int roleId){//这里直接放入团队的id？或者不放
-        if(!teamId.equals("0000"+roleId)){return "只有房主才有开启副本的权限";}
+        //if(!teamId.equals("0000"+roleId)){return "只有房主才有开启副本的权限";}
         //创建场景，角色加入该场景，怪物加入该场景
         //角色调用move方法，传送到副本场景中
         Team team = DynamicResource.teamList.get(teamId);
         //创建临时副本
-        String target = SceneResource.scenesStatics.get(TempSceneCreate.createTempScene(team.getDungeonsId())).getName();
+        String target = SceneResource.scenesStatics.get(TempSceneService.createTempScene(team.getDungeonsId())).getName();
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             move(target,team.getRoleList().get(i));
@@ -409,23 +406,10 @@ public class RoleService {
         return "副本已开启，尽情攻打BOSS，获得更多奖励吧";
     }
 
-    //全服聊天
-    public String sayToAllPlayer (String words, int roleId){
-        //当前全局通信的基础上进行修改，进行封装
-        //使用all命令发送
-        return "你已发送消息xx给大家";
-    }
-
-    //私人聊天
-    public String sayToOnePlayer (int TargetRoleId, String words, int roleId){
-        //使用协议号#发送，客户端之间的通信，对外部通信进行封装
-        return "你已发送消息xx给对方";
-    }
+    //全服聊天、私人聊天在netty服务端进行处理
 
     //发送邮件
     public String emailToPlayer (int TargetRoleId, String words, String goods, int roleId){
-        //对外部通信进行封装
-
         //邮寄的物品，对方背包中追加该物品，自己背包中减少该物品
         HashMap<Integer,Integer> goodsHashMap = FunctionService.roleHashMap.get(roleId).getMyPackage().getGoodsHashMap();
         //发送邮件的角色背包中减少该物品
@@ -436,13 +420,20 @@ public class RoleService {
         return "你已发送邮件给对方，邮件中包含"+goods;
     }
 
-    //选择职业，放到前面注册角色后
-    public String chooseCareer (String careerName, int roleId){
-
-        return "你选择了xx职业";
-    }
-
     //盾类和蓝药缓慢恢复技能6.9版本，暂未重写
+
+    //查找当前自己的职业有什么技能
+    public String getSkillList(int roleId){
+        StringBuilder stringBuilder = new StringBuilder("你当前职业可使用的技能有：");
+        int careerId = FunctionService.roleHashMap.get(roleId).getCareerId();
+        String[] skillId = CareerResource.careerStaticHashMap.get(careerId).getSkillId();
+        String[] skillName = new String[skillId.length];   
+        for(int i=0;i<skillName.length;i++){
+            skillName[i] = SkillResource.skillStaticHashMap.get(Integer.parseInt(skillId[i])).getName();
+            stringBuilder.append(skillName[i]+" ");
+        }
+        return stringBuilder.toString();
+    }
 
     //普通攻击技能 todo 与前面的skill命令合并
     public String atkSkill(String skillName,String monsterName,int roleId){
@@ -510,11 +501,7 @@ public class RoleService {
 
     //测试用命令
     public String testCode(int roleId){
-        //在对角色使用move指令后，获得当前宝宝的场景，测试宝宝是否跟随
-/*        Role role = FunctionService.roleHashMap.get(roleId);
-        System.out.println(role.getBaby().getScenneId());
-        return "宝宝跟随了，宝宝当前场景为"+role.getBaby().getScenneId()+"宝宝的id"+role.getBaby().getBabyId();*/
-        return BabyResource.babyStatics.get(6001).getHp()+"";
+        return ""+FunctionService.roleHashMap.get(roleId).getNowScenesId();
     }
 }
 

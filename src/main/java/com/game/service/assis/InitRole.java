@@ -20,6 +20,7 @@ import java.util.Timer;
  * @create 2020/5/28 11:29
  */
 public class InitRole {
+    public static boolean enterSuccess = false;
 
     public static void init(int roleId){
         Instant start = Instant.now();
@@ -30,9 +31,6 @@ public class InitRole {
             role.getSkillHashMap().get(key).setStart(start);
         }
 
-        //角色静态数据信息注入，这里是角色当前等级的血量和蓝量；set后方便get
-        role.setCareerId(Const.CAREER_ID);
-
         //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态，例如角色背包中的物品等
         //目前所有装备和药物都初始化给角色，用于代码测试
         HashMap<Integer,Integer> goods = new HashMap<Integer,Integer>();
@@ -41,7 +39,7 @@ public class InitRole {
             goods.put(key,2);
         }
 
-        //装备要改变耐久，因此需要深拷贝，改变值了；注意这个问题即可！这里先通过手动赋值的方式简单实现
+        //装备要改变耐久，因此需要深拷贝，改变值了；先通过手动赋值的方式简单实现
         //HashMap<Integer, Integer> equipmentHashMap = new HashMap<Integer,Integer>();
         for (Integer key : EquipmentResource.equipmentStaticHashMap.keySet()) {
             //Equipment equipment = new Equipment(key, EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
@@ -50,13 +48,16 @@ public class InitRole {
         }
         role.setMyPackage( new MyPackage(100,goods));
 
-        //开始自动恢复mp
-        run();
+        if(enterSuccess){
+            //注意前提条件：角色登录成功，开始自动恢复mp
+            run();
+            //自动告知当前位置，自动装上装备，便于测试
+            RoleService roleService = new RoleService();
+            System.out.println(roleService.aoi(roleId));
+            roleService.putOnEquipment("钢剑",roleId);
+        }
+        enterSuccess = false;
 
-        //自动告知当前位置，自动装上装备，便于测试
-        RoleService roleService = new RoleService();
-        System.out.println(roleService.aoi(roleId));
-        roleService.putOnEquipment("钢剑",roleId);
     }
 
     private static void run() {
