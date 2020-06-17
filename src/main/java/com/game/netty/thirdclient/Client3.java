@@ -44,16 +44,12 @@ public class Client3 {
                             ChannelPipeline pipeline = ch.pipeline();
                             //向pipeline加入一个解码器
                             pipeline.addLast("decoder",new StringDecoder());
-
                             //向pipeline加入编码器
                             pipeline.addLast("encode",new StringEncoder());
-
                             //加入自己的处理器
                             pipeline.addLast(new ClientHandler3());
-
                         }
                     });
-
             ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
             if (channelFuture.isSuccess()){
                 Scanner scanner = new Scanner(System.in);

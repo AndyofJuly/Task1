@@ -1,7 +1,7 @@
 package com.game.service.assis;
 
 import com.game.common.Const;
-import com.game.controller.FunctionService;
+import com.game.controller.RoleController;
 import com.game.entity.store.CareerResource;
 
 import java.util.TimerTask;
@@ -15,14 +15,11 @@ public class MpRecover extends TimerTask {
     @Override
     public void run() {
         //mp恢复方法；每隔x秒恢复1点；假设这里只回复角色1的mp，待扩展；扩展可用循环读取所有的role，然后分别加mp
-        for(Integer key : FunctionService.roleHashMap.keySet()){
-            int mp=FunctionService.roleHashMap.get(key).getMp()+ Const.RECOVER_MP;
-            if(mp >= CareerResource.careerStaticHashMap.get(FunctionService.roleHashMap.get(key).getCareerId()).getMp()){
-                //System.out.println("测试用提示：角色"+FunctionService.roleHashMap.get(key).getName()+"的mp恢复满了");
-                return;
+        for(Integer key : RoleController.roleHashMap.keySet()){
+            int mp= RoleController.roleHashMap.get(key).getMp()+ Const.RECOVER_MP;
+            if(mp <= CareerResource.careerStaticHashMap.get(RoleController.roleHashMap.get(key).getCareerId()).getMp()){
+                RoleController.roleHashMap.get(key).setMp(mp);
             }
-            FunctionService.roleHashMap.get(key).setMp(mp);
-            //System.out.println("现在"+FunctionService.roleHashMap.get(key).getName()+"的mp为："+FunctionService.roleHashMap.get(key).getMp());
         }
     }
 }

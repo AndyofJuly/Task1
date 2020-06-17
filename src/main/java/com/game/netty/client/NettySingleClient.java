@@ -38,7 +38,6 @@ public class NettySingleClient {
 
         try {
             Bootstrap bootstrap = new Bootstrap();
-
             bootstrap.group(eventExecutors)
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
@@ -47,13 +46,10 @@ public class NettySingleClient {
                             ChannelPipeline pipeline = ch.pipeline();
                             //向pipeline加入一个解码器
                             pipeline.addLast("decoder",new StringDecoder());
-
                             //向pipeline加入编码器
                             pipeline.addLast("encode",new StringEncoder());
-
                             //加入自己的处理器
                             pipeline.addLast(new ClientHandler());
-
                         }
                     });
             ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
@@ -67,7 +63,6 @@ public class NettySingleClient {
                         id = " "+ ConnectSql.sql.selectRoleIdByName(s[1]);
                     }
                     channelFuture.channel().writeAndFlush(msg+id);
-
                     if("quit".equals(msg)){
                         break;
                     }

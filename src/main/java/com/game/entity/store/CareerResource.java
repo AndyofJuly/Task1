@@ -15,7 +15,7 @@ import java.util.HashMap;
  * @create 2020/6/8 10:35
  */
 public class CareerResource {
-    //数值配置表对应的角色类
+    //数值配置表对应的角色类，key为id
     public static HashMap<Integer, CareerStatic> careerStaticHashMap = new HashMap<Integer, CareerStatic>();
 
     static JSONArray result;

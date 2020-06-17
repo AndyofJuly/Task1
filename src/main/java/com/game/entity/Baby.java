@@ -22,7 +22,7 @@ public class Baby {
     //宝宝是否被召唤出来
     private boolean ifCall;
     //测试-所属角色
-    private Role role;//似乎不需要
+    private Role role;
 
     public Baby(String id,int babyId,Role role) {
         this.id = id;

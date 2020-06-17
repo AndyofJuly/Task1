@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
- * 反射类，能根据输入去查找对应的方法
+ * 反射类，能根据输入去查找对应有@Service注解的类，执行对应方法，这些注解类均写在controller包下
  * @Author andy
  * @create 2020/5/18 18:10
  */

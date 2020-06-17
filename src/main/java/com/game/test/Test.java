@@ -1,17 +1,8 @@
 package com.game.test;
 
-import com.game.controller.FunctionService;
-import com.game.entity.Monster;
-import com.game.entity.Team;
-import com.game.entity.store.BabyResource;
-import com.game.netty.server.ServerHandler;
-import com.game.service.assis.DynamicResource;
-import com.game.service.assis.InitGame;
-import com.game.service.assis.InitRole;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Random;
 
 /**
  * @Author andy
@@ -19,7 +10,22 @@ import java.util.HashMap;
  */
 public class Test {
     public static void main(String[] args) {
-        ArrayList<Integer> roleList = new ArrayList<Integer>();
+
+        HashSet<Integer> set = new HashSet<>();
+        int out = 0;
+        Integer tmp=0;
+        for(int i=0;i<10;i++){
+            int size = set.size();
+            Random ran = new Random();
+            while (size+1>set.size()){
+                tmp = ran.nextInt(10);
+                set.add(tmp);
+            }
+            System.out.println(tmp);
+        }
+
+
+/*        ArrayList<Integer> roleList = new ArrayList<Integer>();
         roleList.add(10);
         roleList.add(20);
         Integer i = 20;
@@ -29,7 +35,7 @@ public class Test {
         }
         roleList.remove(i);//传int默认为下标，传对象则可以直接找到该对象
         roleList.remove(0);
-        System.out.println(roleList.size());
+        System.out.println(roleList.size());*/
 /*        //测试结论
         //  1.HashMap中没有的key和value，当去get这个没有的key时，返回null
         //  2.引用也可以改变原值

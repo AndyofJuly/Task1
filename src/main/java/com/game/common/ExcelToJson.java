@@ -48,18 +48,4 @@ public class ExcelToJson {
         }
         return jsons;
     }
-
-/*    //读取路径配置文件
-    public static String getConfigPath(String PATH){
-        Properties p = new Properties();
-        try {
-            InputStreamReader inputStreamReader = new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream("config.properties"),"utf-8");
-            p.load(inputStreamReader);
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return p.getProperty(PATH);
-    }*/
 }

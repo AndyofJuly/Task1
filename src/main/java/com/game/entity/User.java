@@ -12,7 +12,7 @@ public class User {
     private String username;
     // 用户密码
     private String password;
-    // 用户的游戏角色-这里只要有角色id就行了吧
+    // 用户的游戏角色-可改为存储id
     private Role role;
 
     public User(String username, String password) {

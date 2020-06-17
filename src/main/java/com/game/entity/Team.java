@@ -18,9 +18,6 @@ public class Team {
     //选择的副本id
     int dungeonsId;
 
-/*    //队伍中的角色集合，存放角色id，第一个参数为teamId，第二个参数为角色id
-    HashMap<String,Integer> teamHashMap = new HashMap<String,Integer>();*/
-
     public Team(String id, int dungeonsId) {
         this.id = id;
         this.dungeonsId = dungeonsId;

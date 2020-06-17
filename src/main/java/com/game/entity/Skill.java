@@ -12,8 +12,7 @@ import java.util.Date;
 public class Skill {
     // 技能释放的时间戳-用于计算是否在CD
     private Instant start;
-    //private SkillStatic skillStatic;
-    // 技能id-静态属性
+    // 资源类中的静态id
     private int skillId;
 
     public Skill(int skillId) {
@@ -27,9 +26,6 @@ public class Skill {
     public void setSkillId(int skillId) {
         this.skillId = skillId;
     }
-    /*    public Skill(SkillStatic skillStatic) {
-        this.skillStatic = skillStatic;
-    }*/
 
     public Instant getStart() {
         return start;
@@ -39,11 +35,4 @@ public class Skill {
         this.start = start;
     }
 
-/*    public SkillStatic getSkillStatic() {
-        return skillStatic;
-    }
-
-    public void setSkillStatic(SkillStatic skillStatic) {
-        this.skillStatic = skillStatic;
-    }*/
 }

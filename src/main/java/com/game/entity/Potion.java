@@ -11,7 +11,7 @@ public class Potion {
     public static final int packageMaxNumber = 99;
     // 同类药品当前数量
     private int number;
-    // 药品id-静态属性
+    // 资源类中的静态id
     private int potionId;
 
     public Potion(int number, int potionId) {

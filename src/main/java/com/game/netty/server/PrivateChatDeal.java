@@ -1,9 +1,9 @@
 package com.game.netty.server;
 
-import com.game.controller.FunctionService;
+import com.game.controller.RoleController;
 import com.game.dao.ConnectSql;
+import com.game.service.ChatService;
 import com.game.service.RoleService;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.HashMap;
@@ -34,22 +34,17 @@ public class PrivateChatDeal {
         String[] strings = message.split(" ");
         System.out.println(strings.length+" length");
         System.out.println(message);
-        //定义协议#（改为空格）号隔开数组下标  0：不同命令、  1：接收端用户ID、    2：内容
-        //if (strings.length != 4) {return;}
         Integer roleId = Integer.valueOf(strings[strings.length-1]);
-        //add(roleId, ctx);
-        String roleName = FunctionService.roleHashMap.get(roleId).getName();
+        String roleName = RoleController.roleHashMap.get(roleId).getName();
         System.out.println(Integer.valueOf(strings[strings.length-1]));
-        //掐头去尾处理后消息
+        //掐头去尾处理后的消息
         switch (strings[0]) {
-/*            case "0"://认证客户端
-                add(Integer.valueOf(strings[2]), ctx);
-                break;*/
             case "sayTo":
                 //指定用户发送
                 ChannelHandlerContext ctxTwo = getContext(ConnectSql.sql.selectRoleIdByName(strings[1]));
                 if (ctxTwo != null){
                     writeMessage(roleName+":"+strings[2],ctxTwo);
+                    writeMessage("我："+strings[2],ctx);
                     break;
                 }
                 else {
@@ -60,10 +55,11 @@ public class PrivateChatDeal {
                 //指定用户发送邮件，物品在信息中获取，举例：email kk 给你寄点东西 清泉酒
                 ChannelHandlerContext ctxThree = getContext(ConnectSql.sql.selectRoleIdByName(strings[1]));
                 if (ctxThree != null){
-                    writeMessage(roleName+":"+strings[2]+"。邮寄物品："+strings[3],ctxThree);
+                    writeMessage(roleName+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
                     //调用email方法
                     RoleService roleService = new RoleService();
-                    roleService.emailToPlayer(ConnectSql.sql.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]));
+                    String selfMsg = ChatService.emailToPlayer(ConnectSql.sql.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+                    writeMessage(selfMsg,ctx);
                     break;
                 }else {
                     writeMessage("is get out\n", ctx);
@@ -74,7 +70,6 @@ public class PrivateChatDeal {
                 return;
         }
     }
-
 
     /**
      * 发送消息

@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @create 2020/5/11 14:58
  */
 public class Role {
-    // 角色id-静态属性
+    // 角色id
     private int id;
     // 角色名
     private String name;
@@ -37,6 +37,9 @@ public class Role {
     private boolean useTaunt = false;
     //召唤师特有属性-宝宝-怪物类
     private Baby baby;
+    //横纵坐标，数组下标0为横坐标，下标1为纵坐标
+    private int[] position = {50,50};//new int[2]
+
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
     //如果后续装备类型变多了，还是需要集合
@@ -95,6 +98,14 @@ public class Role {
 
     public void setHp(int hp) {
         this.hp = hp;
+    }
+
+    public int[] getPosition() {
+        return position;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
     }
 
     public int getMp() {

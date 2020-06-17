@@ -1,7 +1,7 @@
 package com.game.service.assis;
 
 import com.game.common.Const;
-import com.game.controller.FunctionService;
+import com.game.controller.RoleController;
 import com.game.entity.MyPackage;
 import com.game.entity.Role;
 import com.game.entity.Skill;
@@ -24,7 +24,7 @@ public class InitRole {
 
     public static void init(int roleId){
         Instant start = Instant.now();
-        Role role = FunctionService.roleHashMap.get(roleId);
+        Role role = RoleController.roleHashMap.get(roleId);
         //目前角色拥有四个技能，全都初始化给角色
         for (Integer key : SkillResource.skillStaticHashMap.keySet()) {
             role.getSkillHashMap().put(key,new Skill(key));
@@ -53,7 +53,8 @@ public class InitRole {
             run();
             //自动告知当前位置，自动装上装备，便于测试
             RoleService roleService = new RoleService();
-            System.out.println(roleService.aoi(roleId));
+            System.out.println(roleService.placeDetail(InitGame.scenes.get(RoleController.roleHashMap.get(roleId).
+                    getNowScenesId()).getName()));
             roleService.putOnEquipment("钢剑",roleId);
         }
         enterSuccess = false;

@@ -15,7 +15,7 @@ import java.util.HashMap;
  * @create 2020/6/3 21:42
  */
 public class EquipmentResource {
-    //数值配置表对应的装备类
+    //数值配置表对应的装备类，key为id
     public static HashMap<Integer, EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer, EquipmentStatic>();
 
     static JSONArray result;

@@ -14,7 +14,7 @@ public class Monster{
     // 怪物存活状态，1表示存活，0表示被消灭
     private int alive=1;
     //private MonsterStatic monsterStatic;
-    // 怪物id-静态属性
+    // 资源类中的静态id
     private int monsterId;
     // 怪物血量
     private int monsterHp;

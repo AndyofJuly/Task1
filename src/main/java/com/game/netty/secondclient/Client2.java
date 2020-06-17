@@ -32,10 +32,8 @@ public class Client2 {
 
     public void run() throws InterruptedException {
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
-
         try {
             Bootstrap bootstrap = new Bootstrap();
-
             bootstrap.group(eventExecutors)
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
@@ -44,16 +42,12 @@ public class Client2 {
                             ChannelPipeline pipeline = ch.pipeline();
                             //向pipeline加入一个解码器
                             pipeline.addLast("decoder",new StringDecoder());
-
                             //向pipeline加入编码器
                             pipeline.addLast("encode",new StringEncoder());
-
                             //加入自己的处理器
                             pipeline.addLast(new ClientHandler2());
-
                         }
                     });
-
             ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
             if (channelFuture.isSuccess()){
                 Scanner scanner = new Scanner(System.in);

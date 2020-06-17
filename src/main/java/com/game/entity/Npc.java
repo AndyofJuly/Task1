@@ -10,7 +10,7 @@ import com.game.entity.excel.NpcStatic;
 public class Npc {
     // NPC存活状态，1表示存活，0表示被消灭
     private int alive;
-    // NPC的id-静态属性
+    // 资源类中的静态id
     private int NPcId;
 
     public Npc(int NPcId) {

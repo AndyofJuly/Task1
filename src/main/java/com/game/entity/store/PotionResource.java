@@ -15,7 +15,7 @@ import java.util.HashMap;
  * @create 2020/6/3 21:43
  */
 public class PotionResource {
-    //数值配置表对应的药品类
+    //数值配置表对应的药品类，key为id
     public static HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<Integer, PotionStatic>();
 
     static JSONArray result;

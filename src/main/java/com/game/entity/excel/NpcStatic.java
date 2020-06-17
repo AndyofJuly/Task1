@@ -14,12 +14,15 @@ public class NpcStatic {
     private String words;
     // NPC所在场景id
     private int sceneId;
+    // 位置坐标
+    private int[] position;
 
-    public NpcStatic(int id, String name,String words,int sceneId) {
+    public NpcStatic(int id, String name,String words,int sceneId,int[] position) {
         this.id = id;
         this.name = name;
         this.words = words;
         this.sceneId = sceneId;
+        this.position = position;
     }
 
     public int getSceneId() {
@@ -52,5 +55,13 @@ public class NpcStatic {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int[] getPosition() {
+        return position;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
     }
 }

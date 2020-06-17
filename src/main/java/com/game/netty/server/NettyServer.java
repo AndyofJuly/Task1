@@ -19,17 +19,14 @@ import io.netty.handler.codec.string.StringEncoder;
  */
 
 public class NettyServer {
-
-    private int port ;//监听端口
+    //监听端口
+    private int port ;
 
     public NettyServer(int port){
         this.port = port;
     }
 
     public void run() throws InterruptedException {
-
-
-
         //创建bossGroup和WrokerGroup
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();//默认cpu核数乘以2个NioEventLoop
@@ -42,24 +39,17 @@ public class NettyServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-
                             ChannelPipeline pipeline = socketChannel.pipeline();
-
                             //向pipeline加入一个解码器
                             pipeline.addLast("decoder",new StringDecoder());
-
                             //向pipeline加入编码器
                             pipeline.addLast("encode",new StringEncoder());
-
                             //加入自己的处理器
                             pipeline.addLast(new ServerHandler());
                         }
                     });
-
             System.out.println("Netty服务器启动");
-
             ChannelFuture chanelFuture = bootstrap.bind(port).sync();
-
             //监听关闭事件
             chanelFuture.channel().closeFuture().sync();
         }finally {
@@ -67,7 +57,6 @@ public class NettyServer {
             workerGroup.shutdownGracefully();
         }
     }
-
 
     public static void main(String[] args) throws InterruptedException {
         new NettyServer(7000).run();

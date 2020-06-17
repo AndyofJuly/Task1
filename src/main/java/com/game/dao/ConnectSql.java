@@ -2,9 +2,7 @@ package com.game.dao;
 
 import com.game.common.Const;
 //import com.game.common.InitStaticResource;
-import com.game.controller.FunctionService;
-import com.game.entity.store.SceneResource;
-import com.game.service.assis.InitGame;
+import com.game.controller.RoleController;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -72,23 +70,6 @@ public class ConnectSql {
      * @param password 用户密码
      * @return 是否登录成功
      */
-/*    public int selectLogin(String username, String password) {
-        try {
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT playid FROM user WHERE username=? and password=?");
-            preparedStatement.setString(1,username);
-            preparedStatement.setString(2,password);
-            ResultSet rs=preparedStatement.executeQuery();
-            //result = rs.next();
-            while (rs.next())
-            {
-                id=rs.getInt("playid");
-            }
-            rs.close();
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-        return id;
-    }*/
     public boolean selectLogin(String username, String password) {
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM user WHERE username=? and password=?");
@@ -166,7 +147,7 @@ public class ConnectSql {
         try{
             PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where rolename=?");
             st.setInt(1,scenesId);
-            st.setString(2, FunctionService.roleHashMap.get(roleId).getName());
+            st.setString(2, RoleController.roleHashMap.get(roleId).getName());
             st.executeUpdate();
         }catch (Exception e)
         {
@@ -215,11 +196,5 @@ public class ConnectSql {
         }
         return nowScenesId;
     }
-
-    /**
-     * 根据用户名查找角色id
-     * @param username 用户名
-     * @return 角色id
-     */
 
 }
