@@ -20,13 +20,13 @@ import java.util.Timer;
  * @create 2020/5/28 11:29
  */
 public class InitRole {
-    public static boolean enterSuccess = false;
+    private static boolean enterSuccess = false;
 
     public static void init(int roleId){
         Instant start = Instant.now();
-        Role role = RoleController.roleHashMap.get(roleId);
+        Role role = GlobalResource.getRoleHashMap().get(roleId);
         //目前角色拥有四个技能，全都初始化给角色
-        for (Integer key : SkillResource.skillStaticHashMap.keySet()) {
+        for (Integer key : SkillResource.getSkillStaticHashMap().keySet()) {
             role.getSkillHashMap().put(key,new Skill(key));
             role.getSkillHashMap().get(key).setStart(start);
         }
@@ -35,13 +35,13 @@ public class InitRole {
         //目前所有装备和药物都初始化给角色，用于代码测试
         HashMap<Integer,Integer> goods = new HashMap<Integer,Integer>();
         //如果不改变值，可以考虑简单引用（浅拷贝）静态资源的地址
-        for (Integer key : PotionResource.potionStaticHashMap.keySet()) {
+        for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
             goods.put(key,2);
         }
 
         //装备要改变耐久，因此需要深拷贝，改变值了；先通过手动赋值的方式简单实现
         //HashMap<Integer, Integer> equipmentHashMap = new HashMap<Integer,Integer>();
-        for (Integer key : EquipmentResource.equipmentStaticHashMap.keySet()) {
+        for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
             //Equipment equipment = new Equipment(key, EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
             //equipment.setDura(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
             goods.put(key,1);
@@ -53,9 +53,7 @@ public class InitRole {
             run();
             //自动告知当前位置，自动装上装备，便于测试
             RoleService roleService = new RoleService();
-            System.out.println(roleService.placeDetail(InitGame.scenes.get(RoleController.roleHashMap.get(roleId).
-                    getNowScenesId()).getName()));
-            roleService.putOnEquipment("钢剑",roleId);
+            roleService.putOnEquipment(Const.WEPON,roleId);
         }
         enterSuccess = false;
 
@@ -68,4 +66,11 @@ public class InitRole {
         timer.schedule(mpRecover, Const.DELAY_TIME, Const.GAP_TIME_POTION);
     }
 
+    public static boolean isEnterSuccess() {
+        return enterSuccess;
+    }
+
+    public static void setEnterSuccess(boolean enterSuccess) {
+        InitRole.enterSuccess = enterSuccess;
+    }
 }

@@ -19,7 +19,7 @@ public class NpcResource {
     //包含动态属性的npc类-待扩展
     //public static HashMap<Integer, Npc> npcs = new HashMap<Integer,Npc>();
     //数值配置表对应的npc类
-    public static HashMap<Integer, NpcStatic> npcsStatics = new HashMap<Integer,NpcStatic>();
+    private static HashMap<Integer, NpcStatic> npcsStatics = new HashMap<Integer,NpcStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -32,5 +32,9 @@ public class NpcResource {
             npcsStatics.put(npcStatic.getId(),npcStatic);
             //npcs.put(npcStatic.getId(),new Npc(npcStatic.getId()));
         }
+    }
+
+    public static HashMap<Integer, NpcStatic> getNpcsStatics() {
+        return npcsStatics;
     }
 }

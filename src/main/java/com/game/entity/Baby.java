@@ -29,7 +29,7 @@ public class Baby {
         this.babyId = babyId;
         this.role = role;
         //血量初始化
-        this.babyHp= BabyResource.babyStatics.get(this.babyId).getHp();
+        this.babyHp= BabyResource.getBabyStatics().get(this.babyId).getHp();
         this.scenneId = role.getNowScenesId();
     }
 

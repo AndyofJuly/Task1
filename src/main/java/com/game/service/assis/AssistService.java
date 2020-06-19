@@ -16,8 +16,8 @@ public class AssistService {
 
     //查找装备id
     public static Integer checkEquipmentId(String equipmentName){
-        for (Integer key : EquipmentResource.equipmentStaticHashMap.keySet()) {
-            if (equipmentName.equals(EquipmentResource.equipmentStaticHashMap.get(key).getName())) {
+        for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
+            if (equipmentName.equals(EquipmentResource.getEquipmentStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
@@ -26,8 +26,8 @@ public class AssistService {
 
     //查找技能id
     public static Integer checkSkillId(String skillName){
-        for (Integer key : SkillResource.skillStaticHashMap.keySet()) {
-            if (skillName.equals(SkillResource.skillStaticHashMap.get(key).getName())) {
+        for (Integer key : SkillResource.getSkillStaticHashMap().keySet()) {
+            if (skillName.equals(SkillResource.getSkillStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
@@ -45,9 +45,9 @@ public class AssistService {
 
     //查找npc的id
     public static Integer checkNpcId(String npcName,int roleId){
-        for (Integer key : NpcResource.npcsStatics.keySet()) {
-            if(NpcResource.npcsStatics.get(key).getName().equals(npcName) &&
-                    RoleController.roleHashMap.get(roleId).getNowScenesId()==NpcResource.npcsStatics.get(key).getSceneId()) {
+        for (Integer key : NpcResource.getNpcsStatics().keySet()) {
+            if(NpcResource.getNpcsStatics().get(key).getName().equals(npcName) &&
+                    GlobalResource.getRoleHashMap().get(roleId).getNowScenesId()==NpcResource.getNpcsStatics().get(key).getSceneId()) {
                 return key;
             }
         }
@@ -56,9 +56,9 @@ public class AssistService {
 
     //查找怪物动态UUID
     public static String checkMonsterId(String monsterName,int roleId){
-        int sceneId = RoleController.roleHashMap.get(roleId).getNowScenesId();
+        int sceneId = GlobalResource.getRoleHashMap().get(roleId).getNowScenesId();
         for (String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()) {
-            if (MonsterResource.monstersStatics.get(InitGame.scenes.get(sceneId).getMonsterHashMap().
+            if (MonsterResource.getMonstersStatics().get(InitGame.scenes.get(sceneId).getMonsterHashMap().
                     get(key).getMonsterId()).getName().equals(monsterName)){
                 return key;
             }
@@ -68,8 +68,8 @@ public class AssistService {
 
     //查找药品id
     public static Integer checkPotionId(String drugName){
-        for (Integer key : PotionResource.potionStaticHashMap.keySet()) {
-            if (drugName.equals(PotionResource.potionStaticHashMap.get(key).getName())) {
+        for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
+            if (drugName.equals(PotionResource.getPotionStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
@@ -78,8 +78,8 @@ public class AssistService {
 
     //查找静态场景id
     public static Integer checkSceneId(String sceneName){
-        for (Integer key : SceneResource.scenesStatics.keySet()) {
-            if (sceneName.equals(SceneResource.scenesStatics.get(key).getName())) {
+        for (Integer key : SceneResource.getScenesStatics().keySet()) {
+            if (sceneName.equals(SceneResource.getScenesStatics().get(key).getName())) {
                 return key;
             }
         }
@@ -98,13 +98,13 @@ public class AssistService {
 
     //查找药品或装备的id
     public static Integer checkGoodsId(String goodsName){
-        for (Integer key : PotionResource.potionStaticHashMap.keySet()) {
-            if (goodsName.equals(PotionResource.potionStaticHashMap.get(key).getName())) {
+        for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
+            if (goodsName.equals(PotionResource.getPotionStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
-        for (Integer key : EquipmentResource.equipmentStaticHashMap.keySet()) {
-            if (goodsName.equals(EquipmentResource.equipmentStaticHashMap.get(key).getName())) {
+        for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
+            if (goodsName.equals(EquipmentResource.getEquipmentStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
@@ -113,8 +113,8 @@ public class AssistService {
 
     //通过职业名字查找职业id
     public static Integer checkCareerId(String careerName){
-        for (Integer key : CareerResource.careerStaticHashMap.keySet()) {
-            if(careerName.equals(CareerResource.careerStaticHashMap.get(key).getName())){
+        for (Integer key : CareerResource.getCareerStaticHashMap().keySet()) {
+            if(careerName.equals(CareerResource.getCareerStaticHashMap().get(key).getName())){
                 return key;
             }
         }
@@ -135,7 +135,7 @@ public class AssistService {
 /*    //获取组队列表，无传参，返回列表集合元素信息，集合中为每个teamId
     public static String getTeamIdList(){
         StringBuilder stringBuilder = new StringBuilder("所有的队伍列表如下：");//扩展，队伍列表中加入副本名，每个副本名对应一个BOSS
-        for(String teamId : DynamicResource.teamList.keySet()){
+        for(String teamId : GlobalResource.teamList.keySet()){
             stringBuilder.append(teamId+"; ");
         }
         return stringBuilder.toString();
@@ -151,7 +151,7 @@ public class AssistService {
 
     //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo，怪物的位置可以在场景中随机生成
     public static boolean checkDistance(int roleId,String monsterId){
-        Role role = RoleController.roleHashMap.get(roleId);
+        Role role = GlobalResource.getRoleHashMap().get(roleId);
         int[] self = role.getPosition();
         int[] monster = {30,30};//目前测试，均假设为一个位置
         if(getDistance(self,monster)<= Const.Max_OPT_DISTANCE){

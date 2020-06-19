@@ -18,11 +18,11 @@ import java.util.HashMap;
 public class SceneResource {
 
     //数值配置表对应的场景类，key为id
-    public static HashMap<Integer, SceneStatic> scenesStatics = new HashMap<Integer,SceneStatic>();
+    private static HashMap<Integer, SceneStatic> scenesStatics = new HashMap<Integer,SceneStatic>();
     //场景地点关系，key为场景id
-    public static HashMap<Integer, String[]> places= new HashMap<Integer,String[]>();
+    private static HashMap<Integer, String[]> places= new HashMap<Integer,String[]>();
     //角色注册时，给定一个初始场景
-    public static int initSceneId;
+    private static int initSceneId;
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -39,5 +39,17 @@ public class SceneResource {
         }
         //角色第一次开始游戏时的初始化场景
         initSceneId = Const.INIT_SCENE;
+    }
+
+    public static HashMap<Integer, SceneStatic> getScenesStatics() {
+        return scenesStatics;
+    }
+
+    public static HashMap<Integer, String[]> getPlaces() {
+        return places;
+    }
+
+    public static int getInitSceneId() {
+        return initSceneId;
     }
 }

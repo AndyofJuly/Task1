@@ -1,8 +1,9 @@
 package com.game.netty.server;
 
 import com.game.common.ReflectService;
+import com.game.common.UtilHelper;
 import com.game.controller.RoleController;
-import com.game.service.assis.DynamicResource;
+import com.game.service.assis.GlobalResource;
 import com.game.service.assis.InitGame;
 import com.game.service.assis.Listen;
 import io.netty.channel.Channel;
@@ -51,14 +52,16 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             //这时我们要遍历ChannelGroup，根据不同情况，会送不同消息
             channelGroup.forEach(ch->{
                 if (channel != ch){ // 默认登录以后才能收到消息
-                    ch.writeAndFlush(RoleController.roleHashMap.get(clientGroup.get(channel.id())).getName()+":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
+                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(clientGroup.get(channel.id())).getName()+":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
                 }else {//回显自己发送的消息
                     ch.writeAndFlush("我:"+msg.substring(3,msg.length()-2));
                 }
             });
         }else{
             System.out.println("收到来自客户端:"+msg.toString());
-            RoleController.strings = msg.toString().split(" ");
+            //RoleController.setStrings(msg.toString().split(" "));
+            GlobalResource.setIntList(UtilHelper.getIntList(msg.toString().split(" ")));
+            GlobalResource.setStrList(UtilHelper.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();
             Channel channel = ctx.channel();
             channelGroup.forEach(ch -> {
@@ -67,7 +70,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
                     ch.writeAndFlush(Listen.mesg());
                 }
                 if(channel == ch){
-                    ch.writeAndFlush(reflectService.getMethod(RoleController.strings[0]));
+                    ch.writeAndFlush(reflectService.getMethod(GlobalResource.getStrList().get(0)));
                 }
             });
             Listen.reset();
@@ -106,10 +109,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         //角色集合中移除该客户端的角色、需要在当前场景中移除、还需要在队伍中移除
         //传参必须为Integer，否则List会将id看做下标而不是元素
         Integer removeId = clientGroup.get(ctx.channel().id());
-        InitGame.scenes.get(RoleController.roleHashMap.get(removeId).getNowScenesId()).getRoleAll().remove(RoleController.roleHashMap.get(removeId));
-        RoleController.roleHashMap.remove(removeId);
-        for(String teamId : DynamicResource.teamList.keySet()){
-            DynamicResource.teamList.get(teamId).getRoleList().remove(removeId);
+        InitGame.scenes.get(GlobalResource.getRoleHashMap().get(removeId).getNowScenesId()).getRoleAll().remove(GlobalResource.getRoleHashMap().get(removeId));
+        GlobalResource.getRoleHashMap().remove(removeId);
+        for(String teamId : GlobalResource.getTeamList().keySet()){
+            GlobalResource.getTeamList().get(teamId).getRoleList().remove(removeId);
         }
         System.out.println(ctx.channel().remoteAddress()+"离线了-channelInactive");
     }

@@ -18,7 +18,7 @@ import java.util.HashMap;
 public class BabyResource {
 
     //数值配置表对应的宝宝类，key为id
-    public static HashMap<Integer, BabyStatic> babyStatics = new HashMap<Integer,BabyStatic>();
+    private static HashMap<Integer, BabyStatic> babyStatics = new HashMap<Integer,BabyStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -30,5 +30,9 @@ public class BabyResource {
             BabyStatic babyStatic = JSON.parseObject(jsonObject.toJSONString(), BabyStatic.class);
             babyStatics.put(babyStatic.getId(),babyStatic);
         }
+    }
+
+    public static HashMap<Integer, BabyStatic> getBabyStatics() {
+        return babyStatics;
     }
 }

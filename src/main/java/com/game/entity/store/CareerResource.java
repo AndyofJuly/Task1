@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class CareerResource {
     //数值配置表对应的角色类，key为id
-    public static HashMap<Integer, CareerStatic> careerStaticHashMap = new HashMap<Integer, CareerStatic>();
+    private static HashMap<Integer, CareerStatic> careerStaticHashMap = new HashMap<Integer, CareerStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -28,5 +28,9 @@ public class CareerResource {
             CareerStatic careerStatic = JSON.parseObject(jsonObject.toJSONString(), CareerStatic.class);
             careerStaticHashMap.put(careerStatic.getId(),careerStatic);
         }
+    }
+
+    public static HashMap<Integer, CareerStatic> getCareerStaticHashMap() {
+        return careerStaticHashMap;
     }
 }

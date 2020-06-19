@@ -39,7 +39,6 @@ public class Const {
 
     //副本出发点-统一在此处
     public static final String DUNGEONS_START_SCENE = "副本传送点";
-    //public static final String DUNGEONS_START_SCENEID = "10006";
     //Boss使用技能-测试
     public static final int BOSS_SKILL_ID = 1008;
 
@@ -101,9 +100,63 @@ public class Const {
 
     //角色职业id，测试用
     public static final int CAREER_ID = 5001;
+    //钢剑-测试
+    public static final String WEPON = "钢剑";
     //战士职业id
     public static final int FIGHTER_CAREER_ID = 5001;
     //嘲讽技能id
     public static final int TAUNT_SKILL_ID = 1010;
+
+    //定制的攻击消息集合-暂时存在此处
+    public interface Fight{
+        String PK_SUCCESS = "恭喜pk成功，获得对方50银，2点攻击力!";
+        String SUCCESS = "success";
+        String DURA_LACK = "武器耐久不够，请先修理再战斗";
+        String MP_LACK = "角色蓝量不够，请先恢复再战斗";
+        String SKILL_IN_CD = "该技能冷却中";
+        String TARGET_HP ="攻击目标血量剩余";
+        String DISTACNE_LACK = "距离不够";
+        String SLAY_SUCCESS = "怪物血量为0，你已经打败该怪物！恭喜获得50银!获得2点攻击力加成!";
+        String TEAM_LIST = "队伍列表：";
+        String CREATE_SUCCESS = "已创建队伍：";
+        String TEAM_ROLELIST = "当前队伍角色：";
+        String START_DUNGEONS = "副本已开启";
+        String SKILL_LIST = "可用技能：";
+        String SUMMON_MSG = "怪物受到嘲讽";
+        String GROUPATK_MSG = "使用群伤技能，场景怪物均受到攻击";
+        String CURE_MSG = "使用群体治疗技能";
+        String BABY_MSG = "召唤出宝宝，开始自动释放技能攻击怪物";
+    }
+    public static final String SEND_FAILURE = "数量不足，无法发送";
+    public static final String SEND_SUCCESS = "发送邮件成功";
+
+    //定制的购买物品消息集合-暂时存在此处
+    public interface Shop{
+        String LIMIT_MSG = "超过限购数量，不可以再购买了";
+        String BUY_FAILURE = "您所携带的银两不够，无法够买";
+        String BUY_SUCCESS = "购买成功，目前该药品在背包中的数量为";
+    }
+
+    //登录的提示信息
+    public interface start {
+        String LOGIN_SUCCESS = "登陆成功，您进入到了游戏世界";
+        String LOGIN_FAILURE = "您没有该角色，登陆失败";
+        String UREGISTER_FAILURE = "注册失败，该用户名已有人使用";
+        String UREGISTER_SUCCESS = "注册成功";
+        String ULOGIN_SUCCESS = "登陆成功";
+        String ULOGIN_FAILURE = "用户名或密码错误，登陆失败";
+        String REGISTER_SUCCESS = "注册成功，请进行登录";
+        String REGISTER_FAILURE = "注册失败，该角色名称已有人使用";
+    }
+    //角色一些方法的提示信息
+    public interface service {
+        String MOVE_SUCCESS = "移动成功";
+        String MOVE_FAILURE = "移动失败";
+        String REPAIR_SUCCESS = "修理成功！当前武器耐久为：";
+        String PUTON_SUCCESS = "你已成功装备该武器";
+        String TAKEOFF_SUCCESS = "你已成功卸下该武器";
+        String USE_SUCCESS = "使用成功";
+        String USE_FAILURE = "物品已用完";
+    }
 
 }

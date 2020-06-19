@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class EquipmentResource {
     //数值配置表对应的装备类，key为id
-    public static HashMap<Integer, EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer, EquipmentStatic>();
+    private static HashMap<Integer, EquipmentStatic> equipmentStaticHashMap = new HashMap<Integer, EquipmentStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -28,5 +28,9 @@ public class EquipmentResource {
             EquipmentStatic equipmentStatic = JSON.parseObject(jsonObject.toJSONString(), EquipmentStatic.class);
             equipmentStaticHashMap.put(equipmentStatic.getId(),equipmentStatic);
         }
+    }
+
+    public static HashMap<Integer, EquipmentStatic> getEquipmentStaticHashMap() {
+        return equipmentStaticHashMap;
     }
 }

@@ -21,8 +21,10 @@ public class SkillStatic {
     private int addHp;
     // 技能的持续时间
     private int duration;
+    // 施法（吟唱）时间
+    private int castTime;
 
-    public SkillStatic(int id, String name, int cd, int atk, int useMp, int typeId, int addHp, int duration) {
+    public SkillStatic(int id, String name, int cd, int atk, int useMp, int typeId, int addHp, int duration, int castTime) {
         this.id = id;
         this.name = name;
         this.cd = cd;
@@ -31,6 +33,7 @@ public class SkillStatic {
         this.typeId = typeId;
         this.addHp = addHp;
         this.duration = duration;
+        this.castTime = castTime;
     }
 
     public int getId() {
@@ -95,5 +98,13 @@ public class SkillStatic {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public int getCastTime() {
+        return castTime;
+    }
+
+    public void setCastTime(int castTime) {
+        this.castTime = castTime;
     }
 }

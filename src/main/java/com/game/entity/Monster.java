@@ -23,7 +23,7 @@ public class Monster{
         this.id = id;
         this.monsterId = monsterId;
         //血量初始化
-        this.monsterHp=MonsterResource.monstersStatics.get(this.monsterId).getHp();
+        this.monsterHp=MonsterResource.getMonstersStatics().get(this.monsterId).getHp();
     }
 
     public String getId() {

@@ -16803,3 +16803,372 @@ java.lang.NullPointerException: msg
 2020-06-17 09:31:34  [ nioEventLoopGroup-3-2:569747 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
 2020-06-17 09:31:38  [ nioEventLoopGroup-3-1:573472 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
 2020-06-17 09:31:41  [ nioEventLoopGroup-3-3:577152 ] - [ INFO ]  Reflections took 2 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 12:27:21  [ nioEventLoopGroup-3-2:15498 ] - [ INFO ]  Reflections took 51 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 12:27:24  [ nioEventLoopGroup-3-1:18847 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 12:27:33  [ nioEventLoopGroup-3-2:27760 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 12:27:41  [ nioEventLoopGroup-3-2:35876 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:18  [ nioEventLoopGroup-3-1:19066 ] - [ INFO ]  Reflections took 86 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:33  [ nioEventLoopGroup-3-2:33610 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:41  [ nioEventLoopGroup-3-1:42382 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:47  [ nioEventLoopGroup-3-2:47848 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:55  [ nioEventLoopGroup-3-1:56091 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:50:55  [ nioEventLoopGroup-3-1:56449 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:70)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:64)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:27)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-17 15:56:41  [ nioEventLoopGroup-3-1:15238 ] - [ INFO ]  Reflections took 37 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:56:42  [ nioEventLoopGroup-3-1:15806 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:70)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:64)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:27)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-17 15:58:12  [ nioEventLoopGroup-3-1:7361 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:16  [ nioEventLoopGroup-3-2:11138 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:22  [ nioEventLoopGroup-3-1:17895 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:30  [ nioEventLoopGroup-3-2:25198 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:36  [ nioEventLoopGroup-3-1:31832 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:45  [ nioEventLoopGroup-3-2:40746 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:58:57  [ nioEventLoopGroup-3-1:52847 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:59:35  [ nioEventLoopGroup-3-1:90736 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 15:59:40  [ nioEventLoopGroup-3-1:95215 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:01:31  [ nioEventLoopGroup-3-1:7063 ] - [ INFO ]  Reflections took 65 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:01:40  [ nioEventLoopGroup-3-1:16151 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:01:56  [ nioEventLoopGroup-3-1:32342 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:04:04  [ nioEventLoopGroup-3-2:159463 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:04:09  [ nioEventLoopGroup-3-1:164763 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:04:14  [ nioEventLoopGroup-3-2:170046 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:04:20  [ nioEventLoopGroup-3-1:176197 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:04:22  [ nioEventLoopGroup-3-1:178100 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:05:10  [ nioEventLoopGroup-3-1:225769 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:45:03  [ nioEventLoopGroup-3-1:5997 ] - [ INFO ]  Reflections took 34 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:45:11  [ nioEventLoopGroup-3-1:14203 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:45:17  [ nioEventLoopGroup-3-1:20061 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 17:45:19  [ nioEventLoopGroup-3-1:22375 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 20:06:01  [ nioEventLoopGroup-3-1:12342 ] - [ INFO ]  Reflections took 37 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 20:06:12  [ nioEventLoopGroup-3-1:23045 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 20:06:16  [ nioEventLoopGroup-3-1:26839 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:15:03  [ nioEventLoopGroup-3-1:9471 ] - [ INFO ]  Reflections took 68 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:15:18  [ nioEventLoopGroup-3-1:25099 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:15:20  [ nioEventLoopGroup-3-1:27185 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:16:57  [ nioEventLoopGroup-3-1:5350 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:17:00  [ nioEventLoopGroup-3-1:8733 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:17:02  [ nioEventLoopGroup-3-1:10263 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:17:07  [ nioEventLoopGroup-3-1:15257 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:20:44  [ nioEventLoopGroup-3-1:6190 ] - [ INFO ]  Reflections took 37 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:20:47  [ nioEventLoopGroup-3-1:9366 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:23:21  [ nioEventLoopGroup-3-1:9423 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:23:25  [ nioEventLoopGroup-3-1:14321 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:24:44  [ nioEventLoopGroup-3-1:9954 ] - [ INFO ]  Reflections took 29 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:24:49  [ nioEventLoopGroup-3-1:15064 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:25:13  [ nioEventLoopGroup-3-1:39222 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:25:47  [ nioEventLoopGroup-3-1:5173 ] - [ INFO ]  Reflections took 42 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:25:51  [ nioEventLoopGroup-3-1:9455 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:25:51  [ nioEventLoopGroup-3-1:9464 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:70)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:64)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:27)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-17 21:31:30  [ nioEventLoopGroup-3-1:5939 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:31:36  [ nioEventLoopGroup-3-1:11670 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:32:29  [ nioEventLoopGroup-3-1:65125 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-17 21:32:37  [ nioEventLoopGroup-3-1:73020 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:50:37  [ nioEventLoopGroup-3-1:13829 ] - [ INFO ]  Reflections took 54 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:50:46  [ nioEventLoopGroup-3-1:23126 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:02  [ nioEventLoopGroup-3-2:38773 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:06  [ nioEventLoopGroup-3-1:42410 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:11  [ nioEventLoopGroup-3-2:47298 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:15  [ nioEventLoopGroup-3-1:52099 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:23  [ nioEventLoopGroup-3-2:59448 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:27  [ nioEventLoopGroup-3-1:63678 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:32  [ nioEventLoopGroup-3-1:68579 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:38  [ nioEventLoopGroup-3-2:74835 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:40  [ nioEventLoopGroup-3-1:76722 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:43  [ nioEventLoopGroup-3-1:79638 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:45  [ nioEventLoopGroup-3-2:81220 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 09:51:54  [ nioEventLoopGroup-3-1:91162 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:18:53  [ nioEventLoopGroup-3-1:11577 ] - [ INFO ]  Reflections took 68 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:22  [ nioEventLoopGroup-3-1:40515 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:29  [ nioEventLoopGroup-3-2:47828 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:35  [ nioEventLoopGroup-3-1:53563 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:40  [ nioEventLoopGroup-3-2:58974 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:44  [ nioEventLoopGroup-3-1:62640 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:52  [ nioEventLoopGroup-3-2:71137 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:19:54  [ nioEventLoopGroup-3-2:72845 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:20:51  [ nioEventLoopGroup-3-1:130057 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:26  [ nioEventLoopGroup-3-1:14589 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:29  [ nioEventLoopGroup-3-2:17407 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:35  [ nioEventLoopGroup-3-1:23415 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:40  [ nioEventLoopGroup-3-2:28579 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:45  [ nioEventLoopGroup-3-1:33256 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:53  [ nioEventLoopGroup-3-2:41523 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:24:54  [ nioEventLoopGroup-3-2:42363 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:52:52  [ nioEventLoopGroup-3-1:7175 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:52:52  [ nioEventLoopGroup-3-1:7453 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:70)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:64)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:27)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-18 21:58:38  [ nioEventLoopGroup-3-1:11097 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:58:38  [ nioEventLoopGroup-3-1:11383 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:70)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:64)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:27)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-18 21:59:05  [ nioEventLoopGroup-3-1:10482 ] - [ INFO ]  Reflections took 30 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:59:12  [ nioEventLoopGroup-3-1:17279 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:59:21  [ nioEventLoopGroup-3-1:26756 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:59:29  [ nioEventLoopGroup-3-2:34617 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 21:59:38  [ nioEventLoopGroup-3-2:43306 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:02:49  [ nioEventLoopGroup-3-1:12259 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.ClassCastException: [Ljava.lang.String; cannot be cast to java.lang.String
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:73)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:67)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:28)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-18 23:07:22  [ nioEventLoopGroup-3-1:3910 ] - [ INFO ]  Reflections took 36 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:07:27  [ nioEventLoopGroup-3-1:8623 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:07:35  [ nioEventLoopGroup-3-1:16785 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:07:35  [ nioEventLoopGroup-3-1:16787 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:73)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:67)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:28)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-18 23:08:24  [ nioEventLoopGroup-3-1:66226 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:11:54  [ nioEventLoopGroup-3-1:10739 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:11:57  [ nioEventLoopGroup-3-2:14519 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:12:00  [ nioEventLoopGroup-3-2:17517 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:12:05  [ nioEventLoopGroup-3-1:22150 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:12:12  [ nioEventLoopGroup-3-2:29154 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:12:12  [ nioEventLoopGroup-3-2:29156 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException: msg
+	at io.netty.util.internal.ObjectUtil.checkNotNull(ObjectUtil.java:33)
+	at io.netty.channel.AbstractChannelHandlerContext.write(AbstractChannelHandlerContext.java:772)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:758)
+	at io.netty.channel.AbstractChannelHandlerContext.writeAndFlush(AbstractChannelHandlerContext.java:808)
+	at io.netty.channel.DefaultChannelPipeline.writeAndFlush(DefaultChannelPipeline.java:1025)
+	at io.netty.channel.AbstractChannel.writeAndFlush(AbstractChannel.java:294)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:73)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:67)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:28)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-06-18 23:15:10  [ nioEventLoopGroup-3-1:14917 ] - [ INFO ]  Reflections took 31 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:12  [ nioEventLoopGroup-3-2:17603 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:16  [ nioEventLoopGroup-3-1:20974 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:21  [ nioEventLoopGroup-3-2:26335 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:27  [ nioEventLoopGroup-3-1:31735 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:29  [ nioEventLoopGroup-3-1:34583 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:33  [ nioEventLoopGroup-3-1:38679 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:37  [ nioEventLoopGroup-3-1:42018 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:42  [ nioEventLoopGroup-3-1:47679 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 5 values 
+2020-06-18 23:15:47  [ nioEventLoopGroup-3-2:52346 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 5 values 

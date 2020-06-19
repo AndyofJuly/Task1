@@ -1,10 +1,7 @@
 package com.game.netty.thirdclient;
 
-import com.game.dao.ConnectSql;
-import com.game.netty.server.ServerHandler;
-import com.game.service.assis.DynamicResource;
+import com.game.dao.RoleMapper;
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
@@ -24,6 +21,7 @@ public class Client3 {
 
     private final String HOST_IP;
     private final int PORT;
+    private RoleMapper roleMapper = new RoleMapper();
 
     public Client3(String host, int port){
         this.HOST_IP = host;
@@ -58,7 +56,7 @@ public class Client3 {
                     String msg = scanner.nextLine();
                     if(msg.startsWith("loginR")){
                         String[] s = msg.split(" ");
-                        id = " "+ ConnectSql.sql.selectRoleIdByName(s[1]);
+                        id = " "+ roleMapper.selectRoleIdByName(s[1]);
                     }
                     channelFuture.channel().writeAndFlush(msg+id);
                     if("quit".equals(msg)){

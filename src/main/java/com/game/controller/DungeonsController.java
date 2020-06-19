@@ -1,8 +1,8 @@
 package com.game.controller;
 
+import com.game.common.Const;
 import com.game.service.DungeonsService;
-import com.game.service.assis.AssistService;
-import com.game.service.assis.DynamicResource;
+import com.game.service.assis.GlobalResource;
 import com.game.service.assis.InitGame;
 import org.springframework.stereotype.Service;
 import com.game.common.MyAnnontation;
@@ -16,13 +16,14 @@ import java.util.ArrayList;
 @Service
 public class DungeonsController {
 
-    String[] strings = RoleController.strings;
+    private ArrayList<String> strList = GlobalResource.getStrList();
+    private ArrayList<Integer> intList = GlobalResource.getIntList();
 
     //获得当前队伍列表，使用举例：getTeamList
     @MyAnnontation(MethodName = "getTeamList")
     public String getTeamList(){
-        String output = "队伍列表：";
-        for(String teamId : DynamicResource.teamList.keySet()){
+        String output = Const.Fight.TEAM_LIST;
+        for(String teamId : GlobalResource.getTeamList().keySet()){
             output+=teamId+"; ";
         }
         return output;
@@ -31,23 +32,23 @@ public class DungeonsController {
     //获得当副本列表，使用举例：getDungeonsList
     @MyAnnontation(MethodName = "getDungeonsList")
     public String getDungeonsList(){
-        return InitGame.dungeonsList;
+        return InitGame.getStaticDungeonsList();
     }
 
     //创建队伍，使用举例：create dungeonesId，返回teamId；
     @MyAnnontation(MethodName = "create")
     public String createTeam(){
-        String teamId =DungeonsService.createTeam(Integer.parseInt(strings[1]), Integer.parseInt(strings[2]));
-        return "已创建，队伍id："+teamId;
+        String teamId =DungeonsService.createTeam(intList.get(0), intList.get(1));
+        return Const.Fight.CREATE_SUCCESS+teamId;
     }
 
     //加入队伍，使用举例：join 2233(teamId) ；
     @MyAnnontation(MethodName = "join")
     public String joinTeam(){
-        ArrayList<Integer> roleList = DungeonsService.joinTeam(strings[1],Integer.parseInt(strings[2]));
-        String output="当前队伍角色：";
+        ArrayList<Integer> roleList = DungeonsService.joinTeam(intList.get(0)+"",intList.get(1));
+        String output=Const.Fight.TEAM_ROLELIST;
         for(Integer roleId : roleList){
-            output = output+RoleController.roleHashMap.get(roleId).getName()+" ";
+            output = output+GlobalResource.getRoleHashMap().get(roleId).getName()+" ";
         }
         return output;
     }
@@ -55,8 +56,8 @@ public class DungeonsController {
     //开始副本，使用举例：start 2233(teamId) dungeonesId；
     @MyAnnontation(MethodName = "start")
     public String startDungeons(){
-        DungeonsService.startDungeons(strings[1],Integer.parseInt(strings[2]));
-        return "副本已开启";
+        DungeonsService.startDungeons(intList.get(0)+"",intList.get(1));
+        return Const.Fight.START_DUNGEONS;
     }
 
 }

@@ -18,41 +18,39 @@ import java.util.UUID;
 public class InitGame {
 
     public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
-    public static String goodsList;
-    public static String dungeonsList;
 
     static {
         //场景初始化
-        for(Integer keyScene : SceneResource.scenesStatics.keySet()){
-            scenes.put(keyScene,new Scene(keyScene,SceneResource.scenesStatics.get(keyScene).getName(),keyScene));
+        for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
+            scenes.put(keyScene,new Scene(keyScene,SceneResource.getScenesStatics().get(keyScene).getName(),keyScene));
         }
 
         //场景中生成少量怪物-以下可拆分到其他类例如场景初始化类
         //两重循环，n个场景，每个场景遍历含有的怪物，实例化这些怪物
         //for(int i = SceneResource.initSceneId; i< SceneResource.initSceneId+SceneResource.scenesStatics.size(); i++) {
-        for(Integer i : SceneResource.scenesStatics.keySet()){
-            for(int j=0;j<SceneResource.scenesStatics.get(i).getMonsterId().length;j++) {
+        for(Integer i : SceneResource.getScenesStatics().keySet()){
+            for(int j=0;j<SceneResource.getScenesStatics().get(i).getMonsterId().length;j++) {
                 //静态资源的怪物id
-                String key = SceneResource.scenesStatics.get(i).getMonsterId()[j];
+                String key = SceneResource.getScenesStatics().get(i).getMonsterId()[j];
                 //此处每个场景生成一个对应静态的怪
                 String monsterId = UUID.randomUUID().toString();
                 //int monsterId = key+i+random.nextInt(100);
                 InitGame.scenes.get(i).getMonsterHashMap().put(monsterId, new Monster(monsterId,Integer.valueOf(key)));
             }
         }
-        //商品列表
+/*        //商品列表
         goodsList = getStaticGoodsList();
         //玩家可参与的副本
-        dungeonsList = getStaticDungeonsList();
+        dungeonsList = getStaticDungeonsList();*/
     }
     //商店列表初始化
     public static String getStaticGoodsList(){
         StringBuilder stringBuilder = new StringBuilder("欢迎光临本商店，商店提供： ");
-        for(Integer key : EquipmentResource.equipmentStaticHashMap.keySet()){
-            stringBuilder.append(EquipmentResource.equipmentStaticHashMap.get(key).getName()+":"+EquipmentResource.equipmentStaticHashMap.get(key).getPrice()).append("银； ");
+        for(Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()){
+            stringBuilder.append(EquipmentResource.getEquipmentStaticHashMap().get(key).getName()+":"+EquipmentResource.getEquipmentStaticHashMap().get(key).getPrice()).append("银； ");
         }
-        for(Integer key : PotionResource.potionStaticHashMap.keySet()){
-            stringBuilder.append(PotionResource.potionStaticHashMap.get(key).getName()+":"+PotionResource.potionStaticHashMap.get(key).getPrice()).append("银； ");
+        for(Integer key : PotionResource.getPotionStaticHashMap().keySet()){
+            stringBuilder.append(PotionResource.getPotionStaticHashMap().get(key).getName()+":"+PotionResource.getPotionStaticHashMap().get(key).getPrice()).append("银； ");
         }
         return stringBuilder.toString();
     }
@@ -60,8 +58,8 @@ public class InitGame {
     //副本列表初始化，返回副本列表集合元素信息，包括id和副本名
     public static String getStaticDungeonsList(){
         StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
-        for(Integer key : DungeonsResource.dungeonsStaticHashMap.keySet()){
-            DungeonsStatic dungeons = DungeonsResource.dungeonsStaticHashMap.get(key);
+        for(Integer key : DungeonsResource.getDungeonsStaticHashMap().keySet()){
+            DungeonsStatic dungeons = DungeonsResource.getDungeonsStaticHashMap().get(key);
             stringBuilder.append(dungeons.getId()+":"+dungeons.getName()+"，限时"+dungeons.getDeadTime()+"秒。\n");
         }
         return stringBuilder.toString();

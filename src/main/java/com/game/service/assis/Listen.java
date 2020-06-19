@@ -25,4 +25,11 @@ public class Listen {
         monsterIsDead=false;
     }
 
+    public static boolean isMonsterIsDead() {
+        return monsterIsDead;
+    }
+
+    public static void setMonsterIsDead(boolean monsterIsDead) {
+        Listen.monsterIsDead = monsterIsDead;
+    }
 }

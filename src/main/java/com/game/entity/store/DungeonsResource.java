@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class DungeonsResource {
     //数值配置表对应的副本类，key为id
-    public static HashMap<Integer, DungeonsStatic> dungeonsStaticHashMap = new HashMap<Integer, DungeonsStatic>();
+    private static HashMap<Integer, DungeonsStatic> dungeonsStaticHashMap = new HashMap<Integer, DungeonsStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -28,5 +28,9 @@ public class DungeonsResource {
             DungeonsStatic dungeonsStatic = JSON.parseObject(jsonObject.toJSONString(), DungeonsStatic.class);
             dungeonsStaticHashMap.put(dungeonsStatic.getId(),dungeonsStatic);
         }
+    }
+
+    public static HashMap<Integer, DungeonsStatic> getDungeonsStaticHashMap() {
+        return dungeonsStaticHashMap;
     }
 }

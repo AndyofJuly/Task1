@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class MonsterResource {
 
     //数值配置表对应的怪物类，key为id
-    public static HashMap<Integer, MonsterStatic> monstersStatics = new HashMap<Integer,MonsterStatic>();
+    private static HashMap<Integer, MonsterStatic> monstersStatics = new HashMap<Integer,MonsterStatic>();
     //为避免再使用循环来根据名称查找id，建立名字与id的键值对
 
     static JSONArray result;
@@ -32,5 +32,9 @@ public class MonsterResource {
 /*            public static HashMap<String, Integer> monstersGetIdMap = new HashMap<String, Integer>();
             monstersGetIdMap.put(monsterStatic.getName(),monsterStatic.getId());*/
         }
+    }
+
+    public static HashMap<Integer, MonsterStatic> getMonstersStatics() {
+        return monstersStatics;
     }
 }

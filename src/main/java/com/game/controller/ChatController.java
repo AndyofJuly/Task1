@@ -1,8 +1,11 @@
 package com.game.controller;
 
 import com.game.service.ChatService;
+import com.game.service.assis.GlobalResource;
 import org.springframework.stereotype.Service;
 import com.game.common.MyAnnontation;
+
+import java.util.ArrayList;
 
 /**
  * @Author andy
@@ -11,7 +14,9 @@ import com.game.common.MyAnnontation;
 @Service
 public class ChatController {
 
-    String[] strings = RoleController.strings;
+/*    private ArrayList<String> strList = GlobalResource.getStrList();
+    private ArrayList<Integer> intList = GlobalResource.getIntList();*/
+
 
     // 全服聊天：在netty服务端进行处理：say words...
     // 私人聊天：在netty服务端进行处理：sayTo roleName words...

@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 public class SkillResource {
     //数值配置表对应的技能类，key为id
-    public static HashMap<Integer, SkillStatic> skillStaticHashMap = new HashMap<Integer, SkillStatic>();
+    private static HashMap<Integer, SkillStatic> skillStaticHashMap = new HashMap<Integer, SkillStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -31,5 +31,9 @@ public class SkillResource {
             SkillStatic skillStatic = JSON.parseObject(jsonObject.toJSONString(), SkillStatic.class);
             skillStaticHashMap.put(skillStatic.getId(),skillStatic);
         }
+    }
+
+    public static HashMap<Integer, SkillStatic> getSkillStaticHashMap() {
+        return skillStaticHashMap;
     }
 }

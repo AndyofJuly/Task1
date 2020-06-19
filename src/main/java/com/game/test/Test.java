@@ -11,7 +11,7 @@ import java.util.Random;
 public class Test {
     public static void main(String[] args) {
 
-        HashSet<Integer> set = new HashSet<>();
+/*        HashSet<Integer> set = new HashSet<>();
         int out = 0;
         Integer tmp=0;
         for(int i=0;i<10;i++){
@@ -22,7 +22,7 @@ public class Test {
                 set.add(tmp);
             }
             System.out.println(tmp);
-        }
+        }*/
 
 
 /*        ArrayList<Integer> roleList = new ArrayList<Integer>();
@@ -62,7 +62,7 @@ public class Test {
         stringHashMap.put(i,"hello");
         stringHashMap.put(i,"hey");
         System.out.println(stringHashMap.get(1));*/
-        //DynamicResource.roleAndClient.put(1,"hello");//netty客户端似乎不让存储任何缓存
+        //GlobalResource.roleAndClient.put(1,"hello");//netty客户端似乎不让存储任何缓存
     }
 }
 

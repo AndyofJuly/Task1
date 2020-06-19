@@ -1,8 +1,10 @@
 package com.game.service;
 
+import com.game.common.Const;
 import com.game.controller.RoleController;
-import com.game.dao.ConnectSql;
+import com.game.dao.RoleMapper;
 import com.game.entity.Role;
+import com.game.service.assis.GlobalResource;
 import com.game.service.assis.InitGame;
 import com.game.service.assis.InitRole;
 
@@ -15,20 +17,21 @@ import com.game.service.assis.InitRole;
 
 public class UserService {
 
+    RoleMapper roleMapper = new RoleMapper();
     //角色登录
     public String loginRole(String rolename,int roleId){
-        int careerId = ConnectSql.sql.selectLoginRole(rolename,roleId);
+        int careerId = roleMapper.selectLoginRole(rolename,roleId);
         if(careerId!=0){
-            RoleController.roleHashMap.put(roleId,new Role(roleId,rolename,ConnectSql.sql.selectRoleScenesId(rolename)));
+            GlobalResource.getRoleHashMap().put(roleId,new Role(roleId,rolename, roleMapper.selectRoleScenesId(rolename)));
             //登录时职业从数据库中查，设置到缓存中
-            RoleController.roleHashMap.get(roleId).setCareerId(careerId);
-            //角色所在的场景id，然后在该id场景中加入该角色
-            InitGame.scenes.get(ConnectSql.sql.selectRoleScenesId(rolename)).getRoleAll().add(RoleController.roleHashMap.get(roleId));
-            InitRole.enterSuccess = true;
+            GlobalResource.getRoleHashMap().get(roleId).setCareerId(careerId);
+            //角色所在的场景id，然后在该id场景中加入该角色-此处报错说明角色进入了被回收的场景中，修改数据库
+            InitGame.scenes.get(roleMapper.selectRoleScenesId(rolename)).getRoleAll().add(GlobalResource.getRoleHashMap().get(roleId));
+            InitRole.setEnterSuccess(true);
             InitRole.init(roleId);
-            return "登陆成功，您进入到了游戏世界";
+            return Const.start.LOGIN_SUCCESS;
         }else {
-            return "您没有该角色，登陆失败";
+            return Const.start.LOGIN_FAILURE;
         }
     }
 }

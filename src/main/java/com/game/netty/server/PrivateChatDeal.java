@@ -1,9 +1,10 @@
 package com.game.netty.server;
 
 import com.game.controller.RoleController;
-import com.game.dao.ConnectSql;
+import com.game.dao.RoleMapper;
 import com.game.service.ChatService;
 import com.game.service.RoleService;
+import com.game.service.assis.GlobalResource;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.HashMap;
@@ -11,6 +12,8 @@ import java.util.Map;
 
 //参考：https://blog.csdn.net/qq_36480491/article/details/84711553服务端私聊可通过自定义协议区分
 public class PrivateChatDeal {
+    private static RoleMapper roleMapper = new RoleMapper();
+
     private static Map<Integer, ChannelHandlerContext> onlineUsers = new HashMap<Integer, ChannelHandlerContext>();//存储用户客户端消息
 
     public static void add(Integer uid, ChannelHandlerContext ctx) {
@@ -35,13 +38,13 @@ public class PrivateChatDeal {
         System.out.println(strings.length+" length");
         System.out.println(message);
         Integer roleId = Integer.valueOf(strings[strings.length-1]);
-        String roleName = RoleController.roleHashMap.get(roleId).getName();
+        String roleName = GlobalResource.getRoleHashMap().get(roleId).getName();
         System.out.println(Integer.valueOf(strings[strings.length-1]));
         //掐头去尾处理后的消息
         switch (strings[0]) {
             case "sayTo":
                 //指定用户发送
-                ChannelHandlerContext ctxTwo = getContext(ConnectSql.sql.selectRoleIdByName(strings[1]));
+                ChannelHandlerContext ctxTwo = getContext(roleMapper.selectRoleIdByName(strings[1]));
                 if (ctxTwo != null){
                     writeMessage(roleName+":"+strings[2],ctxTwo);
                     writeMessage("我："+strings[2],ctx);
@@ -53,12 +56,12 @@ public class PrivateChatDeal {
                 }
             case "email":
                 //指定用户发送邮件，物品在信息中获取，举例：email kk 给你寄点东西 清泉酒
-                ChannelHandlerContext ctxThree = getContext(ConnectSql.sql.selectRoleIdByName(strings[1]));
+                ChannelHandlerContext ctxThree = getContext(roleMapper.selectRoleIdByName(strings[1]));
                 if (ctxThree != null){
                     writeMessage(roleName+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
                     //调用email方法
                     RoleService roleService = new RoleService();
-                    String selfMsg = ChatService.emailToPlayer(ConnectSql.sql.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+                    String selfMsg = ChatService.emailToPlayer(roleMapper.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
                     writeMessage(selfMsg,ctx);
                     break;
                 }else {

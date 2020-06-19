@@ -16,7 +16,7 @@ import java.util.HashMap;
  */
 public class PotionResource {
     //数值配置表对应的药品类，key为id
-    public static HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<Integer, PotionStatic>();
+    private static HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<Integer, PotionStatic>();
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -28,5 +28,9 @@ public class PotionResource {
             PotionStatic potionStatic = JSON.parseObject(jsonObject.toJSONString(), PotionStatic.class);
             potionStaticHashMap.put(potionStatic.getId(),potionStatic);
         }
+    }
+
+    public static HashMap<Integer, PotionStatic> getPotionStaticHashMap() {
+        return potionStaticHashMap;
     }
 }

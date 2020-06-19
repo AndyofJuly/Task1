@@ -3,11 +3,13 @@ package com.game.dao;
 import com.game.common.Const;
 //import com.game.common.InitStaticResource;
 import com.game.controller.RoleController;
+import com.game.service.assis.GlobalResource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 
 /**
  * 数据库连接与数据库操作方法实现
@@ -19,6 +21,7 @@ public class ConnectSql {
     public Connection conn;
     public boolean result;
     public int nowScenesId;
+    public int num;
     public int id;
     public static ConnectSql sql = new ConnectSql();
 
@@ -142,12 +145,11 @@ public class ConnectSql {
      * 给当前角色设置所在的场景属性，用于最后离开游戏时保存角色所在的位置
      * @param scenesId 场景id
      */
-    public void insertRoleScenes(int scenesId,int roleId)
-    {
+    public void insertRoleScenes(int scenesId,int roleId){
         try{
             PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where rolename=?");
             st.setInt(1,scenesId);
-            st.setString(2, RoleController.roleHashMap.get(roleId).getName());
+            st.setString(2, GlobalResource.getRoleHashMap().get(roleId).getName());
             st.executeUpdate();
         }catch (Exception e)
         {
@@ -195,6 +197,50 @@ public class ConnectSql {
             System.out.println(e.getMessage());
         }
         return nowScenesId;
+    }
+
+    /**
+     * 根据角色id查找当前场景id
+     * @param roleId 角色id
+     * @return 订单记录
+     */
+    public HashMap<Integer, HashMap<Integer,Integer>> selectBuyRecord(int roleId){
+        HashMap<Integer,Integer> recordNum = new HashMap<>();
+        HashMap<Integer,HashMap<Integer,Integer>> buyRecord= new HashMap<>();
+        try{
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT goodsid,num FROM record where playid=?");
+            preparedStatement.setInt(1,roleId);
+            ResultSet rs=preparedStatement.executeQuery();
+            while (rs.next())
+            {
+                id=rs.getInt("goodsid");
+                num = rs.getInt("num");
+            }
+            rs.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage()+"selectBuyRecord");
+        }
+        recordNum.put(id,num);
+        buyRecord.put(roleId,recordNum);
+        return buyRecord;
+    }
+
+    /**
+     * 插入订单记录
+     * @param roleId 角色id
+     * @return 空
+     */
+    public void insertBuyRecord(int roleId,int goodsid,int num){
+        try {
+            PreparedStatement st = conn.prepareStatement("REPLACE INTO record(playid,goodsid,num) VALUES(?,?,?)");
+            st.setInt(1, roleId);
+            st.setInt(2, goodsid);
+            st.setInt(3, num);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"insertBuyRecord");
+        }
     }
 
 }
