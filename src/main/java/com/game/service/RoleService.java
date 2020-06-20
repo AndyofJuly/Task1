@@ -6,10 +6,12 @@ import com.game.dao.RoleMapper;
 import com.game.entity.*;
 import com.game.entity.excel.MonsterStatic;
 import com.game.entity.store.*;
+import com.game.entity.vo.GridVo;
 import com.game.entity.vo.SceneDetailVo;
 import com.game.service.assis.*;
 
 import java.time.Instant;
+import java.util.HashMap;
 
 
 /**
@@ -24,13 +26,13 @@ public class RoleService {
     public boolean moveTo(String moveTarget,int roleId){
         Role role = GlobalResource.getRoleHashMap().get(roleId);
         //名字还是用静态的名字，传送时用的是外部的
-        String nowPlace = SceneResource.getScenesStatics().get(InitGame.scenes.get(role.getNowScenesId()).getSceneId()).getName();
+        String nowPlace = SceneResource.getScenesStatics().get(GlobalResource.getScenes().get(role.getNowScenesId()).getSceneId()).getName();
         //将当前场景坐标与要移动的场景的坐标进行对比，此处arr为位置关系数组
         String[] arr = SceneResource.getPlaces().get(AssistService.checkSceneId(nowPlace));
         boolean result = false;
         for (String value : arr) {
             int tempId = AssistService.checkDynSceneId(moveTarget);
-            String innTarget = SceneResource.getScenesStatics().get(InitGame.scenes.get(tempId).getSceneId()).getName();
+            String innTarget = SceneResource.getScenesStatics().get(GlobalResource.getScenes().get(tempId).getSceneId()).getName();
             if (innTarget.equals(SceneResource.getScenesStatics().get(Integer.valueOf(value)).getName())){
                 result = true;
                 break;
@@ -38,9 +40,14 @@ public class RoleService {
         }
         //如果可以移动成功，当前场景剔除该角色，目标场景加入该角色
         if(result){
-            InitGame.scenes.get(role.getNowScenesId()).getRoleAll().remove(role);
             Integer lastSceneId = AssistService.checkDynSceneId(moveTarget);
-            InitGame.scenes.get(lastSceneId).getRoleAll().add(role);
+
+            //视野扩展更新代码两条，先原地址移入，再新地址加入，加入后暂时保持网格id不变
+            GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap().get(role.getCurGridId()).getGridRoleMap().remove(role.getId());
+            GlobalResource.getScenes().get(lastSceneId).getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(role.getId(),role);
+
+            GlobalResource.getScenes().get(role.getNowScenesId()).getRoleAll().remove(role);
+            GlobalResource.getScenes().get(lastSceneId).getRoleAll().add(role);
             role.setNowScenesId(lastSceneId);
             //数据库相关操作可以留在用户退出时再调用
             RoleMapper roleMapper = new RoleMapper();
@@ -50,6 +57,7 @@ public class RoleService {
             if(role.getBaby()!=null){
                 role.getBaby().setScenneId(lastSceneId);
             }
+
         }
         return result;
     }
@@ -58,10 +66,10 @@ public class RoleService {
     public SceneDetailVo placeDetail(String scenesName){//printPlaceDetail
         SceneDetailVo sceneDetailVo = new SceneDetailVo();
         int j = AssistService.checkDynSceneId(scenesName);
-        Scene o = InitGame.scenes.get(j);
+        Scene o = GlobalResource.getScenes().get(j);
         sceneDetailVo.setSceneName(scenesName);
         sceneDetailVo.setRoleArrayList(o.getRoleAll());
-        sceneDetailVo.setMonsterHashMap(InitGame.scenes.get(j).getMonsterHashMap());
+        sceneDetailVo.setMonsterHashMap(GlobalResource.getScenes().get(j).getMonsterHashMap());
         sceneDetailVo.setNpcIdArray(SceneResource.getScenesStatics().get(o.getSceneId()).getNpcId());
         return sceneDetailVo;
     }
@@ -150,42 +158,63 @@ public class RoleService {
         return Const.Fight.TARGET_HP+hp;
     }
 
-    //查看角色视野中的其他实体-其他角色
-    public String getView(int roleId){
-        StringBuilder stringBuilder = new StringBuilder("");
-        //当前场景下的所有角色
-        Role self = GlobalResource.getRoleHashMap().get(roleId);
-        // todo 想办法去掉for循环
-        for(Role role : InitGame.scenes.get(self.getNowScenesId()).getRoleAll()){
-            if(ifCanSee(self,role)){
-                stringBuilder.append(role.getName()+" ");
-            }
-        }
-        return stringBuilder.toString();
-    }
-
-    //角色视野是否可见其他角色
-    public boolean ifCanSee(Role self,Role role){
-        boolean distanceX = (role.getPosition()[0]-self.getPosition()[0]<Const.VIEW_X
-                && role.getPosition()[0]-self.getPosition()[0]>-Const.VIEW_X);
-        boolean distanceY = (role.getPosition()[1]-self.getPosition()[1]<Const.VIEW_Y
-                && role.getPosition()[1]-self.getPosition()[1]>-Const.VIEW_Y);
-        return distanceX && distanceY;
-    }
-
-    //输入坐标，走动到目标位置
+    //输入坐标，走动到目标位置；
     public int[] walkTo(int x,int y,int roleId){
         Role role = GlobalResource.getRoleHashMap().get(roleId);
+        int oldX = role.getPosition()[0];
+        int oldY = role.getPosition()[1];
+        //一次只能移动一个格子，左右距离差不超过16，上下距离差不超过8；只能改变其中一个坐标的位置；
+        if(Math.abs(oldX-x)>=Const.GRID_LENGTH || Math.abs(oldY-y)>=Const.GRID_WIDTH || (oldX-x!=0 && oldY-y!=0)){
+            return role.getPosition();
+        }
+        refleshGrid(x,y,role);
         role.getPosition()[0]=x;
         role.getPosition()[1]=y;
         return role.getPosition();
     }
 
+    //对移动前后的网格进行数据更新，包括移动前后网格中实体的增删，先考虑角色
+    private void refleshGrid(int x,int y,Role role){
+        int oldGridId = getGridId(role.getPosition()[0],role.getPosition()[1]);
+        int newGridId = getGridId(x,y);
+        HashMap<Integer, Grid> gridHashMap = GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap();
+        if(oldGridId==newGridId){return;}
+        gridHashMap.get(oldGridId).getGridRoleMap().remove(role.getId());
+        gridHashMap.get(newGridId).getGridRoleMap().put(role.getId(),role);
+        role.setCurGridId(newGridId);
+    }
+
+    public static int getGridId(int x,int y){
+        return x/Const.GRID_LENGTH+1+y/Const.GRID_WIDTH*Const.GRID_WIDTH;
+    }
+
+    //封装成九宫格
+    public GridVo getMyView(int roleId){
+        Role role = GlobalResource.getRoleHashMap().get(roleId);
+        int curGridId = role.getCurGridId();
+        HashMap<Integer,Grid> viewGridHashMap = new HashMap<>();
+        role.getGridVoHashMap().get(roleId).getGridRoleMap().clear();//清理上一次留存下来的
+        role.getGridVoHashMap().get(roleId).getGridMonsterMap().clear();
+        for(int k=0;k<2;k++){
+            for(int i=curGridId-Const.GRID_WIDTH-1;i<=curGridId-Const.GRID_WIDTH+1;i++){
+                viewGridHashMap.put(i,GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap().get(i));
+                for(Integer key : viewGridHashMap.get(i).getGridRoleMap().keySet()){
+                    role.getGridVoHashMap().get(roleId).getGridRoleMap().put(key,GlobalResource.getRoleHashMap().get(key));
+                }
+                for(String key : viewGridHashMap.get(i).getGridMonsterMap().keySet()){
+                    System.out.println("怪物有:"+viewGridHashMap.get(i).getGridMonsterMap().size());
+                    role.getGridVoHashMap().get(roleId).getGridMonsterMap().put(key,GlobalResource.getScenes().get(role.getNowScenesId()).getMonsterHashMap().get(key));
+                }
+            }
+            curGridId+=Const.GRID_WIDTH;
+        }
+        return role.getGridVoHashMap().get(roleId);
+    }
 
     //测试用命令
-    public String testCode(int monsterId,int roleId){
-        MonsterStatic monster = MonsterResource.getMonstersStatics().get(monsterId);
-        return "["+monster.getPosition()[0]+","+monster.getPosition()[1]+"]";
+    public String testCode(int roleId){
+        getMyView(roleId);
+        return "";
     }
 }
 

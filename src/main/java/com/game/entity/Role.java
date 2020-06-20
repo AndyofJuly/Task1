@@ -1,6 +1,7 @@
 package com.game.entity;
 
 import com.game.entity.excel.PotionStatic;
+import com.game.entity.vo.GridVo;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;
@@ -38,7 +39,11 @@ public class Role {
     //召唤师特有属性-宝宝-怪物类
     private Baby baby;
     //横纵坐标，数组下标0为横坐标，下标1为纵坐标
-    private int[] position = {50,50};//new int[2]
+    private int[] position = {50,20};//new int[2]计算出的网格id为20
+    //角色所在的网格id
+    private int curGridId = 20;
+    //角色视野实体集合，角色id和GridVo
+    private HashMap<Integer, GridVo> gridVoHashMap = new HashMap<>();
 
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
@@ -194,5 +199,21 @@ public class Role {
 
     public void setBaby(Baby baby) {
         this.baby = baby;
+    }
+
+    public int getCurGridId() {
+        return curGridId;
+    }
+
+    public void setCurGridId(int curGridId) {
+        this.curGridId = curGridId;
+    }
+
+    public HashMap<Integer, GridVo> getGridVoHashMap() {
+        return gridVoHashMap;
+    }
+
+    public void setGridVoHashMap(HashMap<Integer, GridVo> gridVoHashMap) {
+        this.gridVoHashMap = gridVoHashMap;
     }
 }

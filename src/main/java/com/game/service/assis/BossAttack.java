@@ -154,7 +154,7 @@ public class BossAttack extends TimerTask {
 
     private boolean checkBossHpOut(){
         String bossId =  GlobalResource.getTempIdHashMap().get(sceneId);
-        if(InitGame.scenes.get(sceneId).getMonsterHashMap().get(bossId).getMonsterHp()<=0){
+        if(GlobalResource.getScenes().get(sceneId).getMonsterHashMap().get(bossId).getMonsterHp()<=0){
             System.out.println("怪物已被打败，恭喜每人获得50银两奖励");
             leaveDungeons();
             return true;

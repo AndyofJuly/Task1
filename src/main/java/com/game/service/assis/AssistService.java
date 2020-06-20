@@ -57,8 +57,8 @@ public class AssistService {
     //查找怪物动态UUID
     public static String checkMonsterId(String monsterName,int roleId){
         int sceneId = GlobalResource.getRoleHashMap().get(roleId).getNowScenesId();
-        for (String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()) {
-            if (MonsterResource.getMonstersStatics().get(InitGame.scenes.get(sceneId).getMonsterHashMap().
+        for (String key : GlobalResource.getScenes().get(sceneId).getMonsterHashMap().keySet()) {
+            if (MonsterResource.getMonstersStatics().get(GlobalResource.getScenes().get(sceneId).getMonsterHashMap().
                     get(key).getMonsterId()).getName().equals(monsterName)){
                 return key;
             }
@@ -88,8 +88,8 @@ public class AssistService {
 
     //查找动态场景id
     public static Integer checkDynSceneId(String sceneName){
-        for (Integer key : InitGame.scenes.keySet()) {
-            if (sceneName.equals(InitGame.scenes.get(key).getName())) {
+        for (Integer key : GlobalResource.getScenes().keySet()) {
+            if (sceneName.equals(GlobalResource.getScenes().get(key).getName())) {
                 return key;
             }
         }

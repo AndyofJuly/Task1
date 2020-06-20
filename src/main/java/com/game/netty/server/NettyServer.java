@@ -1,5 +1,6 @@
 package com.game.netty.server;
 
+import com.game.service.assis.InitGame;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

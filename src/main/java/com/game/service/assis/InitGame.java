@@ -1,5 +1,6 @@
 package com.game.service.assis;
 
+import com.game.entity.Grid;
 import com.game.entity.Monster;
 import com.game.entity.Scene;
 import com.game.entity.excel.DungeonsStatic;
@@ -7,6 +8,7 @@ import com.game.entity.store.DungeonsResource;
 import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SceneResource;
+import com.game.service.RoleService;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -17,12 +19,17 @@ import java.util.UUID;
  */
 public class InitGame {
 
-    public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
+    //public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
 
     static {
+        System.out.println("hello");
         //场景初始化
         for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
-            scenes.put(keyScene,new Scene(keyScene,SceneResource.getScenesStatics().get(keyScene).getName(),keyScene));
+            GlobalResource.getScenes().put(keyScene,new Scene(keyScene,SceneResource.getScenesStatics().get(keyScene).getName(),keyScene));
+            //对每个场景初始化64个网格
+            for(int i=1;i<=64;i++){
+                GlobalResource.getScenes().get(keyScene).getGridHashMap().put(i,new Grid(i));
+            }
         }
 
         //场景中生成少量怪物-以下可拆分到其他类例如场景初始化类
@@ -34,14 +41,24 @@ public class InitGame {
                 String key = SceneResource.getScenesStatics().get(i).getMonsterId()[j];
                 //此处每个场景生成一个对应静态的怪
                 String monsterId = UUID.randomUUID().toString();
-                //int monsterId = key+i+random.nextInt(100);
-                InitGame.scenes.get(i).getMonsterHashMap().put(monsterId, new Monster(monsterId,Integer.valueOf(key)));
+                Monster monster = new Monster(monsterId,Integer.valueOf(key));
+                GlobalResource.getScenes().get(i).getMonsterHashMap().put(monsterId, monster);
+                //将怪物放在单个网格中
+                GlobalResource.getScenes().get(i).getGridHashMap().get(RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1])).getGridMonsterMap().put(monsterId,monster);
+                System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
             }
         }
 /*        //商品列表
         goodsList = getStaticGoodsList();
         //玩家可参与的副本
         dungeonsList = getStaticDungeonsList();*/
+        //初始化网格-暂定先写一个场景下的demo
+/*        for(int i=1;i<=64;i++){
+            GlobalResource.getGridHashMap().put(i,new Grid(i));
+        }*/
+
+
+
     }
     //商店列表初始化
     public static String getStaticGoodsList(){

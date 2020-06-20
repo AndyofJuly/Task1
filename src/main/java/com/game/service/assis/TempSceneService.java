@@ -27,9 +27,9 @@ public class TempSceneService {
 
         Monster monster = new Monster(monsterId,Integer.parseInt(SceneResource.getScenesStatics().get(staticSceneId).getMonsterId()[0]));//目前只有一个元素
 
-        InitGame.scenes.put(tempSceneId,tempScene);
+        GlobalResource.getScenes().put(tempSceneId,tempScene);
         //生成boss放入临时场景
-        InitGame.scenes.get(tempSceneId).getMonsterHashMap().put(monsterId, monster);
+        GlobalResource.getScenes().get(tempSceneId).getMonsterHashMap().put(monsterId, monster);
         GlobalResource.getTempIdHashMap().put(tempSceneId,monsterId);
         //GlobalResource.tempNameHashMap.put(tempSceneName,tempSceneId);
         //返回该场景id，根据id可获取场景名，供角色移动使用
@@ -38,7 +38,7 @@ public class TempSceneService {
 
     public static void deleteTempScene(int tempSceneId,String teamId){
         System.out.println("对id为"+tempSceneId+"的临时场景进行回收");
-        InitGame.scenes.remove(tempSceneId);
+        GlobalResource.getScenes().remove(tempSceneId);
         //team也要解散回收
         GlobalResource.getTeamList().remove(teamId);
         System.gc();

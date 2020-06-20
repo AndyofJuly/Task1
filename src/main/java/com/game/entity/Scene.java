@@ -16,13 +16,14 @@ public class Scene {
     private int id;
     //具体场景Name，临时场景的name是随机的
     private String name;
-
     // 资源类中的静态id
     private int sceneId;
     //该场景下的角色集合
     private ArrayList<Role> roleAll = new ArrayList<Role>();
     //该场景下的怪物集合
     private HashMap<String,Monster> monsterHashMap = new HashMap<String,Monster>();
+    //该场景下的网格集合
+    private HashMap<Integer, Grid> gridHashMap = new HashMap<>();
 
     public Scene(int id,String name,int sceneId) {
         this.id = id;
@@ -70,4 +71,11 @@ public class Scene {
         this.monsterHashMap = monsterHashMap;
     }
 
+    public HashMap<Integer, Grid> getGridHashMap() {
+        return gridHashMap;
+    }
+
+    public void setGridHashMap(HashMap<Integer, Grid> gridHashMap) {
+        this.gridHashMap = gridHashMap;
+    }
 }

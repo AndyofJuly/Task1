@@ -107,6 +107,10 @@ public class Const {
     //嘲讽技能id
     public static final int TAUNT_SKILL_ID = 1010;
 
+    //视野单位网格长
+    public static final int GRID_LENGTH = 16;
+    //视野单位网格宽
+    public static final int GRID_WIDTH = 8;
     //定制的攻击消息集合-暂时存在此处
     public interface Fight{
         String PK_SUCCESS = "恭喜pk成功，获得对方50银，2点攻击力!";

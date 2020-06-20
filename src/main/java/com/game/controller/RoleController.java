@@ -8,6 +8,7 @@ import com.game.entity.Monster;
 import com.game.entity.Role;
 import com.game.entity.store.MonsterResource;
 import com.game.entity.store.NpcResource;
+import com.game.entity.vo.GridVo;
 import com.game.entity.vo.SceneDetailVo;
 import com.game.service.RoleService;
 import com.game.service.UserService;
@@ -17,6 +18,7 @@ import com.game.service.assis.InitGame;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * 业务逻辑处理，根据不同的输入命令通过反射原理调用不同的方法，使用了spring中的自定义注解来实现
@@ -82,7 +84,7 @@ public class RoleController {
     //获取当前场景信息，使用举例：aoi
     @MyAnnontation(MethodName = "aoi")
     public String aoiMesseage() {
-        SceneDetailVo sceneDetailVo = roleService.placeDetail(InitGame.scenes.get(GlobalResource.getRoleHashMap().get(intList.get(0)).
+        SceneDetailVo sceneDetailVo = roleService.placeDetail(GlobalResource.getScenes().get(GlobalResource.getRoleHashMap().get(intList.get(0)).
                 getNowScenesId()).getName());
         return printSceneDetail(sceneDetailVo);
     }
@@ -151,7 +153,7 @@ public class RoleController {
     @MyAnnontation(MethodName = "getMonster")
     public String getMonster(){
         String key = AssistService.checkMonsterId(strList.get(1),intList.get(0));
-        Monster nowMonster = InitGame.scenes.get(GlobalResource.getRoleHashMap().get(intList.get(0))
+        Monster nowMonster = GlobalResource.getScenes().get(GlobalResource.getRoleHashMap().get(intList.get(0))
                 .getNowScenesId()).getMonsterHashMap().get(key);
         return "hp：" + nowMonster.getMonsterHp() + "，状态："+ nowMonster.getAlive();
     }
@@ -165,7 +167,8 @@ public class RoleController {
     //获得当前视野范围内的其他角色，使用举例：view
     @MyAnnontation(MethodName = "view")
     public String getView(){
-        return roleService.getView(intList.get(0));
+        GridVo gridVo = roleService.getMyView(intList.get(0));
+        return printViewDetail(gridVo);
     }
 
     //角色在场景内移动，使用举例：walk x y
@@ -179,7 +182,7 @@ public class RoleController {
     //调试代码用的测试
     @MyAnnontation(MethodName = "test")
     public String testCode(){
-        return roleService.testCode(intList.get(0),intList.get(1));
+        return roleService.testCode(intList.get(0));
     }
 
     //打印场景信息
@@ -199,6 +202,21 @@ public class RoleController {
             if(sceneDetailVo.getMonsterHashMap().get(key).getAlive()==1){
                 stringBuilder.append(MonsterResource.getMonstersStatics().get(sceneDetailVo.getMonsterHashMap().get(key).getMonsterId()).getName()).append(" ");
             }
+        }
+        return stringBuilder.toString();
+    }
+
+    //打印视野信息-角色集合
+    private String printViewDetail(GridVo gridVo){
+        StringBuilder stringBuilder = new StringBuilder("角色：");
+        for(Integer key : gridVo.getGridRoleMap().keySet()){
+            Role role =GlobalResource.getRoleHashMap().get(key);
+            stringBuilder.append(role.getName()+" 位置："+role.getPosition()[0]+","+role.getPosition()[1]+" 网格id："+role.getCurGridId()+"；");
+        }
+        stringBuilder.append("。 怪物：");
+        for(String key : gridVo.getGridMonsterMap().keySet()){
+            Monster monster = gridVo.getGridMonsterMap().get(key);
+            stringBuilder.append(MonsterResource.getMonstersStatics().get(monster.getMonsterId()).getName()+" 位置："+monster.getPosition()[0]+","+monster.getPosition()[1]+"；");
         }
         return stringBuilder.toString();
     }

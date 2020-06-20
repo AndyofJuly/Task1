@@ -18,12 +18,14 @@ public class Monster{
     private int monsterId;
     // 怪物血量
     private int monsterHp;
+    // 怪物位置-动态
+    private int[] position;
 
     public Monster(String id, int monsterId) {
         this.id = id;
         this.monsterId = monsterId;
-        //血量初始化
-        this.monsterHp=MonsterResource.getMonstersStatics().get(this.monsterId).getHp();
+        this.monsterHp = MonsterResource.getMonstersStatics().get(this.monsterId).getHp();
+        this.position = MonsterResource.getMonstersStatics().get(this.monsterId).getPosition();
     }
 
     public String getId() {
@@ -56,5 +58,13 @@ public class Monster{
 
     public void setMonsterHp(int monsterHp) {
         this.monsterHp = monsterHp;
+    }
+
+    public int[] getPosition() {
+        return position;
+    }
+
+    public void setPosition(int[] position) {
+        this.position = position;
     }
 }

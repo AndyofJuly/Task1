@@ -1,6 +1,8 @@
 package com.game.service.assis;
 
+import com.game.entity.Grid;
 import com.game.entity.Role;
+import com.game.entity.Scene;
 import com.game.entity.Team;
 
 import java.time.Instant;
@@ -24,6 +26,9 @@ public class GlobalResource {
     private static ArrayList<String> strList  = new ArrayList<>();
 
     private static HashMap<Integer, Role> roleHashMap = new HashMap<>();
+    public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
+
+    //public static HashMap<Integer, Grid> gridHashMap = new HashMap<>();
     //技能计时
     private static Instant useTauntDate;
 
@@ -73,4 +78,20 @@ public class GlobalResource {
     public static void setStrList(ArrayList<String> strList) {
         GlobalResource.strList = strList;
     }
+
+    public static HashMap<Integer, Scene> getScenes() {
+        return scenes;
+    }
+
+    public static void setScenes(HashMap<Integer, Scene> scenes) {
+        GlobalResource.scenes = scenes;
+    }
+
+/*    public static HashMap<Integer, Grid> getGridHashMap() {
+        return gridHashMap;
+    }
+
+    public static void setGridHashMap(HashMap<Integer, Grid> gridHashMap) {
+        GlobalResource.gridHashMap = gridHashMap;
+    }*/
 }

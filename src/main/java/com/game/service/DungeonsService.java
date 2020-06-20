@@ -34,7 +34,7 @@ public class DungeonsService {
     //创建临时副本以开始副本，玩家一起攻打BOSS
     public static void startDungeons (String teamId, int roleId){
         Team team = GlobalResource.getTeamList().get(teamId);
-        String target = InitGame.scenes.get(TempSceneService.createTempScene(team.getDungeonsId())).getName();
+        String target = GlobalResource.getScenes().get(TempSceneService.createTempScene(team.getDungeonsId())).getName();
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             roleService.moveTo(target,team.getRoleList().get(i));

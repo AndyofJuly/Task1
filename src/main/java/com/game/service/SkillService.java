@@ -53,7 +53,7 @@ public class SkillService {
         Role role = GlobalResource.getRoleHashMap().get(roleId);
         int key1 = AssistService.checkSkillId(skillName);
 
-        Monster nowMonster = InitGame.scenes.get(role.getNowScenesId()).getMonsterHashMap().get(monsterId);
+        Monster nowMonster = GlobalResource.getScenes().get(role.getNowScenesId()).getMonsterHashMap().get(monsterId);
         int hp = nowMonster.getMonsterHp();
         hp=hp-role.getAtk()-SkillResource.getSkillStaticHashMap().get(key1).getAtk()-
                 Const.WEAPON_BUFF;
@@ -79,8 +79,8 @@ public class SkillService {
     public static void groupAtkSkill(String skillName,int roleId){
         int skey = AssistService.checkSkillId(skillName);
         int sceneId = GlobalResource.getRoleHashMap().get(roleId).getNowScenesId();
-        for(String key : InitGame.scenes.get(sceneId).getMonsterHashMap().keySet()){
-            Monster monster = InitGame.scenes.get(sceneId).getMonsterHashMap().get(key);
+        for(String key : GlobalResource.getScenes().get(sceneId).getMonsterHashMap().keySet()){
+            Monster monster = GlobalResource.getScenes().get(sceneId).getMonsterHashMap().get(key);
             monster.setMonsterHp(monster.getMonsterHp()-SkillResource.getSkillStaticHashMap().get(skey).getAtk());
         }
     }
@@ -94,7 +94,7 @@ public class SkillService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for(Role role : InitGame.scenes.get(sceneId).getRoleAll()){
+        for(Role role : GlobalResource.getScenes().get(sceneId).getRoleAll()){
             role.setHp(role.getHp()+skill.getAddHp());
         }
     }
