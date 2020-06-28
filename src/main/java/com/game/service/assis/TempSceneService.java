@@ -1,9 +1,11 @@
 package com.game.service.assis;
 
+import com.game.entity.Grid;
 import com.game.entity.Monster;
 import com.game.entity.Scene;
 import com.game.entity.store.DungeonsResource;
 import com.game.entity.store.SceneResource;
+import com.game.service.RoleService;
 
 import java.util.UUID;
 
@@ -33,6 +35,13 @@ public class TempSceneService {
         GlobalResource.getTempIdHashMap().put(tempSceneId,monsterId);
         //GlobalResource.tempNameHashMap.put(tempSceneName,tempSceneId);
         //返回该场景id，根据id可获取场景名，供角色移动使用
+
+        //初始化网格并放入怪物或npc等
+        for(int i=1;i<=64;i++){
+            GlobalResource.getScenes().get(tempSceneId).getGridHashMap().put(i,new Grid(i));
+        }
+        GlobalResource.getScenes().get(tempSceneId).getGridHashMap().get(RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1])).getGridMonsterMap().put(monsterId,monster);
+
         return tempSceneId;
     }
 

@@ -1,7 +1,9 @@
 package com.game.entity;
 
 import com.game.entity.excel.PotionStatic;
+import com.game.entity.vo.DealVo;
 import com.game.entity.vo.GridVo;
+import com.game.entity.vo.PlayerSaleVo;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;
@@ -42,8 +44,14 @@ public class Role {
     private int[] position = {50,20};//new int[2]计算出的网格id为20
     //角色所在的网格id
     private int curGridId = 20;
+    //角色面对面交易单
+    private DealVo dealVo;
+    //角色交易行
+    private PlayerSaleVo playerSaleVo;
+
     //角色视野实体集合，角色id和GridVo
-    private HashMap<Integer, GridVo> gridVoHashMap = new HashMap<>();
+//    private HashMap<Integer, GridVo> gridVoHashMap = new HashMap<>();
+    private GridVo gridVo;
 
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
@@ -209,11 +217,35 @@ public class Role {
         this.curGridId = curGridId;
     }
 
-    public HashMap<Integer, GridVo> getGridVoHashMap() {
+/*    public HashMap<Integer, GridVo> getGridVoHashMap() {
         return gridVoHashMap;
     }
 
     public void setGridVoHashMap(HashMap<Integer, GridVo> gridVoHashMap) {
         this.gridVoHashMap = gridVoHashMap;
+    }*/
+
+    public GridVo getGridVo() {
+        return gridVo;
+    }
+
+    public void setGridVo(GridVo gridVo) {
+        this.gridVo = gridVo;
+    }
+
+    public DealVo getDealVo() {
+        return dealVo;
+    }
+
+    public void setDealVo(DealVo dealVo) {
+        this.dealVo = dealVo;
+    }
+
+    public PlayerSaleVo getPlayerSaleVo() {
+        return playerSaleVo;
+    }
+
+    public void setPlayerSaleVo(PlayerSaleVo playerSaleVo) {
+        this.playerSaleVo = playerSaleVo;
     }
 }

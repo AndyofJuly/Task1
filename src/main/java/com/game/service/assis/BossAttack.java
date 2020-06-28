@@ -163,6 +163,8 @@ public class BossAttack extends TimerTask {
     }
 
     private void leaveDungeons(){
+        //重新计时
+        k=0;
         //回到副本传送点
         for(int i = 0; i< list.size(); i++) {
             Role role = GlobalResource.getRoleHashMap().get(list.get(i));

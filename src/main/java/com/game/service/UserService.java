@@ -35,7 +35,7 @@ public class UserService {
             //网格中增加该角色
             GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(roleId,role);
             //九宫格初始化
-            role.getGridVoHashMap().put(roleId,new GridVo());
+            role.setGridVo(new GridVo(roleId));
 
             return Const.start.LOGIN_SUCCESS;
         }else {

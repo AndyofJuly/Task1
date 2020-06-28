@@ -76,7 +76,7 @@ public class AssistService {
         return 0;
     }
 
-    //查找静态场景id
+    //查找静态场景id，传参为外部场景名
     public static Integer checkSceneId(String sceneName){
         for (Integer key : SceneResource.getScenesStatics().keySet()) {
             if (sceneName.equals(SceneResource.getScenesStatics().get(key).getName())) {
@@ -86,7 +86,7 @@ public class AssistService {
         return 0;
     }
 
-    //查找动态场景id
+    //查找动态场景id，传参为外部场景名 -专用于副本，根据临时场景名，查找临时副本id
     public static Integer checkDynSceneId(String sceneName){
         for (Integer key : GlobalResource.getScenes().keySet()) {
             if (sceneName.equals(GlobalResource.getScenes().get(key).getName())) {

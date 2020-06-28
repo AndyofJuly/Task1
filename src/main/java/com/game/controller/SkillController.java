@@ -17,8 +17,8 @@ import java.util.ArrayList;
 @Service
 public class SkillController {
 
-    private ArrayList<String> strList = GlobalResource.getStrList();
-    private ArrayList<Integer> intList = GlobalResource.getIntList();
+    private ArrayList<String> strList = RoleController.getStrList();
+    private ArrayList<Integer> intList = RoleController.getIntList();
 
     //显示当前自己的职业有什么技能
     @MyAnnontation(MethodName = "skillList")

@@ -44,8 +44,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             PrivateChatDeal.add(Integer.parseInt(s[s.length-1]),ctx);
         }
 
-        if(msg.startsWith("sayTo") || msg.startsWith("email")){
-            PrivateChatDeal.dealMessage(msg,ctx);
+        if(msg.startsWith("sayTo") || msg.startsWith("email") || msg.startsWith("deal")){
+            PrivateChatDeal.dealMessage(msg,ctx);// || msg.startsWith("deal")
         }else if(msg.startsWith("say")){
             //此channel为发送者的channel，需要找到接收者的channel，然后接收者ch.writeAndFlush即可
             Channel channel = ctx.channel();
@@ -60,8 +60,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         }else{
             System.out.println("收到来自客户端:"+msg.toString());
             //RoleController.setStrings(msg.toString().split(" "));
-            GlobalResource.setIntList(UtilHelper.getIntList(msg.toString().split(" ")));
-            GlobalResource.setStrList(UtilHelper.getStrList(msg.toString().split(" ")));
+            RoleController.setIntList(UtilHelper.getIntList(msg.toString().split(" ")));
+            RoleController.setStrList(UtilHelper.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();
             Channel channel = ctx.channel();
             channelGroup.forEach(ch -> {
@@ -70,7 +70,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
                     ch.writeAndFlush(Listen.mesg());
                 }
                 if(channel == ch){
-                    ch.writeAndFlush(reflectService.getMethod(GlobalResource.getStrList().get(0)));
+                    ch.writeAndFlush(reflectService.getMethod(RoleController.getStrList().get(0)));
                 }
             });
             Listen.reset();

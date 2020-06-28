@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Scene {
 
-    //具体场景id，原场景与静态场景id相同，临时场景与静态场景id则不同
+    //具体（动态随机）场景id，原场景与静态场景id相同，临时场景与静态场景id则不同
     private int id;
     //具体场景Name，临时场景的name是随机的
     private String name;

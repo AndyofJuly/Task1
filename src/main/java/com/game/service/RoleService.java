@@ -22,17 +22,17 @@ import java.util.HashMap;
 
 public class RoleService {
 
-    //角色移动&场景切换
+    //角色移动&场景切换，此处moveTarget为外部名字 tempId为动态随机id，角色所在当前场景id为临时场景id
     public boolean moveTo(String moveTarget,int roleId){
         Role role = GlobalResource.getRoleHashMap().get(roleId);
-        //名字还是用静态的名字，传送时用的是外部的
+        //nowPlace还是用静态的名字，传送时用的是外部的 todo 需要统一使用外部；已有静态id与外部id相同，新建临时场景外部id是随机的，与静态id有所不同，但可以根据外部id查找内部静态id
         String nowPlace = SceneResource.getScenesStatics().get(GlobalResource.getScenes().get(role.getNowScenesId()).getSceneId()).getName();
         //将当前场景坐标与要移动的场景的坐标进行对比，此处arr为位置关系数组
         String[] arr = SceneResource.getPlaces().get(AssistService.checkSceneId(nowPlace));
         boolean result = false;
         for (String value : arr) {
             int tempId = AssistService.checkDynSceneId(moveTarget);
-            String innTarget = SceneResource.getScenesStatics().get(GlobalResource.getScenes().get(tempId).getSceneId()).getName();
+            String innTarget = SceneResource.getScenesStatics().get(GlobalResource.getScenes().get(tempId).getSceneId()).getName();//根据动态id找到静态名
             if (innTarget.equals(SceneResource.getScenesStatics().get(Integer.valueOf(value)).getName())){
                 result = true;
                 break;
@@ -40,14 +40,14 @@ public class RoleService {
         }
         //如果可以移动成功，当前场景剔除该角色，目标场景加入该角色
         if(result){
-            Integer lastSceneId = AssistService.checkDynSceneId(moveTarget);
-
-            //视野扩展更新代码两条，先原地址移入，再新地址加入，加入后暂时保持网格id不变
+            Integer lastSceneId = AssistService.checkDynSceneId(moveTarget);//根据静态名，得到外部id
+            //视野扩展更新代码两条，先原地址移除，再新地址加入，加入后暂时保持网格id不变
             GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap().get(role.getCurGridId()).getGridRoleMap().remove(role.getId());
             GlobalResource.getScenes().get(lastSceneId).getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(role.getId(),role);
 
             GlobalResource.getScenes().get(role.getNowScenesId()).getRoleAll().remove(role);
             GlobalResource.getScenes().get(lastSceneId).getRoleAll().add(role);
+
             role.setNowScenesId(lastSceneId);
             //数据库相关操作可以留在用户退出时再调用
             RoleMapper roleMapper = new RoleMapper();
@@ -193,29 +193,31 @@ public class RoleService {
         Role role = GlobalResource.getRoleHashMap().get(roleId);
         int curGridId = role.getCurGridId();
         HashMap<Integer,Grid> viewGridHashMap = new HashMap<>();
-        role.getGridVoHashMap().get(roleId).getGridRoleMap().clear();//清理上一次留存下来的
-        role.getGridVoHashMap().get(roleId).getGridMonsterMap().clear();
+        role.getGridVo().getGridRoleMap().clear();//清理上一次留存下来的
+        role.getGridVo().getGridMonsterMap().clear();
+
         for(int k=0;k<2;k++){
             for(int i=curGridId-Const.GRID_WIDTH-1;i<=curGridId-Const.GRID_WIDTH+1;i++){
                 viewGridHashMap.put(i,GlobalResource.getScenes().get(role.getNowScenesId()).getGridHashMap().get(i));
                 for(Integer key : viewGridHashMap.get(i).getGridRoleMap().keySet()){
-                    role.getGridVoHashMap().get(roleId).getGridRoleMap().put(key,GlobalResource.getRoleHashMap().get(key));
+                    role.getGridVo().getGridRoleMap().put(key,GlobalResource.getRoleHashMap().get(key));
                 }
                 for(String key : viewGridHashMap.get(i).getGridMonsterMap().keySet()){
                     System.out.println("怪物有:"+viewGridHashMap.get(i).getGridMonsterMap().size());
-                    role.getGridVoHashMap().get(roleId).getGridMonsterMap().put(key,GlobalResource.getScenes().get(role.getNowScenesId()).getMonsterHashMap().get(key));
+                    role.getGridVo().getGridMonsterMap().put(key,GlobalResource.getScenes().get(role.getNowScenesId()).getMonsterHashMap().get(key));
                 }
             }
             curGridId+=Const.GRID_WIDTH;
         }
-        return role.getGridVoHashMap().get(roleId);
+        return role.getGridVo();
     }
 
     //测试用命令
     public String testCode(int roleId){
-        getMyView(roleId);
+        System.out.println(GlobalResource.getRoleHashMap().get(roleId).getDealVo().getDealId());
         return "";
     }
+
 }
 
 

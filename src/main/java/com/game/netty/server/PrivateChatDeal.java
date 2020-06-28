@@ -1,7 +1,10 @@
 package com.game.netty.server;
 
+import com.game.common.ReflectService;
 import com.game.controller.RoleController;
 import com.game.dao.RoleMapper;
+import com.game.entity.Role;
+import com.game.entity.vo.DealVo;
 import com.game.service.ChatService;
 import com.game.service.RoleService;
 import com.game.service.assis.GlobalResource;
@@ -9,6 +12,7 @@ import io.netty.channel.ChannelHandlerContext;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 //参考：https://blog.csdn.net/qq_36480491/article/details/84711553服务端私聊可通过自定义协议区分
 public class PrivateChatDeal {
@@ -65,6 +69,23 @@ public class PrivateChatDeal {
                     writeMessage(selfMsg,ctx);
                     break;
                 }else {
+                    writeMessage("is get out\n", ctx);
+                    break;
+                }
+            case "deal":
+                ChannelHandlerContext ctxFour = getContext(Integer.parseInt(strings[1]));
+                System.out.println(ctxFour);
+                if (ctxFour != null){
+                    //调用创建一个订单的方法，全局存一个交易记录，将id传给对方
+                    //int targetId,int goodsId,int price,int roleId
+                    String dealId = UUID.randomUUID().toString();
+                    Role role = GlobalResource.getRoleHashMap().get(Integer.parseInt(strings[1]));
+                    role.setDealVo(new DealVo(dealId,Integer.parseInt(strings[1]),Integer.parseInt(strings[2]),Integer.parseInt(strings[3]),Integer.parseInt(strings[4])));
+                    writeMessage(roleName+"向你发起了交易:"+role.getDealVo().getGoodsId()+"，价格为："+role.getDealVo().getPrice()+"交易密码："+dealId+"，是否同意？",ctxFour);
+                    writeMessage("我："+strings[2],ctx);
+                    break;
+                }
+                else {
                     writeMessage("is get out\n", ctx);
                     break;
                 }

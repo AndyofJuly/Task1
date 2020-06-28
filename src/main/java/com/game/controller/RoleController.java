@@ -14,11 +14,9 @@ import com.game.service.RoleService;
 import com.game.service.UserService;
 import com.game.service.assis.AssistService;
 import com.game.service.assis.GlobalResource;
-import com.game.service.assis.InitGame;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * 业务逻辑处理，根据不同的输入命令通过反射原理调用不同的方法，使用了spring中的自定义注解来实现
@@ -28,10 +26,9 @@ import java.util.HashMap;
 @Service
 public class RoleController {
     //private static String[] strings = new String[]{};
-    private ArrayList<String> strList = GlobalResource.getStrList();
-    private ArrayList<Integer> intList = GlobalResource.getIntList();
-    //strList.get(1)
-    //intList.get(0)
+
+    private static ArrayList<Integer> intList  = new ArrayList<>();
+    private static ArrayList<String> strList  = new ArrayList<>();
     UserService userService = new UserService();
     RoleService roleService = new RoleService();
     RoleMapper roleMapper = new RoleMapper();
@@ -220,4 +217,22 @@ public class RoleController {
         }
         return stringBuilder.toString();
     }
+
+    //封装
+    public static ArrayList<Integer> getIntList() {
+        return intList;
+    }
+
+    public static void setIntList(ArrayList<Integer> intList) {
+        RoleController.intList = intList;
+    }
+
+    public static ArrayList<String> getStrList() {
+        return strList;
+    }
+
+    public static void setStrList(ArrayList<String> strList) {
+        RoleController.strList = strList;
+    }
+
 }

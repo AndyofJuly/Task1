@@ -22,15 +22,13 @@ public class GlobalResource {
     //临时副本id获取该副本内的临时怪物id，分别对应key和value
     private static HashMap<Integer,String> tempIdHashMap = new HashMap<>();
 
-    private static ArrayList<Integer> intList  = new ArrayList<>();
-    private static ArrayList<String> strList  = new ArrayList<>();
-
     private static HashMap<Integer, Role> roleHashMap = new HashMap<>();
     public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
 
     //public static HashMap<Integer, Grid> gridHashMap = new HashMap<>();
     //技能计时
     private static Instant useTauntDate;
+
 
 
 
@@ -61,22 +59,6 @@ public class GlobalResource {
 
     public static void setRoleHashMap(HashMap<Integer, Role> roleHashMap) {
         GlobalResource.roleHashMap = roleHashMap;
-    }
-
-    public static ArrayList<Integer> getIntList() {
-        return intList;
-    }
-
-    public static void setIntList(ArrayList<Integer> intList) {
-        GlobalResource.intList = intList;
-    }
-
-    public static ArrayList<String> getStrList() {
-        return strList;
-    }
-
-    public static void setStrList(ArrayList<String> strList) {
-        GlobalResource.strList = strList;
     }
 
     public static HashMap<Integer, Scene> getScenes() {

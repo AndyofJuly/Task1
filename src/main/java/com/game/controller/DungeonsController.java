@@ -16,8 +16,8 @@ import java.util.ArrayList;
 @Service
 public class DungeonsController {
 
-    private ArrayList<String> strList = GlobalResource.getStrList();
-    private ArrayList<Integer> intList = GlobalResource.getIntList();
+    private ArrayList<String> strList = RoleController.getStrList();
+    private ArrayList<Integer> intList = RoleController.getIntList();
 
     //获得当前队伍列表，使用举例：getTeamList
     @MyAnnontation(MethodName = "getTeamList")

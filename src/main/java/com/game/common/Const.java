@@ -48,7 +48,7 @@ public class Const {
     public static final int DUNGEONS_GAIN = 50;
 
     //限购数量：3
-    public static final int GOODS_BUG_MAX = 3;
+    public static final int GOODS_BUG_MAX = 5;
 
     //角色矩形视野，矩形长的一半
     public static final int VIEW_X = 20;
@@ -72,6 +72,8 @@ public class Const {
 
     //零值
     public static final int ZERO = 0;
+    //拍卖限定时间-秒
+    public static final int AUCTION_TIME = 60;
 
 
     //excel常量数据配置表地址

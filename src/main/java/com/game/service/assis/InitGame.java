@@ -23,7 +23,7 @@ public class InitGame {
 
     static {
         System.out.println("hello");
-        //场景初始化
+        //场景初始化-创建的临时场景同样要考虑初始化网格
         for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
             GlobalResource.getScenes().put(keyScene,new Scene(keyScene,SceneResource.getScenesStatics().get(keyScene).getName(),keyScene));
             //对每个场景初始化64个网格
