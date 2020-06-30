@@ -2,7 +2,9 @@ package com.game.service;
 
 import com.game.common.Const;
 import com.game.controller.RoleController;
+import com.game.entity.Equipment;
 import com.game.entity.Role;
+import com.game.entity.store.EquipmentResource;
 import com.game.service.assis.AssistService;
 import com.game.service.assis.GlobalResource;
 
@@ -13,8 +15,7 @@ import com.game.service.assis.GlobalResource;
  */
 public class PackageService {
     //
-    public static void putIntoPackage(int goodsId,int number,int roleId){
-        Role role = GlobalResource.getRoleHashMap().get(roleId);
+    public void putIntoPackage(int goodsId,int number,Role role){
         if((goodsId+"").startsWith(Const.POTION_HEAD)){ //药品情况
             //如果背包中有该key，则数量叠加，如果getkey==null则新增该key，并设置数量
             if(role.getMyPackage().getGoodsHashMap().get(goodsId)!=null){
@@ -31,12 +32,27 @@ public class PackageService {
             }
         }else{ //装备情况
             //装备类，如果有相同的装备，不操作，如果装备不同，数量+1
+            System.out.println("goodsId"+goodsId);
             if(role.getMyPackage().getGoodsHashMap().get(goodsId)==null){
                 role.getMyPackage().getGoodsHashMap().put(goodsId,Const.EQUIPMENT_MAX_NUM);
                 System.out.println("获得装备！");
+                //task
+                //待修改为动态id下的level
+                int level = EquipmentResource.getEquipmentStaticHashMap().get(goodsId).getLevel();
+                System.out.println("level"+level);
+                if(level>=10){
+                    role.getMyPackage().setSumBestNum(1);
+                }
+                AchievementService.ifGetNBestEquipment(role);
+                //AchievementService.ifSumEquipmentLevelToFourty(level,roleId);
             }
         }
-
-
     }
+
+    public static void addMoney(int number,Role role){
+        role.setMoney(role.getMoney()+number);
+        //task
+        AchievementService.ifSumMoneyToThousand(number,role);
+    }
+
 }

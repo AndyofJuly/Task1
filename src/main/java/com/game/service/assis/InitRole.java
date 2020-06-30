@@ -22,9 +22,8 @@ import java.util.Timer;
 public class InitRole {
     private static boolean enterSuccess = false;
 
-    public static void init(int roleId){
+    public static void init(Role role){
         Instant start = Instant.now();
-        Role role = GlobalResource.getRoleHashMap().get(roleId);
         //目前角色拥有四个技能，全都初始化给角色
         for (Integer key : SkillResource.getSkillStaticHashMap().keySet()) {
             role.getSkillHashMap().put(key,new Skill(key));
@@ -41,11 +40,12 @@ public class InitRole {
 
         //装备要改变耐久，因此需要深拷贝，改变值了；先通过手动赋值的方式简单实现
         //HashMap<Integer, Integer> equipmentHashMap = new HashMap<Integer,Integer>();
-        for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
+/*        for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
             //Equipment equipment = new Equipment(key, EquipmentResource.equipmentStaticHashMap.get(key).getDurability());
             //equipment.setDura(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
             goods.put(key,1);
-        }
+        }*/
+        goods.put(3001,1);
         role.setMyPackage( new MyPackage(100,goods));
 
         if(enterSuccess){
@@ -53,7 +53,7 @@ public class InitRole {
             run();
             //自动告知当前位置，自动装上装备，便于测试
             RoleService roleService = new RoleService();
-            roleService.putOnEquipment(Const.WEPON,roleId);
+            roleService.putOnEquipment(Const.WEPON,role);
         }
         enterSuccess = false;
 

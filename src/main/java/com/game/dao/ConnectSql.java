@@ -3,6 +3,7 @@ package com.game.dao;
 import com.game.common.Const;
 //import com.game.common.InitStaticResource;
 import com.game.controller.RoleController;
+import com.game.entity.Role;
 import com.game.service.assis.GlobalResource;
 
 import java.sql.Connection;
@@ -12,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 
 /**
- * 数据库连接与数据库操作方法实现
+ * 数据库连接与数据库操作方法实现-9个方法
  * @Author andy
  * @create 2020/5/12 9:51
  */
@@ -145,11 +146,11 @@ public class ConnectSql {
      * 给当前角色设置所在的场景属性，用于最后离开游戏时保存角色所在的位置
      * @param scenesId 场景id
      */
-    public void insertRoleScenes(int scenesId,int roleId){
+    public void insertRoleScenes(int scenesId, Role role){
         try{
             PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where rolename=?");
             st.setInt(1,scenesId);
-            st.setString(2, GlobalResource.getRoleHashMap().get(roleId).getName());
+            st.setString(2, role.getName());
             st.executeUpdate();
         }catch (Exception e)
         {

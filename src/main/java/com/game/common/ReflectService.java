@@ -1,13 +1,14 @@
 package com.game.common;
 
 import org.reflections.Reflections;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
- * 反射类，能根据输入去查找对应有@Service注解的类，执行对应方法，这些注解类均写在controller包下
+ * 反射类，能根据输入去查找对应有@Service-Controller注解的类，执行对应方法，这些注解类均写在controller包下
  * @Author andy
  * @create 2020/5/18 18:10
  */
@@ -17,7 +18,7 @@ public class ReflectService {
     public String getMethod(String inputString) {
         Reflections reflections = new Reflections("com.game.controller");
         //获取带Service注解的类
-        Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Service.class);
+        Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Controller.class);
         for (Class clazz : typesAnnotatedWith) {
             Method[] methods = clazz.getDeclaredMethods();
             for (Method method : methods) {

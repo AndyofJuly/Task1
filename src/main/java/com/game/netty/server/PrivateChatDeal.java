@@ -65,7 +65,8 @@ public class PrivateChatDeal {
                     writeMessage(roleName+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
                     //调用email方法
                     RoleService roleService = new RoleService();
-                    String selfMsg = ChatService.emailToPlayer(roleMapper.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+                    ChatService chatService = new ChatService();
+                    String selfMsg = chatService.emailToPlayer(roleMapper.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
                     writeMessage(selfMsg,ctx);
                     break;
                 }else {

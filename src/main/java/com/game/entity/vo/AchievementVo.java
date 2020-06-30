@@ -7,32 +7,35 @@ package com.game.entity.vo;
  */
 public class AchievementVo {
     //和某个npc对话
-    private boolean firstTalkToNpcOleMan;
+    private boolean firstTalkToNpcOleMan = false;
     //通关某个副本
-    private boolean passPartiDungeons;
-    //添加一个好友
-    private boolean firstAddOneFriend;
+    private boolean passPartiDungeons = false;
+    //添加一个好友？目前还没有好友系统，添加好友的方法，需要增加
+    private boolean firstAddOneFriend = false;
     //第一次组队
-    private boolean firstJoinTeam;
-    //第一次加入公会
-    private boolean firstJoinUnion;
+    private boolean firstJoinTeam = false;
+    //第一次加入公会？目前还没有加入公会的方法
+    private boolean firstJoinUnion = false;
     //第一次与玩家交易
-    private boolean firstTradeWithPlayer;
+    private boolean firstTradeWithPlayer = false;
     //第一次在pk中战胜
-    private boolean firstPkSuccess;
+    private boolean firstPkSuccess = false;
 
     //击杀特定小怪N只
-    private boolean slayPartiMonster;
-    //等级提升到N级
-    private boolean levelUpToTwenty;
-    //获得N件极品装备
-    private boolean getNBestEquipment;
-    //穿戴的装备等级总和达到XXX
-    private boolean sumEquipmentLevelToFourty;
+    private boolean slayPartiMonster = false;
+    //等级提升到N级？目前还没有升级的相关方法
+    private boolean levelUpToTwenty = false;
+    //获得N件极品装备？目前还没有对装备进行分类
+    private boolean getNBestEquipment = false;
+    //穿戴的装备等级总和达到XXX？还没有定制装备的等级
+    private boolean sumEquipmentLevelToFourty = false;
     //当前金币达到xxxx
-    private boolean sumMoneyToThousand;
+    private boolean sumMoneyToThousand = false;
     //完成某一系列任务
-    private boolean achievSerialTask;
+    private boolean achievSerialTask = false;
+
+    //计数并判断是否满足数量要求，满足则设为true;
+    private int slayConut = 0;
 
     public boolean isFirstTalkToNpcOleMan() {
         return firstTalkToNpcOleMan;
@@ -137,4 +140,14 @@ public class AchievementVo {
     public void setAchievSerialTask(boolean achievSerialTask) {
         this.achievSerialTask = achievSerialTask;
     }
+
+    //计数
+    public int getSlayConut() {
+        return slayConut;
+    }
+
+    public void setSlayConut(int slayConut) {
+        this.slayConut = this.slayConut+slayConut;
+    }
+
 }

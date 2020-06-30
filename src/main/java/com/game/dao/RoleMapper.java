@@ -1,5 +1,7 @@
 package com.game.dao;
 
+import com.game.entity.Role;
+
 import java.util.HashMap;
 
 /**
@@ -25,8 +27,8 @@ public class RoleMapper {
         return sql.selectLoginRole(rolename,roleId);
     }
 
-    public void insertRoleScenes(int scenesId,int roleId){
-        sql.insertRoleScenes(scenesId,roleId);
+    public void insertRoleScenes(int scenesId, Role role){
+        sql.insertRoleScenes(scenesId,role);
     }
 
     public int selectRoleIdByName(String rolename){

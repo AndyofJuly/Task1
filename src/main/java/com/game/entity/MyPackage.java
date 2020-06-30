@@ -16,6 +16,8 @@ public class MyPackage {
     private int packageId;
     // 背包容量
     private int size;
+    // 背包极品装备数量
+    private int bestNum = 0;
     // 药类可叠加，只计数即可
     // 背包中的药品，使用List集合，元素可重复
 //    private HashMap<Integer,Potion> potionHashMap = new HashMap<Integer,Potion>();
@@ -73,4 +75,12 @@ public class MyPackage {
     public void setPackageEquipmentHashMap(HashMap<Integer, Equipment> packageEquipmentHashMap) {
         this.packageEquipmentHashMap = packageEquipmentHashMap;
     }*/
+
+    public int getBestNum() {
+        return bestNum;
+    }
+
+    public void setSumBestNum(int bestNum) {
+        this.bestNum = this.bestNum+bestNum;
+    }
 }

@@ -3,6 +3,7 @@ package com.game.netty.server;
 import com.game.common.ReflectService;
 import com.game.common.UtilHelper;
 import com.game.controller.RoleController;
+import com.game.entity.Scene;
 import com.game.service.assis.GlobalResource;
 import com.game.service.assis.InitGame;
 import com.game.service.assis.Listen;
@@ -52,7 +53,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             //这时我们要遍历ChannelGroup，根据不同情况，会送不同消息
             channelGroup.forEach(ch->{
                 if (channel != ch){ // 默认登录以后才能收到消息
-                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(clientGroup.get(channel.id())).getName()+":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
+                    int chnnalId = clientGroup.get(channel.id());
+                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(chnnalId).getName()
+                            +":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
                 }else {//回显自己发送的消息
                     ch.writeAndFlush("我:"+msg.substring(3,msg.length()-2));
                 }
@@ -109,7 +112,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         //角色集合中移除该客户端的角色、需要在当前场景中移除、还需要在队伍中移除
         //传参必须为Integer，否则List会将id看做下标而不是元素
         Integer removeId = clientGroup.get(ctx.channel().id());
-        GlobalResource.getScenes().get(GlobalResource.getRoleHashMap().get(removeId).getNowScenesId()).getRoleAll().remove(GlobalResource.getRoleHashMap().get(removeId));
+        int sceneId = GlobalResource.getRoleHashMap().get(removeId).getNowScenesId();
+        Scene scene = GlobalResource.getScenes().get(sceneId);
+        scene.getRoleAll().remove(GlobalResource.getRoleHashMap().get(removeId));
         GlobalResource.getRoleHashMap().remove(removeId);
         for(String teamId : GlobalResource.getTeamList().keySet()){
             GlobalResource.getTeamList().get(teamId).getRoleList().remove(removeId);

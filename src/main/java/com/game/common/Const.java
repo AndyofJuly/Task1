@@ -38,7 +38,8 @@ public class Const {
     public static final int BABY_ID = 6001;
 
     //副本出发点-统一在此处
-    public static final String DUNGEONS_START_SCENE = "副本传送点";
+    //public static final String DUNGEONS_START_SCENE = "副本传送点";
+    public static final int DUNGEONS_START_SCENE = 10006;
     //Boss使用技能-测试
     public static final int BOSS_SKILL_ID = 1008;
 
@@ -87,6 +88,7 @@ public class Const {
     public static final String CAREER_CONST_PATH = ".\\src\\main\\resources\\career.xls";
     public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\dungeons.xls";
     public static final String BABY_CONST_PATH = ".\\src\\main\\resources\\baby.xls";
+    public static final String JOB_CONST_PATH = ".\\src\\main\\resources\\job.xls";
 
     //数据库连接信息
     public static final String URL = "jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
@@ -103,7 +105,7 @@ public class Const {
     //角色职业id，测试用
     public static final int CAREER_ID = 5001;
     //钢剑-测试
-    public static final String WEPON = "钢剑";
+    public static final int WEPON = 3001;
     //战士职业id
     public static final int FIGHTER_CAREER_ID = 5001;
     //嘲讽技能id
@@ -140,7 +142,7 @@ public class Const {
     public interface Shop{
         String LIMIT_MSG = "超过限购数量，不可以再购买了";
         String BUY_FAILURE = "您所携带的银两不够，无法够买";
-        String BUY_SUCCESS = "购买成功，目前该药品在背包中的数量为";
+        String BUY_SUCCESS = "购买成功，目前该物品在背包中的数量为";
     }
 
     //登录的提示信息

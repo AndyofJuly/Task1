@@ -26,9 +26,9 @@ public class TempSceneService {
         int staticSceneId = DungeonsResource.getDungeonsStaticHashMap().get(dungeonsId).getSceneId();
         Scene tempScene = new Scene(tempSceneId,tempSceneName,staticSceneId);
         //对需要的部分进行改造，例如名字(可以不修改)和Npc
-
-        Monster monster = new Monster(monsterId,Integer.parseInt(SceneResource.getScenesStatics().get(staticSceneId).getMonsterId()[0]));//目前只有一个元素
-
+        int monsterStaticId = Integer.parseInt(SceneResource.getScenesStatics().get(staticSceneId).getMonsterId()[0]);
+        //目前只有一个元素
+        Monster monster = new Monster(monsterId,monsterStaticId);
         GlobalResource.getScenes().put(tempSceneId,tempScene);
         //生成boss放入临时场景
         GlobalResource.getScenes().get(tempSceneId).getMonsterHashMap().put(monsterId, monster);
@@ -40,7 +40,9 @@ public class TempSceneService {
         for(int i=1;i<=64;i++){
             GlobalResource.getScenes().get(tempSceneId).getGridHashMap().put(i,new Grid(i));
         }
-        GlobalResource.getScenes().get(tempSceneId).getGridHashMap().get(RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1])).getGridMonsterMap().put(monsterId,monster);
+        int gridId = RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
+        Scene scene = GlobalResource.getScenes().get(tempSceneId);
+        scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monsterId,monster);
 
         return tempSceneId;
     }

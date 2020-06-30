@@ -1,9 +1,7 @@
 package com.game.entity;
 
 import com.game.entity.excel.PotionStatic;
-import com.game.entity.vo.DealVo;
-import com.game.entity.vo.GridVo;
-import com.game.entity.vo.PlayerSaleVo;
+import com.game.entity.vo.*;
 import io.netty.channel.Channel;
 
 import java.util.HashMap;
@@ -48,10 +46,20 @@ public class Role {
     private DealVo dealVo;
     //角色交易行
     private PlayerSaleVo playerSaleVo;
-
     //角色视野实体集合，角色id和GridVo
 //    private HashMap<Integer, GridVo> gridVoHashMap = new HashMap<>();
     private GridVo gridVo;
+    //角色成就-任务系统
+    private AchievementVo achievementVo = new AchievementVo();
+    //角色的公会
+    private int unionId;
+    //朋友
+    private FriendVo friendVo = new FriendVo();
+    //等级
+    private int level;
+
+    //穿戴装备
+    //private WearEquipment wearEquipment;
 
     //角色学会的技能
     private HashMap<Integer,Skill> skillHashMap = new HashMap<Integer,Skill>();
@@ -248,4 +256,44 @@ public class Role {
     public void setPlayerSaleVo(PlayerSaleVo playerSaleVo) {
         this.playerSaleVo = playerSaleVo;
     }
+
+    public AchievementVo getAchievementVo() {
+        return achievementVo;
+    }
+
+    public void setAchievementVo(AchievementVo achievementVo) {
+        this.achievementVo = achievementVo;
+    }
+
+    public int getUnionId() {
+        return unionId;
+    }
+
+    public void setUnionId(int unionId) {
+        this.unionId = unionId;
+    }
+
+    public FriendVo getFriendVo() {
+        return friendVo;
+    }
+
+    public void setFriendVo(FriendVo friendVo) {
+        this.friendVo = friendVo;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+/*    public WearEquipment getWearEquipment() {
+        return wearEquipment;
+    }
+
+    public void setWearEquipment(WearEquipment wearEquipment) {
+        this.wearEquipment = wearEquipment;
+    }*/
 }

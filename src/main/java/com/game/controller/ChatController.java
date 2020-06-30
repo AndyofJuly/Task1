@@ -2,6 +2,7 @@ package com.game.controller;
 
 import com.game.service.ChatService;
 import com.game.service.assis.GlobalResource;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import com.game.common.MyAnnontation;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/15 15:23
  */
-@Service
+@Controller
 public class ChatController {
 
 /*    private ArrayList<String> strList = GlobalResource.getStrList();

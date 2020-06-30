@@ -6,6 +6,8 @@ import com.game.entity.Baby;
 import com.game.entity.Role;
 import com.game.entity.store.DungeonsResource;
 import com.game.entity.store.SkillResource;
+import com.game.service.AchievementService;
+import com.game.service.PackageService;
 import com.game.service.RoleService;
 import com.game.service.SkillService;
 
@@ -41,10 +43,12 @@ public class BossAttack extends TimerTask {
     static int k;
     //1秒，计时
     static int seconds;
-    int damage = SkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
+    SkillService skillService = new SkillService();
+    int damage = skillService.normalAttackSkill(Const.BOSS_SKILL_ID);
     Baby baby = null;
     ArrayList<Integer> list;
     RoleService roleService = new RoleService();
+    boolean success = false;
     @Override
     public void run() {
         //按照一定优先级的规则轮流攻击玩家
@@ -88,7 +92,13 @@ public class BossAttack extends TimerTask {
         k++;
         if(checkTimeOut()){return;}
         if(checkTeamHpOut()){return;}
-        if(checkBossHpOut()){return;}
+        if(checkBossHpOut()){
+            //task
+            for(int i = 0; i< list.size(); i++) {
+                AchievementService.ifPassPartiDungeons(this.dungeonsId,GlobalResource.getRoleHashMap().get(list.get(i)));
+            }
+            return;
+        }
     }
 
     //怪物收到嘲讽，选择攻击战士
@@ -154,8 +164,10 @@ public class BossAttack extends TimerTask {
 
     private boolean checkBossHpOut(){
         String bossId =  GlobalResource.getTempIdHashMap().get(sceneId);
+        // todo
         if(GlobalResource.getScenes().get(sceneId).getMonsterHashMap().get(bossId).getMonsterHp()<=0){
             System.out.println("怪物已被打败，恭喜每人获得50银两奖励");
+            success = true;
             leaveDungeons();
             return true;
         }
@@ -168,9 +180,13 @@ public class BossAttack extends TimerTask {
         //回到副本传送点
         for(int i = 0; i< list.size(); i++) {
             Role role = GlobalResource.getRoleHashMap().get(list.get(i));
-            role.setMoney(role.getMoney()+Const.DUNGEONS_GAIN);
-            roleService.moveTo(Const.DUNGEONS_START_SCENE,role.getId());
+            //role.setMoney(role.getMoney()+Const.DUNGEONS_GAIN);
+            if(success = true){
+                PackageService.addMoney(Const.DUNGEONS_GAIN,role);
+            }
+            roleService.moveTo(Const.DUNGEONS_START_SCENE,role);
         }
+        success = false;
         this.timer.cancel();
         TempSceneService.deleteTempScene(sceneId,teamId);
     }

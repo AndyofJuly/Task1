@@ -2,9 +2,12 @@ package com.game.service.assis;
 
 //import com.game.common.InitStaticResource;
 import com.game.common.Const;
-import com.game.controller.RoleController;
 import com.game.entity.Role;
+import com.game.entity.Scene;
 import com.game.entity.store.*;
+import com.game.service.helper.EquipmentHelper;
+import com.game.service.SkillService;
+import com.game.service.helper.PotionHelper;
 
 /**
  * 由于系统是字符串输入名字，但实际操作的key是id，因此需要根据输入先找到对应的id，这就是该类的部分功能
@@ -17,7 +20,7 @@ public class AssistService {
     //查找装备id
     public static Integer checkEquipmentId(String equipmentName){
         for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
-            if (equipmentName.equals(EquipmentResource.getEquipmentStaticHashMap().get(key).getName())) {
+            if (equipmentName.equals(EquipmentHelper.getEquipmentName(key))) {
                 return key;
             }
         }
@@ -43,23 +46,20 @@ public class AssistService {
         return 0;
     }*/
 
-    //查找npc的id
-    public static Integer checkNpcId(String npcName,int roleId){
-        for (Integer key : NpcResource.getNpcsStatics().keySet()) {
-            if(NpcResource.getNpcsStatics().get(key).getName().equals(npcName) &&
-                    GlobalResource.getRoleHashMap().get(roleId).getNowScenesId()==NpcResource.getNpcsStatics().get(key).getSceneId()) {
-                return key;
-            }
-        }
-        return 0;
+    //查找npc的id-->验证是否在同一场景
+    public static boolean checkNpcId(int npcId,Role role){
+        int nowScenesId = role.getNowScenesId();
+        int npcScenesId = NpcResource.getNpcsStatics().get(npcId).getSceneId();
+        return nowScenesId==npcScenesId;
     }
 
     //查找怪物动态UUID
-    public static String checkMonsterId(String monsterName,int roleId){
-        int sceneId = GlobalResource.getRoleHashMap().get(roleId).getNowScenesId();
-        for (String key : GlobalResource.getScenes().get(sceneId).getMonsterHashMap().keySet()) {
-            if (MonsterResource.getMonstersStatics().get(GlobalResource.getScenes().get(sceneId).getMonsterHashMap().
-                    get(key).getMonsterId()).getName().equals(monsterName)){
+    public static String checkMonsterId(int monsterId,Role role){
+        int sceneId = role.getNowScenesId();
+        Scene scene = GlobalResource.getScenes().get(sceneId);
+        for (String key : scene.getMonsterHashMap().keySet()) {
+            Integer monsterStaticId = scene.getMonsterHashMap().get(key).getMonsterId();
+            if (monsterStaticId==monsterId){
                 return key;
             }
         }
@@ -69,7 +69,7 @@ public class AssistService {
     //查找药品id
     public static Integer checkPotionId(String drugName){
         for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
-            if (drugName.equals(PotionResource.getPotionStaticHashMap().get(key).getName())) {
+            if (drugName.equals(PotionHelper.getPotionName(key))) {
                 return key;
             }
         }
@@ -99,12 +99,12 @@ public class AssistService {
     //查找药品或装备的id
     public static Integer checkGoodsId(String goodsName){
         for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
-            if (goodsName.equals(PotionResource.getPotionStaticHashMap().get(key).getName())) {
+            if (goodsName.equals(PotionHelper.getPotionName(key))) {
                 return key;
             }
         }
         for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
-            if (goodsName.equals(EquipmentResource.getEquipmentStaticHashMap().get(key).getName())) {
+            if (goodsName.equals(EquipmentHelper.getEquipmentName(key))) {
                 return key;
             }
         }
@@ -150,10 +150,9 @@ public class AssistService {
     }
 
     //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo，怪物的位置可以在场景中随机生成
-    public static boolean checkDistance(int roleId,String monsterId){
-        Role role = GlobalResource.getRoleHashMap().get(roleId);
+    public static boolean checkDistance(Role role,String monsterId){
         int[] self = role.getPosition();
-        int[] monster = {30,30};//目前测试，均假设为一个位置
+        int[] monster = {50,20};//目前测试，均假设为一个位置
         if(getDistance(self,monster)<= Const.Max_OPT_DISTANCE){
             return true;
         }

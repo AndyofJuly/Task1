@@ -9,6 +9,8 @@ import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.store.SceneResource;
 import com.game.service.RoleService;
+import com.game.service.helper.EquipmentHelper;
+import com.game.service.helper.PotionHelper;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -25,7 +27,8 @@ public class InitGame {
         System.out.println("hello");
         //场景初始化-创建的临时场景同样要考虑初始化网格
         for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
-            GlobalResource.getScenes().put(keyScene,new Scene(keyScene,SceneResource.getScenesStatics().get(keyScene).getName(),keyScene));
+            String sceneName = SceneResource.getScenesStatics().get(keyScene).getName();
+            GlobalResource.getScenes().put(keyScene,new Scene(keyScene,sceneName,keyScene));
             //对每个场景初始化64个网格
             for(int i=1;i<=64;i++){
                 GlobalResource.getScenes().get(keyScene).getGridHashMap().put(i,new Grid(i));
@@ -44,7 +47,9 @@ public class InitGame {
                 Monster monster = new Monster(monsterId,Integer.valueOf(key));
                 GlobalResource.getScenes().get(i).getMonsterHashMap().put(monsterId, monster);
                 //将怪物放在单个网格中
-                GlobalResource.getScenes().get(i).getGridHashMap().get(RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1])).getGridMonsterMap().put(monsterId,monster);
+                int gridId = RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
+                Scene scene = GlobalResource.getScenes().get(i);
+                scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monsterId,monster);
                 System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
             }
         }
@@ -64,10 +69,12 @@ public class InitGame {
     public static String getStaticGoodsList(){
         StringBuilder stringBuilder = new StringBuilder("欢迎光临本商店，商店提供： ");
         for(Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()){
-            stringBuilder.append(EquipmentResource.getEquipmentStaticHashMap().get(key).getName()+":"+EquipmentResource.getEquipmentStaticHashMap().get(key).getPrice()).append("银； ");
+            stringBuilder.append(EquipmentHelper.getEquipmentName(key)+":"+
+                    EquipmentHelper.getEquipmentPrice(key)).append("银； ");
         }
         for(Integer key : PotionResource.getPotionStaticHashMap().keySet()){
-            stringBuilder.append(PotionResource.getPotionStaticHashMap().get(key).getName()+":"+PotionResource.getPotionStaticHashMap().get(key).getPrice()).append("银； ");
+            stringBuilder.append(PotionHelper.getPotionName(key)+":"+
+                    PotionHelper.getPotionPrice(key)).append("银； ");
         }
         return stringBuilder.toString();
     }
@@ -77,7 +84,9 @@ public class InitGame {
         StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
         for(Integer key : DungeonsResource.getDungeonsStaticHashMap().keySet()){
             DungeonsStatic dungeons = DungeonsResource.getDungeonsStaticHashMap().get(key);
-            stringBuilder.append(dungeons.getId()+":"+dungeons.getName()+"，限时"+dungeons.getDeadTime()+"秒。\n");
+            stringBuilder.append(dungeons.getId()+":"+
+                    dungeons.getName()+"，限时"+
+                    dungeons.getDeadTime()+"秒。\n");
         }
         return stringBuilder.toString();
     }

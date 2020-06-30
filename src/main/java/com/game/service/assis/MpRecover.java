@@ -17,7 +17,8 @@ public class MpRecover extends TimerTask {
         //mp恢复方法；每隔x秒恢复1点；假设这里只回复角色1的mp，待扩展；扩展可用循环读取所有的role，然后分别加mp
         for(Integer key : GlobalResource.getRoleHashMap().keySet()){
             int mp= GlobalResource.getRoleHashMap().get(key).getMp()+ Const.RECOVER_MP;
-            if(mp <= CareerResource.getCareerStaticHashMap().get(GlobalResource.getRoleHashMap().get(key).getCareerId()).getMp()){
+            int careerId = GlobalResource.getRoleHashMap().get(key).getCareerId();
+            if(mp <= CareerResource.getCareerStaticHashMap().get(careerId).getMp()){
                 GlobalResource.getRoleHashMap().get(key).setMp(mp);
             }
         }

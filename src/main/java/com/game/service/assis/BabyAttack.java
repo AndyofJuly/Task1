@@ -2,6 +2,7 @@ package com.game.service.assis;
 
 import com.game.common.Const;
 import com.game.entity.Monster;
+import com.game.entity.Scene;
 import com.game.service.SkillService;
 
 import java.util.Timer;
@@ -30,7 +31,8 @@ public class BabyAttack extends TimerTask {
     static int k = 0;
     @Override
     public void run() {
-        int damage = SkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
+        SkillService skillService = new SkillService();
+        int damage = skillService.normalAttackSkill(Const.BOSS_SKILL_ID);
         k++;
         //不在场景中了
         if(GlobalResource.getScenes().get(sceneId)==null){
@@ -39,7 +41,8 @@ public class BabyAttack extends TimerTask {
             return;
         }
         //表现效果就是，怪物定时收到技能伤害，该类使用构造方法来传参
-        Monster monster = GlobalResource.getScenes().get(sceneId).getMonsterHashMap().get(monsterId);
+        Scene scene = GlobalResource.getScenes().get(sceneId);
+        Monster monster = scene.getMonsterHashMap().get(monsterId);
         monster.setMonsterHp(monster.getMonsterHp()-damage);
         if(monster.getMonsterHp()<=0){
             this.timer.cancel();

@@ -17,13 +17,25 @@ public class EquipmentStatic {
     private int durability;
     // 装备价格
     private int price;
+    // 装备等级
+    private int level;
+    // 装备血量增益
+    private int addHp;
+    // 装备蓝量增益
+    private int addMp;
+    // 装备类别；1为武器；2为手环；3为项链
+    private int type;
 
-    public EquipmentStatic(int id, String name, int atk, int durability ,int price) {
+    public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type) {
         this.id = id;
         this.name = name;
         this.atk = atk;
         this.durability = durability;
         this.price = price;
+        this.level = level;
+        this.addHp = addHp;
+        this.addMp = addMp;
+        this.type = type;
     }
 
     public int getId() {
@@ -64,5 +76,37 @@ public class EquipmentStatic {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getAddHp() {
+        return addHp;
+    }
+
+    public void setAddHp(int addHp) {
+        this.addHp = addHp;
+    }
+
+    public int getAddMp() {
+        return addMp;
+    }
+
+    public void setAddMp(int addMp) {
+        this.addMp = addMp;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }
