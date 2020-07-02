@@ -30,6 +30,5 @@ public class NewTimerTask extends TimerTask {
          value=value%10+1;
          sum = sum + value;
          System.out.println("新生成的数字为:"+value);
-         System.out.println(sum);
-    }  
+    }
 } 

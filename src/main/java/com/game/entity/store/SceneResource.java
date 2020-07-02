@@ -21,8 +21,6 @@ public class SceneResource {
     private static HashMap<Integer, SceneStatic> scenesStatics = new HashMap<Integer,SceneStatic>();
     //场景地点关系，key为场景id
     private static HashMap<Integer, String[]> places= new HashMap<Integer,String[]>();
-    //角色注册时，给定一个初始场景
-    private static int initSceneId;
 
     static JSONArray result;
     static JSONObject jsonObject;
@@ -33,12 +31,8 @@ public class SceneResource {
             jsonObject = result.getJSONObject(i);
             SceneStatic sceneStatic = JSON.parseObject(jsonObject.toJSONString(), SceneStatic.class);
             scenesStatics.put(sceneStatic.getId(),sceneStatic);
-            //scenes.put(sceneStatic.getId(),new Scene(sceneStatic.getId()));
-            //places.put(sceneStatic.getName(),sceneStatic.getSceneRelation());
             places.put(sceneStatic.getId(),sceneStatic.getSceneRelation());
         }
-        //角色第一次开始游戏时的初始化场景
-        initSceneId = Const.INIT_SCENE;
     }
 
     public static HashMap<Integer, SceneStatic> getScenesStatics() {
@@ -49,7 +43,4 @@ public class SceneResource {
         return places;
     }
 
-    public static int getInitSceneId() {
-        return initSceneId;
-    }
 }

@@ -7,7 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @author maoyuanming0806 and andy
  * @create 2020/6/10 17:32
  */
-public class ClientHandler3 extends SimpleChannelInboundHandler<String> {
+public class ClientHandlerThree extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {

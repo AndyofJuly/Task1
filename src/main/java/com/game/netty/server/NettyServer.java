@@ -1,6 +1,7 @@
 package com.game.netty.server;
 
 import com.game.service.assis.InitGame;
+import com.game.test.springtest.CustomerService;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,6 +12,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 /**
  * netty服务端
@@ -18,14 +22,14 @@ import io.netty.handler.codec.string.StringEncoder;
  * @author maoyuanming0806 and andy
  * @create 2020/5/12 22:32
  */
-
+@Service("nettyServer")
 public class NettyServer {
     //监听端口
-    private int port ;
+    private int port = 7000;
 
-    public NettyServer(int port){
+/*    public NettyServer(int port){
         this.port = port;
-    }
+    }*/
 
     public void run() throws InterruptedException {
         //创建bossGroup和WrokerGroup
@@ -60,6 +64,9 @@ public class NettyServer {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new NettyServer(7000).run();
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        NettyServer nettyServer = (NettyServer)ac.getBean("nettyServer");
+        //new NettyServer(7000).run();
+        nettyServer.run();
     }
 }

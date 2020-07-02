@@ -1,5 +1,6 @@
 package com.game.entity;
 
+import com.game.common.Const;
 import com.game.entity.excel.PotionStatic;
 import com.game.entity.vo.*;
 import io.netty.channel.Channel;
@@ -25,15 +26,15 @@ public class Role {
     // 角色职业id
     private int careerId;
     //角色血量
-    private int hp = 50;
+    private int hp;
     //角色蓝量
-    private int mp = 50;
+    private int mp;
     //角色攻击力
-    private int atk = 10;
+    private int atk;
     //角色的金钱，初始送100
-    private int money = 100;
+    private int money;
     //角色防御力
-    private int def = 3;
+    private int def;
     //是否使用嘲讽技能
     private boolean useTaunt = false;
     //召唤师特有属性-宝宝-怪物类
@@ -67,18 +68,19 @@ public class Role {
     //角色装备栏
     private HashMap<Integer,Equipment> equipmentHashMap = new HashMap<Integer,Equipment>();
     //药品应该可以不需要集合，直接从背包里拿，然后使用
-    // 角色手中药品
-    private HashMap<Integer,PotionStatic> potionStaticHashMap = new HashMap<Integer,PotionStatic>();
 
-    public Role(int id, String name, int nowScenesId) {
+/*    public Role(int id, String name, int nowScenesId,int hp,int mp,int atk,int money,int def,int level) {
         this.id = id;
         this.name = name;
         this.nowScenesId = nowScenesId;
         this.alive = 1;
-    }
+    }*/
 
     public Role(int id) {
         this.id = id;
+        this.alive = 1;
+        this.level = 1;
+        this.nowScenesId = Const.INIT_SCENE;
     }
 
     public String getName() {
@@ -159,14 +161,6 @@ public class Role {
 
     public void setEquipmentHashMap(HashMap<Integer, Equipment> equipmentHashMap) {
         this.equipmentHashMap = equipmentHashMap;
-    }
-
-    public HashMap<Integer, PotionStatic> getPotionStaticHashMap() {
-        return potionStaticHashMap;
-    }
-
-    public void setPotionStaticHashMap(HashMap<Integer, PotionStatic> potionStaticHashMap) {
-        this.potionStaticHashMap = potionStaticHashMap;
     }
 
     public MyPackage getMyPackage() {

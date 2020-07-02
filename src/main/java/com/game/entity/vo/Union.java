@@ -32,6 +32,7 @@ public class Union {
     public Union(int id, String name) {
         this.id = id;
         this.name = name;
+        this.money = 0;
     }
 
     public int getId() {

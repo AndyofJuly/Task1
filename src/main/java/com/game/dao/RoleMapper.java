@@ -1,15 +1,14 @@
 package com.game.dao;
 
+import com.game.dao.sql.RoleSql;
 import com.game.entity.Role;
-
-import java.util.HashMap;
 
 /**
  * @Author andy
  * @create 2020/6/17 18:30
  */
 public class RoleMapper {
-    ConnectSql sql = new ConnectSql();
+    RoleSql sql = new RoleSql();
 
     public boolean insertRegister(String username, String password) {
         return sql.insertRegister(username,password);
@@ -23,28 +22,20 @@ public class RoleMapper {
         return sql.insertRegisterRole(rolename,careerId);
     }
 
-    public int selectLoginRole(String rolename,int roleId){
-        return sql.selectLoginRole(rolename,roleId);
+    public boolean checkRoleName(String rolename){
+        return sql.checkRoleName(rolename);
     }
 
-    public void insertRoleScenes(int scenesId, Role role){
+    public Role selectLoginRole(int roleId){
+        return sql.selectLoginRole(roleId);
+    }
+
+/*    public void insertRoleScenes(int scenesId, Role role){
         sql.insertRoleScenes(scenesId,role);
-    }
+    }*/
 
-    public int selectRoleIdByName(String rolename){
-        return sql.selectRoleIdByName(rolename);
-    }
-
-    public int selectRoleScenesId(String rolename){
-        return sql.selectRoleScenesId(rolename);
-    }
-
-    public HashMap<Integer, HashMap<Integer,Integer>> selectBuyRecord(int roleId){
-        return sql.selectBuyRecord(roleId);
-    }
-
-    public void insertBuyRecord(int roleId,int goodsid,int num){
-        sql.insertBuyRecord(roleId,goodsid,num);
+    public void updateRoleInfo(Role role){
+        sql.updateRoleInfo(role);
     }
 
 }

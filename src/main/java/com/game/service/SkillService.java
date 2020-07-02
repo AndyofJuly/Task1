@@ -38,7 +38,15 @@ public class SkillService {
         return skillName;
     }
 
-    //here
+    public String getSkillInfo(Role role){
+        String output = Const.Fight.SKILL_LIST;
+        String[] skillName = getSkillList(role);
+        for(int i=0;i<skillName.length;i++){
+            output+=skillName[i]+" ";
+        }
+        return output;
+    }
+
     //普通的攻击技能
     public String useSkillAttack(int skillId,String monsterId,Role role){
         if(AssistService.checkDistance(role,monsterId)==false){
@@ -64,7 +72,6 @@ public class SkillService {
             //获得奖励
             PackageService.addMoney(50,role);
             role.setAtk(role.getAtk()+2);
-            //task
             AchievementService.ifSlayPartiMonster(nowMonster.getMonsterId(),role);
             return result;
         }

@@ -23,7 +23,7 @@ public class EquipmentStatic {
     private int addHp;
     // 装备蓝量增益
     private int addMp;
-    // 装备类别；1为武器；2为手环；3为项链
+    // 装备类别；1为武器；2为手环；3为项链；4为身体；5为帽子；6为鞋子
     private int type;
 
     public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type) {

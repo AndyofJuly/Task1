@@ -23,10 +23,9 @@ public class ShopController {
     //获得商店的商品列表，使用举例：getGoodsList
     @MyAnnontation(MethodName = "getGoodsList")
     public String getGoodsList(){
-        return InitGame.getStaticGoodsList();
+        return shopService.getStaticGoodsList();
     }
 
-    //here
     //购买药品or装备，使用举例：buy 清泉酒 20 ：here修改成goodsId
     @MyAnnontation(MethodName = "buy")
     public String buyGoods(){

@@ -36,7 +36,7 @@ public class BabyAttack extends TimerTask {
         k++;
         //不在场景中了
         if(GlobalResource.getScenes().get(sceneId)==null){
-            System.out.println(Const.DUNGEONS_START_SCENE);
+            //System.out.println(Const.DUNGEONS_START_SCENE);
             this.timer.cancel();
             return;
         }

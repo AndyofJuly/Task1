@@ -24,7 +24,6 @@ public class InitGame {
     //public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
 
     static {
-        System.out.println("hello");
         //场景初始化-创建的临时场景同样要考虑初始化网格
         for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
             String sceneName = SceneResource.getScenesStatics().get(keyScene).getName();
@@ -50,44 +49,8 @@ public class InitGame {
                 int gridId = RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
                 Scene scene = GlobalResource.getScenes().get(i);
                 scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monsterId,monster);
-                System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
+                //System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
             }
         }
-/*        //商品列表
-        goodsList = getStaticGoodsList();
-        //玩家可参与的副本
-        dungeonsList = getStaticDungeonsList();*/
-        //初始化网格-暂定先写一个场景下的demo
-/*        for(int i=1;i<=64;i++){
-            GlobalResource.getGridHashMap().put(i,new Grid(i));
-        }*/
-
-
-
-    }
-    //商店列表初始化
-    public static String getStaticGoodsList(){
-        StringBuilder stringBuilder = new StringBuilder("欢迎光临本商店，商店提供： ");
-        for(Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()){
-            stringBuilder.append(EquipmentHelper.getEquipmentName(key)+":"+
-                    EquipmentHelper.getEquipmentPrice(key)).append("银； ");
-        }
-        for(Integer key : PotionResource.getPotionStaticHashMap().keySet()){
-            stringBuilder.append(PotionHelper.getPotionName(key)+":"+
-                    PotionHelper.getPotionPrice(key)).append("银； ");
-        }
-        return stringBuilder.toString();
-    }
-
-    //副本列表初始化，返回副本列表集合元素信息，包括id和副本名
-    public static String getStaticDungeonsList(){
-        StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
-        for(Integer key : DungeonsResource.getDungeonsStaticHashMap().keySet()){
-            DungeonsStatic dungeons = DungeonsResource.getDungeonsStaticHashMap().get(key);
-            stringBuilder.append(dungeons.getId()+":"+
-                    dungeons.getName()+"，限时"+
-                    dungeons.getDeadTime()+"秒。\n");
-        }
-        return stringBuilder.toString();
     }
 }

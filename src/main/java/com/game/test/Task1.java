@@ -19,7 +19,6 @@ public class Task1{
 				t++;
 				if(t>=8){
 					timer.cancel();
-					System.out.println("hello");
 				}
 			}
 		}, 0, 1000);

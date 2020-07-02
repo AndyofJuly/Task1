@@ -4,6 +4,8 @@ import com.game.common.Const;
 import com.game.controller.RoleController;
 import com.game.entity.Role;
 import com.game.entity.Team;
+import com.game.entity.excel.DungeonsStatic;
+import com.game.entity.store.DungeonsResource;
 import com.game.service.assis.*;
 
 import java.util.ArrayList;
@@ -21,16 +23,25 @@ public class DungeonsService {
     public String createTeam(int dungeonesId, Role role){
         String teamId = IdGenerator.generateTeamId();
         GlobalResource.getTeamList().put(teamId,new Team(teamId,dungeonesId));
-        joinTeam(teamId,role);
-        return teamId;
+        joinTeam(Integer.parseInt(teamId),role);
+        return Const.Fight.CREATE_SUCCESS+teamId;
     }
 
     //加入队伍，角色放入队伍集合中，返回队伍中的角色列表
-    public ArrayList<Integer> joinTeam(String teamId, Role role){
-        GlobalResource.getTeamList().get(teamId).getRoleList().add(role.getId());
-        //task
+    public ArrayList<Integer> joinTeam(int teamId, Role role){
+        String newId= teamId+"";
+        GlobalResource.getTeamList().get(newId).getRoleList().add(role.getId());
         AchievementService.ifFirstJoinTeam(role);
-        return getRoleList(teamId);
+        return getRoleList(newId);
+    }
+
+    public String getTeamRoleList(int teamId,Role role){
+        ArrayList<Integer> roleList = joinTeam(teamId,role);
+        String output=Const.Fight.TEAM_ROLELIST;
+        for(Integer roleId : roleList){
+            output = output+GlobalResource.getRoleHashMap().get(roleId).getName()+" ";
+        }
+        return output;
     }
 
     //难度最大的方法，其中还涉及了其他比较多的方法，这些方法需要提取到外部，统一化管理
@@ -58,5 +69,25 @@ public class DungeonsService {
     //获取队伍中的角色列表，传参为teamId，返回角色列表集合元素信息，集合中为每个roleName
     public ArrayList<Integer> getRoleList(String teamId){
         return GlobalResource.getTeamList().get(teamId).getRoleList();
+    }
+
+    public String getTeamList(){
+        String output = Const.Fight.TEAM_LIST;
+        for(String teamId : GlobalResource.getTeamList().keySet()){
+            output+=teamId+"; ";
+        }
+        return output;
+    }
+
+    //副本列表初始化，返回副本列表集合元素信息，包括id和副本名
+    public String getStaticDungeonsList(){
+        StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
+        for(Integer key : DungeonsResource.getDungeonsStaticHashMap().keySet()){
+            DungeonsStatic dungeons = DungeonsResource.getDungeonsStaticHashMap().get(key);
+            stringBuilder.append(dungeons.getId()+":"+
+                    dungeons.getName()+"，限时"+
+                    dungeons.getDeadTime()+"秒。\n");
+        }
+        return stringBuilder.toString();
     }
 }

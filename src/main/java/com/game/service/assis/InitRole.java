@@ -32,11 +32,11 @@ public class InitRole {
 
         //本类可以在游戏开始时调用数据库的一些信息，还原角色当前状态，例如角色背包中的物品等
         //目前所有装备和药物都初始化给角色，用于代码测试
-        HashMap<Integer,Integer> goods = new HashMap<Integer,Integer>();
+        //HashMap<Integer,Integer> goods = new HashMap<Integer,Integer>();
         //如果不改变值，可以考虑简单引用（浅拷贝）静态资源的地址
-        for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
+/*        for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
             goods.put(key,2);
-        }
+        }*/
 
         //装备要改变耐久，因此需要深拷贝，改变值了；先通过手动赋值的方式简单实现
         //HashMap<Integer, Integer> equipmentHashMap = new HashMap<Integer,Integer>();
@@ -45,18 +45,17 @@ public class InitRole {
             //equipment.setDura(InitStaticResource.equipmentStaticHashMap.get(key).getDurability());
             goods.put(key,1);
         }*/
-        goods.put(3001,1);
-        role.setMyPackage( new MyPackage(100,goods));
+        //goods.put(3001,1);
+        //role.setMyPackage( new MyPackage(100,goods));
 
         if(enterSuccess){
             //注意前提条件：角色登录成功，开始自动恢复mp
             run();
             //自动告知当前位置，自动装上装备，便于测试
-            RoleService roleService = new RoleService();
-            roleService.putOnEquipment(Const.WEPON,role);
+            //RoleService roleService = new RoleService();
+            //roleService.putOnEquipment(Const.WEPON,role);
         }
         enterSuccess = false;
-
     }
 
     private static void run() {

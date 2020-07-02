@@ -1,6 +1,5 @@
-package com.game.netty.secondclient;
+package com.game.netty.thirdclient;
 
-import com.game.dao.RoleMapper;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,28 +9,33 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 /**
- * netty客户端2
+ * netty客户端3
  * @author maoyuanming0806 and andy
  * @create 2020/6/10 17:32
  */
-public class Client2 {
+@Service("clientThree")
+public class ClientThree {
 
-    private final String HOST_IP;
-    private final int PORT;
-    private RoleMapper roleMapper = new RoleMapper();
+    private final String HOST_IP = "127.0.0.1";
+    private final int PORT = 7000;
 
-    public Client2(String host, int port){
+/*    public ClientThree(String host, int port){
         this.HOST_IP = host;
         this.PORT = port;
-    }
+    }*/
 
     public void run() throws InterruptedException {
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
+
         try {
             Bootstrap bootstrap = new Bootstrap();
+
             bootstrap.group(eventExecutors)
                     .channel(NioSocketChannel.class)
                     .handler(new ChannelInitializer<SocketChannel>() {
@@ -43,7 +47,7 @@ public class Client2 {
                             //向pipeline加入编码器
                             pipeline.addLast("encode",new StringEncoder());
                             //加入自己的处理器
-                            pipeline.addLast(new ClientHandler2());
+                            pipeline.addLast(new ClientHandlerThree());
                         }
                     });
             ChannelFuture channelFuture = bootstrap.connect(HOST_IP, PORT).sync();
@@ -54,7 +58,8 @@ public class Client2 {
                     String msg = scanner.nextLine();
                     if(msg.startsWith("loginR")){
                         String[] s = msg.split(" ");
-                        id = " "+ roleMapper.selectRoleIdByName(s[1]);
+                        //id = " "+ roleMapper.selectRoleIdByName(s[1]);
+                        id = " "+s[1];
                     }
                     channelFuture.channel().writeAndFlush(msg+id);
                     if("quit".equals(msg)){
@@ -68,7 +73,11 @@ public class Client2 {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new Client2("127.0.0.1",7000).run();
+        //new NettySingleClient("127.0.0.1",7000).run();
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ClientThree clientThree = (ClientThree)ac.getBean("clientThree");
+        //nettyServer.run();
+        clientThree.run();
     }
 }
 

@@ -93,7 +93,6 @@ public class BossAttack extends TimerTask {
         if(checkTimeOut()){return;}
         if(checkTeamHpOut()){return;}
         if(checkBossHpOut()){
-            //task
             for(int i = 0; i< list.size(); i++) {
                 AchievementService.ifPassPartiDungeons(this.dungeonsId,GlobalResource.getRoleHashMap().get(list.get(i)));
             }

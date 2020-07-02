@@ -18,24 +18,24 @@ import com.game.service.helper.PotionHelper;
 public class AssistService {
 
     //查找装备id
-    public static Integer checkEquipmentId(String equipmentName){
+/*    public static Integer checkEquipmentId(String equipmentName){
         for (Integer key : EquipmentResource.getEquipmentStaticHashMap().keySet()) {
             if (equipmentName.equals(EquipmentHelper.getEquipmentName(key))) {
                 return key;
             }
         }
         return 0;
-    }
+    }*/
 
     //查找技能id
-    public static Integer checkSkillId(String skillName){
+/*    public static Integer checkSkillId(String skillName){
         for (Integer key : SkillResource.getSkillStaticHashMap().keySet()) {
             if (skillName.equals(SkillResource.getSkillStaticHashMap().get(key).getName())) {
                 return key;
             }
         }
         return 0;
-    }
+    }*/
 
 /*    public static Integer checkSkillType(String skillName){
         for (Integer key : SkillResource.skillStaticHashMap.keySet()) {
@@ -66,7 +66,7 @@ public class AssistService {
         return "";
     }
 
-    //查找药品id
+/*    //查找药品id
     public static Integer checkPotionId(String drugName){
         for (Integer key : PotionResource.getPotionStaticHashMap().keySet()) {
             if (drugName.equals(PotionHelper.getPotionName(key))) {
@@ -74,7 +74,7 @@ public class AssistService {
             }
         }
         return 0;
-    }
+    }*/
 
     //查找静态场景id，传参为外部场景名
     public static Integer checkSceneId(String sceneName){
@@ -87,14 +87,14 @@ public class AssistService {
     }
 
     //查找动态场景id，传参为外部场景名 -专用于副本，根据临时场景名，查找临时副本id
-    public static Integer checkDynSceneId(String sceneName){
+/*    public static Integer checkDynSceneId(String sceneName){
         for (Integer key : GlobalResource.getScenes().keySet()) {
             if (sceneName.equals(GlobalResource.getScenes().get(key).getName())) {
                 return key;
             }
         }
         return 0;
-    }
+    }*/
 
     //查找药品或装备的id
     public static Integer checkGoodsId(String goodsName){
@@ -112,14 +112,14 @@ public class AssistService {
     }
 
     //通过职业名字查找职业id
-    public static Integer checkCareerId(String careerName){
+/*    public static Integer checkCareerId(String careerName){
         for (Integer key : CareerResource.getCareerStaticHashMap().keySet()) {
             if(careerName.equals(CareerResource.getCareerStaticHashMap().get(key).getName())){
                 return key;
             }
         }
         return 0;
-    }
+    }*/
 
 /*    //通过副本id查找bossid。后续可以调用根据怪物id得到怪物名的方法
     public static Integer checkBossName(int dungeonsId){
@@ -142,12 +142,12 @@ public class AssistService {
     }*/
 
     // 物品数量始终大于零，若小于零，归零
-    public static int checkNum(int num){
+/*    public static int checkNum(int num){
         if(num<0){
             return 0;
         }
         return num;
-    }
+    }*/
 
     //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo，怪物的位置可以在场景中随机生成
     public static boolean checkDistance(Role role,String monsterId){

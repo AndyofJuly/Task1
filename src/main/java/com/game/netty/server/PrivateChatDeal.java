@@ -1,8 +1,5 @@
 package com.game.netty.server;
 
-import com.game.common.ReflectService;
-import com.game.controller.RoleController;
-import com.game.dao.RoleMapper;
 import com.game.entity.Role;
 import com.game.entity.vo.DealVo;
 import com.game.service.ChatService;
@@ -16,7 +13,6 @@ import java.util.UUID;
 
 //参考：https://blog.csdn.net/qq_36480491/article/details/84711553服务端私聊可通过自定义协议区分
 public class PrivateChatDeal {
-    private static RoleMapper roleMapper = new RoleMapper();
 
     private static Map<Integer, ChannelHandlerContext> onlineUsers = new HashMap<Integer, ChannelHandlerContext>();//存储用户客户端消息
 
@@ -39,18 +35,15 @@ public class PrivateChatDeal {
      */
     static void dealMessage(String message, ChannelHandlerContext ctx) {
         String[] strings = message.split(" ");
-        System.out.println(strings.length+" length");
-        System.out.println(message);
         Integer roleId = Integer.valueOf(strings[strings.length-1]);
         String roleName = GlobalResource.getRoleHashMap().get(roleId).getName();
-        System.out.println(Integer.valueOf(strings[strings.length-1]));
         //掐头去尾处理后的消息
         switch (strings[0]) {
             case "sayTo":
                 //指定用户发送
-                ChannelHandlerContext ctxTwo = getContext(roleMapper.selectRoleIdByName(strings[1]));
+                ChannelHandlerContext ctxTwo = getContext(Integer.parseInt(strings[1]));
                 if (ctxTwo != null){
-                    writeMessage(roleName+":"+strings[2],ctxTwo);
+                    writeMessage(roleId+":"+strings[2],ctxTwo);
                     writeMessage("我："+strings[2],ctx);
                     break;
                 }
@@ -60,13 +53,13 @@ public class PrivateChatDeal {
                 }
             case "email":
                 //指定用户发送邮件，物品在信息中获取，举例：email kk 给你寄点东西 清泉酒
-                ChannelHandlerContext ctxThree = getContext(roleMapper.selectRoleIdByName(strings[1]));
+                ChannelHandlerContext ctxThree = getContext(Integer.parseInt(strings[1]));
                 if (ctxThree != null){
-                    writeMessage(roleName+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
+                    writeMessage(roleId+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
                     //调用email方法
                     RoleService roleService = new RoleService();
                     ChatService chatService = new ChatService();
-                    String selfMsg = chatService.emailToPlayer(roleMapper.selectRoleIdByName(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+                    String selfMsg = chatService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
                     writeMessage(selfMsg,ctx);
                     break;
                 }else {
@@ -75,10 +68,7 @@ public class PrivateChatDeal {
                 }
             case "deal":
                 ChannelHandlerContext ctxFour = getContext(Integer.parseInt(strings[1]));
-                System.out.println(ctxFour);
                 if (ctxFour != null){
-                    //调用创建一个订单的方法，全局存一个交易记录，将id传给对方
-                    //int targetId,int goodsId,int price,int roleId
                     String dealId = UUID.randomUUID().toString();
                     Role role = GlobalResource.getRoleHashMap().get(Integer.parseInt(strings[1]));
                     role.setDealVo(new DealVo(dealId,Integer.parseInt(strings[1]),Integer.parseInt(strings[2]),Integer.parseInt(strings[3]),Integer.parseInt(strings[4])));
@@ -91,7 +81,6 @@ public class PrivateChatDeal {
                     break;
                 }
             default:
-                System.out.println("over");
                 return;
         }
     }

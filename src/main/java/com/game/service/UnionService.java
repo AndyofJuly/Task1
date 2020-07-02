@@ -16,18 +16,18 @@ import java.util.HashMap;
  */
 public class UnionService {
     //unionId和对应的union
-    private HashMap<Integer,Union> unionHashMap = new HashMap<>();
+    public static HashMap<Integer,Union> unionHashMap = new HashMap<>();
     static int id = 1;
     //创建公会
     public String createUnion(String unionName,Role role){
         //该角色扣80银
-        //在该公会中，角色权限为1，名字为会长，拥有所有权限
+        //在该公会中，llPointerException
+        //	at com.game.service.UnionService.donateMo角色权限为1，名字为会长，拥有所有权限
         int unionId = IdGenerator.generateUnionId();
         Union union = new Union(unionId,unionName);
         union.getRoleJobHashMap().put(role,1);
         role.setUnionId(unionId);
         unionHashMap.put(unionId,union);
-        //task
         AchievementService.ifFirstJoinUnion(role);
         return unionId+"";
     }
@@ -81,7 +81,6 @@ public class UnionService {
         unionHashMap.get(unionId).getRoleList().remove(applyRoleId);
         Role member = GlobalResource.getRoleHashMap().get(applyRoleId);
         member.setUnionId(unionId);
-        //task
         AchievementService.ifFirstJoinUnion(member);
     }
 
@@ -136,6 +135,9 @@ public class UnionService {
     public String getUnionInfo(Role role){
         int unionId = role.getUnionId();
         String list = "";
+        if(unionId==0){
+            return "null";
+        }
         for(Role member : unionHashMap.get(unionId).getRoleJobHashMap().keySet()){
             int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(member);
             list+="角色："+member.getName()+"，职务："+JobResource.getJobStaticHashMap().get(jobId).getName()+"； ";

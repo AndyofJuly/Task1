@@ -1,6 +1,5 @@
 package com.game.netty.client;
 
-import com.game.dao.RoleMapper;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -10,6 +9,9 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
 
 import java.util.Scanner;
 
@@ -19,17 +21,16 @@ import java.util.Scanner;
  * @author maoyuanming0806 and andy
  * @create 2020/5/12 22:32
  */
-
+@Service("nettySingleClient")
 public class NettySingleClient {
 
-    private final String HOST_IP;
-    private final int PORT;
-    private RoleMapper roleMapper = new RoleMapper();
+    private final String HOST_IP = "127.0.0.1";
+    private final int PORT = 7000;
 
-    public NettySingleClient(String host, int port){
+/*    public NettySingleClient(String host, int port){
         this.HOST_IP = host;
         this.PORT = port;
-    }
+    }*/
 
     public void run() throws InterruptedException {
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
@@ -58,7 +59,8 @@ public class NettySingleClient {
                     String msg = scanner.nextLine();
                     if(msg.startsWith("loginR")){
                         String[] s = msg.split(" ");
-                        id = " "+ roleMapper.selectRoleIdByName(s[1]);
+                        //id = " "+ roleMapper.selectRoleIdByName(s[1]);
+                        id = " "+s[1];
                     }
                     channelFuture.channel().writeAndFlush(msg+id);
                     if("quit".equals(msg)){
@@ -72,7 +74,11 @@ public class NettySingleClient {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new NettySingleClient("127.0.0.1",7000).run();
+        //new NettySingleClient("127.0.0.1",7000).run();
+        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+        NettySingleClient nettySingleClient = (NettySingleClient)ac.getBean("nettySingleClient");
+        //nettyServer.run();
+        nettySingleClient.run();
     }
 }
 

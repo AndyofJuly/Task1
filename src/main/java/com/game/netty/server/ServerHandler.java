@@ -53,8 +53,8 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             //这时我们要遍历ChannelGroup，根据不同情况，会送不同消息
             channelGroup.forEach(ch->{
                 if (channel != ch){ // 默认登录以后才能收到消息
-                    int chnnalId = clientGroup.get(channel.id());
-                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(chnnalId).getName()
+                    int roleId = clientGroup.get(channel.id());
+                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(roleId).getName()
                             +":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
                 }else {//回显自己发送的消息
                     ch.writeAndFlush("我:"+msg.substring(3,msg.length()-2));
@@ -62,7 +62,6 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             });
         }else{
             System.out.println("收到来自客户端:"+msg.toString());
-            //RoleController.setStrings(msg.toString().split(" "));
             RoleController.setIntList(UtilHelper.getIntList(msg.toString().split(" ")));
             RoleController.setStrList(UtilHelper.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();

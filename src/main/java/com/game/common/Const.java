@@ -89,6 +89,7 @@ public class Const {
     public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\dungeons.xls";
     public static final String BABY_CONST_PATH = ".\\src\\main\\resources\\baby.xls";
     public static final String JOB_CONST_PATH = ".\\src\\main\\resources\\job.xls";
+    public static final String ACHIEVE_CONST_PATH = ".\\src\\main\\resources\\achievement.xls";
 
     //数据库连接信息
     public static final String URL = "jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";

@@ -6,7 +6,6 @@ package com.game.entity.vo;
  * @create 2020/6/26 20:50
  */
 public class DealVo {
-    //int targetId,int goodsId,int price,int roleId
     private String dealId;
     private int receiveRoleId;
     private int goodsId;

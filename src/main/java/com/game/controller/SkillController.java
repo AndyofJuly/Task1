@@ -25,12 +25,7 @@ public class SkillController {
     //显示当前自己的职业有什么技能
     @MyAnnontation(MethodName = "skillList")
     public String getSkillList(){
-        String output = Const.Fight.SKILL_LIST;
-        String[] skillName = skillService.getSkillList(getRole());
-        for(int i=0;i<skillName.length;i++){
-            output+=skillName[i]+" ";
-        }
-        return output;
+        return skillService.getSkillInfo(getRole());
     }
 
     //技能攻击，使用举例：skill skillName monsterName ：here修改成skillId,monsterId
@@ -61,7 +56,6 @@ public class SkillController {
         return Const.Fight.CURE_MSG;
     }
 
-    //here
     //召唤技能测试，使用举例：summon monsterName ：here修改成,monsterId
     @MyAnnontation(MethodName = "summon")
     public String summonSkill(){
