@@ -1,5 +1,6 @@
 package com.game.service.assis;
 
+import com.game.dao.UnionMapper;
 import com.game.entity.Grid;
 import com.game.entity.Monster;
 import com.game.entity.Scene;
@@ -52,5 +53,11 @@ public class InitGame {
                 //System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
             }
         }
+
+        //游戏通用共享资源-启动游戏时从数据库中读取
+        UnionMapper unionMapper = new UnionMapper();
+        unionMapper.selectUnion();
+        unionMapper.selectUnionMemb();
+        unionMapper.selectUnionStore();
     }
 }

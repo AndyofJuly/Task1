@@ -1,0 +1,228 @@
+2020-07-05 10:17:25  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 10:17:25 CST 2020]; root of context hierarchy
+2020-07-05 10:17:25  [ main:91 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:20:25  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:20:25 CST 2020]; root of context hierarchy
+2020-07-05 11:20:25  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:20:28  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:20:28 CST 2020]; root of context hierarchy
+2020-07-05 11:20:28  [ main:72 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:20:34  [ nioEventLoopGroup-3-1:8917 ] - [ INFO ]  Reflections took 71 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:21:23  [ main:12 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:21:23 CST 2020]; root of context hierarchy
+2020-07-05 11:21:24  [ main:96 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:21:30  [ nioEventLoopGroup-3-2:65298 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:21:44  [ nioEventLoopGroup-3-1:78577 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:22:02  [ nioEventLoopGroup-3-2:96577 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:22:08  [ nioEventLoopGroup-3-2:102913 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:22:16  [ nioEventLoopGroup-3-1:110807 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:22:31  [ nioEventLoopGroup-3-1:125605 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:23:46  [ nioEventLoopGroup-3-2:200829 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:25:14  [ nioEventLoopGroup-3-1:289143 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:25:20  [ nioEventLoopGroup-3-2:295182 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:25:20  [ nioEventLoopGroup-3-2:295188 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at com.game.common.protobuf.DataInfo$ResponseMsg$Builder.setMsg(DataInfo.java:1067)
+	at com.game.netty.server.ServerHandler.writeMessage(ServerHandler.java:144)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:76)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:70)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:30)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:324)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:296)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-05 11:26:35  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:26:35 CST 2020]; root of context hierarchy
+2020-07-05 11:26:35  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:26:37  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:26:37 CST 2020]; root of context hierarchy
+2020-07-05 11:26:37  [ main:54 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:26:39  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 11:26:39 CST 2020]; root of context hierarchy
+2020-07-05 11:26:39  [ main:75 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 11:26:48  [ nioEventLoopGroup-3-1:12812 ] - [ INFO ]  Reflections took 74 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:26:50  [ nioEventLoopGroup-3-2:15495 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:26:55  [ nioEventLoopGroup-3-1:20321 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:26:59  [ nioEventLoopGroup-3-2:24220 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:27:23  [ nioEventLoopGroup-3-2:48531 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:27:27  [ nioEventLoopGroup-3-2:51978 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:27:40  [ nioEventLoopGroup-3-1:65126 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:27:42  [ nioEventLoopGroup-3-1:67656 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:14  [ nioEventLoopGroup-3-1:99404 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:21  [ nioEventLoopGroup-3-1:106734 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:27  [ nioEventLoopGroup-3-2:112653 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:33  [ nioEventLoopGroup-3-2:118015 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:46  [ nioEventLoopGroup-3-2:131766 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:28:58  [ nioEventLoopGroup-3-2:142923 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:29:11  [ nioEventLoopGroup-3-2:156591 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:29:15  [ nioEventLoopGroup-3-2:159823 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:29:19  [ nioEventLoopGroup-3-2:164003 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:29:29  [ nioEventLoopGroup-3-2:174573 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:30:19  [ nioEventLoopGroup-3-1:223976 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:30:23  [ nioEventLoopGroup-3-2:228575 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:30:27  [ nioEventLoopGroup-3-2:232229 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:30:27  [ nioEventLoopGroup-3-2:232230 ] - [ WARN ]  An exceptionCaught() event was fired, and it reached at the tail of the pipeline. It usually means the last handler in the pipeline did not handle the exception.
+java.lang.NullPointerException
+	at com.game.common.protobuf.DataInfo$ResponseMsg$Builder.setMsg(DataInfo.java:1067)
+	at com.game.netty.server.ServerHandler.writeMessage(ServerHandler.java:144)
+	at com.game.netty.server.ServerHandler.lambda$channelRead0$1(ServerHandler.java:76)
+	at java.lang.Iterable.forEach(Iterable.java:75)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:70)
+	at com.game.netty.server.ServerHandler.channelRead0(ServerHandler.java:30)
+	at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:99)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:103)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:324)
+	at io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:296)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:163)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.lang.Thread.run(Thread.java:748)
+2020-07-05 11:30:30  [ nioEventLoopGroup-3-2:234939 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:30:52  [ nioEventLoopGroup-3-1:257627 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:31:28  [ nioEventLoopGroup-3-2:293604 ] - [ INFO ]  Reflections took 4 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 11:31:44  [ nioEventLoopGroup-3-1:309454 ] - [ INFO ]  Reflections took 3 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:53:12  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:53:12 CST 2020]; root of context hierarchy
+2020-07-05 22:53:12  [ main:60 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:53:18  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:53:18 CST 2020]; root of context hierarchy
+2020-07-05 22:53:18  [ main:74 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:53:22  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:53:22 CST 2020]; root of context hierarchy
+2020-07-05 22:53:22  [ main:74 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:53:39  [ nioEventLoopGroup-3-1:26796 ] - [ INFO ]  Reflections took 118 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:53:42  [ nioEventLoopGroup-3-2:30354 ] - [ INFO ]  Reflections took 18 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:54:57  [ nioEventLoopGroup-3-1:104975 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:55:01  [ nioEventLoopGroup-3-2:109188 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:55:04  [ nioEventLoopGroup-3-2:112124 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:55:31  [ nioEventLoopGroup-3-1:139372 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:55:39  [ nioEventLoopGroup-3-1:147095 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:57:27  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:57:27 CST 2020]; root of context hierarchy
+2020-07-05 22:57:27  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:57:29  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:57:29 CST 2020]; root of context hierarchy
+2020-07-05 22:57:29  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:57:32  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 22:57:32 CST 2020]; root of context hierarchy
+2020-07-05 22:57:32  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 22:57:44  [ nioEventLoopGroup-3-2:16979 ] - [ INFO ]  Reflections took 262 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:57:48  [ nioEventLoopGroup-3-1:21469 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:58:30  [ nioEventLoopGroup-3-2:62978 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:58:36  [ nioEventLoopGroup-3-1:69510 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:58:40  [ nioEventLoopGroup-3-1:72964 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:58:51  [ nioEventLoopGroup-3-2:84334 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 22:58:57  [ nioEventLoopGroup-3-2:90052 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:03:37  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:03:37 CST 2020]; root of context hierarchy
+2020-07-05 23:03:38  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:03:50  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:03:50 CST 2020]; root of context hierarchy
+2020-07-05 23:03:50  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:04:27  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:04:27 CST 2020]; root of context hierarchy
+2020-07-05 23:04:27  [ main:103 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:04:33  [ nioEventLoopGroup-3-1:55685 ] - [ INFO ]  Reflections took 83 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:04:36  [ nioEventLoopGroup-3-2:58829 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:06:05  [ nioEventLoopGroup-3-1:147126 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:06:14  [ nioEventLoopGroup-3-2:156205 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:06:18  [ nioEventLoopGroup-3-1:160692 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:06:23  [ nioEventLoopGroup-3-2:165723 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:06:30  [ nioEventLoopGroup-3-2:172383 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:09:06  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:06 CST 2020]; root of context hierarchy
+2020-07-05 23:09:06  [ main:61 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:09:08  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:08 CST 2020]; root of context hierarchy
+2020-07-05 23:09:08  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:09:15  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:15 CST 2020]; root of context hierarchy
+2020-07-05 23:09:15  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:09:25  [ nioEventLoopGroup-3-1:19368 ] - [ INFO ]  Reflections took 78 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:09:29  [ nioEventLoopGroup-3-2:22902 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:09:40  [ nioEventLoopGroup-3-2:33880 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:09:52  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:52 CST 2020]; root of context hierarchy
+2020-07-05 23:09:52  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:09:54  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:54 CST 2020]; root of context hierarchy
+2020-07-05 23:09:54  [ main:63 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:09:58  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:09:58 CST 2020]; root of context hierarchy
+2020-07-05 23:09:58  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:10:00  [ nioEventLoopGroup-3-1:8076 ] - [ INFO ]  Reflections took 82 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:03  [ nioEventLoopGroup-3-2:11330 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:08  [ nioEventLoopGroup-3-2:16454 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:11  [ nioEventLoopGroup-3-1:19503 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:41  [ nioEventLoopGroup-3-1:49444 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:46  [ nioEventLoopGroup-3-2:54058 ] - [ INFO ]  Reflections took 9 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:10:49  [ nioEventLoopGroup-3-2:57095 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:11:08  [ nioEventLoopGroup-3-2:76572 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:11:12  [ nioEventLoopGroup-3-1:80309 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:14:58  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:14:58 CST 2020]; root of context hierarchy
+2020-07-05 23:14:58  [ main:56 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:15:00  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:15:00 CST 2020]; root of context hierarchy
+2020-07-05 23:15:00  [ main:61 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:15:02  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:15:02 CST 2020]; root of context hierarchy
+2020-07-05 23:15:02  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:15:08  [ nioEventLoopGroup-3-1:10474 ] - [ INFO ]  Reflections took 79 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:15:12  [ nioEventLoopGroup-3-2:14274 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:15:28  [ nioEventLoopGroup-3-1:30526 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:15:33  [ nioEventLoopGroup-3-2:35936 ] - [ INFO ]  Reflections took 24 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:15:35  [ nioEventLoopGroup-3-2:37944 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:15:39  [ nioEventLoopGroup-3-1:41861 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:16:29  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:16:29 CST 2020]; root of context hierarchy
+2020-07-05 23:16:29  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:16:31  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:16:31 CST 2020]; root of context hierarchy
+2020-07-05 23:16:32  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:16:35  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:16:35 CST 2020]; root of context hierarchy
+2020-07-05 23:16:35  [ main:170 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:16:40  [ nioEventLoopGroup-3-1:11838 ] - [ INFO ]  Reflections took 69 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:16:45  [ nioEventLoopGroup-3-2:16276 ] - [ INFO ]  Reflections took 23 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:17:02  [ nioEventLoopGroup-3-1:33096 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:17:06  [ nioEventLoopGroup-3-2:37884 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:17:13  [ nioEventLoopGroup-3-2:44077 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:17:18  [ nioEventLoopGroup-3-1:49532 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:17:36  [ nioEventLoopGroup-3-1:67055 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:29:09  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:29:09 CST 2020]; root of context hierarchy
+2020-07-05 23:29:09  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:29:12  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:29:12 CST 2020]; root of context hierarchy
+2020-07-05 23:29:12  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:29:27  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:29:26 CST 2020]; root of context hierarchy
+2020-07-05 23:29:27  [ main:66 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:29:49  [ nioEventLoopGroup-3-1:40178 ] - [ INFO ]  Reflections took 145 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:29:53  [ nioEventLoopGroup-3-2:43672 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:30:01  [ nioEventLoopGroup-3-2:52352 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:30:07  [ nioEventLoopGroup-3-2:58228 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:30:12  [ nioEventLoopGroup-3-2:63086 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:30:45  [ nioEventLoopGroup-3-1:96127 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:31:10  [ nioEventLoopGroup-3-1:120848 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:31:17  [ nioEventLoopGroup-3-2:127543 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:31:20  [ nioEventLoopGroup-3-2:130852 ] - [ INFO ]  Reflections took 8 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:31:51  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sun Jul 05 23:31:51 CST 2020]; root of context hierarchy
+2020-07-05 23:31:51  [ main:60 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-05 23:32:00  [ nioEventLoopGroup-3-3:170536 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:32:19  [ nioEventLoopGroup-3-1:189674 ] - [ INFO ]  Reflections took 6 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:32:33  [ nioEventLoopGroup-3-2:203464 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:32:39  [ nioEventLoopGroup-3-3:209530 ] - [ INFO ]  Reflections took 7 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:33:24  [ nioEventLoopGroup-3-3:255144 ] - [ INFO ]  Reflections took 10 ms to scan 1 urls, producing 1 keys and 6 values 
+2020-07-05 23:33:29  [ nioEventLoopGroup-3-3:260329 ] - [ INFO ]  Reflections took 5 ms to scan 1 urls, producing 1 keys and 6 values 

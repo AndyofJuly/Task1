@@ -1,5 +1,6 @@
 package com.game.netty.client;
 
+import com.game.common.protobuf.DataInfo;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
@@ -10,11 +11,12 @@ import io.netty.channel.SimpleChannelInboundHandler;
  * @create 2020/5/12 22:32
  */
 
-public class ClientHandler extends SimpleChannelInboundHandler<String> {
+public class ClientHandler extends SimpleChannelInboundHandler<DataInfo.ResponseMsg> {
 
     @Override
-    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String s) throws Exception {
-        System.out.println(s.trim());
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, DataInfo.ResponseMsg s) throws Exception {
+        String msg = s.getMsg();
+        System.out.println(msg.trim());
     }
 }
 

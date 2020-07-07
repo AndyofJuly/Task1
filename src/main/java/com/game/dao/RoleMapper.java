@@ -3,6 +3,8 @@ package com.game.dao;
 import com.game.dao.sql.RoleSql;
 import com.game.entity.Role;
 
+import java.util.ArrayList;
+
 /**
  * @Author andy
  * @create 2020/6/17 18:30
@@ -14,8 +16,12 @@ public class RoleMapper {
         return sql.insertRegister(username,password);
     }
 
-    public boolean selectLogin(String username, String password) {
+    public int selectLogin(String username, String password) {
         return sql.selectLogin(username,password);
+    }
+
+    public ArrayList<Integer> selectRole(int userId){
+        return sql.selectRole(userId);
     }
 
     public boolean insertRegisterRole(String rolename,int careerId){

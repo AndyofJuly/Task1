@@ -1,5 +1,6 @@
 package com.game.netty.server;
 
+import com.game.common.protobuf.DataInfo;
 import com.game.service.assis.InitGame;
 import com.game.test.springtest.CustomerService;
 import io.netty.bootstrap.ServerBootstrap;
@@ -10,6 +11,10 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.context.ApplicationContext;
@@ -46,9 +51,17 @@ public class NettyServer {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline pipeline = socketChannel.pipeline();
                             //向pipeline加入一个解码器
-                            pipeline.addLast("decoder",new StringDecoder());
+/*                            pipeline.addLast("decoder",new StringDecoder());
                             //向pipeline加入编码器
-                            pipeline.addLast("encode",new StringEncoder());
+                            pipeline.addLast("encode",new StringEncoder());*/
+                            //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
+                            pipeline.addLast(new ProtobufVarint32FrameDecoder());
+                            //服务器端接收的是客户端RequestUser对象，所以这边将接收对象进行解码生产实列
+                            pipeline.addLast(new ProtobufDecoder(DataInfo.RequestMsg.getDefaultInstance()));
+                            //Google Protocol Buffers编码器
+                            pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
+                            //Google Protocol Buffers编码器
+                            pipeline.addLast(new ProtobufEncoder());
                             //加入自己的处理器
                             pipeline.addLast(new ServerHandler());
                         }

@@ -12,9 +12,9 @@ public class CareerStatic {
     // 职业名
     private String name;
     // 职业初始攻击力
-    private String atk;
+    private int atk;
     // 职业初始防御力
-    private String def;
+    private int def;
     // 职业初始hp
     private int hp;
     // 职业初始mp
@@ -22,7 +22,7 @@ public class CareerStatic {
     // 职业技能
     private String[] skillId;
 
-    public CareerStatic(int id, String name, String atk, String def, int hp, int mp, String[] skillId) {
+    public CareerStatic(int id, String name, int atk, int def, int hp, int mp, String[] skillId) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -48,19 +48,19 @@ public class CareerStatic {
         this.name = name;
     }
 
-    public String getAtk() {
+    public int getAtk() {
         return atk;
     }
 
-    public void setAtk(String atk) {
+    public void setAtk(int atk) {
         this.atk = atk;
     }
 
-    public String getDef() {
+    public int getDef() {
         return def;
     }
 
-    public void setDef(String def) {
+    public void setDef(int def) {
         this.def = def;
     }
 

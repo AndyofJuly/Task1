@@ -1,5 +1,7 @@
 package com.game.netty.server;
 
+import com.game.common.protobuf.DataInfo;
+import com.game.controller.RoleController;
 import com.game.entity.Role;
 import com.game.entity.vo.DealVo;
 import com.game.service.ChatService;
@@ -57,9 +59,7 @@ public class PrivateChatDeal {
                 if (ctxThree != null){
                     writeMessage(roleId+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4],ctxThree);
                     //调用email方法
-                    RoleService roleService = new RoleService();
-                    ChatService chatService = new ChatService();
-                    String selfMsg = chatService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+                    String selfMsg = new ChatService().emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
                     writeMessage(selfMsg,ctx);
                     break;
                 }else {
@@ -70,10 +70,12 @@ public class PrivateChatDeal {
                 ChannelHandlerContext ctxFour = getContext(Integer.parseInt(strings[1]));
                 if (ctxFour != null){
                     String dealId = UUID.randomUUID().toString();
-                    Role role = GlobalResource.getRoleHashMap().get(Integer.parseInt(strings[1]));
-                    role.setDealVo(new DealVo(dealId,Integer.parseInt(strings[1]),Integer.parseInt(strings[2]),Integer.parseInt(strings[3]),Integer.parseInt(strings[4])));
-                    writeMessage(roleName+"向你发起了交易:"+role.getDealVo().getGoodsId()+"，价格为："+role.getDealVo().getPrice()+"交易密码："+dealId+"，是否同意？",ctxFour);
-                    writeMessage("我："+strings[2],ctx);
+                    Role role = GlobalResource.getRoleHashMap().get(Integer.parseInt(strings[5]));
+                    //0:dealId 1:int receiveRoleId, 2:int equipmentId, 3:int potionId, 4:int price, 5:int sendRoleId
+                    role.setDealVo(new DealVo(dealId,Integer.parseInt(strings[1]),Integer.parseInt(strings[2]),Integer.parseInt(strings[3]),Integer.parseInt(strings[4]),Integer.parseInt(strings[5])));
+                    writeMessage(roleName+"向你发起了交易，装备:"+role.getDealVo().getEquipmentId()+"" +
+                            "；药品："+role.getDealVo().getPotionId()+"，补价："+role.getDealVo().getPrice(),ctxFour);
+                    writeMessage("已向对方发起交易",ctx);
                     break;
                 }
                 else {
@@ -91,7 +93,7 @@ public class PrivateChatDeal {
      * @param ctx 客户端
      */
     static void writeMessage(String message, ChannelHandlerContext ctx) {
-        //Unpooled.buffer(message.getBytes().length).writeBytes(message.getBytes())
-        ctx.writeAndFlush(message);
+        DataInfo.ResponseMsg responseMsg = DataInfo.ResponseMsg.newBuilder().setMsg(message).build();
+        ctx.writeAndFlush(responseMsg);
     }
 }

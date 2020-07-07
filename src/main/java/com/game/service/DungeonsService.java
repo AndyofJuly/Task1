@@ -49,7 +49,6 @@ public class DungeonsService {
     public void startDungeons (String teamId, Role role){
         Team team = GlobalResource.getTeamList().get(teamId);
         int tempSceneId = TempSceneService.createTempScene(team.getDungeonsId());
-        //String target = GlobalResource.getScenes().get(tempSceneId).getName();
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             roleService.moveTo(tempSceneId,GlobalResource.getRoleHashMap().get(team.getRoleList().get(i)));

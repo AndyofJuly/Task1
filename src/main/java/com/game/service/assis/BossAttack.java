@@ -64,7 +64,7 @@ public class BossAttack extends TimerTask {
                 flagTaunt=true;
                 keyTaunt=i;
                 continue;
-            }else if(baby!=null && baby.getBabyHp()>Const.ZERO){//场景中有召唤师，且宝宝血量大于0
+            }else if(baby!=null && baby.getBabyHp()>0){//场景中有召唤师，且宝宝血量大于0
                 flagBaby=true;
                 keyBaby = i;
                 continue;
@@ -72,7 +72,7 @@ public class BossAttack extends TimerTask {
                 flagRole=true;
                 keyRole = i;
                 continue;
-            }else if(role.getHp()>Const.ZERO){  //剩余职业，怪物任意选择攻击
+            }else if(role.getHp()>0){  //剩余职业，怪物任意选择攻击
                 flagOther=true;
                 keyOther = i;
                 continue;
@@ -110,8 +110,8 @@ public class BossAttack extends TimerTask {
         if(l>= SkillResource.getSkillStaticHashMap().get(Const.TAUNT_SKILL_ID).getDuration()){
             role.setUseTaunt(false);
         }
-        if(role.getHp()<=Const.ZERO){
-            role.setHp(Const.ZERO);
+        if(role.getHp()<=0){
+            role.setHp(0);
             role.setUseTaunt(false);
         }
         System.out.println("角色"+role.getName()+"释放嘲讽技能遭到攻击，当前血量为："+role.getHp());
@@ -123,8 +123,8 @@ public class BossAttack extends TimerTask {
         baby = role.getBaby();
         baby.setBabyHp(baby.getBabyHp()-damage);
         System.out.println("宝宝遭到攻击，当前血量为："+baby.getBabyHp());
-        if(baby.getBabyHp()<=Const.ZERO){
-            baby.setBabyHp(Const.ZERO);
+        if(baby.getBabyHp()<=0){
+            baby.setBabyHp(0);
         }
     }
 
@@ -132,8 +132,8 @@ public class BossAttack extends TimerTask {
     private void attackRole(int keyRole,ArrayList<Integer> list){
         Role role = GlobalResource.getRoleHashMap().get(list.get(keyRole));
         role.setHp(role.getHp()-damage);
-        if(role.getHp()<=Const.ZERO){
-            role.setHp(Const.ZERO);
+        if(role.getHp()<=0){
+            role.setHp(0);
         }
         System.out.println("角色"+role.getName()+"遭到攻击，当前血量为："+role.getHp());
     }
@@ -148,7 +148,7 @@ public class BossAttack extends TimerTask {
     }
 
     private boolean checkTeamHpOut(){
-        int allHp=Const.ZERO;
+        int allHp=0;
         for(int i = 0; i< list.size(); i++) {
             Role role = GlobalResource.getRoleHashMap().get(list.get(i));
             allHp = allHp+role.getHp();
@@ -181,7 +181,7 @@ public class BossAttack extends TimerTask {
             Role role = GlobalResource.getRoleHashMap().get(list.get(i));
             //role.setMoney(role.getMoney()+Const.DUNGEONS_GAIN);
             if(success = true){
-                PackageService.addMoney(Const.DUNGEONS_GAIN,role);
+                new PackageService().addMoney(Const.DUNGEONS_GAIN,role);
             }
             roleService.moveTo(Const.DUNGEONS_START_SCENE,role);
         }

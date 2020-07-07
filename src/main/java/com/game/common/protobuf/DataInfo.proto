@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package netty;
+option java_package = "com.game.common.protobuf";
+option java_outer_classname = "DataInfo";
+
+message RequestMsg
+{
+    string msg = 1;
+}
+
+message ResponseMsg
+{
+    string msg = 1;
+}

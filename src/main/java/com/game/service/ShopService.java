@@ -7,6 +7,8 @@ import com.game.entity.store.EquipmentResource;
 import com.game.entity.store.PotionResource;
 import com.game.entity.vo.PlayerSaleVo;
 import com.game.service.assis.AssistService;
+import com.game.service.assis.BossAttack;
+import com.game.service.assis.CountDownTime;
 import com.game.service.assis.GlobalResource;
 import com.game.service.helper.EquipmentHelper;
 import com.game.service.helper.PotionHelper;
@@ -15,6 +17,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Timer;
+import java.util.UUID;
 
 /**
  * @Author andy
@@ -24,12 +28,13 @@ public class ShopService {
 
     private RecordMapper recordMapper = new RecordMapper();
     private PackageService packageService = new PackageService();
-    public static ArrayList<PlayerSaleVo> saleArrayList = new ArrayList<>();
-    public static ArrayList<PlayerSaleVo> auctionArrayList = new ArrayList<>();
+    //public static ArrayList<PlayerSaleVo> saleArrayList = new ArrayList<>();
+    //public static ArrayList<PlayerSaleVo> auctionArrayList = new ArrayList<>();
+    //竞价记录，roleId-price
+    //public static HashMap<Integer,Integer> priceHashMap = new HashMap<>();
 
     // here
     public String buyGoods(int goodsId,int number,Role role){
-        //int key = AssistService.checkGoodsId(goods);
         //药品的情况
         if(String.valueOf(goodsId).startsWith(Const.POTION_HEAD)){
             if(!ifLimitBuy(goodsId,number,role.getId())){
@@ -38,15 +43,20 @@ public class ShopService {
             int cost = PotionHelper.getPotionPrice(goodsId) *number;
             if(!ifCanbuy(role,cost)){
                 return Const.Shop.BUY_FAILURE;
+            }else if(packageService.putIntoPackage(goodsId,number,role)==false){
+                return Const.Shop.BAG_OUT_SPACE;
             }
-            packageService.putIntoPackage(goodsId,number,role);
+
+            packageService.lostMoney(cost,role);
             return Const.Shop.BUY_SUCCESS+ role.getMyPackage().getGoodsHashMap().get(goodsId);
         }else {  //装备的情况
             int cost = EquipmentHelper.getEquipmentPrice(goodsId)*number;
             if(!ifCanbuy(role,cost)){
                 return Const.Shop.BUY_FAILURE;
+            }else if(packageService.putIntoPackage(goodsId,number,role)==false){
+                return Const.Shop.BAG_OUT_SPACE;
             }
-            packageService.putIntoPackage(goodsId,number,role);
+            packageService.lostMoney(cost,role);
             return Const.Shop.BUY_SUCCESS+ role.getMyPackage().getGoodsHashMap().get(goodsId);
         }
     }
@@ -71,74 +81,100 @@ public class ShopService {
         if(role.getMoney()<cost){
             return false;
         }
-        role.setMoney(role.getMoney()-cost);
         return true;
     }
 
-    public boolean tradeWithPlayer(int result,Role role){
+    //目标角色-是否同意-自己
+    public String tradeWithPlayer(int targetId,int result,Role role){//由发起者同意
+        Role targetRole = GlobalResource.getRoleHashMap().get(targetId);
         if(result==0){
-            return false;
+            role.setDealVo(null);
+            targetRole.setDealVo(null);
+            return "对方拒绝交易";
         }
-        Role saleRole = GlobalResource.getRoleHashMap().get(role.getDealVo().getSendRoleId());
-        PackageService.addMoney(role.getDealVo().getPrice(),saleRole);
-        int key = role.getDealVo().getGoodsId();
-        int num = saleRole.getMyPackage().getGoodsHashMap().get(key)-1;
-        saleRole.getMyPackage().getGoodsHashMap().put(key,num);
-        role.setMoney(role.getMoney()-role.getDealVo().getPrice());
-        packageService.putIntoPackage(key,1,role);
-        AchievementService.ifFirstTradeWithPlayer(role);
-        return true;
+        role.getDealVo().setAgree(true);
+        //通过判断二者的isAgree属性，确定是否都同意，如果都同意，则进行交易
+        if(targetRole.getDealVo().isAgree()==true){
+            //对应装备、药品、钱变少-可放在deal中
+            exChangeLost(targetRole,role);
+            //交易，DealVo中的物品和金钱互换
+            exChangeGet(targetRole,role);
+            role.setDealVo(null);
+            targetRole.setDealVo(null);
+            return "交易成功！";
+        }
+        return "等待对方同意";
+    }
+
+    private void exChangeLost(Role targetRole,Role role){
+        packageService.lostGoods(role.getDealVo().getEquipmentId(),role);
+        packageService.lostGoods(role.getDealVo().getPotionId(),role);
+        packageService.lostMoney(role.getDealVo().getPrice(),role);
+
+        packageService.lostGoods(targetRole.getDealVo().getEquipmentId(),targetRole);
+        packageService.lostGoods(targetRole.getDealVo().getPotionId(),targetRole);
+        packageService.lostMoney(targetRole.getDealVo().getPrice(),targetRole);
+    }
+
+    private void exChangeGet(Role targetRole,Role role){
+        packageService.putIntoPackage(targetRole.getDealVo().getEquipmentId(),1,role);
+        packageService.putIntoPackage(targetRole.getDealVo().getPotionId(),1,role);
+        packageService.addMoney(targetRole.getDealVo().getPrice(),role);
+
+        packageService.putIntoPackage(role.getDealVo().getEquipmentId(),1,targetRole);
+        packageService.putIntoPackage(role.getDealVo().getPotionId(),1,targetRole);
+        packageService.addMoney(role.getDealVo().getPrice(),targetRole);
     }
 
     //saleToPlayer  goods price id  将该商品上架到店中
     public void saleToPlayer(int goodsId,int price,Role role){
         //商店列表中增加一个集合，存放玩家放在商店卖的所有信息，并将该新信息添加到集合中，包括提供的角色id，物品id和价格
-        //其他玩家可以通过查看该集合组成的列表来直到目前的一口价商品 todo 与前面的buy方法相结合
-        saleArrayList.add(new PlayerSaleVo(goodsId,price,role.getId()));
-        int num = role.getMyPackage().getGoodsHashMap().get(goodsId)-1;
-        role.getMyPackage().getGoodsHashMap().put(goodsId,num);
+        //其他玩家可以通过查看该集合组成的列表来获得目前的一口价商品信息
+        //saleArrayList.add(new PlayerSaleVo(goodsId,price,role.getId()));
+        packageService.lostGoods(goodsId,role);//可提供撤销上架的方法
     }
 
     //在商品列表中购买，购买后商品进行下架
     public void buyFromePlayer(int goodsId,int price,int offerId,Role role){
-        Role offerRole = GlobalResource.getRoleHashMap().get(offerId);//提供者
         packageService.putIntoPackage(goodsId,1,role);
-        role.setMoney(role.getMoney()-price);
-        PackageService.addMoney(price,offerRole);
+        packageService.lostMoney(price,role);
+        packageService.addMoney(price,GlobalResource.getRoleHashMap().get(offerId));
     }
 
     public void auctionSale(int goodsId,int minPrice,Role role){
-        PlayerSaleVo playerSaleVo = new PlayerSaleVo(goodsId,minPrice,role.getId());
-        auctionArrayList.add(playerSaleVo);
+        String auctionId = UUID.randomUUID().toString();
+        PlayerSaleVo playerSaleVo = new PlayerSaleVo(auctionId,goodsId,minPrice,role.getId());
+        //auctionArrayList.add(playerSaleVo);//存储拍卖行所有拍卖的东西
         role.setPlayerSaleVo(playerSaleVo);
         role.getPlayerSaleVo().setTagTime(Instant.now());
-        int num = role.getMyPackage().getGoodsHashMap().get(goodsId)-1;
-        role.getMyPackage().getGoodsHashMap().put(goodsId,num);
+        countdown(goodsId,role);
+        packageService.lostGoods(goodsId,role);
     }
 
     public String auctionBuy(int goodsId,int price,int offerId,Role role){
-        //将该角色提供的（最高）价格插入到集合中
-        //向所有目前参与的拍卖者，显示出目前最高价者与剩余拍卖时间（就是当前调用该方法的这个角色）-可以自己调用方法来获取（存在线程安全问题）
         Role offerRole = GlobalResource.getRoleHashMap().get(offerId);//提供者
+        HashMap<Integer, Integer> priceHashMap = offerRole.getPlayerSaleVo().getPriceHashMap();
+        //没有记录，先扣出价钱，如果已经有记录，只失去多出来的部分，最后竞价失败的人统一收到退款
+        if(priceHashMap.get(role.getId())==null){
+            packageService.lostMoney(price,role);
+        }else{
+            packageService.lostMoney(price-priceHashMap.get(role.getId()),role);
+        }
+        priceHashMap.put(role.getId(),price);
+        System.out.println("现在的钱"+role.getMoney());
         Duration between = Duration.between(offerRole.getPlayerSaleVo().getTagTime(), Instant.now());
         long l = between.toMillis()/Const.TO_MS; // 拍卖已进行的时间
-        if(l>Const.AUCTION_TIME){
-            //进行结算
-            int lastBuyRoleId = offerRole.getPlayerSaleVo().getBuyRoleId();
-            Role lastRole = GlobalResource.getRoleHashMap().get(lastBuyRoleId);
-            auctionSummary(goodsId,offerRole.getPlayerSaleVo().getLastPrice(),offerRole,lastRole);
-            return "时间到，竞价结束";
-        }
         offerRole.getPlayerSaleVo().setBuyRoleId(role.getId());
         offerRole.getPlayerSaleVo().setLastPrice(price);
+        offerRole.getPlayerSaleVo().getRoleArrayList().add(role);
         long restTime = Const.AUCTION_TIME-l;
-        return "有人出价，目前最高价为"+offerRole.getPlayerSaleVo().getLastPrice()+"，剩余时间："+restTime;
+        return "出价为"+offerRole.getPlayerSaleVo().getLastPrice()+"，剩余时间："+restTime;//+"，剩余时间："+restTime
     }
 
-    public void auctionSummary(int goodsId,int maxPrice,Role offerRole,Role lastRole){
-        PackageService.addMoney(maxPrice,offerRole);
-        lastRole.setMoney(lastRole.getMoney()-maxPrice);
-        packageService.putIntoPackage(goodsId,1,lastRole);
+    public void countdown(int goodsId,Role offerRole){
+        Timer timer = new Timer();
+        CountDownTime countDownTime = new CountDownTime(timer,goodsId,offerRole);
+        timer.schedule(countDownTime, Const.AUCTION_TIME, Const.AUCTION_TIME);
     }
 
     //商店列表初始化

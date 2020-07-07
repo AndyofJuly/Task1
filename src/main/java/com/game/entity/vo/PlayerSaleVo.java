@@ -3,12 +3,16 @@ package com.game.entity.vo;
 import com.game.entity.Role;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @Author andy
  * @create 2020/6/27 11:30
  */
 public class PlayerSaleVo {
+    //拍卖场次id
+    private String id;
     //物品id
     private int goodsId;
     //物品价格
@@ -21,11 +25,25 @@ public class PlayerSaleVo {
     private int lastPrice;
     //出价者角色id
     private int buyRoleId;
+    //参与此次竞价的所有角色
+    private ArrayList<Role> roleArrayList = new ArrayList<>();
+    //竞价记录
+    //竞价记录，roleId-price
+    public HashMap<Integer,Integer> priceHashMap = new HashMap<>();
 
-    public PlayerSaleVo(int goodsId, int price, int roleId) {
+    public PlayerSaleVo(String id,int goodsId, int price, int roleId) {
+        this.id = id;
         this.goodsId = goodsId;
         this.price = price;
         this.roleId = roleId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public int getGoodsId() {
@@ -74,5 +92,21 @@ public class PlayerSaleVo {
 
     public void setBuyRoleId(int buyRoleId) {
         this.buyRoleId = buyRoleId;
+    }
+
+    public ArrayList<Role> getRoleArrayList() {
+        return roleArrayList;
+    }
+
+    public void setRoleArrayList(ArrayList<Role> roleArrayList) {
+        this.roleArrayList = roleArrayList;
+    }
+
+    public HashMap<Integer, Integer> getPriceHashMap() {
+        return priceHashMap;
+    }
+
+    public void setPriceHashMap(HashMap<Integer, Integer> priceHashMap) {
+        this.priceHashMap = priceHashMap;
     }
 }

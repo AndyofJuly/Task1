@@ -3,9 +3,11 @@ package com.game.service;
 import com.game.entity.Role;
 import com.game.entity.excel.AchieveStatic;
 import com.game.entity.store.AchieveResource;
+import com.game.entity.store.EquipmentResource;
 import com.game.entity.vo.AchievementVo;
 import com.game.service.assis.GlobalResource;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 /**
@@ -15,105 +17,191 @@ import java.util.HashMap;
  */
 public class AchievementService {
 
-    //累积型；计数并判断是否满足数量要求，满足则设为true;
-    //击杀特定小怪N-1-5只（小偷）；考虑可能同时杀死多只怪物的情况
-    public static void ifSlayPartiMonster(int monsterId,Role role){
-        if(monsterId==30003){
-            role.getAchievementVo().setSlayConut(1);
+    //针对不同的类型，可以将不同成就放在不同表和集合中，可以减少遍历带来的性能影响
+
+    //一个count方法，将击杀的怪物id进行计数的方法，该方法判断hashmap中是否有该id，有则加一，没有则put
+    public static void countKilledMonster(int monsterId,Role role){
+        //计数后顺便判断
+        Object oldCount = role.getAchievementVo().getKillMonsterCountMap().get(monsterId);
+        if(oldCount==null){
+            role.getAchievementVo().getKillMonsterCountMap().put(monsterId,1);
+        }else {
+            role.getAchievementVo().getKillMonsterCountMap().put(monsterId,(int)oldCount+1);
         }
-        if(role.getAchievementVo().getSlayConut()>=1){
-            role.getAchievementVo().getAchievementHashMap().put(0,true);
+        //遍历检查是否完成成就系统中的某项成就：遍历成就静态表中的怪物id和对应的数量，如果目前大于该数量，则提示成就完成，设置到缓存中，如果小于，则没有完成
+        ifSlayPartiMonster(monsterId,role);
+    }
+
+    private static void ifSlayPartiMonster(int monsterId,Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            if("killMonster".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc())){
+                int nowCount = role.getAchievementVo().getKillMonsterCountMap().get(monsterId);
+                int targetCount = AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+                if(nowCount>=targetCount){
+                    role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+                }
+            }
         }
     }
 
-    //等级提升到N-20级
-    public static void ifLevelUpToTwenty(Role role){
-        if(role.getLevel()>=20){
-            role.getAchievementVo().getAchievementHashMap().put(1,true);
+    public static void countLevel(Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "levelUp".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean levelCompare = role.getLevel()>=AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+            if(staticSearch && levelCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
     //和某个npc对话
-    public static void ifTalkToOldMan(int npcId,Role role){
-        if(npcId==20001){
-            role.getAchievementVo().getAchievementHashMap().put(2,true);
+    public static void talkToNpc(int npcId,Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "talkNpc".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean npcCompare = npcId==AchieveResource.getAchieveStaticHashMap().get(achievId).getTargetId();
+            if(staticSearch && npcCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
-    //获得N-2件极品装备？目前还没有对装备进行分类-在放入背包时统计检查即可（放入背包方法），注意背包中查，不是累积
-    public static void ifGetNBestEquipment(Role role){
-        if(role.getMyPackage().getBestNum()>=2){
-            role.getAchievementVo().getAchievementHashMap().put(3,true);
+    //统计极品装备数量
+    public static void countBestEquipment(int equipmentId,Role role){
+        System.out.println("装备id是"+equipmentId);
+        int quality = EquipmentResource.getEquipmentStaticHashMap().get(equipmentId).getQuality();
+        if(quality==1){
+            role.getMyPackage().setSumBestNum(1);
+        }
+        ifGetNBestEquipment(role);
+    }
+
+    //获得N件极品装备
+    private static void ifGetNBestEquipment(Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "getBessEquip".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean euipCompare = role.getMyPackage().getBestNum()>=AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+            if(staticSearch && euipCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
     //通关某个副本
     public static void ifPassPartiDungeons(int dungeonsId,Role role){
-        if(dungeonsId==4001){
-            role.getAchievementVo().getAchievementHashMap().put(4,true);
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "passDungeons".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean euipCompare =dungeonsId==AchieveResource.getAchieveStaticHashMap().get(achievId).getTargetId();
+            if(staticSearch && euipCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
-    //穿戴的装备等级总和达到XXX-20？注意当前穿戴！
-    public static void ifSumEquipmentLevelToFourty(Role role){
-        System.out.println("sumlevel="+RoleService.sumWearLevel(role));
-        if(RoleService.sumWearLevel(role)>=20){
-            role.getAchievementVo().getAchievementHashMap().put(5,true);
+    //计算穿戴装备总等级
+    public static void countSumWearLevel(Role role){
+        int sumLevel = 0;
+        for(Integer equipmentId : role.getEquipmentHashMap().keySet()){
+            sumLevel+=role.getEquipmentHashMap().get(equipmentId).getLevel();
+        }
+        ifSumEquipmentLevelTo(sumLevel,role);
+    }
+
+    //穿戴的装备等级总和达到XXX
+    private static void ifSumEquipmentLevelTo(int sumLevel,Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "sumEquipLevel".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean euipCompare = sumLevel>=AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+            if(staticSearch && euipCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
     //添加一个好友-两个人都判读
-    public static void ifFirstAddOneFriend(int friendId,Role role){
+    public static void countAddFriend(int friendId,Role role){
         Role friendRole = GlobalResource.getRoleHashMap().get(friendId);
-        friendRole.getAchievementVo().getAchievementHashMap().put(6,true);
-        role.getAchievementVo().getAchievementHashMap().put(6,true);
-        ifAchievSerialTask(friendRole);
+        friendRole.getAchievementVo().setCountFriend();
+        role.getAchievementVo().setCountFriend();
+        ifAddFriend(friendRole);
+        ifAddFriend(role);
+    }
+
+    private static void ifAddFriend(Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "addFriend".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean euipCompare = role.getAchievementVo().getCountFriend()>AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+            if(staticSearch && euipCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
+        }
+
+    }
+
+    //第一次系列任务抽象
+    private static void firstAchieve(String desc,Role role){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            if(desc.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc())){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
+        }
         ifAchievSerialTask(role);
     }
 
+
     //第一次组队
     public static void ifFirstJoinTeam(Role role){
-        role.getAchievementVo().getAchievementHashMap().put(7,true);
-        ifAchievSerialTask(role);
+        firstAchieve("firstJoinTeam",role);
     }
 
     //第一次加入公会
     public static void ifFirstJoinUnion(Role role){
-        role.getAchievementVo().getAchievementHashMap().put(8,true);
-        ifAchievSerialTask(role);
+        firstAchieve("firstJoinUnion",role);
     }
 
     //第一次与玩家交易
     public static void ifFirstTradeWithPlayer(Role role){
-        role.getAchievementVo().getAchievementHashMap().put(9,true);
+        firstAchieve("firstTrade",role);
     }
 
     //第一次在pk中战胜
     public static void ifFirstPkSuccess(Role role){
-        role.getAchievementVo().getAchievementHashMap().put(10,true);
+        firstAchieve("firstPkSuccess",role);
     }
 
-    //当前金币达到xxxx-将所有涉及到增减金币的方法进行修改，抽象出一个增加和减少角色金币的方法，在该方法中调用此方法addMoney
+    //当前金币达到xxxx
     public static void ifSumMoneyToThousand(int number,Role role){
-        if(role.getMoney()>=110){
-            role.getAchievementVo().getAchievementHashMap().put(11,true);
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "sumMoney".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            boolean euipCompare = role.getMoney()>=AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
+            if(staticSearch && euipCompare){
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
-    //完成某一系列任务，例如社交任务：加一个好友+组队+加入公会
+    //完成某一系列任务，例如首次成就的系列任务
     public static void ifAchievSerialTask(Role role){
-        //判断角色的vo中的taskNum-舍弃
-        if(role.getAchievementVo().getAchievementHashMap().get(6) && role.getAchievementVo().getAchievementHashMap().get(7) && role.getAchievementVo().getAchievementHashMap().get(8)){
-            role.getAchievementVo().getAchievementHashMap().put(12,true);
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            boolean staticSearch = "completeTask".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
+            if(staticSearch){
+                String[] strings = AchieveResource.getAchieveStaticHashMap().get(achievId).getSerial();
+                System.out.println(Arrays.toString(strings));
+                for(int i=0;i<strings.length;i++){
+                    if(role.getAchievementVo().getAchievementHashMap().get(Integer.parseInt(strings[i]))==false){
+                        return;
+                    }
+                }
+                role.getAchievementVo().getAchievementHashMap().put(achievId,true);
+            }
         }
     }
 
     //获得角色当前所有成就信息
     public static String getAchievmentList(Role role){
         String result="";
-        for(int i=0;i<role.getAchievementVo().getAchievementHashMap().size();i++){
-            result+=AchieveResource.getAchieveStaticHashMap().get(i).getMsg()+"："
-                    +role.getAchievementVo().getAchievementHashMap().get(i)+"\n";
+        for(Integer achieveId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            result+=AchieveResource.getAchieveStaticHashMap().get(achieveId).getDesc()+"："
+                    +role.getAchievementVo().getAchievementHashMap().get(achieveId)+"\n";
         }
         return result;
     }

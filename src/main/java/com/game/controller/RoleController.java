@@ -38,14 +38,22 @@ public class RoleController {
     //用户登录，使用举例：login userName password
     @MyAnnontation(MethodName = "login")
     public String loginMesseage() {
-        if(roleMapper.selectLogin(strList.get(1),strList.get(2))){
-            return Const.start.ULOGIN_SUCCESS;
+        System.out.println("登录游戏中");
+        int userId = roleMapper.selectLogin(strList.get(1),strList.get(2));
+        if(userId!=0){
+            //获得该用户的所有角色信息
+            String roleMsg = "，你目前的角色有：";
+            ArrayList<Integer> roleList = roleMapper.selectRole(userId);
+            for(Integer roleId : roleList){
+                roleMsg += roleId+" ";
+            }
+            return Const.start.ULOGIN_SUCCESS+roleMsg;
         }else {
             return Const.start.ULOGIN_FAILURE;
         }
     }
 
-    //角色注册，使用举例（新增职业选择，插入数据库中，并进入游戏时拿到缓存里）：registerR roleName careerName:careerId
+    //角色注册，使用举例：registerR roleName careerId
     @MyAnnontation(MethodName = "registerR")
     public String registerRoleMesseage() { //注册时没有id，id从数据库中拿
         if(gameService.registerRole(strList.get(1),intList.get(0))){
@@ -185,7 +193,21 @@ public class RoleController {
         return roleService.getAchievment(getRole());
     }
 
-
+    //打乱背包
+    @MyAnnontation(MethodName = "getrandPackage")
+    public String getrandPackage(){
+        return roleService.randPackage(getRole());
+    }
+    //背包整理
+    @MyAnnontation(MethodName = "getorderPackage")
+    public String getorderPackage(){
+        return roleService.orderPackage(getRole());
+    }
+    //获取背包信息
+    @MyAnnontation(MethodName = "getPackageInfo")
+    public String getPackageInfo(){
+        return roleService.getPackageInfo(getRole());
+    }
 
     //封装
     public static ArrayList<Integer> getIntList() {

@@ -8,11 +8,20 @@ public class AchieveStatic {
     //成就id
     private int id;
     //成就说明
-    private String msg;
+    private String desc;
+    //目标
+    private int targetId;
+    //完成所需数量
+    private int count;
+    //系列任务
+    private String[] serial;
 
-    public AchieveStatic(int id, String msg) {
+    public AchieveStatic(int id, String desc, int targetId, int count,String[] serial) {
         this.id = id;
-        this.msg = msg;
+        this.desc = desc;
+        this.targetId = targetId;
+        this.count = count;
+        this.serial = serial;
     }
 
     public int getId() {
@@ -23,11 +32,35 @@ public class AchieveStatic {
         this.id = id;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getDesc() {
+        return desc;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public int getTargetId() {
+        return targetId;
+    }
+
+    public void setTargetId(int targetId) {
+        this.targetId = targetId;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String[] getSerial() {
+        return serial;
+    }
+
+    public void setSerial(String[] serial) {
+        this.serial = serial;
     }
 }

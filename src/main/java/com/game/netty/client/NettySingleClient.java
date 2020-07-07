@@ -1,5 +1,6 @@
 package com.game.netty.client;
 
+import com.game.common.protobuf.DataInfo;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -7,6 +8,10 @@ import io.netty.channel.ChannelPipeline;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.context.ApplicationContext;
@@ -43,10 +48,18 @@ public class NettySingleClient {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-                            //向pipeline加入一个解码器
+/*                            //向pipeline加入一个解码器
                             pipeline.addLast("decoder",new StringDecoder());
                             //向pipeline加入编码器
-                            pipeline.addLast("encode",new StringEncoder());
+                            pipeline.addLast("encode",new StringEncoder());*/
+                            //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
+                            pipeline.addLast(new ProtobufVarint32FrameDecoder());
+                            //将接收到的二进制文件解码成具体的实例，这边接收到的是服务端的ResponseBank对象实列
+                            pipeline.addLast(new ProtobufDecoder(DataInfo.ResponseMsg.getDefaultInstance()));
+                            //Google Protocol Buffers编码器
+                            pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
+                            //Google Protocol Buffers编码器
+                            pipeline.addLast(new ProtobufEncoder());
                             //加入自己的处理器
                             pipeline.addLast(new ClientHandler());
                         }
@@ -59,13 +72,10 @@ public class NettySingleClient {
                     String msg = scanner.nextLine();
                     if(msg.startsWith("loginR")){
                         String[] s = msg.split(" ");
-                        //id = " "+ roleMapper.selectRoleIdByName(s[1]);
                         id = " "+s[1];
                     }
-                    channelFuture.channel().writeAndFlush(msg+id);
-                    if("quit".equals(msg)){
-                        break;
-                    }
+                    DataInfo.RequestMsg requestMsg = DataInfo.RequestMsg.newBuilder().setMsg(msg+id).build();
+                    channelFuture.channel().writeAndFlush(requestMsg);
                 }
             }
         }finally {

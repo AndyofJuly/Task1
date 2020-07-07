@@ -32,13 +32,10 @@ public class ShopController {
         return shopService.buyGoods(intList.get(0),intList.get(1),getRole());
     }
 
-    //玩家面对面交易，使用举例：trade yes/no ：here修改成1/0
+    //玩家面对面交易，使用举例：trade targetRole yes/no ：here修改成1/0:  trade 16 1/ trade 1 0
     @MyAnnontation(MethodName = "trade")
     public String tradeWithPlayer(){
-        if(shopService.tradeWithPlayer(intList.get(0),getRole())){
-            return "交易成功";
-        }
-        return "对方拒绝交易";
+        return shopService.tradeWithPlayer(intList.get(0),intList.get(1),getRole());
     }
 
     //一口价交易-卖，玩家将商品和价格寄托在商店，商店代卖，使用举例：sale goodsId price (roleId)

@@ -2,18 +2,15 @@ package com.game.dao.sql;
 
 import com.game.common.Const;
 //import com.game.common.InitStaticResource;
-import com.game.entity.Equipment;
-import com.game.entity.MyPackage;
 import com.game.entity.Role;
-import com.game.entity.store.EquipmentResource;
-import com.game.entity.vo.Union;
-import com.game.service.UnionService;
+import com.game.entity.excel.CareerStatic;
+import com.game.entity.store.CareerResource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  * 数据库连接与数据库操作方法实现-9个方法
@@ -72,18 +69,39 @@ public class RoleSql {
      * @param password 用户密码
      * @return 是否登录成功
      */
-    public boolean selectLogin(String username, String password) {
+    public int selectLogin(String username, String password) {
+        int id = 0;
         try {
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM user WHERE username=? and password=?");
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT userid FROM user WHERE username=? and password=?");
             preparedStatement.setString(1,username);
             preparedStatement.setString(2,password);
             ResultSet rs=preparedStatement.executeQuery();
-            result = rs.next();
+            while (rs.next())
+            {
+                id=rs.getInt("userid");
+            }
             rs.close();
         }catch (Exception e){
             System.out.println(e.getMessage()+"selectLogin");
         }
-        return result;
+        return id;
+    }
+
+    public ArrayList<Integer> selectRole(int userId){
+        ArrayList<Integer> roleList = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT playid FROM role WHERE userid=?");
+            preparedStatement.setInt(1,userId);
+            ResultSet rs=preparedStatement.executeQuery();
+            while (rs.next())
+            {
+                roleList.add(rs.getInt("playid"));
+            }
+            rs.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage()+"selectLogin");
+        }
+        return roleList;
     }
 
     /**
@@ -108,15 +126,17 @@ public class RoleSql {
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO role" +
                     "(rolename,placeid,alive,careerid,hp,mp,atk,money,def,unionid,nowlevel) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            //根据职业id查找对应的初始化值
+            CareerStatic career = CareerResource.getCareerStaticHashMap().get(careerId);
             st.setString(1, rolename);
-            st.setInt(2, 10001);
+            st.setInt(2, Const.INIT_SCENE);
             st.setInt(3, 1);
             st.setInt(4, careerId);
-            st.setInt(5, 50);
-            st.setInt(6, 50);
-            st.setInt(7, 10);
-            st.setInt(8, 100);
-            st.setInt(9, 3);
+            st.setInt(5, career.getHp());
+            st.setInt(6, career.getMp());
+            st.setInt(7, career.getAtk());
+            st.setInt(8, Const.INIT_MONEY);
+            st.setInt(9, career.getDef());
             st.setInt(10, 0);
             st.setInt(11, 1);
             st.executeUpdate();
@@ -135,7 +155,7 @@ public class RoleSql {
     public Role selectLoginRole(int roleId){
         Role role = new Role(roleId);
         try {
-            PreparedStatement preparedStatement=conn.prepareStatement("SELECT placeid,careerid,hp,mp,atk,money,def,nowlevel,rolename FROM role WHERE playid=?");
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT placeid,careerid,hp,mp,atk,money,def,nowlevel,rolename,unionid FROM role WHERE playid=?");
             preparedStatement.setInt(1,roleId);
             ResultSet rs=preparedStatement.executeQuery();
             while (rs.next())
@@ -149,6 +169,7 @@ public class RoleSql {
                 role.setDef(rs.getInt("def"));
                 role.setLevel(rs.getInt("nowlevel"));
                 role.setName(rs.getString("rolename"));
+                role.setUnionId(rs.getInt("unionid"));
             }
             rs.close();
         }catch (Exception e){

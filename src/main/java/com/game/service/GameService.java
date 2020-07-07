@@ -13,6 +13,9 @@ import com.game.service.assis.GlobalResource;
 import com.game.service.assis.InitGame;
 import com.game.service.assis.InitRole;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * 用户一些功能的方法实现
@@ -26,6 +29,7 @@ public class GameService {
     RecordMapper recordMapper = new RecordMapper();
     UnionMapper unionMapper = new UnionMapper();
     GoodsMapper goodsMapper = new GoodsMapper();
+    static boolean saveBoolean = true;
 
     //角色登录
     public String loginRole(int roleId){
@@ -42,6 +46,11 @@ public class GameService {
             scene.getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(roleId,role);
             //九宫格初始化
             role.setGridVo(new GridVo(roleId));
+
+            if(saveBoolean){
+                saveAuto();
+                saveBoolean=false;
+            }
             return Const.start.LOGIN_SUCCESS;
         }else {
             return Const.start.LOGIN_FAILURE;
@@ -71,12 +80,24 @@ public class GameService {
         for(Integer key : GlobalResource.getRoleHashMap().keySet()){
             Role role = GlobalResource.getRoleHashMap().get(key);
             roleMapper.updateRoleInfo(role);
-            //roleMapper.insertRoleScenes(role.getNowScenesId(),role);
             recordMapper.updateAchievement(role);
             goodsMapper.updateRoleBodyEquipment(role);
             goodsMapper.updatePackage(role);
             unionMapper.updateUnion(role);
             unionMapper.updateUnionStore(role);
         }
+        unionMapper.updateUnionMemb();
+    }
+
+    private void saveAuto(){
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //延时time秒后，开始执行
+                saveData();
+                System.out.println("已自动保存游戏");
+            }
+        }, 30000, 60000);//暂定一分钟保存一次
     }
 }

@@ -25,8 +25,10 @@ public class EquipmentStatic {
     private int addMp;
     // 装备类别；1为武器；2为手环；3为项链；4为身体；5为帽子；6为鞋子
     private int type;
+    // 装备稀有度：0为普通武器；1为极品武器
+    private int quality;
 
-    public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type) {
+    public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type,int quality) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -36,6 +38,7 @@ public class EquipmentStatic {
         this.addHp = addHp;
         this.addMp = addMp;
         this.type = type;
+        this.quality = quality;
     }
 
     public int getId() {
@@ -108,5 +111,13 @@ public class EquipmentStatic {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public int getQuality() {
+        return quality;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
     }
 }

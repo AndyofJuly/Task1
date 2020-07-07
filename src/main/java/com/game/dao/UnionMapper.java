@@ -11,12 +11,28 @@ public class UnionMapper {
 
     UnionSql sql = new UnionSql();
 
+    public void selectUnion(){
+        sql.selectUnion();
+    }
+
+    public void selectUnionMemb(){
+        sql.selectUnionMemb();
+    }
+    public void selectUnionStore(){
+        sql.selectUnionStore();
+    }
+
+
     public void updateUnion(Role role){
         sql.updateUnion(role);
     }
 
     public void updateUnionStore(Role role){
         sql.updateUnionStore(role);
+    }
+
+    public void updateUnionMemb(){
+        sql.updateUnionMemb();
     }
 
 }

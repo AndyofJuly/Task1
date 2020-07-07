@@ -2,6 +2,7 @@ package com.game.dao.sql;
 
 import com.game.common.Const;
 import com.game.entity.Role;
+import com.game.entity.store.AchieveResource;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -72,12 +73,13 @@ public class RecordSql {
                 list=rs.getString("achievementlist");
             }
             if("".equals(list)){
+                System.out.println("insertRole");
                 insert(role);
             }
             char[] achieve=list.toCharArray();
             for(int i=0;i<achieve.length;i++){
                 if(achieve[i]=='1'){
-                    role.getAchievementVo().getAchievementHashMap().put(i,true);
+                    role.getAchievementVo().getAchievementHashMap().put(i+Const.ACHIEV_START,true);
                 }
             }
             rs.close();
@@ -89,8 +91,8 @@ public class RecordSql {
     //角色成就roleMapper.updateAchievement(role);
     public void updateAchievement(Role role){
         String input="";
-        for(int i=0;i<role.getAchievementVo().getAchievementHashMap().size();i++){
-            if(role.getAchievementVo().getAchievementHashMap().get(i)==true){
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            if(role.getAchievementVo().getAchievementHashMap().get(achievId)==true){
                 input+="1";
             }else{
                 input+="0";

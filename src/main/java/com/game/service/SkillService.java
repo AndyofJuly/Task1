@@ -11,6 +11,7 @@ import com.game.service.assis.*;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Random;
 import java.util.Timer;
 
 /**
@@ -58,26 +59,32 @@ public class SkillService {
             return result;
         }
         //说明技能已经冷却，可以调用该方法，怪物扣血
-        //int key1 = AssistService.checkSkillId(skillName);
         Scene scene = GlobalResource.getScenes().get(role.getNowScenesId());
         Monster nowMonster = scene.getMonsterHashMap().get(monsterId);
         int hp = nowMonster.getMonsterHp();
         int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
         hp=hp-role.getAtk()-Const.WEAPON_BUFF-skillHarm;
-        if(hp<=Const.ZERO){
+        if(hp<=0){
             result = Const.Fight.SLAY_SUCCESS;
-            Listen.setMonsterIsDead(true);  //对全部客户端进行通知
-            nowMonster.setMonsterHp(Const.ZERO);
-            nowMonster.setAlive(0);
-            //获得奖励
-            PackageService.addMoney(50,role);
-            role.setAtk(role.getAtk()+2);
-            AchievementService.ifSlayPartiMonster(nowMonster.getMonsterId(),role);
+            getReward(nowMonster,hp,role);
             return result;
         }
-        //System.out.println("玩家使用了"+skillName+"技能，怪物的血量还有"+hp);
         nowMonster.setMonsterHp(hp);
         return Const.Fight.TARGET_HP+hp;
+    }
+
+    private void getReward(Monster nowMonster,int hp,Role role){
+        Listen.setMonsterIsDead(true);  //对全部客户端进行通知
+        nowMonster.setMonsterHp(0);
+        nowMonster.setAlive(0);
+        //获得奖励-随机装备和道具
+        Random rand = new Random();
+        new PackageService().addMoney(rand.nextInt(60),role);
+        int getEquipId = (int) (3001 + Math.floor(Math.random()*3));
+        System.out.println("获得装备："+getEquipId);
+        new PackageService().putIntoPackage(getEquipId,1,role);
+        role.setAtk(role.getAtk()+2);
+        AchievementService.countKilledMonster(nowMonster.getMonsterId(),role);
     }
 
     //战士的嘲讽技能；需在BossAttack中进行优化
@@ -144,12 +151,13 @@ public class SkillService {
     //使用技能时的共同特征进行抽象，如减mp，减武器耐久，CD计算等
     public String skillCommon(int skillId,Role role){
         String result = Const.Fight.SUCCESS;
-        int dura;
-        int weaponId =0;
-        for (Integer temp : role.getEquipmentHashMap().keySet()) {
-            weaponId = temp;
+        int weaponId =0;//找到武器
+        for (Integer selfEquipId : role.getEquipmentHashMap().keySet()) {
+            int type = EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType();
+            if(type==1){
+                weaponId = selfEquipId;
+            }
         }
-        //int key1 = AssistService.checkSkillId(skillName);
         //使用该技能，记录当前时间，set方法传给角色的集合的技能对象的属性，同时判断时间是否合理满足CD
         Instant nowDate = Instant.now();
         Duration between = Duration.between(role.
@@ -158,12 +166,11 @@ public class SkillService {
         if(l>SkillResource.getSkillStaticHashMap().get(skillId).getCd()*Const.GAP_TIME_SKILL) {
             role.getSkillHashMap().get(skillId).setStart(nowDate);
             int mp=role.getMp();
-            dura=role.getEquipmentHashMap().get(weaponId).getDura();
+            int dura=role.getEquipmentHashMap().get(weaponId).getDura();
             //耐久小于等于0或者蓝量不够，退出场景
             if(dura<=0){
                 return Const.Fight.DURA_LACK;
-            }
-            if(mp<SkillResource.getSkillStaticHashMap().get(skillId).getUseMp()){
+            }else if(mp<SkillResource.getSkillStaticHashMap().get(skillId).getUseMp()){
                 return Const.Fight.MP_LACK;
             }
             mp=mp-SkillResource.getSkillStaticHashMap().get(skillId).getUseMp();
@@ -174,4 +181,6 @@ public class SkillService {
         }
         return result;
     }
+
+
 }

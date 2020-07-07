@@ -1,8 +1,7 @@
 package com.game.service;
 
 import com.game.common.Const;
-import com.game.controller.RoleController;
-import com.game.entity.MyPackage;
+import com.game.entity.vo.MyPackage;
 import com.game.entity.Role;
 import com.game.service.assis.AssistService;
 import com.game.service.assis.GlobalResource;

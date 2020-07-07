@@ -2,7 +2,7 @@ package com.game.dao.sql;
 
 import com.game.common.Const;
 import com.game.entity.Equipment;
-import com.game.entity.MyPackage;
+import com.game.entity.vo.MyPackage;
 import com.game.entity.Role;
 import com.game.entity.store.EquipmentResource;
 
@@ -43,7 +43,7 @@ public class GoodsSql {
                 Equipment equipment1;
                 for(int i=0;i<equip.length;i++){
                     if(rs.getInt(equip[i])!=0){
-                        equipment1= new Equipment(rs.getInt(equip[i]),100);
+                        equipment1= new Equipment(rs.getInt(equip[i]),Const.EQUIP_DURA);
                         role.getEquipmentHashMap().put(rs.getInt(equip[i]),equipment1);
                     }
                 }
@@ -53,6 +53,7 @@ public class GoodsSql {
             System.out.println(e.getMessage()+" selectBodyEquipment");
         }
     }
+
 
     //角色身上装备roleMapper.updateRoleBodyEquipment(role);
     public void updateRoleBodyEquipment(Role role){
@@ -93,7 +94,7 @@ public class GoodsSql {
 /*            if(goods==null){
                 insert(role);
             }*/
-            role.setMyPackage(new MyPackage(100,goods));
+            role.setMyPackage(new MyPackage(Const.PACKAGE_SIZE,goods));
             rs.close();
         }catch (Exception e){
             System.out.println(e.getMessage()+" selectPackage");

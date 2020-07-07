@@ -8,6 +8,10 @@ public class Const {
 
     //角色第一次进入游戏时的初始场景
     public static final int INIT_SCENE = 10001;
+    //初始赠送银两
+    public static final int INIT_MONEY = 100;
+    //初始背包大小
+    public static final int PACKAGE_SIZE = 6;
     //MP每秒自动回复值
     public static final int RECOVER_MP = 1;
     //技能每次释放，武器耐久下降值
@@ -28,6 +32,8 @@ public class Const {
     public static final int GAP_TIME_BABY = 4000;
     //延时时间
     public static final int DELAY_TIME = 0;
+    //装备耐久
+    public static final int EQUIP_DURA = 100;
 
     //怪物死后，通知消息
     public static final String MONSTER_MESSEAGE = "系统提示：boss已被玩家击败！";
@@ -70,26 +76,24 @@ public class Const {
     public static final int POTION_MAX_NUM = 99;
     //装备最大叠加数
     public static final int EQUIPMENT_MAX_NUM = 1;
-
-    //零值
-    public static final int ZERO = 0;
     //拍卖限定时间-秒
-    public static final int AUCTION_TIME = 60;
-
+    public static final int AUCTION_TIME = 20000;
+    //成就起始id
+    public static final int ACHIEV_START = 100;
 
     //excel常量数据配置表地址
-    public static final String SCENE_CONST_PATH = ".\\src\\main\\resources\\scenes.xls";
-    public static final String NPC_CONST_PATH = ".\\src\\main\\resources\\npc.xls";
-    public static final String MONSTER_CONST_PATH = ".\\src\\main\\resources\\monster.xls";
-    public static final String SKILL_CONST_PATH = ".\\src\\main\\resources\\skill.xls";
-    public static final String EQUIPMENT_CONST_PATH = ".\\src\\main\\resources\\equipment.xls";
-    public static final String POTION_CONST_PATH = ".\\src\\main\\resources\\potion.xls";
+    public static final String SCENE_CONST_PATH = ".\\src\\main\\resources\\excel\\scenes.xls";
+    public static final String NPC_CONST_PATH = ".\\src\\main\\resources\\excel\\npc.xls";
+    public static final String MONSTER_CONST_PATH = ".\\src\\main\\resources\\excel\\monster.xls";
+    public static final String SKILL_CONST_PATH = ".\\src\\main\\resources\\excel\\skill.xls";
+    public static final String EQUIPMENT_CONST_PATH = ".\\src\\main\\resources\\excel\\equipment.xls";
+    public static final String POTION_CONST_PATH = ".\\src\\main\\resources\\excel\\potion.xls";
     //public static final String ROLE_CONST_PATH = ".\\src\\main\\resources\\role.xls";
-    public static final String CAREER_CONST_PATH = ".\\src\\main\\resources\\career.xls";
-    public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\dungeons.xls";
-    public static final String BABY_CONST_PATH = ".\\src\\main\\resources\\baby.xls";
-    public static final String JOB_CONST_PATH = ".\\src\\main\\resources\\job.xls";
-    public static final String ACHIEVE_CONST_PATH = ".\\src\\main\\resources\\achievement.xls";
+    public static final String CAREER_CONST_PATH = ".\\src\\main\\resources\\excel\\career.xls";
+    public static final String DUNGEONS_CONST_PATH = ".\\src\\main\\resources\\excel\\dungeons.xls";
+    public static final String BABY_CONST_PATH = ".\\src\\main\\resources\\excel\\baby.xls";
+    public static final String JOB_CONST_PATH = ".\\src\\main\\resources\\excel\\job.xls";
+    public static final String ACHIEVE_CONST_PATH = ".\\src\\main\\resources\\excel\\achievement.xls";
 
     //数据库连接信息
     public static final String URL = "jdbc:mysql://localhost:3306/test?&useSSL=false&serverTimezone=UTC";
@@ -142,8 +146,9 @@ public class Const {
     //定制的购买物品消息集合-暂时存在此处
     public interface Shop{
         String LIMIT_MSG = "超过限购数量，不可以再购买了";
-        String BUY_FAILURE = "您所携带的银两不够，无法够买";
+        String BUY_FAILURE = "您所携带的银两不够或背包已满，无法够买";
         String BUY_SUCCESS = "购买成功，目前该物品在背包中的数量为";
+        String BAG_OUT_SPACE = "背包放不下了";
     }
 
     //登录的提示信息
@@ -151,8 +156,8 @@ public class Const {
         String LOGIN_SUCCESS = "登陆成功，您进入到了游戏世界";
         String LOGIN_FAILURE = "您没有该角色，登陆失败";
         String UREGISTER_FAILURE = "注册失败，该用户名已有人使用";
-        String UREGISTER_SUCCESS = "注册成功";
-        String ULOGIN_SUCCESS = "登陆成功";
+        String UREGISTER_SUCCESS = "注册成功，请进行登录";
+        String ULOGIN_SUCCESS = "登陆成功，请新增或登录角色以开始游戏";
         String ULOGIN_FAILURE = "用户名或密码错误，登陆失败";
         String REGISTER_SUCCESS = "注册成功，请进行登录";
         String REGISTER_FAILURE = "注册失败，该角色名称已有人使用";
@@ -166,6 +171,14 @@ public class Const {
         String TAKEOFF_SUCCESS = "你已成功卸下该武器";
         String USE_SUCCESS = "使用成功";
         String USE_FAILURE = "物品已用完";
+    }
+
+    //公会参数
+    public interface union {
+        int FIRST_GRADE = 1;
+        int SECOND_GRADE = 2;
+        int THRID_GRADE = 3;
+        int FOURTH_GRADE = 4;
     }
 
 }

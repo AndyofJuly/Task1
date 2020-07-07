@@ -10,100 +10,146 @@ Target Server Type    : MYSQL
 Target Server Version : 50724
 File Encoding         : 65001
 
-Date: 2020-05-17 10:16:15
+Date: 2020-07-02 21:53:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for monster
+-- Table structure for achievement
 -- ----------------------------
-DROP TABLE IF EXISTS `monster`;
-CREATE TABLE `monster` (
-  `monsterid` int(100) NOT NULL,
-  `monstername` varchar(20) DEFAULT NULL,
-  `scenes` varchar(20) DEFAULT NULL,
-  `alive` int(2) DEFAULT NULL,
-  PRIMARY KEY (`monsterid`)
+DROP TABLE IF EXISTS `achievement`;
+CREATE TABLE `achievement` (
+  `playid` int(11) NOT NULL,
+  `achievementlist` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of monster
+-- Records of achievement
 -- ----------------------------
-INSERT INTO `monster` VALUES ('1', '史莱姆', '起始之地', '1');
-INSERT INTO `monster` VALUES ('2', '飞鹰', '起始之地', '1');
-INSERT INTO `monster` VALUES ('3', '小偷', '村子', '1');
-INSERT INTO `monster` VALUES ('4', '恶人', '村子', '1');
-INSERT INTO `monster` VALUES ('5', '逃兵', '城堡', '1');
-INSERT INTO `monster` VALUES ('6', '叛军', '城堡', '1');
-INSERT INTO `monster` VALUES ('7', '猛虎', '森林', '1');
-INSERT INTO `monster` VALUES ('8', '毒蛇', '森林', '1');
-INSERT INTO `monster` VALUES ('9', '恶龙', '未知世界', '1');
-INSERT INTO `monster` VALUES ('10', '巨兽', '未知世界', '1');
+INSERT INTO `achievement` VALUES ('1', '0000000010010');
+INSERT INTO `achievement` VALUES ('16', '0000000011010');
+INSERT INTO `achievement` VALUES ('17', '0000000010010');
 
 -- ----------------------------
--- Table structure for npc
+-- Table structure for bodyequipment
 -- ----------------------------
-DROP TABLE IF EXISTS `npc`;
-CREATE TABLE `npc` (
-  `npcid` int(100) NOT NULL AUTO_INCREMENT,
-  `npcname` varchar(20) DEFAULT NULL,
-  `scenes` varchar(20) DEFAULT NULL,
-  `alive` int(2) DEFAULT NULL,
-  PRIMARY KEY (`npcid`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `bodyequipment`;
+CREATE TABLE `bodyequipment` (
+  `playid` int(11) NOT NULL,
+  `weapon` int(11) DEFAULT NULL,
+  `circlet` int(11) DEFAULT NULL,
+  `necklace` int(11) DEFAULT NULL,
+  `body` int(11) DEFAULT NULL,
+  `head` int(11) DEFAULT NULL,
+  `foot` int(11) DEFAULT NULL,
+  PRIMARY KEY (`playid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of npc
+-- Records of bodyequipment
 -- ----------------------------
-INSERT INTO `npc` VALUES ('1', '老爷爷', '起始之地', '1');
-INSERT INTO `npc` VALUES ('2', '村长', '村子', '1');
-INSERT INTO `npc` VALUES ('3', '铁匠', '村子', '1');
-INSERT INTO `npc` VALUES ('4', '公主', '城堡', '1');
-INSERT INTO `npc` VALUES ('5', '商人', '城堡', '1');
-INSERT INTO `npc` VALUES ('6', '樵夫', '森林', '1');
-INSERT INTO `npc` VALUES ('7', '猎户', '森林', '1');
-INSERT INTO `npc` VALUES ('8', '守将', '未知世界', '1');
+INSERT INTO `bodyequipment` VALUES ('1', '3001', '3003', '0', '0', '0', '0');
 
 -- ----------------------------
--- Table structure for place
+-- Table structure for package
 -- ----------------------------
-DROP TABLE IF EXISTS `place`;
-CREATE TABLE `place` (
-  `placeid` int(20) NOT NULL AUTO_INCREMENT,
-  `placename` varchar(20) NOT NULL,
-  `xline` int(20) DEFAULT NULL,
-  `yline` int(20) DEFAULT NULL,
-  PRIMARY KEY (`placeid`),
-  UNIQUE KEY `placename` (`placename`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `package`;
+CREATE TABLE `package` (
+  `playid` int(11) NOT NULL,
+  `goodsid` int(11) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of place
+-- Records of package
 -- ----------------------------
-INSERT INTO `place` VALUES ('1', '起始之地', '1', '1');
-INSERT INTO `place` VALUES ('2', '村子', '1', '2');
-INSERT INTO `place` VALUES ('3', '城堡', '1', '3');
-INSERT INTO `place` VALUES ('4', '未知世界', '1', '4');
-INSERT INTO `place` VALUES ('5', '森林', '2', '2');
+INSERT INTO `package` VALUES ('1', '2001', '5');
+INSERT INTO `package` VALUES ('1', '2002', '1');
+INSERT INTO `package` VALUES ('16', '2001', '2');
+INSERT INTO `package` VALUES ('16', '2002', '1');
+INSERT INTO `package` VALUES ('17', '2001', '1');
+
+-- ----------------------------
+-- Table structure for record
+-- ----------------------------
+DROP TABLE IF EXISTS `record`;
+CREATE TABLE `record` (
+  `playid` int(11) NOT NULL,
+  `goodsid` int(11) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of record
+-- ----------------------------
+INSERT INTO `record` VALUES ('1', '2002', '1');
+INSERT INTO `record` VALUES ('2', '2002', '0');
+INSERT INTO `record` VALUES ('16', '2001', '0');
+INSERT INTO `record` VALUES ('17', '2001', '0');
+INSERT INTO `record` VALUES ('1', '2001', '2');
+INSERT INTO `record` VALUES ('1', '2002', '1');
+INSERT INTO `record` VALUES ('1', '2001', '1');
+INSERT INTO `record` VALUES ('1', '2001', '2');
 
 -- ----------------------------
 -- Table structure for role
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
-  `playid` int(10) unsigned zerofill NOT NULL AUTO_INCREMENT,
+  `playid` int(10) NOT NULL AUTO_INCREMENT,
   `rolename` varchar(20) DEFAULT NULL,
   `placeid` int(20) DEFAULT NULL,
   `alive` int(2) DEFAULT NULL,
+  `careerid` int(10) DEFAULT NULL,
+  `hp` int(11) DEFAULT NULL,
+  `mp` int(11) DEFAULT NULL,
+  `atk` int(11) DEFAULT NULL,
+  `money` int(11) DEFAULT NULL,
+  `def` int(11) DEFAULT NULL,
+  `unionid` int(11) DEFAULT NULL,
+  `nowlevel` int(11) DEFAULT NULL,
   PRIMARY KEY (`playid`),
   UNIQUE KEY `rolename` (`rolename`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES ('0000000001', 'andy', '5', '1');
+INSERT INTO `role` VALUES ('1', 'andy', '10002', '1', '5001', '40', '50', '10', '161', '5', '0', '1');
+INSERT INTO `role` VALUES ('16', 'kk', '10006', '1', '5003', '50', '70', '20', '66', '3', '0', '1');
+INSERT INTO `role` VALUES ('17', 'aa', '10002', '1', '5001', '50', '50', '10', '71', '3', '0', '1');
+
+-- ----------------------------
+-- Table structure for unions
+-- ----------------------------
+DROP TABLE IF EXISTS `unions`;
+CREATE TABLE `unions` (
+  `unionid` int(11) NOT NULL,
+  `unionname` varchar(255) DEFAULT NULL,
+  `money` int(11) DEFAULT NULL,
+  PRIMARY KEY (`unionid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of unions
+-- ----------------------------
+INSERT INTO `unions` VALUES ('1', '逍遥派', '58');
+
+-- ----------------------------
+-- Table structure for unionstore
+-- ----------------------------
+DROP TABLE IF EXISTS `unionstore`;
+CREATE TABLE `unionstore` (
+  `unionid` int(11) NOT NULL,
+  `goodsid` int(11) DEFAULT NULL,
+  `num` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of unionstore
+-- ----------------------------
+INSERT INTO `unionstore` VALUES ('1', '2001', '2');
 
 -- ----------------------------
 -- Table structure for user
@@ -115,23 +161,8 @@ CREATE TABLE `user` (
   `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'zhaoyun', 'zhaoyun');
-INSERT INTO `user` VALUES ('2', 'lvbu', 'lvbu');
-INSERT INTO `user` VALUES ('3', 'kongming', 'kongming');
-INSERT INTO `user` VALUES ('4', 'JJ', '15');
-INSERT INTO `user` VALUES ('7', 'HE', '123456');
-INSERT INTO `user` VALUES ('12', 'Abukuma', '123456');
-INSERT INTO `user` VALUES ('16', 'hesdj', 'hsdfs');
-INSERT INTO `user` VALUES ('17', 'skg', 'sdk');
-INSERT INTO `user` VALUES ('18', 'ssss', 'sdddd');
-INSERT INTO `user` VALUES ('19', 'beibei', '373737');
-INSERT INTO `user` VALUES ('21', 'shuji', '222');
-INSERT INTO `user` VALUES ('22', 'hah', '222');
-INSERT INTO `user` VALUES ('23', 'tiger', '110');
-INSERT INTO `user` VALUES ('24', 's', 'd');
-INSERT INTO `user` VALUES ('25', 'm', 'm');

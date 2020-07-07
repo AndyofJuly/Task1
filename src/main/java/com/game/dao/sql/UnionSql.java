@@ -2,7 +2,7 @@ package com.game.dao.sql;
 
 import com.game.common.Const;
 import com.game.entity.Role;
-import com.game.entity.vo.Union;
+import com.game.entity.Union;
 import com.game.service.UnionService;
 
 import java.sql.Connection;
@@ -26,6 +26,53 @@ public class UnionSql {
             System.out.println(e.getMessage());
         }
     }
+
+    public void selectUnion(){
+        //查出所有unionid，给unionHashMap
+        try {
+            PreparedStatement st = conn.prepareStatement("select unionid,unionname from unions");
+            ResultSet rs=st.executeQuery();
+            while (rs.next()){
+                UnionService.unionHashMap.put(rs.getInt("unionid"),new Union(rs.getInt("unionid"),rs.getString("unionname")));
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"selectUnion");
+        }
+    }
+
+    public void selectUnionMemb(){
+        try {
+            PreparedStatement st = conn.prepareStatement("select unionid,playid,grade from unionmember");
+            ResultSet rs=st.executeQuery();
+            while (rs.next()){
+                int unionid = rs.getInt("unionid");
+                int playid = rs.getInt("playid");
+                int grade = rs.getInt("grade");
+                UnionService.unionHashMap.get(unionid).getRoleJobHashMap().put(playid,grade);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"selectUnionMemb");
+        }
+    }
+
+    public void selectUnionStore(){
+        try {
+            PreparedStatement st = conn.prepareStatement("select unionid,goodsid,num from unionstore");
+            ResultSet rs=st.executeQuery();
+            while (rs.next()){
+                int unionid = rs.getInt("unionid");
+                int goodsid = rs.getInt("goodsid");
+                int num = rs.getInt("num");
+                UnionService.unionHashMap.get(unionid).getGoodsHashMap().put(goodsid,num);
+            }
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"selectUnionMemb");
+        }
+    }
+
     //公会列表和每个公会的仓库roleMapper.updateUnion(role);//暂时放在此处
     public void updateUnion(Role role){
         if(role.getUnionId()==0){return;}
@@ -62,6 +109,55 @@ public class UnionSql {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage()+"updateUnionStore");
+        }
+    }
+
+    public void updateUnionMemb(){
+        try {
+            for(Integer uid : UnionService.unionHashMap.keySet()){
+                for(Integer rid : UnionService.unionHashMap.get(uid).getRoleJobHashMap().keySet()){
+                    int grade = UnionService.unionHashMap.get(uid).getRoleJobHashMap().get(rid);
+                    if(checkUnionMemb(uid,rid)==false){
+                        insertUnionMemb(uid,rid,grade);
+                    }else{
+                        PreparedStatement st = conn.prepareStatement("update unionmember set unionid=?,playid=?,grade=?");
+                        st.setInt(1, uid);
+                        st.setInt(2, rid);
+                        st.setInt(3, grade);
+                        st.executeUpdate();
+                        st.close();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"updateUnionMemb");
+        }
+    }
+
+    private boolean checkUnionMemb(int unionid,int playid){
+        try {
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from unionmember where unionid=? and playid=?");
+            preparedStatement.setInt(1,unionid);
+            preparedStatement.setInt(2,playid);
+            ResultSet rs=preparedStatement.executeQuery();
+            result = rs.next();
+            rs.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"checkUnionMemb");
+        }
+        return result;
+    }
+
+    private void insertUnionMemb(int unionid,int playid,int grade){
+        try {
+            PreparedStatement st = conn.prepareStatement("INSERT INTO unionmember(unionid,playid,grade) VALUES(?,?,?)");
+            st.setInt(1, unionid);
+            st.setInt(2, playid);
+            st.setInt(3, grade);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"insertUnionMemb");
         }
     }
 

@@ -12,12 +12,31 @@ import java.util.HashMap;
 public class AchievementVo {
 
     //任务完成情况；id和是否已完成，对应数据库0表示未完成，1表示已完成
+    //击杀怪物id和数量
+    //同静态资源id
+    private int id;
+
+    //击杀怪物记录
+    private HashMap<Integer,Integer> killMonsterCountMap = new HashMap<>();
+
+    //成就id和完成情况；有前提条件？
     private HashMap<Integer,Boolean> achievementHashMap = new HashMap<>();
 
+    //添加好友数量
+    private int countFriend;
+
     public AchievementVo() {
-        for(int i = 0; i< AchieveResource.getAchieveStaticHashMap().size(); i++){
-            achievementHashMap.put(i,false);
+        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
+            achievementHashMap.put(achievId,false);
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     //计数并判断是否满足数量要求，满足则设为true;
@@ -38,5 +57,21 @@ public class AchievementVo {
 
     public void setAchievementHashMap(HashMap<Integer, Boolean> achievementHashMap) {
         this.achievementHashMap = achievementHashMap;
+    }
+
+    public HashMap<Integer, Integer> getKillMonsterCountMap() {
+        return killMonsterCountMap;
+    }
+
+    public void setKillMonsterCountMap(HashMap<Integer, Integer> killMonsterCountMap) {
+        this.killMonsterCountMap = killMonsterCountMap;
+    }
+
+    public int getCountFriend() {
+        return countFriend;
+    }
+
+    public void setCountFriend() {
+        this.countFriend += 1;
     }
 }

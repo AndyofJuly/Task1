@@ -2,6 +2,7 @@ package com.game.netty.server;
 
 import com.game.common.ReflectService;
 import com.game.common.UtilHelper;
+import com.game.common.protobuf.DataInfo;
 import com.game.controller.RoleController;
 import com.game.entity.Scene;
 import com.game.service.assis.GlobalResource;
@@ -26,7 +27,7 @@ import java.util.*;
  * @create 2020/5/12 22:32
  */
 
-public class ServerHandler extends SimpleChannelInboundHandler<String> {
+public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestMsg> {
     /*
     定义一个Channel 组，管理所有的channel
      */
@@ -36,17 +37,18 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     Logger logger = LoggerFactory.getLogger(NettyServer.class);
     //读取数据
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, DataInfo.RequestMsg msgs) throws Exception {
 
+        String msg = msgs.getMsg();
         String[] s = msg.split(" ");
-        if(!msg.contains("registerR")){
+        if(!msg.contains("registerR") && !msg.contains("login") && !msg.contains("register")){
             clientGroup.put(ctx.channel().id(),Integer.parseInt(s[s.length-1]));
             //认证客户端
             PrivateChatDeal.add(Integer.parseInt(s[s.length-1]),ctx);
         }
 
         if(msg.startsWith("sayTo") || msg.startsWith("email") || msg.startsWith("deal")){
-            PrivateChatDeal.dealMessage(msg,ctx);// || msg.startsWith("deal")
+            PrivateChatDeal.dealMessage(msg,ctx);
         }else if(msg.startsWith("say")){
             //此channel为发送者的channel，需要找到接收者的channel，然后接收者ch.writeAndFlush即可
             Channel channel = ctx.channel();
@@ -54,10 +56,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             channelGroup.forEach(ch->{
                 if (channel != ch){ // 默认登录以后才能收到消息
                     int roleId = clientGroup.get(channel.id());
-                    ch.writeAndFlush(GlobalResource.getRoleHashMap().get(roleId).getName()
-                            +":"+msg.substring(3,msg.length()-2));//[角色]+sdf.format(new Date())
+                    writeMessage(GlobalResource.getRoleHashMap().get(roleId).getName()+":"+msg.substring(3,msg.length()-2),ch);
                 }else {//回显自己发送的消息
-                    ch.writeAndFlush("我:"+msg.substring(3,msg.length()-2));
+                    writeMessage("我:"+msg.substring(3,msg.length()-2),ch);
                 }
             });
         }else{
@@ -69,10 +70,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
             channelGroup.forEach(ch -> {
                 if(Listen.isDead()){
                     // todo 有问题待修改
-                    ch.writeAndFlush(Listen.mesg());
+                    writeMessage(Listen.mesg(),ch);
                 }
                 if(channel == ch){
-                    ch.writeAndFlush(reflectService.getMethod(RoleController.getStrList().get(0)));
+                    writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
                 }
             });
             Listen.reset();
@@ -84,7 +85,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         //将该客户加入聊天的信息推送给其他在线的客户端
-        channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"上线了\n");//全局通知，每次远程客户端地址不同
+        //channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"上线了\n");//全局通知，每次远程客户端地址不同
+        channelGroup.forEach(ch -> {
+            writeMessage("客户端"+channel.remoteAddress()+"上线了\n",ch);
+        });
         //将当前channel加入到ChannelGroup
         channelGroup.add(channel);
     }
@@ -95,7 +99,10 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         //将该客户离开聊天的信息推送给其他在线的客户端
-        channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"离线了-handlerRemoved");
+        //channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"离线了-handlerRemoved");
+        channelGroup.forEach(ch -> {
+            writeMessage("客户端"+channel.remoteAddress()+"离线了-handlerRemoved",ch);
+        });
     }
 
     //表示channel处于活动状态  提示XX上线
@@ -121,16 +128,21 @@ public class ServerHandler extends SimpleChannelInboundHandler<String> {
         System.out.println(ctx.channel().remoteAddress()+"离线了-channelInactive");
     }
 
-/*    @Override
+    @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         // 出现异常时关闭连接。
         cause.printStackTrace();
-        ctx.close();
-    }*/
+        //ctx.close();
+    }
 
     @Override
     public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
         super.channelWritabilityChanged(ctx);
+    }
+
+    static void writeMessage(String message, Channel ch) {
+        DataInfo.ResponseMsg responseMsg = DataInfo.ResponseMsg.newBuilder().setMsg(message).build();
+        ch.writeAndFlush(responseMsg);
     }
 }
 

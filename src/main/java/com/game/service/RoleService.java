@@ -90,14 +90,14 @@ public class RoleService {
                 role.getEquipmentHashMap().put(equipmentId,equipment1);
                 role.getMyPackage().getGoodsHashMap().remove(equipmentId);
                 role.getMyPackage().getGoodsHashMap().put(selfEquipId,1);
-                AchievementService.ifSumEquipmentLevelToFourty(role);
+                AchievementService.countSumWearLevel(role);
                 return Const.service.PUTON_SUCCESS;
             }
         }
         Equipment equipment1 = new Equipment(equipmentId,equipmentInfo.getDurability());
         role.getEquipmentHashMap().put(equipmentId,equipment1);
         role.getMyPackage().getGoodsHashMap().remove(equipmentId);
-        AchievementService.ifSumEquipmentLevelToFourty(role);
+        AchievementService.countSumWearLevel(role);
         return Const.service.PUTON_SUCCESS;
     }
 
@@ -151,10 +151,10 @@ public class RoleService {
         if(hp<=0){
             result = Const.Fight.PK_SUCCESS;
             //Listen.monsterIsDead=true;  //对全部客户端进行通知-可改为pk玩家的设置
-            enemy.setHp(Const.ZERO);
+            enemy.setHp(0);
             //enemy.setAlive(0);
             role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
-            PackageService.addMoney(Const.PK_GET_LOST,role);
+            new PackageService().addMoney(Const.PK_GET_LOST,role);
             enemy.setMoney(enemy.getMoney()-Const.PK_GET_LOST);
             AchievementService.ifFirstPkSuccess(role);
             return result;
@@ -220,11 +220,6 @@ public class RoleService {
         return role.getGridVo();
     }
 
-    //测试用命令
-    public String testCode(Role role){
-        return AchievementService.getAchievmentList(role);
-    }
-
     //添加好友申请
     public void askFriend(int FriendId,Role role){
         role.getFriendVo().getApplyIdList().add(FriendId);
@@ -236,23 +231,16 @@ public class RoleService {
     public void addFriend(Integer FriendId,Role role){
         role.getFriendVo().getFriendIdList().add(role.getId());
         role.getFriendVo().getApplyIdList().remove(FriendId);
-        AchievementService.ifFirstAddOneFriend(FriendId,role);
+        AchievementService.countAddFriend(FriendId,role);
     }
 
     //升级
     public void levelUp(int level,Role role){
         role.setLevel(level);
-        AchievementService.ifLevelUpToTwenty(role);
+        AchievementService.countLevel(role);
     }
 
-    //计算穿戴装备总等级
-    public static int sumWearLevel(Role role){
-        int sumLevel = 0;
-        for(Integer equipmentId : role.getEquipmentHashMap().keySet()){
-            sumLevel+=role.getEquipmentHashMap().get(equipmentId).getLevel();
-        }
-        return sumLevel;
-    }
+
 
     public String getAchievment(Role role){
         return AchievementService.getAchievmentList(role);
@@ -261,7 +249,9 @@ public class RoleService {
     public String getPackage(Role role){
         String list="";
         for(Integer goodsId : role.getMyPackage().getGoodsHashMap().keySet()){
-            list+=goodsId+" ";
+            if(role.getMyPackage().getGoodsHashMap().get(goodsId)>0){
+                list+=goodsId+" ";
+            }
         }
         return list;
     }
@@ -330,7 +320,7 @@ public class RoleService {
 
     public String getNpcReply(int npcId,Role role){
         if(AssistService.checkNpcId(npcId,role)){
-            AchievementService.ifTalkToOldMan(npcId,role);
+            AchievementService.talkToNpc(npcId,role);
             return NpcResource.getNpcsStatics().get(npcId).getWords();
         }
         return "wrong";
@@ -349,6 +339,35 @@ public class RoleService {
         Monster nowMonster = GlobalResource.getScenes().get(nowScenesId).getMonsterHashMap().get(monsterId);
         return "hp：" + nowMonster.getMonsterHp() + "，状态："+ nowMonster.getAlive();
     }
+
+    //测试用命令
+    public String testCode(Role role){
+/*        String str = "";
+        for(Integer goodsId : UnionService.unionHashMap.get(role.getUnionId()).getGoodsHashMap().keySet()){
+            str+=goodsId+","+UnionService.unionHashMap.get(role.getUnionId()).getGoodsHashMap().get(goodsId)+" ";
+        }
+        return str;*/
+        //AchievementService.getAchievmentList(role)
+        role.getMyPackage().randPackageGrid();
+        return role.getMyPackage().getPackageGrid();
+    }
+
+    public String orderPackage(Role role){
+        role.getMyPackage().orderPackageGrid();
+        return getPackageInfo(role);
+    }
+
+    public String randPackage(Role role){
+        role.getMyPackage().randPackageGrid();
+        return getPackageInfo(role);
+    }
+
+    public String getPackageInfo(Role role){
+        return role.getMyPackage().getPackageGrid();
+    }
+
+
+
 }
 
 

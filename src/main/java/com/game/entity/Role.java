@@ -1,9 +1,7 @@
 package com.game.entity;
 
 import com.game.common.Const;
-import com.game.entity.excel.PotionStatic;
 import com.game.entity.vo.*;
-import io.netty.channel.Channel;
 
 import java.util.HashMap;
 
@@ -67,6 +65,7 @@ public class Role {
     //如果后续装备类型变多了，还是需要集合
     //角色装备栏
     private HashMap<Integer,Equipment> equipmentHashMap = new HashMap<Integer,Equipment>();
+    //private BodyEquipVo bodyEquipVo;
     //药品应该可以不需要集合，直接从背包里拿，然后使用
 
 /*    public Role(int id, String name, int nowScenesId,int hp,int mp,int atk,int money,int def,int level) {
@@ -289,5 +288,13 @@ public class Role {
 
     public void setWearEquipment(WearEquipment wearEquipment) {
         this.wearEquipment = wearEquipment;
+    }*/
+
+/*    public BodyEquipVo getBodyEquipVo() {
+        return bodyEquipVo;
+    }
+
+    public void setBodyEquipVo(BodyEquipVo bodyEquipVo) {
+        this.bodyEquipVo = bodyEquipVo;
     }*/
 }
