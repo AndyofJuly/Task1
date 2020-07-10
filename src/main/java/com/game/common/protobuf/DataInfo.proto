@@ -12,4 +12,29 @@ message RequestMsg
 message ResponseMsg
 {
     string msg = 1;
+    //引用下面定义的 RoleMsg 类型的 message
+    RoleMsg roleMsg = 2;
+
+    message RoleMsg{
+        int32 id = 1;
+        string msgName = 2;
+        int32 money = 3;
+        int32 hp = 4;
+        int32 mp = 5;
+        int32 atk = 6;
+        int32 place = 7;
+        int32 careerId = 8;
+        int32 unionId = 9;
+        int32 level = 10;
+        //其他等等-略
+    }
+/*
+    message MonsterMsg{
+        int32 id = 1;
+        string msgName = 2;
+        int32 hp = 3;
+    }*/
+
+    //其他任意实体类
+
 }

@@ -15,16 +15,13 @@ import java.util.HashMap;
  * @create 2020/6/3 21:43
  */
 public class PotionResource {
-    //数值配置表对应的药品类，key为id
-    private static HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<Integer, PotionStatic>();
-
-    static JSONArray result;
-    static JSONObject jsonObject;
+    /** 数值配置表对应的药品类，key为id */
+    private static final HashMap<Integer, PotionStatic> potionStaticHashMap = new HashMap<>();
 
     static {
-        result = ExcelToJson.getNeed(Const.POTION_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.POTION_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             PotionStatic potionStatic = JSON.parseObject(jsonObject.toJSONString(), PotionStatic.class);
             potionStaticHashMap.put(potionStatic.getId(),potionStatic);
         }

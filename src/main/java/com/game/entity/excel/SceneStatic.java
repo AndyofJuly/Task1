@@ -11,13 +11,13 @@ public class SceneStatic {
     // 场景名
     private String name;
     // 场景间的关系
-    private String[] sceneRelation;
+    private int[] sceneRelation;
     // 场景包含的NPC-可以改为int
-    private String[] npcId;
+    private int[] npcId;
     // 场景包含的怪物
-    private String[] monsterId;
+    private int[] monsterId;
 
-    public SceneStatic(int id, String name, String[] sceneRelation, String[] npcId, String[] monsterId) {
+    public SceneStatic(int id, String name, int[] sceneRelation, int[] npcId, int[] monsterId) {
         this.id = id;
         this.name = name;
         this.sceneRelation = sceneRelation;
@@ -41,27 +41,27 @@ public class SceneStatic {
         this.name = name;
     }
 
-    public String[] getSceneRelation() {
+    public int[] getSceneRelation() {
         return sceneRelation;
     }
 
-    public void setSceneRelation(String[] sceneRelation) {
+    public void setSceneRelation(int[] sceneRelation) {
         this.sceneRelation = sceneRelation;
     }
 
-    public String[] getNpcId() {
+    public int[] getNpcId() {
         return npcId;
     }
 
-    public void setNpcId(String[] npcId) {
+    public void setNpcId(int[] npcId) {
         this.npcId = npcId;
     }
 
-    public String[] getMonsterId() {
+    public int[] getMonsterId() {
         return monsterId;
     }
 
-    public void setMonsterId(String[] monsterId) {
+    public void setMonsterId(int[] monsterId) {
         this.monsterId = monsterId;
     }
 }

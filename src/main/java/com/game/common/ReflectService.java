@@ -1,8 +1,8 @@
 package com.game.common;
 
+import com.game.service.assist.ResponseInf;
 import org.reflections.Reflections;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 import java.util.Set;
@@ -13,9 +13,9 @@ import java.util.Set;
  * @create 2020/5/18 18:10
  */
 public class ReflectService {
-    String getString;
+    private ResponseInf getString;
     //反射
-    public String getMethod(String inputString) {
+    public ResponseInf getMethod(String inputString) {
         Reflections reflections = new Reflections("com.game.controller");
         //获取带Service注解的类
         Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Controller.class);
@@ -29,7 +29,7 @@ public class ReflectService {
                     if (annotation.MethodName().equals(inputString)) {
                         try {
                             //执行method
-                            getString=(String) method.invoke(clazz.newInstance());
+                            getString= (ResponseInf)method.invoke(clazz.newInstance());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }

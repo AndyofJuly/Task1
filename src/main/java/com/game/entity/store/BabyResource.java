@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.game.common.Const;
 import com.game.common.ExcelToJson;
 import com.game.entity.excel.BabyStatic;
-import com.game.entity.excel.MonsterStatic;
 
 import java.util.HashMap;
 
@@ -20,13 +19,10 @@ public class BabyResource {
     //数值配置表对应的宝宝类，key为id
     private static HashMap<Integer, BabyStatic> babyStatics = new HashMap<Integer,BabyStatic>();
 
-    static JSONArray result;
-    static JSONObject jsonObject;
-
     static {
-        result = ExcelToJson.getNeed(Const.BABY_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.BABY_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             BabyStatic babyStatic = JSON.parseObject(jsonObject.toJSONString(), BabyStatic.class);
             babyStatics.put(babyStatic.getId(),babyStatic);
         }

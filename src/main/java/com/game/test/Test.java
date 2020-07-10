@@ -62,7 +62,7 @@ public class Test {
         stringHashMap.put(i,"hello");
         stringHashMap.put(i,"hey");
         System.out.println(stringHashMap.get(1));*/
-        //GlobalResource.roleAndClient.put(1,"hello");//netty客户端似乎不让存储任何缓存
+        //GlobalInfo.roleAndClient.put(1,"hello");//netty客户端似乎不让存储任何缓存
     }
 }
 

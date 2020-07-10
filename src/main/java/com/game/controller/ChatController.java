@@ -1,12 +1,6 @@
 package com.game.controller;
 
-import com.game.service.ChatService;
-import com.game.service.assis.GlobalResource;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
-import com.game.common.MyAnnontation;
-
-import java.util.ArrayList;
 
 /**
  * @Author andy
@@ -15,8 +9,8 @@ import java.util.ArrayList;
 @Controller
 public class ChatController {
 
-/*    private ArrayList<String> strList = GlobalResource.getStrList();
-    private ArrayList<Integer> intList = GlobalResource.getIntList();*/
+/*    private ArrayList<String> strList = GlobalInfo.getStrList();
+    private ArrayList<Integer> intList = GlobalInfo.getIntList();*/
 
 
     // 全服聊天：在netty服务端进行处理：say words...
@@ -25,6 +19,6 @@ public class ChatController {
     //发送邮件，使用举例：email ss(roleId) words... goods number；
 /*    @MyAnnontation(MethodName = "email")
     public String emailToPlayer(){
-        return ChatService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
+        return ChatServiceImpl.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
     }*/
 }

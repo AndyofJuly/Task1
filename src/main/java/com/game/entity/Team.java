@@ -1,8 +1,6 @@
 package com.game.entity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * 队伍类
@@ -11,12 +9,12 @@ import java.util.List;
  */
 public class Team {
 
-    //队伍id
-    String id;
-    //队伍中的角色集合，存放角色id
-    ArrayList<Integer> roleList = new ArrayList<Integer>();
-    //选择的副本id
-    int dungeonsId;
+    /** 队伍id */
+    private String id;
+    /** 队伍中的角色id集合 */
+    private final ArrayList<Integer> roleList = new ArrayList<>();
+    /** 选择的副本id */
+    private int dungeonsId;
 
     public Team(String id, int dungeonsId) {
         this.id = id;
@@ -25,10 +23,6 @@ public class Team {
 
     public ArrayList<Integer> getRoleList() {
         return roleList;
-    }
-
-    public void setRoleList(ArrayList<Integer> roleList) {
-        this.roleList = roleList;
     }
 
     public String getId() {
@@ -43,7 +37,4 @@ public class Team {
         return dungeonsId;
     }
 
-    public void setDungeonsId(int dungeonsId) {
-        this.dungeonsId = dungeonsId;
-    }
 }

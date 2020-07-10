@@ -54,8 +54,8 @@ public class Const {
     //副本收益
     public static final int DUNGEONS_GAIN = 50;
 
-    //限购数量：3
-    public static final int GOODS_BUG_MAX = 5;
+    //限购数量：20
+    public static final int GOODS_BUG_MAX = 20;
 
     //角色矩形视野，矩形长的一半
     public static final int VIEW_X = 20;
@@ -124,7 +124,7 @@ public class Const {
     public interface Fight{
         String PK_SUCCESS = "恭喜pk成功，获得对方50银，2点攻击力!";
         String SUCCESS = "success";
-        String DURA_LACK = "武器耐久不够，请先修理再战斗";
+        String DURA_LACK = "武器耐久不够，请先修理再战斗。";
         String MP_LACK = "角色蓝量不够，请先恢复再战斗";
         String SKILL_IN_CD = "该技能冷却中";
         String TARGET_HP ="攻击目标血量剩余";

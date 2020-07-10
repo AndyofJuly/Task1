@@ -20,15 +20,12 @@ public class SceneResource {
     //数值配置表对应的场景类，key为id
     private static HashMap<Integer, SceneStatic> scenesStatics = new HashMap<Integer,SceneStatic>();
     //场景地点关系，key为场景id
-    private static HashMap<Integer, String[]> places= new HashMap<Integer,String[]>();
-
-    static JSONArray result;
-    static JSONObject jsonObject;
+    private static HashMap<Integer, int[]> places= new HashMap<Integer,int[]>();
 
     static {
-        result = ExcelToJson.getNeed(Const.SCENE_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.SCENE_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             SceneStatic sceneStatic = JSON.parseObject(jsonObject.toJSONString(), SceneStatic.class);
             scenesStatics.put(sceneStatic.getId(),sceneStatic);
             places.put(sceneStatic.getId(),sceneStatic.getSceneRelation());
@@ -39,7 +36,7 @@ public class SceneResource {
         return scenesStatics;
     }
 
-    public static HashMap<Integer, String[]> getPlaces() {
+    public static HashMap<Integer, int[]> getPlaces() {
         return places;
     }
 

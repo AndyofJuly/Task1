@@ -21,13 +21,10 @@ public class SkillResource {
     //数值配置表对应的技能类，key为id
     private static HashMap<Integer, SkillStatic> skillStaticHashMap = new HashMap<Integer, SkillStatic>();
 
-    static JSONArray result;
-    static JSONObject jsonObject;
-
     static {
-        result = ExcelToJson.getNeed(Const.SKILL_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.SKILL_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             SkillStatic skillStatic = JSON.parseObject(jsonObject.toJSONString(), SkillStatic.class);
             skillStaticHashMap.put(skillStatic.getId(),skillStatic);
         }

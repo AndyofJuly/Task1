@@ -14,9 +14,9 @@ public class AchieveStatic {
     //完成所需数量
     private int count;
     //系列任务
-    private String[] serial;
+    private int[] serial;
 
-    public AchieveStatic(int id, String desc, int targetId, int count,String[] serial) {
+    public AchieveStatic(int id, String desc, int targetId, int count,int[] serial) {
         this.id = id;
         this.desc = desc;
         this.targetId = targetId;
@@ -56,11 +56,11 @@ public class AchieveStatic {
         this.count = count;
     }
 
-    public String[] getSerial() {
+    public int[] getSerial() {
         return serial;
     }
 
-    public void setSerial(String[] serial) {
+    public void setSerial(int[] serial) {
         this.serial = serial;
     }
 }

@@ -597,6 +597,33 @@ public final class DataInfo {
      */
     com.google.protobuf.ByteString
         getMsgBytes();
+
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     * @return Whether the roleMsg field is set.
+     */
+    boolean hasRoleMsg();
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     * @return The roleMsg.
+     */
+    com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getRoleMsg();
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     */
+    com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder getRoleMsgOrBuilder();
   }
   /**
    * Protobuf type {@code netty.ResponseMsg}
@@ -650,6 +677,19 @@ public final class DataInfo {
               msg_ = s;
               break;
             }
+            case 18: {
+              com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder subBuilder = null;
+              if (roleMsg_ != null) {
+                subBuilder = roleMsg_.toBuilder();
+              }
+              roleMsg_ = input.readMessage(com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(roleMsg_);
+                roleMsg_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -680,6 +720,1224 @@ public final class DataInfo {
       return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.game.common.protobuf.DataInfo.ResponseMsg.class, com.game.common.protobuf.DataInfo.ResponseMsg.Builder.class);
+    }
+
+    public interface RoleMsgOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:netty.ResponseMsg.RoleMsg)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      int getId();
+
+      /**
+       * <code>string msgName = 2;</code>
+       * @return The msgName.
+       */
+      java.lang.String getMsgName();
+      /**
+       * <code>string msgName = 2;</code>
+       * @return The bytes for msgName.
+       */
+      com.google.protobuf.ByteString
+          getMsgNameBytes();
+
+      /**
+       * <code>int32 money = 3;</code>
+       * @return The money.
+       */
+      int getMoney();
+
+      /**
+       * <code>int32 hp = 4;</code>
+       * @return The hp.
+       */
+      int getHp();
+
+      /**
+       * <code>int32 mp = 5;</code>
+       * @return The mp.
+       */
+      int getMp();
+
+      /**
+       * <code>int32 atk = 6;</code>
+       * @return The atk.
+       */
+      int getAtk();
+
+      /**
+       * <code>int32 place = 7;</code>
+       * @return The place.
+       */
+      int getPlace();
+
+      /**
+       * <code>int32 careerId = 8;</code>
+       * @return The careerId.
+       */
+      int getCareerId();
+
+      /**
+       * <code>int32 unionId = 9;</code>
+       * @return The unionId.
+       */
+      int getUnionId();
+
+      /**
+       * <pre>
+       *其他等等-略
+       * </pre>
+       *
+       * <code>int32 level = 10;</code>
+       * @return The level.
+       */
+      int getLevel();
+    }
+    /**
+     * Protobuf type {@code netty.ResponseMsg.RoleMsg}
+     */
+    public static final class RoleMsg extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:netty.ResponseMsg.RoleMsg)
+        RoleMsgOrBuilder {
+    private static final long serialVersionUID = 0L;
+      // Use RoleMsg.newBuilder() to construct.
+      private RoleMsg(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+        super(builder);
+      }
+      private RoleMsg() {
+        msgName_ = "";
+      }
+
+      @java.lang.Override
+      @SuppressWarnings({"unused"})
+      protected java.lang.Object newInstance(
+          UnusedPrivateParameter unused) {
+        return new RoleMsg();
+      }
+
+      @java.lang.Override
+      public final com.google.protobuf.UnknownFieldSet
+      getUnknownFields() {
+        return this.unknownFields;
+      }
+      private RoleMsg(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        this();
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+            com.google.protobuf.UnknownFieldSet.newBuilder();
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+
+                id_ = input.readInt32();
+                break;
+              }
+              case 18: {
+                java.lang.String s = input.readStringRequireUtf8();
+
+                msgName_ = s;
+                break;
+              }
+              case 24: {
+
+                money_ = input.readInt32();
+                break;
+              }
+              case 32: {
+
+                hp_ = input.readInt32();
+                break;
+              }
+              case 40: {
+
+                mp_ = input.readInt32();
+                break;
+              }
+              case 48: {
+
+                atk_ = input.readInt32();
+                break;
+              }
+              case 56: {
+
+                place_ = input.readInt32();
+                break;
+              }
+              case 64: {
+
+                careerId_ = input.readInt32();
+                break;
+              }
+              case 72: {
+
+                unionId_ = input.readInt32();
+                break;
+              }
+              case 80: {
+
+                level_ = input.readInt32();
+                break;
+              }
+              default: {
+                if (!parseUnknownField(
+                    input, unknownFields, extensionRegistry, tag)) {
+                  done = true;
+                }
+                break;
+              }
+            }
+          }
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(this);
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(
+              e).setUnfinishedMessage(this);
+        } finally {
+          this.unknownFields = unknownFields.build();
+          makeExtensionsImmutable();
+        }
+      }
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_RoleMsg_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_RoleMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.class, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder.class);
+      }
+
+      public static final int ID_FIELD_NUMBER = 1;
+      private int id_;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+
+      public static final int MSGNAME_FIELD_NUMBER = 2;
+      private volatile java.lang.Object msgName_;
+      /**
+       * <code>string msgName = 2;</code>
+       * @return The msgName.
+       */
+      @java.lang.Override
+      public java.lang.String getMsgName() {
+        java.lang.Object ref = msgName_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          msgName_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string msgName = 2;</code>
+       * @return The bytes for msgName.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getMsgNameBytes() {
+        java.lang.Object ref = msgName_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          msgName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int MONEY_FIELD_NUMBER = 3;
+      private int money_;
+      /**
+       * <code>int32 money = 3;</code>
+       * @return The money.
+       */
+      @java.lang.Override
+      public int getMoney() {
+        return money_;
+      }
+
+      public static final int HP_FIELD_NUMBER = 4;
+      private int hp_;
+      /**
+       * <code>int32 hp = 4;</code>
+       * @return The hp.
+       */
+      @java.lang.Override
+      public int getHp() {
+        return hp_;
+      }
+
+      public static final int MP_FIELD_NUMBER = 5;
+      private int mp_;
+      /**
+       * <code>int32 mp = 5;</code>
+       * @return The mp.
+       */
+      @java.lang.Override
+      public int getMp() {
+        return mp_;
+      }
+
+      public static final int ATK_FIELD_NUMBER = 6;
+      private int atk_;
+      /**
+       * <code>int32 atk = 6;</code>
+       * @return The atk.
+       */
+      @java.lang.Override
+      public int getAtk() {
+        return atk_;
+      }
+
+      public static final int PLACE_FIELD_NUMBER = 7;
+      private int place_;
+      /**
+       * <code>int32 place = 7;</code>
+       * @return The place.
+       */
+      @java.lang.Override
+      public int getPlace() {
+        return place_;
+      }
+
+      public static final int CAREERID_FIELD_NUMBER = 8;
+      private int careerId_;
+      /**
+       * <code>int32 careerId = 8;</code>
+       * @return The careerId.
+       */
+      @java.lang.Override
+      public int getCareerId() {
+        return careerId_;
+      }
+
+      public static final int UNIONID_FIELD_NUMBER = 9;
+      private int unionId_;
+      /**
+       * <code>int32 unionId = 9;</code>
+       * @return The unionId.
+       */
+      @java.lang.Override
+      public int getUnionId() {
+        return unionId_;
+      }
+
+      public static final int LEVEL_FIELD_NUMBER = 10;
+      private int level_;
+      /**
+       * <pre>
+       *其他等等-略
+       * </pre>
+       *
+       * <code>int32 level = 10;</code>
+       * @return The level.
+       */
+      @java.lang.Override
+      public int getLevel() {
+        return level_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (id_ != 0) {
+          output.writeInt32(1, id_);
+        }
+        if (!getMsgNameBytes().isEmpty()) {
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msgName_);
+        }
+        if (money_ != 0) {
+          output.writeInt32(3, money_);
+        }
+        if (hp_ != 0) {
+          output.writeInt32(4, hp_);
+        }
+        if (mp_ != 0) {
+          output.writeInt32(5, mp_);
+        }
+        if (atk_ != 0) {
+          output.writeInt32(6, atk_);
+        }
+        if (place_ != 0) {
+          output.writeInt32(7, place_);
+        }
+        if (careerId_ != 0) {
+          output.writeInt32(8, careerId_);
+        }
+        if (unionId_ != 0) {
+          output.writeInt32(9, unionId_);
+        }
+        if (level_ != 0) {
+          output.writeInt32(10, level_);
+        }
+        unknownFields.writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (id_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(1, id_);
+        }
+        if (!getMsgNameBytes().isEmpty()) {
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msgName_);
+        }
+        if (money_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(3, money_);
+        }
+        if (hp_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(4, hp_);
+        }
+        if (mp_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(5, mp_);
+        }
+        if (atk_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(6, atk_);
+        }
+        if (place_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(7, place_);
+        }
+        if (careerId_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(8, careerId_);
+        }
+        if (unionId_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(9, unionId_);
+        }
+        if (level_ != 0) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(10, level_);
+        }
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg)) {
+          return super.equals(obj);
+        }
+        com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg other = (com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg) obj;
+
+        if (getId()
+            != other.getId()) return false;
+        if (!getMsgName()
+            .equals(other.getMsgName())) return false;
+        if (getMoney()
+            != other.getMoney()) return false;
+        if (getHp()
+            != other.getHp()) return false;
+        if (getMp()
+            != other.getMp()) return false;
+        if (getAtk()
+            != other.getAtk()) return false;
+        if (getPlace()
+            != other.getPlace()) return false;
+        if (getCareerId()
+            != other.getCareerId()) return false;
+        if (getUnionId()
+            != other.getUnionId()) return false;
+        if (getLevel()
+            != other.getLevel()) return false;
+        if (!unknownFields.equals(other.unknownFields)) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId();
+        hash = (37 * hash) + MSGNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getMsgName().hashCode();
+        hash = (37 * hash) + MONEY_FIELD_NUMBER;
+        hash = (53 * hash) + getMoney();
+        hash = (37 * hash) + HP_FIELD_NUMBER;
+        hash = (53 * hash) + getHp();
+        hash = (37 * hash) + MP_FIELD_NUMBER;
+        hash = (53 * hash) + getMp();
+        hash = (37 * hash) + ATK_FIELD_NUMBER;
+        hash = (53 * hash) + getAtk();
+        hash = (37 * hash) + PLACE_FIELD_NUMBER;
+        hash = (53 * hash) + getPlace();
+        hash = (37 * hash) + CAREERID_FIELD_NUMBER;
+        hash = (53 * hash) + getCareerId();
+        hash = (37 * hash) + UNIONID_FIELD_NUMBER;
+        hash = (53 * hash) + getUnionId();
+        hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+        hash = (53 * hash) + getLevel();
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code netty.ResponseMsg.RoleMsg}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:netty.ResponseMsg.RoleMsg)
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_RoleMsg_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_RoleMsg_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.class, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder.class);
+        }
+
+        // Construct using com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          id_ = 0;
+
+          msgName_ = "";
+
+          money_ = 0;
+
+          hp_ = 0;
+
+          mp_ = 0;
+
+          atk_ = 0;
+
+          place_ = 0;
+
+          careerId_ = 0;
+
+          unionId_ = 0;
+
+          level_ = 0;
+
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.game.common.protobuf.DataInfo.internal_static_netty_ResponseMsg_RoleMsg_descriptor;
+        }
+
+        @java.lang.Override
+        public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getDefaultInstanceForType() {
+          return com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg build() {
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg buildPartial() {
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg result = new com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg(this);
+          result.id_ = id_;
+          result.msgName_ = msgName_;
+          result.money_ = money_;
+          result.hp_ = hp_;
+          result.mp_ = mp_;
+          result.atk_ = atk_;
+          result.place_ = place_;
+          result.careerId_ = careerId_;
+          result.unionId_ = unionId_;
+          result.level_ = level_;
+          onBuilt();
+          return result;
+        }
+
+        @java.lang.Override
+        public Builder clone() {
+          return super.clone();
+        }
+        @java.lang.Override
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.setField(field, value);
+        }
+        @java.lang.Override
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return super.clearField(field);
+        }
+        @java.lang.Override
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return super.clearOneof(oneof);
+        }
+        @java.lang.Override
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, java.lang.Object value) {
+          return super.setRepeatedField(field, index, value);
+        }
+        @java.lang.Override
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            java.lang.Object value) {
+          return super.addRepeatedField(field, value);
+        }
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg) {
+            return mergeFrom((com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg other) {
+          if (other == com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.getDefaultInstance()) return this;
+          if (other.getId() != 0) {
+            setId(other.getId());
+          }
+          if (!other.getMsgName().isEmpty()) {
+            msgName_ = other.msgName_;
+            onChanged();
+          }
+          if (other.getMoney() != 0) {
+            setMoney(other.getMoney());
+          }
+          if (other.getHp() != 0) {
+            setHp(other.getHp());
+          }
+          if (other.getMp() != 0) {
+            setMp(other.getMp());
+          }
+          if (other.getAtk() != 0) {
+            setAtk(other.getAtk());
+          }
+          if (other.getPlace() != 0) {
+            setPlace(other.getPlace());
+          }
+          if (other.getCareerId() != 0) {
+            setCareerId(other.getCareerId());
+          }
+          if (other.getUnionId() != 0) {
+            setUnionId(other.getUnionId());
+          }
+          if (other.getLevel() != 0) {
+            setLevel(other.getLevel());
+          }
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg parsedMessage = null;
+          try {
+            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            parsedMessage = (com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg) e.getUnfinishedMessage();
+            throw e.unwrapIOException();
+          } finally {
+            if (parsedMessage != null) {
+              mergeFrom(parsedMessage);
+            }
+          }
+          return this;
+        }
+
+        private int id_ ;
+        /**
+         * <code>int32 id = 1;</code>
+         * @return The id.
+         */
+        @java.lang.Override
+        public int getId() {
+          return id_;
+        }
+        /**
+         * <code>int32 id = 1;</code>
+         * @param value The id to set.
+         * @return This builder for chaining.
+         */
+        public Builder setId(int value) {
+          
+          id_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 id = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearId() {
+          
+          id_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private java.lang.Object msgName_ = "";
+        /**
+         * <code>string msgName = 2;</code>
+         * @return The msgName.
+         */
+        public java.lang.String getMsgName() {
+          java.lang.Object ref = msgName_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            msgName_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string msgName = 2;</code>
+         * @return The bytes for msgName.
+         */
+        public com.google.protobuf.ByteString
+            getMsgNameBytes() {
+          java.lang.Object ref = msgName_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            msgName_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string msgName = 2;</code>
+         * @param value The msgName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMsgName(
+            java.lang.String value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  
+          msgName_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string msgName = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMsgName() {
+          
+          msgName_ = getDefaultInstance().getMsgName();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string msgName = 2;</code>
+         * @param value The bytes for msgName to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMsgNameBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+          
+          msgName_ = value;
+          onChanged();
+          return this;
+        }
+
+        private int money_ ;
+        /**
+         * <code>int32 money = 3;</code>
+         * @return The money.
+         */
+        @java.lang.Override
+        public int getMoney() {
+          return money_;
+        }
+        /**
+         * <code>int32 money = 3;</code>
+         * @param value The money to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMoney(int value) {
+          
+          money_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 money = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMoney() {
+          
+          money_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int hp_ ;
+        /**
+         * <code>int32 hp = 4;</code>
+         * @return The hp.
+         */
+        @java.lang.Override
+        public int getHp() {
+          return hp_;
+        }
+        /**
+         * <code>int32 hp = 4;</code>
+         * @param value The hp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setHp(int value) {
+          
+          hp_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 hp = 4;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearHp() {
+          
+          hp_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int mp_ ;
+        /**
+         * <code>int32 mp = 5;</code>
+         * @return The mp.
+         */
+        @java.lang.Override
+        public int getMp() {
+          return mp_;
+        }
+        /**
+         * <code>int32 mp = 5;</code>
+         * @param value The mp to set.
+         * @return This builder for chaining.
+         */
+        public Builder setMp(int value) {
+          
+          mp_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 mp = 5;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearMp() {
+          
+          mp_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int atk_ ;
+        /**
+         * <code>int32 atk = 6;</code>
+         * @return The atk.
+         */
+        @java.lang.Override
+        public int getAtk() {
+          return atk_;
+        }
+        /**
+         * <code>int32 atk = 6;</code>
+         * @param value The atk to set.
+         * @return This builder for chaining.
+         */
+        public Builder setAtk(int value) {
+          
+          atk_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 atk = 6;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearAtk() {
+          
+          atk_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int place_ ;
+        /**
+         * <code>int32 place = 7;</code>
+         * @return The place.
+         */
+        @java.lang.Override
+        public int getPlace() {
+          return place_;
+        }
+        /**
+         * <code>int32 place = 7;</code>
+         * @param value The place to set.
+         * @return This builder for chaining.
+         */
+        public Builder setPlace(int value) {
+          
+          place_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 place = 7;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearPlace() {
+          
+          place_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int careerId_ ;
+        /**
+         * <code>int32 careerId = 8;</code>
+         * @return The careerId.
+         */
+        @java.lang.Override
+        public int getCareerId() {
+          return careerId_;
+        }
+        /**
+         * <code>int32 careerId = 8;</code>
+         * @param value The careerId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setCareerId(int value) {
+          
+          careerId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 careerId = 8;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearCareerId() {
+          
+          careerId_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int unionId_ ;
+        /**
+         * <code>int32 unionId = 9;</code>
+         * @return The unionId.
+         */
+        @java.lang.Override
+        public int getUnionId() {
+          return unionId_;
+        }
+        /**
+         * <code>int32 unionId = 9;</code>
+         * @param value The unionId to set.
+         * @return This builder for chaining.
+         */
+        public Builder setUnionId(int value) {
+          
+          unionId_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 unionId = 9;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearUnionId() {
+          
+          unionId_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int level_ ;
+        /**
+         * <pre>
+         *其他等等-略
+         * </pre>
+         *
+         * <code>int32 level = 10;</code>
+         * @return The level.
+         */
+        @java.lang.Override
+        public int getLevel() {
+          return level_;
+        }
+        /**
+         * <pre>
+         *其他等等-略
+         * </pre>
+         *
+         * <code>int32 level = 10;</code>
+         * @param value The level to set.
+         * @return This builder for chaining.
+         */
+        public Builder setLevel(int value) {
+          
+          level_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <pre>
+         *其他等等-略
+         * </pre>
+         *
+         * <code>int32 level = 10;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearLevel() {
+          
+          level_ = 0;
+          onChanged();
+          return this;
+        }
+        @java.lang.Override
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        @java.lang.Override
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
+
+        // @@protoc_insertion_point(builder_scope:netty.ResponseMsg.RoleMsg)
+      }
+
+      // @@protoc_insertion_point(class_scope:netty.ResponseMsg.RoleMsg)
+      private static final com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg();
+      }
+
+      public static com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<RoleMsg>
+          PARSER = new com.google.protobuf.AbstractParser<RoleMsg>() {
+        @java.lang.Override
+        public RoleMsg parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return new RoleMsg(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<RoleMsg> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<RoleMsg> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     public static final int MSG_FIELD_NUMBER = 1;
@@ -720,6 +1978,44 @@ public final class DataInfo {
       }
     }
 
+    public static final int ROLEMSG_FIELD_NUMBER = 2;
+    private com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg roleMsg_;
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     * @return Whether the roleMsg field is set.
+     */
+    @java.lang.Override
+    public boolean hasRoleMsg() {
+      return roleMsg_ != null;
+    }
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     * @return The roleMsg.
+     */
+    @java.lang.Override
+    public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getRoleMsg() {
+      return roleMsg_ == null ? com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.getDefaultInstance() : roleMsg_;
+    }
+    /**
+     * <pre>
+     *引用下面定义的 RoleMsg 类型的 message
+     * </pre>
+     *
+     * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+     */
+    @java.lang.Override
+    public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder getRoleMsgOrBuilder() {
+      return getRoleMsg();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -737,6 +2033,9 @@ public final class DataInfo {
       if (!getMsgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, msg_);
       }
+      if (roleMsg_ != null) {
+        output.writeMessage(2, getRoleMsg());
+      }
       unknownFields.writeTo(output);
     }
 
@@ -748,6 +2047,10 @@ public final class DataInfo {
       size = 0;
       if (!getMsgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, msg_);
+      }
+      if (roleMsg_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getRoleMsg());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -766,6 +2069,11 @@ public final class DataInfo {
 
       if (!getMsg()
           .equals(other.getMsg())) return false;
+      if (hasRoleMsg() != other.hasRoleMsg()) return false;
+      if (hasRoleMsg()) {
+        if (!getRoleMsg()
+            .equals(other.getRoleMsg())) return false;
+      }
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -779,6 +2087,10 @@ public final class DataInfo {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + MSG_FIELD_NUMBER;
       hash = (53 * hash) + getMsg().hashCode();
+      if (hasRoleMsg()) {
+        hash = (37 * hash) + ROLEMSG_FIELD_NUMBER;
+        hash = (53 * hash) + getRoleMsg().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -914,6 +2226,12 @@ public final class DataInfo {
         super.clear();
         msg_ = "";
 
+        if (roleMsgBuilder_ == null) {
+          roleMsg_ = null;
+        } else {
+          roleMsg_ = null;
+          roleMsgBuilder_ = null;
+        }
         return this;
       }
 
@@ -941,6 +2259,11 @@ public final class DataInfo {
       public com.game.common.protobuf.DataInfo.ResponseMsg buildPartial() {
         com.game.common.protobuf.DataInfo.ResponseMsg result = new com.game.common.protobuf.DataInfo.ResponseMsg(this);
         result.msg_ = msg_;
+        if (roleMsgBuilder_ == null) {
+          result.roleMsg_ = roleMsg_;
+        } else {
+          result.roleMsg_ = roleMsgBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -992,6 +2315,9 @@ public final class DataInfo {
         if (!other.getMsg().isEmpty()) {
           msg_ = other.msg_;
           onChanged();
+        }
+        if (other.hasRoleMsg()) {
+          mergeRoleMsg(other.getRoleMsg());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1097,6 +2423,161 @@ public final class DataInfo {
         onChanged();
         return this;
       }
+
+      private com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg roleMsg_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder> roleMsgBuilder_;
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       * @return Whether the roleMsg field is set.
+       */
+      public boolean hasRoleMsg() {
+        return roleMsgBuilder_ != null || roleMsg_ != null;
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       * @return The roleMsg.
+       */
+      public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg getRoleMsg() {
+        if (roleMsgBuilder_ == null) {
+          return roleMsg_ == null ? com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.getDefaultInstance() : roleMsg_;
+        } else {
+          return roleMsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public Builder setRoleMsg(com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg value) {
+        if (roleMsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          roleMsg_ = value;
+          onChanged();
+        } else {
+          roleMsgBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public Builder setRoleMsg(
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder builderForValue) {
+        if (roleMsgBuilder_ == null) {
+          roleMsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          roleMsgBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public Builder mergeRoleMsg(com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg value) {
+        if (roleMsgBuilder_ == null) {
+          if (roleMsg_ != null) {
+            roleMsg_ =
+              com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.newBuilder(roleMsg_).mergeFrom(value).buildPartial();
+          } else {
+            roleMsg_ = value;
+          }
+          onChanged();
+        } else {
+          roleMsgBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public Builder clearRoleMsg() {
+        if (roleMsgBuilder_ == null) {
+          roleMsg_ = null;
+          onChanged();
+        } else {
+          roleMsg_ = null;
+          roleMsgBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder getRoleMsgBuilder() {
+        
+        onChanged();
+        return getRoleMsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      public com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder getRoleMsgOrBuilder() {
+        if (roleMsgBuilder_ != null) {
+          return roleMsgBuilder_.getMessageOrBuilder();
+        } else {
+          return roleMsg_ == null ?
+              com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.getDefaultInstance() : roleMsg_;
+        }
+      }
+      /**
+       * <pre>
+       *引用下面定义的 RoleMsg 类型的 message
+       * </pre>
+       *
+       * <code>.netty.ResponseMsg.RoleMsg roleMsg = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder> 
+          getRoleMsgFieldBuilder() {
+        if (roleMsgBuilder_ == null) {
+          roleMsgBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsg.Builder, com.game.common.protobuf.DataInfo.ResponseMsg.RoleMsgOrBuilder>(
+                  getRoleMsg(),
+                  getParentForChildren(),
+                  isClean());
+          roleMsg_ = null;
+        }
+        return roleMsgBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1160,6 +2641,11 @@ public final class DataInfo {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_netty_ResponseMsg_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_netty_ResponseMsg_RoleMsg_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_netty_ResponseMsg_RoleMsg_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1170,9 +2656,14 @@ public final class DataInfo {
   static {
     java.lang.String[] descriptorData = {
       "\n\016DataInfo.proto\022\005netty\"\031\n\nRequestMsg\022\013\n" +
-      "\003msg\030\001 \001(\t\"\032\n\013ResponseMsg\022\013\n\003msg\030\001 \001(\tB$" +
-      "\n\030com.game.common.protobufB\010DataInfob\006pr" +
-      "oto3"
+      "\003msg\030\001 \001(\t\"\345\001\n\013ResponseMsg\022\013\n\003msg\030\001 \001(\t\022" +
+      "+\n\007roleMsg\030\002 \001(\0132\032.netty.ResponseMsg.Rol" +
+      "eMsg\032\233\001\n\007RoleMsg\022\n\n\002id\030\001 \001(\005\022\017\n\007msgName\030" +
+      "\002 \001(\t\022\r\n\005money\030\003 \001(\005\022\n\n\002hp\030\004 \001(\005\022\n\n\002mp\030\005" +
+      " \001(\005\022\013\n\003atk\030\006 \001(\005\022\r\n\005place\030\007 \001(\005\022\020\n\010care" +
+      "erId\030\010 \001(\005\022\017\n\007unionId\030\t \001(\005\022\r\n\005level\030\n \001" +
+      "(\005B$\n\030com.game.common.protobufB\010DataInfo" +
+      "b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1189,7 +2680,13 @@ public final class DataInfo {
     internal_static_netty_ResponseMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_netty_ResponseMsg_descriptor,
-        new java.lang.String[] { "Msg", });
+        new java.lang.String[] { "Msg", "RoleMsg", });
+    internal_static_netty_ResponseMsg_RoleMsg_descriptor =
+      internal_static_netty_ResponseMsg_descriptor.getNestedTypes().get(0);
+    internal_static_netty_ResponseMsg_RoleMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_netty_ResponseMsg_RoleMsg_descriptor,
+        new java.lang.String[] { "Id", "MsgName", "Money", "Hp", "Mp", "Atk", "Place", "CareerId", "UnionId", "Level", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

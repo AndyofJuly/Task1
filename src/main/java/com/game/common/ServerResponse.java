@@ -3,7 +3,7 @@ package com.game.common;
 import java.io.Serializable;
 
 /**
- * 封装一个响应对象，用于返回值与客户端交互；借鉴于曾经自己接触过的项目
+ * 封装一个响应对象，用于返回值与客户端交互；借鉴于曾经自己接触过的项目，暂未用
  * @Author andy
  * @create 2020/7/2 17:38
  */

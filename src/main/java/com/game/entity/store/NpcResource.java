@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.game.common.Const;
 import com.game.common.ExcelToJson;
-import com.game.entity.Npc;
 import com.game.entity.excel.NpcStatic;
 
 import java.util.HashMap;
@@ -18,16 +17,13 @@ import java.util.HashMap;
 public class NpcResource {
     //包含动态属性的npc类-待扩展
     //public static HashMap<Integer, Npc> npcs = new HashMap<Integer,Npc>();
-    //数值配置表对应的npc类
-    private static HashMap<Integer, NpcStatic> npcsStatics = new HashMap<Integer,NpcStatic>();
-
-    static JSONArray result;
-    static JSONObject jsonObject;
+    /** 数值配置表对应的npc类 */
+    private static final HashMap<Integer, NpcStatic> npcsStatics = new HashMap<>();
 
     static {
-        result = ExcelToJson.getNeed(Const.NPC_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.NPC_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             NpcStatic npcStatic = JSON.parseObject(jsonObject.toJSONString(), NpcStatic.class);
             npcsStatics.put(npcStatic.getId(),npcStatic);
             //npcs.put(npcStatic.getId(),new Npc(npcStatic.getId()));

@@ -20,9 +20,9 @@ public class CareerStatic {
     // 职业初始mp
     private int mp;
     // 职业技能
-    private String[] skillId;
+    private int[] skillId;
 
-    public CareerStatic(int id, String name, int atk, int def, int hp, int mp, String[] skillId) {
+    public CareerStatic(int id, String name, int atk, int def, int hp, int mp, int[] skillId) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -80,11 +80,11 @@ public class CareerStatic {
         this.mp = mp;
     }
 
-    public String[] getSkillId() {
+    public int[] getSkillId() {
         return skillId;
     }
 
-    public void setSkillId(String[] skillId) {
+    public void setSkillId(int[] skillId) {
         this.skillId = skillId;
     }
 }

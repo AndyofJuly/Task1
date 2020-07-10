@@ -1,7 +1,5 @@
 package com.game.entity;
 
-import com.game.entity.excel.SceneStatic;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,18 +10,18 @@ import java.util.HashMap;
  */
 public class Scene {
 
-    //具体（动态随机）场景id，原场景与静态场景id相同，临时场景与静态场景id则不同
+    /** 具体随机场景id */
     private int id;
-    //具体场景Name，临时场景的name是随机的
+    /** 具体场景随机Name */
     private String name;
-    // 资源类中的静态id
+    /** 资源类中的静态id */
     private int sceneId;
-    //该场景下的角色集合
-    private ArrayList<Role> roleAll = new ArrayList<Role>();
-    //该场景下的怪物集合
-    private HashMap<String,Monster> monsterHashMap = new HashMap<String,Monster>();
-    //该场景下的网格集合
-    private HashMap<Integer, Grid> gridHashMap = new HashMap<>();
+    /** 该场景下的角色集合 */
+    private final ArrayList<Role> roleAll = new ArrayList<>();
+    /** 该场景下的怪物集合 */
+    private final HashMap<String,Monster> monsterHashMap = new HashMap<>();
+    /** 该场景下的网格集合 */
+    private final HashMap<Integer, Grid> gridHashMap = new HashMap<>();
 
     public Scene(int id,String name,int sceneId) {
         this.id = id;
@@ -59,23 +57,12 @@ public class Scene {
         return roleAll;
     }
 
-    public void setRoleAll(ArrayList<Role> roleAll) {
-        this.roleAll = roleAll;
-    }
-
     public HashMap<String, Monster> getMonsterHashMap() {
         return monsterHashMap;
-    }
-
-    public void setMonsterHashMap(HashMap<String, Monster> monsterHashMap) {
-        this.monsterHashMap = monsterHashMap;
     }
 
     public HashMap<Integer, Grid> getGridHashMap() {
         return gridHashMap;
     }
 
-    public void setGridHashMap(HashMap<Integer, Grid> gridHashMap) {
-        this.gridHashMap = gridHashMap;
-    }
 }

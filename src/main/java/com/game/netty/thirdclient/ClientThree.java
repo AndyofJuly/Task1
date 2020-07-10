@@ -12,8 +12,6 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -30,11 +28,6 @@ public class ClientThree {
     private final String HOST_IP = "127.0.0.1";
     private final int PORT = 7000;
 
-/*    public ClientThree(String host, int port){
-        this.HOST_IP = host;
-        this.PORT = port;
-    }*/
-
     public void run() throws InterruptedException {
         NioEventLoopGroup eventExecutors = new NioEventLoopGroup();
 
@@ -47,10 +40,6 @@ public class ClientThree {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline pipeline = ch.pipeline();
-/*                            //向pipeline加入一个解码器
-                            pipeline.addLast("decoder",new StringDecoder());
-                            //向pipeline加入编码器
-                            pipeline.addLast("encode",new StringEncoder());*/
                             //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
                             pipeline.addLast(new ProtobufVarint32FrameDecoder());
                             //将接收到的二进制文件解码成具体的实例，这边接收到的是服务端的ResponseBank对象实列
@@ -83,10 +72,8 @@ public class ClientThree {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        //new NettySingleClient("127.0.0.1",7000).run();
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         ClientThree clientThree = (ClientThree)ac.getBean("clientThree");
-        //nettyServer.run();
         clientThree.run();
     }
 }

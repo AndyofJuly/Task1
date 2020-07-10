@@ -1,8 +1,7 @@
 package com.game.netty.server;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.service.assis.InitGame;
-import com.game.test.springtest.CustomerService;
+import com.game.service.assist.InitGame;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -15,8 +14,6 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
@@ -31,10 +28,6 @@ import org.springframework.stereotype.Service;
 public class NettyServer {
     //监听端口
     private int port = 7000;
-
-/*    public NettyServer(int port){
-        this.port = port;
-    }*/
 
     public void run() throws InterruptedException {
         //创建bossGroup和WrokerGroup
@@ -51,9 +44,6 @@ public class NettyServer {
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
                             ChannelPipeline pipeline = socketChannel.pipeline();
                             //向pipeline加入一个解码器
-/*                            pipeline.addLast("decoder",new StringDecoder());
-                            //向pipeline加入编码器
-                            pipeline.addLast("encode",new StringEncoder());*/
                             //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
                             pipeline.addLast(new ProtobufVarint32FrameDecoder());
                             //服务器端接收的是客户端RequestUser对象，所以这边将接收对象进行解码生产实列
@@ -67,6 +57,7 @@ public class NettyServer {
                         }
                     });
             System.out.println("Netty服务器启动");
+            new InitGame();//游戏初始化
             ChannelFuture chanelFuture = bootstrap.bind(port).sync();
             //监听关闭事件
             chanelFuture.channel().closeFuture().sync();
@@ -79,7 +70,6 @@ public class NettyServer {
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         NettyServer nettyServer = (NettyServer)ac.getBean("nettyServer");
-        //new NettyServer(7000).run();
         nettyServer.run();
     }
 }

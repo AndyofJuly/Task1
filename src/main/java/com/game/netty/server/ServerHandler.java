@@ -1,13 +1,14 @@
 package com.game.netty.server;
 
 import com.game.common.ReflectService;
-import com.game.common.UtilHelper;
+import com.game.common.PatternUtil;
 import com.game.common.protobuf.DataInfo;
 import com.game.controller.RoleController;
+import com.game.entity.Role;
 import com.game.entity.Scene;
-import com.game.service.assis.GlobalResource;
-import com.game.service.assis.InitGame;
-import com.game.service.assis.Listen;
+import com.game.service.assist.AssistService;
+import com.game.service.assist.GlobalInfo;
+import com.game.service.assist.ResponseInf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
@@ -28,9 +29,8 @@ import java.util.*;
  */
 
 public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestMsg> {
-    /*
-    定义一个Channel 组，管理所有的channel
-     */
+
+    //定义一个Channel 组，管理所有的channel
     //GlobalEventExecutor.INSTANCE是一个全局事件执行器，是一个单例
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     private static HashMap<ChannelId, Integer> clientGroup = new HashMap<ChannelId, Integer>();
@@ -56,27 +56,28 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
             channelGroup.forEach(ch->{
                 if (channel != ch){ // 默认登录以后才能收到消息
                     int roleId = clientGroup.get(channel.id());
-                    writeMessage(GlobalResource.getRoleHashMap().get(roleId).getName()+":"+msg.substring(3,msg.length()-2),ch);
+                    String string = GlobalInfo.getRoleHashMap().get(roleId).getName()+":"+msg.substring(3,msg.length()-2);
+                    writeMessage(new ResponseInf(string),ch);
                 }else {//回显自己发送的消息
-                    writeMessage("我:"+msg.substring(3,msg.length()-2),ch);
+                    writeMessage(new ResponseInf("我:"+msg.substring(3,msg.length()-2)),ch);
                 }
             });
         }else{
             System.out.println("收到来自客户端:"+msg.toString());
-            RoleController.setIntList(UtilHelper.getIntList(msg.toString().split(" ")));
-            RoleController.setStrList(UtilHelper.getStrList(msg.toString().split(" ")));
+            RoleController.setIntList(PatternUtil.getIntList(msg.toString().split(" ")));
+            RoleController.setStrList(PatternUtil.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();
             Channel channel = ctx.channel();
             channelGroup.forEach(ch -> {
-                if(Listen.isDead()){
+                if(AssistService.isDead()){
                     // todo 有问题待修改
-                    writeMessage(Listen.mesg(),ch);
+                    writeMessage(new ResponseInf(AssistService.mesg()),ch);
                 }
                 if(channel == ch){
                     writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
                 }
             });
-            Listen.reset();
+            AssistService.reset();
         }
     }
 
@@ -87,7 +88,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         //将该客户加入聊天的信息推送给其他在线的客户端
         //channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"上线了\n");//全局通知，每次远程客户端地址不同
         channelGroup.forEach(ch -> {
-            writeMessage("客户端"+channel.remoteAddress()+"上线了\n",ch);
+            writeMessage(new ResponseInf("客户端"+channel.remoteAddress()+"上线了\n"),ch);
+            //writeMessage("客户端"+channel.remoteAddress()+"上线了\n",ch);
+            //System.out.println("客户端的提示-上线"+channel.remoteAddress());
         });
         //将当前channel加入到ChannelGroup
         channelGroup.add(channel);
@@ -101,7 +104,9 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         //将该客户离开聊天的信息推送给其他在线的客户端
         //channelGroup.writeAndFlush("客户端"+channel.remoteAddress()+"离线了-handlerRemoved");
         channelGroup.forEach(ch -> {
-            writeMessage("客户端"+channel.remoteAddress()+"离线了-handlerRemoved",ch);
+            writeMessage(new ResponseInf("客户端"+channel.remoteAddress()+"离线了\n"),ch);
+            //writeMessage("客户端"+channel.remoteAddress()+"离线了-handlerRemoved",ch);
+            //System.out.println("客户端的提示-离线"+channel.remoteAddress());
         });
     }
 
@@ -118,12 +123,12 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         //角色集合中移除该客户端的角色、需要在当前场景中移除、还需要在队伍中移除
         //传参必须为Integer，否则List会将id看做下标而不是元素
         Integer removeId = clientGroup.get(ctx.channel().id());
-        int sceneId = GlobalResource.getRoleHashMap().get(removeId).getNowScenesId();
-        Scene scene = GlobalResource.getScenes().get(sceneId);
-        scene.getRoleAll().remove(GlobalResource.getRoleHashMap().get(removeId));
-        GlobalResource.getRoleHashMap().remove(removeId);
-        for(String teamId : GlobalResource.getTeamList().keySet()){
-            GlobalResource.getTeamList().get(teamId).getRoleList().remove(removeId);
+        int sceneId = GlobalInfo.getRoleHashMap().get(removeId).getNowScenesId();
+        Scene scene = GlobalInfo.getScenes().get(sceneId);
+        scene.getRoleAll().remove(GlobalInfo.getRoleHashMap().get(removeId));
+        GlobalInfo.getRoleHashMap().remove(removeId);
+        for(String teamId : GlobalInfo.getTeamList().keySet()){
+            GlobalInfo.getTeamList().get(teamId).getRoleList().remove(removeId);
         }
         System.out.println(ctx.channel().remoteAddress()+"离线了-channelInactive");
     }
@@ -140,9 +145,30 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         super.channelWritabilityChanged(ctx);
     }
 
-    static void writeMessage(String message, Channel ch) {
-        DataInfo.ResponseMsg responseMsg = DataInfo.ResponseMsg.newBuilder().setMsg(message).build();
-        ch.writeAndFlush(responseMsg);
+    static void writeMessage(ResponseInf message, Channel ch) {
+
+        DataInfo.ResponseMsg.Builder builders = DataInfo.ResponseMsg.newBuilder();
+        builders.setMsg(message.getMsg());
+
+        //在此构造任何自己需要的信息，传送给客户端-扩展
+        //举例：角色相关的信息
+        if(message.getRole() != null){
+            DataInfo.ResponseMsg.RoleMsg.Builder builder = DataInfo.ResponseMsg.RoleMsg.newBuilder();
+            Role role = message.getRole();
+            builder.setId(role.getId());
+            builder.setMsgName(role.getName());
+            builder.setMoney(role.getMoney());
+            builder.setAtk(role.getAtk());
+            builder.setHp(role.getHp());
+            builder.setMp(role.getMp());
+            builder.setPlace(role.getNowScenesId());
+            builder.setLevel(role.getLevel());
+            builder.setCareerId(role.getCareerId());
+            builder.setUnionId(role.getUnionId());
+            builders.setRoleMsg(builder);
+        }
+
+        ch.writeAndFlush(builders.build());
     }
 }
 

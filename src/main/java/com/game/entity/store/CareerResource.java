@@ -18,13 +18,10 @@ public class CareerResource {
     //数值配置表对应的角色类，key为id
     private static HashMap<Integer, CareerStatic> careerStaticHashMap = new HashMap<Integer, CareerStatic>();
 
-    static JSONArray result;
-    static JSONObject jsonObject;
-
     static {
-        result = ExcelToJson.getNeed(Const.CAREER_CONST_PATH);
+        JSONArray result = ExcelToJson.getNeed(Const.CAREER_CONST_PATH);
         for(int i=0;i<result.size();i++){
-            jsonObject = result.getJSONObject(i);
+            JSONObject jsonObject = result.getJSONObject(i);
             CareerStatic careerStatic = JSON.parseObject(jsonObject.toJSONString(), CareerStatic.class);
             careerStaticHashMap.put(careerStatic.getId(),careerStatic);
         }

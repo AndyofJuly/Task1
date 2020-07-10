@@ -1,28 +1,18 @@
 package com.game.entity;
 
-import com.game.entity.excel.NpcStatic;
-
 /**
  * NPC类
  * @Author andy
  * @create 2020/5/11 14:58
  */
 public class Npc {
-    // NPC存活状态，1表示存活，0表示被消灭
+    /** NPC存活状态，1表示存活，0表示被消灭 */
     private int alive;
-    // 资源类中的静态id
-    private int NPcId;
+    /** 资源类中的静态id */
+    private int npcId;
 
-    public Npc(int NPcId) {
-        this.NPcId = NPcId;
-    }
-
-    public int getNPcId() {
-        return NPcId;
-    }
-
-    public void setNPcId(int NPcId) {
-        this.NPcId = NPcId;
+    public Npc(int npcId) {
+        this.npcId = npcId;
     }
 
     public int getAlive() {
@@ -31,5 +21,13 @@ public class Npc {
 
     public void setAlive(int alive) {
         this.alive = alive;
+    }
+
+    public int getNpcId() {
+        return npcId;
+    }
+
+    public void setNpcId(int npcId) {
+        this.npcId = npcId;
     }
 }

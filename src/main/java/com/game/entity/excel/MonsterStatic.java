@@ -16,14 +16,17 @@ public class MonsterStatic {
     private int atk;
     // 位置坐标
     private int[] position;
+    // 怪物物理防御力
+    private int def;
 
-    public MonsterStatic(int id, String name, int hp, int atk, int[] position) {
+    public MonsterStatic(int id, String name, int hp, int atk, int[] position, int def) {
         this.id = id;
         this.name = name;
         this.hp = hp;
         //this.sceneId = sceneId;
         this.atk = atk;
         this.position = position;
+        this.def = def;
     }
 
     public int getAtk() {
@@ -64,5 +67,13 @@ public class MonsterStatic {
 
     public void setPosition(int[] position) {
         this.position = position;
+    }
+
+    public int getDef() {
+        return def;
+    }
+
+    public void setDef(int def) {
+        this.def = def;
     }
 }

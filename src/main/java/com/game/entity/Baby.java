@@ -1,7 +1,6 @@
 package com.game.entity;
 
 import com.game.entity.store.BabyResource;
-import com.game.entity.store.MonsterResource;
 
 /**
  * @Author andy
@@ -9,26 +8,25 @@ import com.game.entity.store.MonsterResource;
  */
 public class Baby {
 
-    //宝宝UUID，每个宝宝id唯一
+    /** 宝宝UUID，每个宝宝id唯一 */
     private String id;
-    //宝宝攻击力
+    /** 宝宝攻击力 */
     private int babyAtk;
-    //宝宝血量
+    /** 宝宝血量 */
     private int babyHp;
-    //宝宝所在场景
+    /** 宝宝所在场景 */
     private int scenneId;
-    //宝宝静态id
+    /** 宝宝静态id */
     private int babyId;
-    //宝宝是否被召唤出来
+    /** 宝宝是否被召唤出来 */
     private boolean ifCall;
-    //测试-所属角色
+    /** 测试-所属角色 */
     private Role role;
 
     public Baby(String id,int babyId,Role role) {
         this.id = id;
         this.babyId = babyId;
         this.role = role;
-        //血量初始化
         this.babyHp= BabyResource.getBabyStatics().get(this.babyId).getHp();
         this.scenneId = role.getNowScenesId();
     }
@@ -45,10 +43,6 @@ public class Baby {
         return babyAtk;
     }
 
-    public void setBabyAtk(int babyAtk) {
-        this.babyAtk = babyAtk;
-    }
-
     public int getBabyHp() {
         return babyHp;
     }
@@ -57,27 +51,7 @@ public class Baby {
         this.babyHp = babyHp;
     }
 
-    public int getScenneId() {
-        return scenneId;
-    }
-
     public void setScenneId(int scenneId) {
         this.scenneId = scenneId;
-    }
-
-    public int getBabyId() {
-        return babyId;
-    }
-
-    public void setBabyId(int babyId) {
-        this.babyId = babyId;
-    }
-
-    public boolean isIfCall() {
-        return ifCall;
-    }
-
-    public void setIfCall(boolean ifCall) {
-        this.ifCall = ifCall;
     }
 }

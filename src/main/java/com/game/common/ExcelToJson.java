@@ -1,15 +1,13 @@
 package com.game.common;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.game.entity.*;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-import java.io.*;
-import java.util.HashMap;
-import java.util.Properties;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
@@ -30,13 +28,16 @@ public class ExcelToJson {
             for(int i = 1; i < sheet.getRows(); i++) {
                 JSONObject object = new JSONObject();
                 for (int k = 0; k < sheet.getColumns(); k++) {
-                        if (sheet.getCell(k, i).getContents().startsWith("[")) {
-                            object.put(sheet.getCell(k, 0).getContents(), sheet.getCell(k, i).getContents().substring(1, sheet.getCell(k, i).getContents().length() - 1).split(","));
-                        } else if(pattern.matcher(sheet.getCell(k, i).getContents()).matches()){
-                            object.put(sheet.getCell(k, 0).getContents(), Integer.parseInt(sheet.getCell(k, i).getContents()));
-                        } else {
-                            object.put(sheet.getCell(k, 0).getContents(), sheet.getCell(k, i).getContents());
-                        }
+                    if(sheet.getCell(k, i).getContents()==""){
+                        object.put(sheet.getCell(k, 0).getContents(), null);
+                    } else if (sheet.getCell(k, i).getContents().startsWith("[")) {
+                        int[] arr = PatternUtil.StringToInt(sheet.getCell(k, i).getContents().substring(1, sheet.getCell(k, i).getContents().length() - 1).split(","));
+                        object.put(sheet.getCell(k, 0).getContents(), arr);
+                    } else if(pattern.matcher(sheet.getCell(k, i).getContents()).matches()){
+                        object.put(sheet.getCell(k, 0).getContents(), Integer.parseInt(sheet.getCell(k, i).getContents()));
+                    } else {
+                        object.put(sheet.getCell(k, 0).getContents(), sheet.getCell(k, i).getContents());
+                    }
                 }
                 jsons.add(object);
             }
