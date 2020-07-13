@@ -39,8 +39,8 @@ public class InitGame {
 
         //线程池
         ExecutorService pool = Executors.newCachedThreadPool();
-        //场景中生成少量怪物-以下可拆分到其他类例如场景初始化类
-        //两重循环，n个场景，每个场景遍历含有的怪物，实例化这些怪物
+        //场景中生成少量怪物
+        //两重循环，i个场景，每个场景遍历含有的怪物，实例化这些怪物
         for(Integer i : SceneResource.getScenesStatics().keySet()){
             for(int j=0;j<SceneResource.getScenesStatics().get(i).getMonsterId().length;j++) {
                 //静态资源的怪物id
@@ -58,6 +58,14 @@ public class InitGame {
                 //怪物随机移动-测试某场景，如果要所有场景的所有怪物都移动，删除此判断条件即可
                 if(i==10002){
                     pool.submit(new MonsterWalk(monster));
+
+                    //再生成一些重复的怪物
+                    String monsterId2 = UUID.randomUUID().toString();
+                    Monster monster2 = new Monster(monsterId2,key);
+                    GlobalInfo.getScenes().get(i).getMonsterHashMap().put(monsterId2, monster2);
+                    int gridId2 = RoleServiceImpl.getGridId(monster2.getPosition()[0],monster2.getPosition()[1]);
+                    scene.getGridHashMap().get(gridId2).getGridMonsterMap().put(monsterId2,monster2);
+                    pool.submit(new MonsterWalk(monster2));
                 }
             }
         }

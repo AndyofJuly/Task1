@@ -30,7 +30,7 @@ public class MonsterWalk implements Runnable{
             checkAtkDistance();
             //每次停2000毫秒
             try {
-                Thread.sleep(5000);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -58,7 +58,7 @@ public class MonsterWalk implements Runnable{
                     System.out.println(MonsterResource.getMonstersStatics().get(monster.getMonsterId()).getName()+
                             "攻击了角色，角色血量剩余：" + role.getHp());
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(10000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

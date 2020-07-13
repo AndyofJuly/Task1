@@ -38,7 +38,7 @@ public class AssistService {
         return nowScenesId==npcScenesId;
     }
 
-    //查找怪物动态UUID
+    //根据静态怪物id查找怪物动态UUID-todo:输入不应该涉及静态id
     public static String checkMonsterId(int monsterId,Role role){
         int sceneId = role.getNowScenesId();
         Scene scene = GlobalInfo.getScenes().get(sceneId);

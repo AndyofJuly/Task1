@@ -124,6 +124,10 @@ public class SkillServiceImpl implements ISkillService {
         role.setAtk(role.getAtk()+2);
         //iAchieveService.countKilledMonster(nowMonster.getMonsterId(),role);
         SlayMonsterSB.notifyObservers(nowMonster.getMonsterId(),role);
+
+        //场景中去除该怪物
+        Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
+        scene.getMonsterHashMap().remove(nowMonster.getId());
         return "获得装备："+getEquipId+"!获得银两"+getMoney;
     }
 
