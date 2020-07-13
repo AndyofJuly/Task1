@@ -1,12 +1,12 @@
 package com.game.netty.server;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.entity.Role;
-import com.game.entity.bo.DealBo;
-import com.game.service.IChatService;
-import com.game.service.assist.ResponseInf;
-import com.game.service.impl.ChatServiceImpl;
-import com.game.service.assist.GlobalInfo;
+import com.game.system.role.pojo.Role;
+import com.game.system.shop.pojo.DealBo;
+import com.game.system.chat.IChatService;
+import com.game.common.ResponseInf;
+import com.game.system.chat.ChatServiceImpl;
+import com.game.system.assist.GlobalInfo;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.util.HashMap;

@@ -1,7 +1,6 @@
 package com.game.netty.client;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.entity.Role;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 

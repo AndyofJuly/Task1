@@ -181,4 +181,20 @@ public class Const {
         int FOURTH_GRADE = 4;
     }
 
+    //成就信息
+    public interface achieve {
+        String TASK_MONSTER = "killMonster";
+        String TASK_LEVEL = "levelUp";
+        String TASK_NPC = "talkNpc";
+        String TASK_EQUIP = "getBestEquip";
+        String TASK_DUNGEONS = "passDungeons";
+        String TASK_EQUIP_LEVEL = "sumEquipLevel";
+        String TASK_FRIEDN = "addFriend";
+        String TASK_FIRST_TEAM = "firstJoinTeam";
+        String TASK_FIRST_UNION = "firstJoinUnion";
+        String TASK_FRIST_TRADE = "firstTrade";
+        String TASK_PK_SUCCESS = "firstPkSuccess";
+        String TASK_MONEY = "sumMoney";
+        String TASK_SERIA = "completeTask";
+    }
 }

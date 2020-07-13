@@ -1,0 +1,27 @@
+2020-07-11 09:29:01  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 09:29:01 CST 2020]; root of context hierarchy
+2020-07-11 09:29:01  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 09:29:11  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 09:29:11 CST 2020]; root of context hierarchy
+2020-07-11 09:29:11  [ main:54 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 09:29:25  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 09:29:25 CST 2020]; root of context hierarchy
+2020-07-11 09:29:25  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 09:29:30  [ nioEventLoopGroup-3-1:28424 ] - [ INFO ]  Reflections took 70 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:29:33  [ nioEventLoopGroup-3-2:32011 ] - [ INFO ]  Reflections took 21 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:29:45  [ nioEventLoopGroup-3-1:44009 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:29:54  [ nioEventLoopGroup-3-2:53129 ] - [ INFO ]  Reflections took 14 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:12  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 09:31:12 CST 2020]; root of context hierarchy
+2020-07-11 09:31:12  [ main:44 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 09:31:15  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 09:31:15 CST 2020]; root of context hierarchy
+2020-07-11 09:31:15  [ main:53 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 09:31:19  [ nioEventLoopGroup-3-1:6341 ] - [ INFO ]  Reflections took 51 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:22  [ nioEventLoopGroup-3-1:9613 ] - [ INFO ]  Reflections took 25 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:34  [ nioEventLoopGroup-3-1:21712 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:38  [ nioEventLoopGroup-3-1:25553 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:41  [ nioEventLoopGroup-3-1:28843 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:31:53  [ nioEventLoopGroup-3-1:40428 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 09:32:03  [ nioEventLoopGroup-3-1:50697 ] - [ INFO ]  Reflections took 18 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 14:13:28  [ main:12 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 14:13:28 CST 2020]; root of context hierarchy
+2020-07-11 14:13:28  [ main:114 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 14:13:43  [ main:13 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 11 14:13:43 CST 2020]; root of context hierarchy
+2020-07-11 14:13:43  [ main:91 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-11 14:13:47  [ nioEventLoopGroup-3-1:19372 ] - [ INFO ]  Reflections took 184 ms to scan 1 urls, producing 18 keys and 27 values 
+2020-07-11 14:13:51  [ nioEventLoopGroup-3-1:22706 ] - [ INFO ]  Reflections took 25 ms to scan 1 urls, producing 18 keys and 27 values 

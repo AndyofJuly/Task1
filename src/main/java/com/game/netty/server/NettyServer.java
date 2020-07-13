@@ -1,7 +1,7 @@
 package com.game.netty.server;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.service.assist.InitGame;
+import com.game.system.assist.InitGame;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

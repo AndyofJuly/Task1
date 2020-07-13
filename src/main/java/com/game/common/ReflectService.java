@@ -1,6 +1,5 @@
 package com.game.common;
 
-import com.game.service.assist.ResponseInf;
 import org.reflections.Reflections;
 import org.springframework.stereotype.Controller;
 
@@ -13,10 +12,10 @@ import java.util.Set;
  * @create 2020/5/18 18:10
  */
 public class ReflectService {
-    private ResponseInf getString;
+    private ResponseInf object;
     //反射
     public ResponseInf getMethod(String inputString) {
-        Reflections reflections = new Reflections("com.game.controller");
+        Reflections reflections = new Reflections("com.game.system");
         //获取带Service注解的类
         Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Controller.class);
         for (Class clazz : typesAnnotatedWith) {
@@ -29,7 +28,7 @@ public class ReflectService {
                     if (annotation.MethodName().equals(inputString)) {
                         try {
                             //执行method
-                            getString= (ResponseInf)method.invoke(clazz.newInstance());
+                            object= (ResponseInf)method.invoke(clazz.newInstance());
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -37,6 +36,6 @@ public class ReflectService {
                 }
             }
         }
-        return getString;
+        return object;
     }
 }

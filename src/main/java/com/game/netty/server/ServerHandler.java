@@ -3,12 +3,14 @@ package com.game.netty.server;
 import com.game.common.ReflectService;
 import com.game.common.PatternUtil;
 import com.game.common.protobuf.DataInfo;
-import com.game.controller.RoleController;
-import com.game.entity.Role;
-import com.game.entity.Scene;
-import com.game.service.assist.AssistService;
-import com.game.service.assist.GlobalInfo;
-import com.game.service.assist.ResponseInf;
+import com.game.system.entergame.IPotralDao;
+import com.game.system.entergame.PotralDaoImpl;
+import com.game.system.role.RoleController;
+import com.game.system.role.pojo.Role;
+import com.game.system.scene.pojo.Scene;
+import com.game.system.assist.AssistService;
+import com.game.system.assist.GlobalInfo;
+import com.game.common.ResponseInf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
@@ -42,9 +44,13 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         String msg = msgs.getMsg();
         String[] s = msg.split(" ");
         if(!msg.contains("registerR") && !msg.contains("login") && !msg.contains("register")){
-            clientGroup.put(ctx.channel().id(),Integer.parseInt(s[s.length-1]));
-            //认证客户端
-            PrivateChatDeal.add(Integer.parseInt(s[s.length-1]),ctx);
+            try {
+                clientGroup.put(ctx.channel().id(),Integer.parseInt(s[s.length-1]));
+                //认证客户端
+                PrivateChatDeal.add(Integer.parseInt(s[s.length-1]),ctx);
+            }catch (Exception e){
+                System.out.println(e.getMessage()+"输入有误");
+            }
         }
 
         if(msg.startsWith("sayTo") || msg.startsWith("email") || msg.startsWith("deal")){
@@ -74,7 +80,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
                     writeMessage(new ResponseInf(AssistService.mesg()),ch);
                 }
                 if(channel == ch){
-                    writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
+                    try {
+                        writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
+                    }catch (Exception e){
+                        writeMessage(new ResponseInf("输入有误，无法识别"),ch);
+                    }
                 }
             });
             AssistService.reset();

@@ -16,5 +16,6 @@
 
     <!-- Managers: For accessing Services -->
     <context:component-scan base-package="com.game" />
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
 </beans>
