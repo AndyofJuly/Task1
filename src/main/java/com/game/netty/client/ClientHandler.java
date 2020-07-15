@@ -16,7 +16,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<DataInfo.Response
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, DataInfo.ResponseMsg s) throws Exception {
         String msg = s.getMsg();
-        System.out.println("提示："+msg.trim());
+        System.out.println("提示：\n"+msg.trim());
 
         if(s.getRoleMsg()!=null && s.getRoleMsg().getId()!=0){
             DataInfo.ResponseMsg.RoleMsg role = s.getRoleMsg();

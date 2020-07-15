@@ -14,6 +14,8 @@ public class DealBo {
     private int equipmentId;
     //交易药品id
     private int potionId;
+    //药品数量
+    private int num;
     //交易价格
     private int price;
     //发送者id
@@ -21,11 +23,12 @@ public class DealBo {
     //是否同意此次交易
     private boolean isAgree;
 
-    public DealBo(String dealId, int receiveRoleId, int equipmentId, int potionId, int price, int sendRoleId) {
+    public DealBo(String dealId, int receiveRoleId, int equipmentId, int potionId, int num, int price, int sendRoleId) {
         this.dealId = dealId;
         this.receiveRoleId = receiveRoleId;
         this.equipmentId = equipmentId;
         this.potionId = potionId;
+        this.num = num;
         this.price = price;
         this.sendRoleId = sendRoleId;
         this.isAgree = false;
@@ -85,5 +88,13 @@ public class DealBo {
 
     public void setAgree(boolean agree) {
         isAgree = agree;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 }

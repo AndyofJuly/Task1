@@ -13,6 +13,8 @@ public class Monster{
     //private MonsterStatic monsterStatic;
     // 资源类中的静态id
     private int monsterId;
+    // 怪物名称
+    private String monsterName;
     // 怪物血量
     private int monsterHp;
     // 怪物防御力
@@ -23,6 +25,8 @@ public class Monster{
     private int atkTargetId;
     // 怪物攻击力
     private int atk;
+    // 怪物所在场景
+    private int sceneId;
 
     public Monster(String id, int monsterId) {
         this.id = id;
@@ -31,6 +35,7 @@ public class Monster{
         this.monsterDef = MonsterResource.getMonstersStatics().get(this.monsterId).getDef();
         this.position = MonsterResource.getMonstersStatics().get(this.monsterId).getPosition();
         this.atk = MonsterResource.getMonstersStatics().get(this.monsterId).getAtk();
+        this.monsterName = MonsterResource.getMonstersStatics().get(this.monsterId).getName();
         this.atkTargetId = 0;
         this.alive = 1;
     }
@@ -97,5 +102,21 @@ public class Monster{
 
     public void setAtk(int atk) {
         this.atk = atk;
+    }
+
+    public String getMonsterName() {
+        return monsterName;
+    }
+
+    public void setMonsterName(String monsterName) {
+        this.monsterName = monsterName;
+    }
+
+    public int getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(int sceneId) {
+        this.sceneId = sceneId;
     }
 }

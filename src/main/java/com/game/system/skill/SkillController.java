@@ -19,48 +19,48 @@ import java.util.ArrayList;
 public class SkillController {
 
     private ArrayList<Integer> intList = RoleController.getIntList();
-    private ISkillService iSkillService = new SkillServiceImpl();
+    private SkillService skillService = new SkillService();
 
     //显示当前自己的职业有什么技能
     @MyAnnontation(MethodName = "skillList")
     public ResponseInf getSkillList(){
-        return ResponseInf.setResponse(iSkillService.getSkillInfo(getRole()),getRole());
+        return ResponseInf.setResponse(skillService.getSkillInfo(getRole()),getRole());
     }
 
     //技能攻击，使用举例：skill skillName monsterName ：here修改成skillId,monsterId
     @MyAnnontation(MethodName = "skill")
     public ResponseInf useSkillAttack(){
         String key = AssistService.checkMonsterId(intList.get(1),getRole());
-        String msg = iSkillService.useSkillAttack(intList.get(0),key,getRole());
+        String msg = skillService.useSkillAttack(intList.get(0),key,getRole());
         return ResponseInf.setResponse(msg,getRole());
     }
 
     //嘲讽技能测试，使用举例：taunt
     @MyAnnontation(MethodName = "taunt")
     public ResponseInf tauntSkill(){
-        iSkillService.tauntSkill(getRole());
-        return ResponseInf.setResponse(Const.Fight.SUMMON_MSG,getRole());
+        String result = skillService.tauntSkill(getRole());
+        return ResponseInf.setResponse(result,getRole());
     }
 
     //群伤技能测试，使用举例：groupAtk skillName 默认对当前场景的所有怪物造成群伤，可扩展：传参为怪物集合：here修改成skillId
     @MyAnnontation(MethodName = "groupAtk")
     public ResponseInf groupAtkSkill(){
-        iSkillService.groupAtkSkill(intList.get(0),getRole());
-        return ResponseInf.setResponse(Const.Fight.GROUPATK_MSG,getRole());
+        String result = skillService.groupAtkSkill(intList.get(0),getRole());
+        return ResponseInf.setResponse(result,getRole());
     }
 
     //群回复技能测试，使用举例：groupHile skillName 默认对当前场景的所有角色，可扩展：传参为角色集合：here修改成skillId
     @MyAnnontation(MethodName = "groupCure")
     public ResponseInf groupCureSkill(){
-        iSkillService.groupCureSkill(intList.get(0),getRole());
-        return ResponseInf.setResponse(Const.Fight.CURE_MSG,getRole());
+        String result = skillService.groupCureSkill(intList.get(0),getRole());
+        return ResponseInf.setResponse(result,getRole());
     }
 
     //召唤技能测试，使用举例：summon monsterName ：here修改成,monsterId
     @MyAnnontation(MethodName = "summon")
     public ResponseInf summonSkill(){
-        iSkillService.summonSkill(intList.get(0),getRole());
-        return ResponseInf.setResponse(Const.Fight.BABY_MSG,getRole());
+        String result = skillService.summonSkill(intList.get(0),getRole());
+        return ResponseInf.setResponse(result,getRole());
     }
 
     /*
@@ -80,7 +80,7 @@ public class SkillController {
     @MyAnnontation(MethodName = "atk")
     public ResponseInf normalAttack(){
         String key = AssistService.checkMonsterId(intList.get(0),getRole());
-        return ResponseInf.setResponse(iSkillService.normalAttack(key,getRole()),getRole());
+        return ResponseInf.setResponse(skillService.normalAttack(key,getRole()),getRole());
     }
 
 }

@@ -6,7 +6,7 @@ import com.game.system.assist.AssistService;
 import java.util.HashMap;
 
 /**
- * 背包类
+ * 背包类，物品进出都是通过操作集合，当角色查看背包时，才以格子的方式呈现
  * @Author andy
  * @create 2020/5/21 20:04
  */
@@ -15,15 +15,15 @@ public class MyPackageBo {
     private int size;
     // 背包极品装备数量
     private int bestNum = 0;
-    // 背包格子集合，格子id-每个格子对象
+    // 背包格子集合，格子id-每个格子对象-在该类中封装，仅对外提供信息，只有通过goodsHashMap才能对其操作
     private HashMap<Integer, BagGridBo> packageGridHashMap = new HashMap<Integer, BagGridBo>();
-
-    //物品id和物品数量
+    //物品id和物品数量-外部访问时访问该集合，主要为了方便数据库读取
     private HashMap<Integer,Integer> goodsHashMap = new HashMap<Integer,Integer>();
 
     public MyPackageBo(int size, HashMap<Integer, Integer> goodsHashMap) {
         this.size = size;
         this.goodsHashMap = goodsHashMap;
+        //初始化
         for(int i=0;i<size;i++){
             BagGridBo bagGridBo =new BagGridBo(i);
             packageGridHashMap.put(i, bagGridBo);
@@ -62,85 +62,56 @@ public class MyPackageBo {
         this.packageGridHashMap = packageGridHashMap;
     }
 
-    //查看背包时，考虑药品数量大于99，装备数量大于1时的情况，并且要计算倍数
-    //对物品集合随机散落在格子上
-    public void randPackageGrid(){
-        clear();
-        int[] arr = AssistService.randSort(size);
-        int k=0;
-        for(Integer goodsId : goodsHashMap.keySet()){
-            int number = goodsHashMap.get(goodsId);
-            if(number!=0 && k<size){
-                //分药品和装备两种情况讨论
-                if((goodsId+"").startsWith(Const.POTION_HEAD) && number>99){
-                    //计算99的倍数
-                    while (number>99){
-                        packageGridHashMap.get(arr[k]).setGoodsId(goodsId);
-                        packageGridHashMap.get(arr[k]).setNumber(99);
-                        number-=99;
-                        k++;
-                    }
-                    packageGridHashMap.get(arr[k]).setGoodsId(goodsId);
-                    packageGridHashMap.get(arr[k]).setNumber(number);
-                    k++;
-                }else if((goodsId+"").startsWith(Const.EQUIPMENT_HEAD) && number>1){
-                    while (number>1){
-                        packageGridHashMap.get(arr[k]).setGoodsId(goodsId);
-                        packageGridHashMap.get(arr[k]).setNumber(1);
-                        number-=1;
-                        k++;
-                    }
-                    packageGridHashMap.get(arr[k]).setGoodsId(goodsId);
-                    packageGridHashMap.get(arr[k]).setNumber(number);
-                    k++;
-                }else{
-                    packageGridHashMap.get(arr[k]).setGoodsId(goodsId);
-                    packageGridHashMap.get(arr[k]).setNumber(number);
-                    k++;
-                }
-            }
-        }
-    }
+
+    //将背包goodsHashMap集合封装成背包格子，再对外提供背包格子信息
+
+    //物品集合随机散落在格子上-已删除
 
     //整理背包，规整地落在格子上
     public void orderPackageGrid(){
         clear();
         int k=0;
+        int maxNum = Const.POTION_MAX_NUM;
         for(Integer goodsId : goodsHashMap.keySet()){
             int number = goodsHashMap.get(goodsId);
             if(number!=0 && k<size){
-                //分药品和装备两种情况讨论
-                if((goodsId+"").startsWith(Const.POTION_HEAD) && number>99){
+                //分药品和装备两种情况讨论-若有其他道具，还需要扩展并修改
+                if((goodsId+"").startsWith(Const.POTION_HEAD) && number>maxNum){
                     //计算99的倍数
-                    while (number>99){
-                        packageGridHashMap.get(k).setGoodsId(goodsId);
-                        packageGridHashMap.get(k).setNumber(99);
-                        number-=99;
+                    while (number>maxNum){
+                        putIntoGrid(k,goodsId,maxNum);
+                        number-=maxNum;
                         k++;
+                        if(k>=size){break;}
                     }
-                    packageGridHashMap.get(k).setGoodsId(goodsId);
-                    packageGridHashMap.get(k).setNumber(number);
+                    putIntoGrid(k,goodsId,number);
                     k++;
                 }else if((goodsId+"").startsWith(Const.EQUIPMENT_HEAD) && number>1){
                     while (number>1){
-                        packageGridHashMap.get(k).setGoodsId(goodsId);
-                        packageGridHashMap.get(k).setNumber(1);
+                        putIntoGrid(k,goodsId,1);
                         number--;
                         k++;
+                        if(k>=size){break;}
                     }
-                    packageGridHashMap.get(k).setGoodsId(goodsId);
-                    packageGridHashMap.get(k).setNumber(number);
+                    putIntoGrid(k,goodsId,number);
                     k++;
                 }else{
-                    packageGridHashMap.get(k).setGoodsId(goodsId);
-                    packageGridHashMap.get(k).setNumber(number);
+                    putIntoGrid(k,goodsId,number);
                     k++;
                 }
             }
         }
     }
 
-    //private void checkNum(){}
+    //在指定格子位置放置物品和数量
+    private void putIntoGrid(int id,int goodsId,int num){
+        packageGridHashMap.get(id).setGoodsId(goodsId);
+        packageGridHashMap.get(id).setNumber(num);
+    }
+
+    private void check(){
+
+    }
 
     private void clear(){
         for(int i=0;i<size;i++){
@@ -157,15 +128,20 @@ public class MyPackageBo {
         return packageInfo;
     }
 
-    //检查背包是否还放得下，用在Service中put方法里检查
+    //检查背包是否还放得下-为了使得packageGridHashMap不对外暴露，而放在该类中
     public boolean checkIfCanPut(int goodsId,int number){
-        boolean noSpace = true;
+        //格子与集合同步一下
+        orderPackageGrid();
+        boolean havSpace = false;
         for(int i=0;i<size;i++){
             if(packageGridHashMap.get(i).getGoodsId()==0){
-                noSpace = false;
+                havSpace = true;
             }
         }
-        if(noSpace){//没空间下同id是否还容得下
+        if(havSpace){
+            System.out.println("测试提示：背包还有空间放下该物品");
+            return true;
+        }else{
             if((goodsId+"").startsWith(Const.EQUIPMENT_HEAD)){
                 return false;
             }else {
@@ -174,9 +150,8 @@ public class MyPackageBo {
                         return false;
                     }
                 }
+                return true;
             }
         }
-        return true;
     }
-
 }

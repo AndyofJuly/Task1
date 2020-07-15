@@ -4,8 +4,7 @@ import com.game.system.assist.GlobalInfo;
 import com.game.common.Const;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.scene.pojo.Scene;
-import com.game.system.skill.ISkillService;
-import com.game.system.skill.SkillServiceImpl;
+import com.game.system.skill.SkillService;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -33,8 +32,8 @@ public class BabyAttack extends TimerTask {
     static int k = 0;
     @Override
     public void run() {
-        ISkillService iSkillService = new SkillServiceImpl();
-        int damage = iSkillService.normalAttackSkill(Const.BOSS_SKILL_ID);
+        SkillService skillService = new SkillService();
+        int damage = skillService.normalAttackSkill(Const.BOSS_SKILL_ID);
         k++;
         //不在场景中了
         if(GlobalInfo.getScenes().get(sceneId)==null){

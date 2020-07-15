@@ -2,13 +2,10 @@ package com.game.system.assist;
 
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.scene.pojo.Monster;
+import com.game.system.scene.pojo.*;
 import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.bag.pojo.PotionResource;
 import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.NpcResource;
-import com.game.system.scene.pojo.Scene;
-import com.game.system.scene.pojo.SceneResource;
 
 import java.util.HashSet;
 import java.util.Random;
@@ -76,10 +73,30 @@ public class AssistService {
         return 0;
     }
 
-    //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo，怪物的位置可以在场景中随机生成
+    //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo
     public static boolean checkDistance(Role role, Monster monster){
         int[] self = role.getPosition();
-        int[] other = monster.getPosition();//目前测试，均假设为一个位置
+        int[] other = monster.getPosition();
+        if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
+            return true;
+        }
+        return false;
+    }
+
+    //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo
+    public static boolean checkDistance(Role role, Npc npc){
+        int[] self = role.getPosition();
+        int[] other = npc.getPosition();
+        if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
+            return true;
+        }
+        return false;
+    }
+
+    //检查与怪物或玩家/NPC的距离是否在可攻击、谈话范围内-demo
+    public static boolean checkDistance(Role role, Role target){
+        int[] self = role.getPosition();
+        int[] other = target.getPosition();
         if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
             return true;
         }
@@ -90,7 +107,7 @@ public class AssistService {
         return Math.sqrt(Math.pow(self[0]-other[0],2)+Math.pow(self[1]-other[1],2));
     }
 
-    public static int[] randSort(int size){
+/*    public static int[] randSort(int size){
         int[] arr = new int[size];
         for(int i=0;i<size;i++){
             arr[i] = i;
@@ -103,7 +120,7 @@ public class AssistService {
             arr[p] = tmp;
         }
         return arr;
-    }
+    }*/
 
 
     //id生成-待修改
@@ -123,7 +140,7 @@ public class AssistService {
         return tmp+"";
     }
 
-    //如果游戏中生成的队伍数量应该小于10000
+    //临时副本id，小于10000
     public static int generateSceneId(){
         Integer tmp=0;
         int size = sceneSet.size();
@@ -145,7 +162,15 @@ public class AssistService {
     public static String getPotionName(int key){
         return PotionResource.getPotionStaticHashMap().get(key).getName();
     }
-    //获得价格
+    //获得装备或药品价格
+    public static int getGoodsPrice(int key){
+        if(String.valueOf(key).startsWith(Const.POTION_HEAD)){
+            return PotionResource.getPotionStaticHashMap().get(key).getPrice();
+        }else{//(String.valueOf(key).startsWith(Const.EQUIPMENT_HEAD)){
+            return EquipmentResource.getEquipmentStaticHashMap().get(key).getPrice();
+        }
+    }
+
     public static int getPotionPrice(int key){
         return PotionResource.getPotionStaticHashMap().get(key).getPrice();
     }
@@ -174,42 +199,5 @@ public class AssistService {
     public static int getEquipmentDura(int key){
         return EquipmentResource.getEquipmentStaticHashMap().get(key).getDurability();
     }
-
-
-
-
-
-
-
-
-    //监听-待修改
-    public static boolean monsterIsDead;
-    //监听怪物是否已被打败，通知全局
-    public static boolean isDead(){
-        if(AssistService.monsterIsDead==true){
-            return true;
-        }
-        return false;
-    }
-
-    public static String mesg(){
-        return Const.MONSTER_MESSEAGE;
-    }
-
-    public static void reset(){
-        monsterIsDead=false;
-    }
-
-    public static boolean isMonsterIsDead() {
-        return monsterIsDead;
-    }
-
-    public static void setMonsterIsDead(boolean monsterIsDead) {
-        AssistService.monsterIsDead = monsterIsDead;
-    }
-
-
-
-
 
 }

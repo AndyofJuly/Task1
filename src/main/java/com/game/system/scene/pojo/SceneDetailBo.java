@@ -16,7 +16,7 @@ public class SceneDetailBo {
     /** 角色集合 */
     private ArrayList<Role> roleArrayList;
     /** npc集合 */
-    private int[] npcIdArray;
+    private HashMap<Integer, Npc> npcHashMap;
     /** 怪物集合 */
     private HashMap<String, Monster> monsterHashMap;
 
@@ -36,12 +36,20 @@ public class SceneDetailBo {
         this.roleArrayList = roleArrayList;
     }
 
-    public int[] getNpcIdArray() {
+/*    public int[] getNpcIdArray() {
         return npcIdArray;
     }
 
     public void setNpcIdArray(int[] npcIdArray) {
         this.npcIdArray = npcIdArray;
+    }*/
+
+    public HashMap<Integer, Npc> getNpcHashMap() {
+        return npcHashMap;
+    }
+
+    public void setNpcHashMap(HashMap<Integer, Npc> npcHashMap) {
+        this.npcHashMap = npcHashMap;
     }
 
     public HashMap<String, Monster> getMonsterHashMap() {

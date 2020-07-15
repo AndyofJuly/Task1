@@ -1,9 +1,10 @@
 package com.game.system.shop;
 
+import com.game.common.Const;
+import com.game.netty.server.ServerHandler;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.role.pojo.Role;
-import com.game.system.bag.IPackageService;
-import com.game.system.bag.PackageServiceImpl;
+import com.game.system.bag.PackageService;
 
 import java.util.HashMap;
 import java.util.Timer;
@@ -19,7 +20,7 @@ public class CountDownTime extends TimerTask {
     private Timer timer;
     private int goodsId;
     private Role offerRole;
-    private IPackageService iPackageService = new PackageServiceImpl();
+    private PackageService packageService = new PackageService();
 
     public CountDownTime(Timer timer,int goodsId,Role offerRole) {
         this.timer = timer;
@@ -29,25 +30,27 @@ public class CountDownTime extends TimerTask {
 
     @Override
     public void run() {
-        int lastBuyRoleId = offerRole.getPlayerSaleBo().getBuyRoleId();
+        int lastBuyRoleId = offerRole.getAuctionBo().getBuyRoleId();
         Role lastRole = GlobalInfo.getRoleHashMap().get(lastBuyRoleId);
-        auctionSummary(goodsId,offerRole.getPlayerSaleBo().getLastPrice(),offerRole,lastRole);
+        auctionSummary(goodsId,offerRole.getAuctionBo().getLastPrice(),offerRole,lastRole);
+        ServerHandler.notifyAuctionGroup(null, Const.AUCTION_SCENE,0);
         System.out.println("时间到，竞价结束");
+        offerRole.getAuctionBo().setIfEnding(true);
         this.timer.cancel();
     }
 
     private void auctionSummary(int goodsId,int maxPrice,Role offerRole,Role lastRole){
-        iPackageService.addMoney(maxPrice,offerRole);
+        packageService.addMoney(maxPrice,offerRole);
         //packageService.lostMoney(maxPrice,lastRole);
         //退款
-        HashMap<Integer, Integer> priceHashMap = offerRole.getPlayerSaleBo().getPriceHashMap();
-        for(Role role : offerRole.getPlayerSaleBo().getRoleArrayList()){
+        HashMap<Integer, Integer> priceHashMap = offerRole.getAuctionBo().getPriceHashMap();
+        for(Role role : offerRole.getAuctionBo().getRoleArrayList()){
             System.out.println("现在的钱"+role.getMoney());
             if(role.getId()!=lastRole.getId()){
-                iPackageService.addMoney(priceHashMap.get(role.getId()),role);
+                packageService.addMoney(priceHashMap.get(role.getId()),role);
             }
         }
-        iPackageService.putIntoPackage(goodsId,1,lastRole);
-        offerRole.getPlayerSaleBo().setPriceHashMap(null);
+        packageService.putIntoPackage(goodsId,1,lastRole);
+        offerRole.getAuctionBo().setPriceHashMap(null);
     }
 }

@@ -1,10 +1,12 @@
 package com.game.system.scene;
 
+import com.game.common.Const;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.MonsterResource;
+import com.game.system.scene.pojo.Scene;
 
 /**
  * 怪物自由走动
@@ -28,20 +30,25 @@ public class MonsterWalk implements Runnable{
                 break;
             }
             checkAtkDistance();
-            //每次停2000毫秒
+            //每次停xxx毫秒
             try {
-                Thread.sleep(10000);
+                Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             //随机移动一小段距离，怪物位置x和y都加随机整数1-3；
-            int add = (int) (Math.round(Math.random() * 2 + 1));
-            int minus = -(int) (Math.round(Math.random() * 2 + 1));
+            int add = (int) (Math.round(Math.random() * 5 + 1));
+            int minus = -(int) (Math.round(Math.random() * 5 + 1));
             int[] arr = {add,minus};
             int index = (int) (Math.round(Math.random() * 1));
-            int[] newPositon = {arr[index]+monster.getPosition()[0],arr[index]+monster.getPosition()[1]};
+            int x = arr[index]+monster.getPosition()[0];
+            int y = arr[index]+monster.getPosition()[1];
+            //移动后更新格子
+            //System.out.println(SceneService.refleshGrid(x,y,monster));//配合InitGame中的Sleep使用
+            int[] newPositon = {x,y};
             monster.setPosition(newPositon);
-            System.out.println(monster.getMonsterId() + "位置为" + monster.getPosition()[0]+","+monster.getPosition()[1]);
+            //monster.getId()+"--"
+            System.out.println(+monster.getMonsterId() + "位置为" + monster.getPosition()[0]+","+monster.getPosition()[1]);
         }
     }
 
@@ -55,7 +62,7 @@ public class MonsterWalk implements Runnable{
                 while (monster.getAlive() != 0 && AssistService.checkDistance(role, monster) && role.getHp()>0) {
                     //不断地攻击角色
                     role.setHp(role.getHp() - monster.getAtk());
-                    System.out.println(MonsterResource.getMonstersStatics().get(monster.getMonsterId()).getName()+
+                    System.out.println(monster.getMonsterId()+
                             "攻击了角色，角色血量剩余：" + role.getHp());
                     try {
                         Thread.sleep(10000);

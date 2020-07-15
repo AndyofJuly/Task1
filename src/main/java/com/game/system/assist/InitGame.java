@@ -3,16 +3,13 @@ package com.game.system.assist;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.MonsterWalk;
-import com.game.system.scene.pojo.Grid;
-import com.game.system.scene.pojo.Monster;
-import com.game.system.scene.pojo.Scene;
+import com.game.system.scene.NpcWalk;
+import com.game.system.scene.pojo.*;
 import com.game.system.skill.pojo.Skill;
-import com.game.system.union.IUnionDao;
-import com.game.system.union.UnionDaoImpl;
-import com.game.system.scene.pojo.SceneResource;
+import com.game.system.union.UnionDao;
 import com.game.system.skill.pojo.SkillResource;
 import com.game.system.role.MpRecover;
-import com.game.system.role.RoleServiceImpl;
+import com.game.system.role.RoleService;
 
 import java.time.Instant;
 import java.util.Timer;
@@ -42,6 +39,7 @@ public class InitGame {
         //场景中生成少量怪物
         //两重循环，i个场景，每个场景遍历含有的怪物，实例化这些怪物
         for(Integer i : SceneResource.getScenesStatics().keySet()){
+            if(SceneResource.getScenesStatics().get(i).getMonsterId()==null){continue;}
             for(int j=0;j<SceneResource.getScenesStatics().get(i).getMonsterId().length;j++) {
                 //静态资源的怪物id
                 int key = SceneResource.getScenesStatics().get(i).getMonsterId()[j];
@@ -50,31 +48,57 @@ public class InitGame {
                 Monster monster = new Monster(monsterId,key);
                 GlobalInfo.getScenes().get(i).getMonsterHashMap().put(monsterId, monster);
                 //将怪物放在单个网格中
-                int gridId = RoleServiceImpl.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
+                int gridId = RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
                 Scene scene = GlobalInfo.getScenes().get(i);
                 scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monsterId,monster);
+                monster.setSceneId(i);//给每个怪物设置场景
                 //System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
 
                 //怪物随机移动-测试某场景，如果要所有场景的所有怪物都移动，删除此判断条件即可
-                if(i==10002){
+                if(i==10006){
                     pool.submit(new MonsterWalk(monster));
-
-                    //再生成一些重复的怪物
+                    //再生成一次该怪物
+/*                    try {//难以理解的地方，如果要观察怪物的格子移动，需要休眠才能创建出第二个线程；不观察则可以直接创建出第二个线程
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }*/
                     String monsterId2 = UUID.randomUUID().toString();
                     Monster monster2 = new Monster(monsterId2,key);
                     GlobalInfo.getScenes().get(i).getMonsterHashMap().put(monsterId2, monster2);
-                    int gridId2 = RoleServiceImpl.getGridId(monster2.getPosition()[0],monster2.getPosition()[1]);
+                    int gridId2 = RoleService.getGridId(monster2.getPosition()[0],monster2.getPosition()[1]);
                     scene.getGridHashMap().get(gridId2).getGridMonsterMap().put(monsterId2,monster2);
                     pool.submit(new MonsterWalk(monster2));
                 }
             }
         }
-        System.out.println("静态代码块执行");
+
+        //实体化npc
+        for(Integer i : SceneResource.getScenesStatics().keySet()){
+            if(SceneResource.getScenesStatics().get(i).getNpcId()==null){continue;}
+            for(int j=0;j<SceneResource.getScenesStatics().get(i).getNpcId().length;j++) {
+                int key = SceneResource.getScenesStatics().get(i).getNpcId()[j];
+                Npc npc = new Npc(key);
+                GlobalInfo.getScenes().get(i).getNpcHashMap().put(key,npc);
+
+                //将npc放在单个网格中
+                int gridId = RoleService.getGridId(npc.getPosition()[0],npc.getPosition()[1]);
+                Scene scene = GlobalInfo.getScenes().get(i);
+                scene.getGridHashMap().get(gridId).getGridNpcMap().put(key,npc);
+
+                //npc随机移动-测试某场景，如果要所有场景的所有npc都移动，删除此判断条件即可
+                if(i==10006){
+                    pool.submit(new NpcWalk(npc));
+                }
+            }
+        }
+
+
         //游戏通用共享资源-启动游戏时从数据库中读取
-        IUnionDao iUnionDao = new UnionDaoImpl();
-        iUnionDao.selectUnion();
-        iUnionDao.selectUnionMemb();
-        iUnionDao.selectUnionStore();
+        UnionDao unionDao = new UnionDao();
+        unionDao.selectUnion();
+        unionDao.selectUnionMemb();
+        unionDao.selectUnionStore();
     }
 
     //InitRole  角色进入游戏后，初始化技能等，待修改

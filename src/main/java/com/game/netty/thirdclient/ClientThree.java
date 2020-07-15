@@ -1,8 +1,7 @@
 package com.game.netty.thirdclient;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.system.entergame.IPotralDao;
-import com.game.system.entergame.PotralDaoImpl;
+import com.game.system.assist.PotralDao;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -73,7 +72,7 @@ public class ClientThree {
     private void dealInputMsg(ChannelFuture channelFuture){
         Scanner scanner = new Scanner(System.in);
         String id = "";
-        IPotralDao iPotralDao = new PotralDaoImpl();
+        PotralDao potralDao = new PotralDao();
         ArrayList<Integer> roleList = null;
         int userId = 0;
         while (scanner.hasNextLine()){
@@ -91,8 +90,8 @@ public class ClientThree {
                 }
             }else if(msg.startsWith("login")){
                 String[] s = msg.split(" ");
-                userId = iPotralDao.selectLogin(s[1],s[2]);
-                roleList = iPotralDao.selectRole(userId);
+                userId = potralDao.selectLogin(s[1],s[2]);
+                roleList = potralDao.selectRole(userId);
             }
             DataInfo.RequestMsg requestMsg = DataInfo.RequestMsg.newBuilder().setMsg(msg+id).build();
             channelFuture.channel().writeAndFlush(requestMsg);

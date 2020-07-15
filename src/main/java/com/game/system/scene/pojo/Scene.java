@@ -22,6 +22,8 @@ public class Scene {
     private final ArrayList<Role> roleAll = new ArrayList<>();
     /** 该场景下的怪物集合 */
     private final HashMap<String, Monster> monsterHashMap = new HashMap<>();
+    /** 该场景下的npc集合 */
+    private final HashMap<Integer,Npc> npcHashMap = new HashMap<>();
     /** 该场景下的网格集合 */
     private final HashMap<Integer, Grid> gridHashMap = new HashMap<>();
 
@@ -67,4 +69,7 @@ public class Scene {
         return gridHashMap;
     }
 
+    public HashMap<Integer, Npc> getNpcHashMap() {
+        return npcHashMap;
+    }
 }

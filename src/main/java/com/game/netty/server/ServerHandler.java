@@ -3,12 +3,10 @@ package com.game.netty.server;
 import com.game.common.ReflectService;
 import com.game.common.PatternUtil;
 import com.game.common.protobuf.DataInfo;
-import com.game.system.entergame.IPotralDao;
-import com.game.system.entergame.PotralDaoImpl;
+import com.game.system.assist.GameService;
 import com.game.system.role.RoleController;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
-import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.ResponseInf;
 import io.netty.channel.Channel;
@@ -37,58 +35,35 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     private static HashMap<ChannelId, Integer> clientGroup = new HashMap<ChannelId, Integer>();
     Logger logger = LoggerFactory.getLogger(NettyServer.class);
+    private static HashMap<Integer, ChannelHandlerContext> sceneGroup = new HashMap<Integer, ChannelHandlerContext>();
     //读取数据
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, DataInfo.RequestMsg msgs) throws Exception {
 
         String msg = msgs.getMsg();
         String[] s = msg.split(" ");
-        if(!msg.contains("registerR") && !msg.contains("login") && !msg.contains("register")){
+        if(msg.contains("loginR")){//!msg.contains("registerR") && !msg.contains("login") && !msg.contains("register")
             try {
                 clientGroup.put(ctx.channel().id(),Integer.parseInt(s[s.length-1]));
-                //认证客户端
-                PrivateChatDeal.add(Integer.parseInt(s[s.length-1]),ctx);
+                sceneGroup.put(Integer.parseInt(s[s.length-1]),ctx);
             }catch (Exception e){
-                System.out.println(e.getMessage()+"输入有误");
+                System.out.println(e.getMessage()+"登录角色错误");
             }
         }
-
-        if(msg.startsWith("sayTo") || msg.startsWith("email") || msg.startsWith("deal")){
-            PrivateChatDeal.dealMessage(msg,ctx);
-        }else if(msg.startsWith("say")){
-            //此channel为发送者的channel，需要找到接收者的channel，然后接收者ch.writeAndFlush即可
-            Channel channel = ctx.channel();
-            //这时我们要遍历ChannelGroup，根据不同情况，会送不同消息
-            channelGroup.forEach(ch->{
-                if (channel != ch){ // 默认登录以后才能收到消息
-                    int roleId = clientGroup.get(channel.id());
-                    String string = GlobalInfo.getRoleHashMap().get(roleId).getName()+":"+msg.substring(3,msg.length()-2);
-                    writeMessage(new ResponseInf(string),ch);
-                }else {//回显自己发送的消息
-                    writeMessage(new ResponseInf("我:"+msg.substring(3,msg.length()-2)),ch);
-                }
-            });
-        }else{
             System.out.println("收到来自客户端:"+msg.toString());
             RoleController.setIntList(PatternUtil.getIntList(msg.toString().split(" ")));
             RoleController.setStrList(PatternUtil.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();
             Channel channel = ctx.channel();
             channelGroup.forEach(ch -> {
-                if(AssistService.isDead()){
-                    // todo 有问题待修改
-                    writeMessage(new ResponseInf(AssistService.mesg()),ch);
-                }
                 if(channel == ch){
                     try {
                         writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
                     }catch (Exception e){
-                        writeMessage(new ResponseInf("输入有误，无法识别"),ch);
+                        writeMessage(new ResponseInf("命令无法识别"),ch);
                     }
                 }
             });
-            AssistService.reset();
-        }
     }
 
     //表示连接建立，第一个被执行
@@ -130,17 +105,27 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
     //表示channel处于非活动状态   提示XX下线了
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println(ctx.channel().remoteAddress()+"离线了-channelInactive");
+        //先对角色数据进行保存
+        new GameService().saveDataBase();
         //角色集合中移除该客户端的角色、需要在当前场景中移除、还需要在队伍中移除
         //传参必须为Integer，否则List会将id看做下标而不是元素
+        if(clientGroup.get(ctx.channel().id())==null){
+            return;
+        }
         Integer removeId = clientGroup.get(ctx.channel().id());
         int sceneId = GlobalInfo.getRoleHashMap().get(removeId).getNowScenesId();
         Scene scene = GlobalInfo.getScenes().get(sceneId);
         scene.getRoleAll().remove(GlobalInfo.getRoleHashMap().get(removeId));
+        Role removeRole = GlobalInfo.getRoleHashMap().get(removeId);
+        System.out.println(removeRole.getName()+"掉线通知");
         GlobalInfo.getRoleHashMap().remove(removeId);
         for(String teamId : GlobalInfo.getTeamList().keySet()){
-            GlobalInfo.getTeamList().get(teamId).getRoleList().remove(removeId);
+            if( GlobalInfo.getTeamList().get(teamId).getRoleList().contains(removeId)){
+                GlobalInfo.getTeamList().get(teamId).getRoleList().remove(removeId);
+                notifyTeam(removeRole,GlobalInfo.getTeamList().get(teamId).getRoleList());
+            }
         }
-        System.out.println(ctx.channel().remoteAddress()+"离线了-channelInactive");
     }
 
     @Override
@@ -155,7 +140,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         super.channelWritabilityChanged(ctx);
     }
 
-    static void writeMessage(ResponseInf message, Channel ch) {
+    public static void writeMessage(ResponseInf message, Channel ch) {
 
         DataInfo.ResponseMsg.Builder builders = DataInfo.ResponseMsg.newBuilder();
         builders.setMsg(message.getMsg());
@@ -180,5 +165,67 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
 
         ch.writeAndFlush(builders.build());
     }
+
+    //实现各类业务通知，例如双方通信，世界通信，邮件提示等等- todo 可以进行抽象优化，传参为角色集合与msg或者为单个角色，可以抽象成两个方法
+    //通知场景玩家
+    public static void notifySceneGroup(int sceneId,String msg){//String msg,int sceneId
+        Scene o = GlobalInfo.getScenes().get(sceneId);
+        ArrayList<Role> roles = o.getRoleAll();
+        for(Role role : roles){
+            Channel channel = sceneGroup.get(role.getId()).channel();
+            writeMessage(new ResponseInf(msg),channel);
+        }
+    }
+
+    public static void notifyAuctionGroup(Role buyRole,int sceneId,int bid){//String msg,int sceneId
+        Scene o = GlobalInfo.getScenes().get(sceneId);
+        ArrayList<Role> roles = o.getRoleAll();
+        for(Role role : roles){
+            Channel channel = sceneGroup.get(role.getId()).channel();
+            if(buyRole==null){
+                writeMessage(new ResponseInf("拍卖结束！"),channel);
+                continue;
+            }
+            writeMessage(new ResponseInf(buyRole.getName()+"出价："+bid),channel);
+        }
+    }
+
+    //组队掉线通知？加入队伍、离开队伍通知？
+    private void notifyTeam(Role removeRole,ArrayList<Integer> roleList){
+        for(Integer key : roleList){
+            Role role = GlobalInfo.getRoleHashMap().get(key);
+            Channel channel = sceneGroup.get(role.getId()).channel();
+            writeMessage(new ResponseInf("队友"+removeRole.getName()+"掉线了。"),channel);
+        }
+    }
+
+    public static void talkWithOne(int targetId,String msg,Role role){
+        Channel targetChannel = sceneGroup.get(targetId).channel();
+        Channel selfChannel = sceneGroup.get(role.getId()).channel();
+        writeMessage(new ResponseInf(role.getName()+"："+msg),targetChannel);
+        writeMessage(new ResponseInf("我："+msg),selfChannel);
+    }
+
+    public static void talkWithAll(String msg,Role role){
+        //此channel为发送者的channel，需要找到接收者的channel，然后接收者ch.writeAndFlush即可
+        Channel channel = sceneGroup.get(role.getId()).channel();
+        //这时我们要遍历ChannelGroup，根据不同情况，会送不同消息
+        channelGroup.forEach(ch->{
+            if (channel != ch){ // 默认登录以后才能收到消息
+                String string = role.getName()+":"+msg;
+                writeMessage(new ResponseInf(string),ch);
+            }else {//回显自己发送的消息
+                writeMessage(new ResponseInf("我:"+msg),ch);
+            }
+        });
+    }
+
+    public static void notifyTrade(int targetId,String msg,Role role){
+        Channel targetChannel = sceneGroup.get(targetId).channel();
+        Channel selfChannel = sceneGroup.get(role.getId()).channel();
+        writeMessage(new ResponseInf(msg),targetChannel);
+        writeMessage(new ResponseInf(msg),selfChannel);
+    }
+
 }
 

@@ -3,7 +3,7 @@ package com.game.system.role.pojo;
 import com.game.common.Const;
 import com.game.system.bag.pojo.Equipment;
 import com.game.system.shop.pojo.DealBo;
-import com.game.system.shop.pojo.PlayerSaleBo;
+import com.game.system.shop.pojo.AuctionBo;
 import com.game.system.skill.pojo.Skill;
 import com.game.system.achievement.pojo.AchievementBo;
 import com.game.system.bag.pojo.MyPackageBo;
@@ -50,7 +50,7 @@ public class Role {
     /** 角色面对面交易单 */
     private DealBo dealBo;
     /** 角色交易行 */
-    private PlayerSaleBo playerSaleBo;
+    private AuctionBo auctionBo;
     /** 角色视野实体集合 */
     private GridBo gridBo;
     /** 角色成就-任务系统 */
@@ -65,6 +65,8 @@ public class Role {
     private final HashMap<Integer, Skill> skillHashMap = new HashMap<>();
     /** 角色装备栏 */
     private final HashMap<Integer, Equipment> equipmentHashMap = new HashMap<>();
+    /** 物品锁定-交易时 */
+    private HashMap<Integer,Integer> goodsLockMap = new HashMap<>();
 
     public Role(int id) {
         this.id = id;
@@ -112,6 +114,7 @@ public class Role {
     }
 
     public void setHp(int hp) {
+        if(hp<0){this.hp = 0;return;}
         this.hp = hp;
     }
 
@@ -219,12 +222,12 @@ public class Role {
         this.dealBo = dealBo;
     }
 
-    public PlayerSaleBo getPlayerSaleBo() {
-        return playerSaleBo;
+    public AuctionBo getAuctionBo() {
+        return auctionBo;
     }
 
-    public void setPlayerSaleBo(PlayerSaleBo playerSaleBo) {
-        this.playerSaleBo = playerSaleBo;
+    public void setAuctionBo(AuctionBo auctionBo) {
+        this.auctionBo = auctionBo;
     }
 
     public AchievementBo getAchievementBo() {
@@ -251,4 +254,11 @@ public class Role {
         this.level = level;
     }
 
+    public HashMap<Integer, Integer> getGoodsLockMap() {
+        return goodsLockMap;
+    }
+
+    public void setGoodsLockMap(HashMap<Integer, Integer> goodsLockMap) {
+        this.goodsLockMap = goodsLockMap;
+    }
 }

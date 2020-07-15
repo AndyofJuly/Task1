@@ -32,7 +32,7 @@ public class Const {
     public static final int GAP_TIME_BABY = 4000;
     //延时时间
     public static final int DELAY_TIME = 0;
-    //装备耐久
+    //装备耐久-测试
     public static final int EQUIP_DURA = 100;
 
     //怪物死后，通知消息
@@ -43,9 +43,15 @@ public class Const {
     //宝宝测试静态id
     public static final int BABY_ID = 6001;
 
+    //奖励掉落
+    public static final int RAND_MONEY = 60;
+    public static final int RAND_EWUIP = 4;
+    public static final int REWARD_ATK = 2;
     //副本出发点-统一在此处
     //public static final String DUNGEONS_START_SCENE = "副本传送点";
     public static final int DUNGEONS_START_SCENE = 10006;
+    //拍卖场
+    public static final int AUCTION_SCENE = 10011;
     //Boss使用技能-测试
     public static final int BOSS_SKILL_ID = 1008;
 
@@ -64,6 +70,7 @@ public class Const {
 
     //生成id的最大范围
     public static final int Max_ID = 10000;
+
 
     //与其他实体互动的最大半径距离
     public static final int Max_OPT_DISTANCE = 10;
@@ -115,7 +122,8 @@ public class Const {
     public static final int FIGHTER_CAREER_ID = 5001;
     //嘲讽技能id
     public static final int TAUNT_SKILL_ID = 1010;
-
+    //召唤技能id
+    public static final int SUMMON_ID = 1009;
     //视野单位网格长
     public static final int GRID_LENGTH = 16;
     //视野单位网格宽

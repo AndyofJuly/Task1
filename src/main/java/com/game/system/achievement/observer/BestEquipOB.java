@@ -18,10 +18,13 @@ public class BestEquipOB {
     }*/
 
     public void checkAchievement(int targetId, Role role){
-        if(targetId==0){return;}
+        if(!String.valueOf(targetId).startsWith(Const.EQUIPMENT_HEAD)){return;}
         int quality = EquipmentResource.getEquipmentStaticHashMap().get(targetId).getQuality();
         if(quality==1){
+            //1为极品装备标志
             role.getMyPackageBo().setSumBestNum();
+        }else{
+            return;
         }
         for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
             boolean staticSearch = Const.achieve.TASK_EQUIP.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
