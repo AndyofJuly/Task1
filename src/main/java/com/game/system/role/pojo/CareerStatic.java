@@ -7,19 +7,19 @@ package com.game.system.role.pojo;
  */
 public class CareerStatic {
 
-    // 职业id
+    /** 角色职业id */
     private int id;
-    // 职业名
+    /** 职业名 */
     private String name;
-    // 职业初始攻击力
+    /** 职业初始攻击力 */
     private int atk;
-    // 职业初始防御力
+    /** 职业初始防御力 */
     private int def;
-    // 职业初始hp
+    /** 职业初始hp */
     private int hp;
-    // 职业初始mp
+    /** 职业初始mp */
     private int mp;
-    // 职业技能
+    /** 职业技能 */
     private int[] skillId;
 
     public CareerStatic(int id, String name, int atk, int def, int hp, int mp, int[] skillId) {

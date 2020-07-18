@@ -5,16 +5,16 @@ package com.game.system.bag.pojo;
  * @create 2020/5/29 14:26
  */
 public class Equipment {
-    //装备id-静态属性-动态属性（需要修改-要有唯一id）
+    /** 装备id-静态属性-动态属性（需要修改-要有唯一id）*/
     private int equipmentId;
-    //装备当前耐久
+    /** 装备当前耐久*/
     private int dura;
-    //装备等级
+    /** 装备等级*/
     private int level;
 
-    public Equipment(int equipmentId, int dura) {
+    public Equipment(int equipmentId) {
         this.equipmentId = equipmentId;
-        this.dura = dura;
+        this.dura = EquipmentResource.getEquipmentStaticHashMap().get(equipmentId).getDurability();
         this.level = EquipmentResource.getEquipmentStaticHashMap().get(equipmentId).getLevel();
     }
 

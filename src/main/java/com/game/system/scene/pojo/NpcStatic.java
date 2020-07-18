@@ -6,15 +6,15 @@ package com.game.system.scene.pojo;
  * @create 2020/5/20 20:47
  */
 public class NpcStatic {
-    // NPC的id
+    /** NPC的id */
     private int id;
-    // NPC的名字
+    /** NPC的名字 */
     private String name;
-    // NPC的对话
+    /** NPC的对话 */
     private String words;
-    // NPC所在场景id
+    /** NPC所在场景id */
     private int sceneId;
-    // 位置坐标
+    /** 位置坐标 */
     private int[] position;
 
     public NpcStatic(int id, String name,String words,int sceneId,int[] position) {

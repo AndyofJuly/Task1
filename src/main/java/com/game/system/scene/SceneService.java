@@ -8,9 +8,11 @@ import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * 生成临时场景及回收，可扩展成工厂模式
+ * 场景模块的业务逻辑处理
  * @Author andy
  * @create 2020/6/12 10:32
  */
@@ -36,12 +38,20 @@ public class SceneService {
         Monster monster = new Monster(monsterId,monsterStaticId);
         GlobalInfo.getScenes().get(tempSceneId).getMonsterHashMap().put(monsterId, monster);
         GlobalInfo.getTempIdHashMap().put(tempSceneId,monsterId);
+        monster.setSceneId(tempSceneId);
+
+        //怪物自由移动和普通攻击
+        ExecutorService pool = Executors.newCachedThreadPool();
+        pool.submit(new MonsterWalk(monster));
 
         initSceneGrid(tempSceneId,monster);
         return tempSceneId;
     }
 
-    //初始化网格并放入怪物或npc等
+    /**
+     * 初始化小网格并放入怪物
+     * @param tempSceneId 临时场景id
+     */
     private void initSceneGrid(int tempSceneId,Monster monster){
         for(int i=1;i<=64;i++){
             GlobalInfo.getScenes().get(tempSceneId).getGridHashMap().put(i,new Grid(i));
@@ -51,23 +61,25 @@ public class SceneService {
         scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monster.getId(),monster);
     }
 
-
-
     /**
-     * 删除临时场景
+     * 回收临时场景，解散队伍-可拆
      * @param tempSceneId 副本id
      * @param teamId 队伍id
      */
     public void deleteTempScene(int tempSceneId,String teamId){
         System.out.println("对id为"+tempSceneId+"的临时场景进行回收");
         GlobalInfo.getScenes().remove(tempSceneId);
-        //team也要解散回收
         GlobalInfo.getTeamList().remove(teamId);
         System.gc();
     }
 
-    //怪物移动，初始化怪物时调用
-    //给怪物和npc的网格更新与角色相同，只需要更新小格子即可
+    /**
+     * 在怪物移动导致跨越格子时更新格子
+     * @param x x坐标
+     * @param y y坐标
+     * @param monster 怪物
+     * @return 返回信息提示
+     */
     public static String refleshGrid(int x,int y,Monster monster){
         int oldGridId = getGridId(monster.getPosition()[0],monster.getPosition()[1]);
         int newGridId = getGridId(x,y);
@@ -78,7 +90,13 @@ public class SceneService {
         return "==怪物跨格子移动了！过去格子"+oldGridId+"。现在格子"+newGridId;
     }
 
-    //给Npc一个扩展的更新方法，只需要更新小格子即可
+    /**
+     * 在Npc移动导致跨越格子时更新格子
+     * @param x x坐标
+     * @param y y坐标
+     * @param npc npc
+     * @return 返回信息提示
+     */
     public static String refleshGrid(int x, int y, Npc npc){
         int oldGridId = getGridId(npc.getPosition()[0],npc.getPosition()[1]);
         int newGridId = getGridId(x,y);
@@ -89,6 +107,12 @@ public class SceneService {
         return "过去格子"+oldGridId+"。现在格子"+newGridId;
     }
 
+    /**
+     * 根据坐标位置计算小网格id
+     * @param x 水平方向移动距离
+     * @param y 垂直方向移动距离
+     * @return 小网格id
+     */
     private static int getGridId(int x,int y){
         return x/Const.GRID_LENGTH+1+y/Const.GRID_WIDTH*Const.GRID_WIDTH;
     }

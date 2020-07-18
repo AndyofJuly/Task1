@@ -12,9 +12,6 @@ public class ClientHandlerTwo extends SimpleChannelInboundHandler<DataInfo.Respo
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, DataInfo.ResponseMsg s) throws Exception {
-/*        String msg = s.getMsg();
-        System.out.println(msg.trim());*/
-        //DataInfo.ResponseMsg msg = (DataInfo.ResponseMsg)s;
         String msg = s.getMsg();
         System.out.println("提示：\n"+msg.trim());
 

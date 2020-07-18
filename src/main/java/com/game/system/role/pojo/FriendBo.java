@@ -8,9 +8,9 @@ import java.util.ArrayList;
  * @create 2020/6/28 22:09
  */
 public class FriendBo {
-    //朋友列表
+    /** 朋友列表-roleId */
     private ArrayList<Integer> friendIdList = new ArrayList<>();
-    //申请列表
+    /** 申请列表-roleId */
     private ArrayList<Integer> applyIdList = new ArrayList<>();
 
     public FriendBo() {

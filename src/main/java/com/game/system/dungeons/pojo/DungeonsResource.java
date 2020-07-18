@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @create 2020/6/8 10:38
  */
 public class DungeonsResource {
-    //数值配置表对应的副本类，key为id
+    /** 数值配置表对应的副本类，key为id */
     private static HashMap<Integer, DungeonsStatic> dungeonsStaticHashMap = new HashMap<Integer, DungeonsStatic>();
 
     static {

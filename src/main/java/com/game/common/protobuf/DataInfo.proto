@@ -4,18 +4,16 @@ package netty;
 option java_package = "com.game.common.protobuf";
 option java_outer_classname = "DataInfo";
 
-message RequestMsg
-{
+message RequestMsg {
     string msg = 1;
 }
 
-message ResponseMsg
-{
+message ResponseMsg {
     string msg = 1;
     //引用下面定义的 RoleMsg 类型的 message
     RoleMsg roleMsg = 2;
 
-    message RoleMsg{
+    message RoleMsg {
         int32 id = 1;
         string msgName = 2;
         int32 money = 3;
@@ -28,12 +26,12 @@ message ResponseMsg
         int32 level = 10;
         //其他等等-略
     }
-/*
-    message MonsterMsg{
-        int32 id = 1;
-        string msgName = 2;
-        int32 hp = 3;
-    }*/
+    /*
+        message MonsterMsg{
+            int32 id = 1;
+            string msgName = 2;
+            int32 hp = 3;
+        }*/
 
     //其他任意实体类
 

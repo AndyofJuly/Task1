@@ -11,13 +11,13 @@ import java.util.HashMap;
  * @create 2020/5/21 20:04
  */
 public class MyPackageBo {
-    // 背包容量，默认为6
+    /** 背包容量，默认为6*/
     private int size;
-    // 背包极品装备数量
+    /** 背包极品装备数量*/
     private int bestNum = 0;
-    // 背包格子集合，格子id-每个格子对象-在该类中封装，仅对外提供信息，只有通过goodsHashMap才能对其操作
+    /** 背包格子集合，格子id-每个格子对象-在该类中封装，仅对外提供信息，只有通过goodsHashMap才能对其操作*/
     private HashMap<Integer, BagGridBo> packageGridHashMap = new HashMap<Integer, BagGridBo>();
-    //物品id和物品数量-外部访问时访问该集合，主要为了方便数据库读取
+    /** 物品id和物品数量-外部访问时访问该集合，主要为了方便数据库读取*/
     private HashMap<Integer,Integer> goodsHashMap = new HashMap<Integer,Integer>();
 
     public MyPackageBo(int size, HashMap<Integer, Integer> goodsHashMap) {
@@ -76,7 +76,7 @@ public class MyPackageBo {
             int number = goodsHashMap.get(goodsId);
             if(number!=0 && k<size){
                 //分药品和装备两种情况讨论-若有其他道具，还需要扩展并修改
-                if((goodsId+"").startsWith(Const.POTION_HEAD) && number>maxNum){
+                if((String.valueOf(goodsId)).startsWith(Const.POTION_HEAD) && number>maxNum){
                     //计算99的倍数
                     while (number>maxNum){
                         putIntoGrid(k,goodsId,maxNum);
@@ -86,7 +86,7 @@ public class MyPackageBo {
                     }
                     putIntoGrid(k,goodsId,number);
                     k++;
-                }else if((goodsId+"").startsWith(Const.EQUIPMENT_HEAD) && number>1){
+                }else if((String.valueOf(goodsId)).startsWith(Const.EQUIPMENT_HEAD) && number>1){
                     while (number>1){
                         putIntoGrid(k,goodsId,1);
                         number--;
@@ -142,7 +142,7 @@ public class MyPackageBo {
             System.out.println("测试提示：背包还有空间放下该物品");
             return true;
         }else{
-            if((goodsId+"").startsWith(Const.EQUIPMENT_HEAD)){
+            if((String.valueOf(goodsId)).startsWith(Const.EQUIPMENT_HEAD)){
                 return false;
             }else {
                 for(int i=0;i<size;i++){

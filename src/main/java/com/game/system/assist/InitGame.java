@@ -1,6 +1,7 @@
 package com.game.system.assist;
 
 import com.game.common.Const;
+import com.game.system.role.pojo.CareerResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.MonsterWalk;
 import com.game.system.scene.NpcWalk;
@@ -18,13 +19,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
+ * 启动服务器后初始化游戏
  * @Author andy
  * @create 2020/6/5 10:48
  */
 public class InitGame {
 
     static {
-        //场景初始化-创建的临时场景同样要考虑初始化网格
+        //场景初始化-创建的临时场景时初始化小网格
         for(Integer keyScene : SceneResource.getScenesStatics().keySet()){
             String sceneName = SceneResource.getScenesStatics().get(keyScene).getName();
             GlobalInfo.getScenes().put(keyScene,new Scene(keyScene,sceneName,keyScene));
@@ -36,8 +38,7 @@ public class InitGame {
 
         //线程池
         ExecutorService pool = Executors.newCachedThreadPool();
-        //场景中生成少量怪物
-        //两重循环，i个场景，每个场景遍历含有的怪物，实例化这些怪物
+        //场景中生成少量怪物-两重循环，i个场景，每个场景遍历含有的怪物，实例化这些怪物
         for(Integer i : SceneResource.getScenesStatics().keySet()){
             if(SceneResource.getScenesStatics().get(i).getMonsterId()==null){continue;}
             for(int j=0;j<SceneResource.getScenesStatics().get(i).getMonsterId().length;j++) {
@@ -51,14 +52,14 @@ public class InitGame {
                 int gridId = RoleService.getGridId(monster.getPosition()[0],monster.getPosition()[1]);
                 Scene scene = GlobalInfo.getScenes().get(i);
                 scene.getGridHashMap().get(gridId).getGridMonsterMap().put(monsterId,monster);
-                monster.setSceneId(i);//给每个怪物设置场景
-                //System.out.println(monster.getPosition()[0]+","+monster.getPosition()[1]);
+                monster.setSceneId(i);
 
                 //怪物随机移动-测试某场景，如果要所有场景的所有怪物都移动，删除此判断条件即可
                 if(i==10006){
                     pool.submit(new MonsterWalk(monster));
-                    //再生成一次该怪物
-/*                    try {//难以理解的地方，如果要观察怪物的格子移动，需要休眠才能创建出第二个线程；不观察则可以直接创建出第二个线程
+
+                    //再次生成一些已生成过的怪物；//bug:如果要观察怪物的格子移动，需要休眠才可能创建出第二个线程；不观察则可以直接创建出第二个线程
+/*                    try {
                         Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -86,13 +87,12 @@ public class InitGame {
                 Scene scene = GlobalInfo.getScenes().get(i);
                 scene.getGridHashMap().get(gridId).getGridNpcMap().put(key,npc);
 
-                //npc随机移动-测试某场景，如果要所有场景的所有npc都移动，删除此判断条件即可
+                //npc随机移动-测试某一场景的npc，如果要所有场景的所有npc都移动，删除此判断条件即可
                 if(i==10006){
                     pool.submit(new NpcWalk(npc));
                 }
             }
         }
-
 
         //游戏通用共享资源-启动游戏时从数据库中读取
         UnionDao unionDao = new UnionDao();
@@ -101,16 +101,32 @@ public class InitGame {
         unionDao.selectUnionStore();
     }
 
-    //InitRole  角色进入游戏后，初始化技能等，待修改
+
+    /** 是否成功进入游戏，是则对角色进行初始化*/
     private static boolean enterSuccess = false;
 
     public static void init(Role role){
         Instant start = Instant.now();
-        //目前角色拥有四个技能，全都初始化给角色
+
+        //技能初始化
         for (Integer key : SkillResource.getSkillStaticHashMap().keySet()) {
             role.getSkillHashMap().put(key,new Skill(key));
             role.getSkillHashMap().get(key).setStart(start);
         }
+
+        //场景中增加该角色
+        GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll().add(role);
+        //在场景小网格中增加该角色
+        Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
+        scene.getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(role.getId(),role);
+        //对角色的九宫格视野进行初始化
+        role.setViewGridBo(new ViewGridBo(role.getId()));
+
+        //初始化最大血量和蓝量
+        role.setMaxHp(CareerResource.getCareerStaticHashMap().get(role.getCareerId()).getHp());
+        role.setMaxMp(CareerResource.getCareerStaticHashMap().get(role.getCareerId()).getMp());
+        role.setHp(role.getMaxHp());
+        role.setMp(role.getMaxMp());
 
         //确定进入到游戏中
         if(enterSuccess){
@@ -122,7 +138,6 @@ public class InitGame {
     private static void run() {
         Timer timer = new Timer();
         MpRecover mpRecover = new MpRecover();
-        //程序运行后立刻执行任务，每隔10000ms执行一次
         timer.schedule(mpRecover, Const.DELAY_TIME, Const.GAP_TIME_POTION);
     }
 

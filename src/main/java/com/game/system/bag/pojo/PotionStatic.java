@@ -5,15 +5,15 @@ package com.game.system.bag.pojo;
  * @create 2020/5/21 17:54
  */
 public class PotionStatic {
-    // 药品id
+    /** 药品id*/
     private int id;
-    // 药品名
+    /** 药品名*/
     private String name;
-    // 药品增加的蓝量
+    /** 药品增加的蓝量*/
     private int addMp;
-    // 药品增加的血量
+    /** 药品增加的血量*/
     private int addHp;
-    // 药品的价格
+    /** 药品的价格*/
     private int price;
 
     public PotionStatic(int id, String name, int addMp, int addHp, int price) {

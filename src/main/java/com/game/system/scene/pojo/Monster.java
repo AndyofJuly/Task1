@@ -6,26 +6,25 @@ package com.game.system.scene.pojo;
  * @create 2020/5/12 22:32
  */
 public class Monster{
-    //具体对象的id，每个怪物的id不相同
+    /** 具体对象的id，每个怪物的id不相同 */
     private String id;
-    // 怪物存活状态，1表示存活，0表示被消灭
+    /** 怪物存活状态，1表示存活，0表示被消灭 */
     private int alive;
-    //private MonsterStatic monsterStatic;
-    // 资源类中的静态id
+    /** 资源类中的静态id */
     private int monsterId;
-    // 怪物名称
+    /** 怪物名称 */
     private String monsterName;
-    // 怪物血量
+    /** 怪物血量 */
     private int monsterHp;
-    // 怪物防御力
+    /** 怪物防御力 */
     private int monsterDef;
-    // 怪物位置-动态
+    /** 怪物位置-动态 */
     private int[] position;
-    // 怪物锁定的目标
+    /** 怪物锁定的目标 */
     private int atkTargetId;
-    // 怪物攻击力
+    /** 怪物攻击力 */
     private int atk;
-    // 怪物所在场景
+    /** 怪物所在场景 */
     private int sceneId;
 
     public Monster(String id, int monsterId) {
@@ -69,6 +68,7 @@ public class Monster{
     }
 
     public void setMonsterHp(int monsterHp) {
+        if(monsterHp<0){monsterHp=0;}
         this.monsterHp = monsterHp;
     }
 

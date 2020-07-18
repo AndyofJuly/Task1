@@ -6,11 +6,11 @@ package com.game.system.union.pojo;
  * @create 2020/6/30 11:37
  */
 public class JobStatic {
-    //职务id
+    /** 职务id */
     private int id;
-    //职务名
+    /** 职务名 */
     private String name;
-    //职务权限级别
+    /** 职务权限级别 */
     private int grade;
 
     public JobStatic(int id, String name, int grade) {

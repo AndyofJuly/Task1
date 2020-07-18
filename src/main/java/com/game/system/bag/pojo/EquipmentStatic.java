@@ -7,25 +7,25 @@ package com.game.system.bag.pojo;
  */
 public class EquipmentStatic {
 
-    // 装备id
+    /** 装备id*/
     private int id;
-    // 装备名
+    /** 装备名*/
     private String name;
-    // 装备攻击力
+    /** 装备攻击力*/
     private int atk;
-    // 装备耐久
+    /** 装备耐久*/
     private int durability;
-    // 装备价格
+    /** 装备价格*/
     private int price;
-    // 装备等级
+    /** 装备等级*/
     private int level;
-    // 装备血量增益
+    /** 装备血量增益*/
     private int addHp;
-    // 装备蓝量增益
+    /** 装备蓝量增益*/
     private int addMp;
-    // 装备类别；1为武器；2为手环；3为项链；4为身体；5为帽子；6为鞋子
+    /** 装备类别；1为武器；2为手环；3为项链；4为身体；5为帽子；6为鞋子*/
     private int type;
-    // 装备稀有度：0为普通武器；1为极品武器
+    /** 装备稀有度：0为普通武器；1为极品武器*/
     private int quality;
 
     public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type,int quality) {

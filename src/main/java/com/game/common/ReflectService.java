@@ -12,8 +12,14 @@ import java.util.Set;
  * @create 2020/5/18 18:10
  */
 public class ReflectService {
+
     private ResponseInf object;
-    //反射
+
+    /**
+     * 反射
+     * @param inputString 经过服务端处理的字符串命令
+     * @return 封装的消息及对象
+     */
     public ResponseInf getMethod(String inputString) {
         Reflections reflections = new Reflections("com.game.system");
         //获取带Service注解的类

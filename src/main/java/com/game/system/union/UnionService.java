@@ -1,7 +1,8 @@
 package com.game.system.union;
 
-import com.game.system.achievement.observer.FsJoinUnionOB;
-import com.game.system.achievement.subject.FsJoinUnionSB;
+import com.game.netty.server.ServerHandler;
+import com.game.system.achievement.observer.FsJoinUnionOb;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
@@ -10,89 +11,83 @@ import com.game.system.union.pojo.Union;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * 公会
+ * 公会模块的业务逻辑处理
  * @Author andy
  * @create 2020/6/28 14:27
  */
 public class UnionService {
-    //unionId和对应的union
+
+    /** 所有的公会集合，key为unionId，value为Union */
     public static HashMap<Integer,Union> unionHashMap = new HashMap<>();
+
     private PackageService packageService = new PackageService();
-    //IAchieveService iAchieveService = new AchieveServiceImpl();
 
     /**
-     * 创建公会
+     * 创建公会，创建者获得最高权限-1，职务为会长
      * @param unionName 公会名
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //创建公会
     public String createUnion(String unionName,Role role){
-        //角色权限为1，名字为会长，拥有所有权限
         int unionId = AssistService.generateUnionId();
         Union union = new Union(unionId,unionName);
         union.getRoleJobHashMap().put(role.getId(),1);
         role.setUnionId(unionId);
         unionHashMap.put(unionId,union);
-        //iAchieveService.ifFirstJoinUnion(role);
-        FsJoinUnionSB.notifyObservers(Const.achieve.TASK_FIRST_UNION,role);
-        return unionId+"";
+        Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+        return String.valueOf(unionId);
     }
 
     /**
      * 解散公会
      * @param unionId 公会id
      * @param role 角色
+     * @return 信息提示
      */
-    //解散公会
-    public void disbandUnion(int unionId,Role role){
-        //条件该公会是角色自己的公会，且权限为1
+    public String disbandUnion(int unionId,Role role){
         int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(role.getId());
         int grade = JobResource.getJobStaticHashMap().get(jobId).getGrade();
         if(grade!= Const.union.FIRST_GRADE || role.getUnionId()!=unionId){
-            System.out.println("你没有该权限");
+            return "你没有该权限";
         }
-        //该union中的所有角色，其unionId设为空
+        ServerHandler.notifyGroupRoles(getRoles(unionId),role.getName()+"已解散工会");
         for(Integer roleId : unionHashMap.get(unionId).getRoleJobHashMap().keySet()){
             Role role1 = GlobalInfo.getRoleHashMap().get(roleId);
             role1.setUnionId(0);
         }
-        //清理公会列表中该公会remove
         unionHashMap.remove(unionId);
+        return "解散公会成功";
     }
 
     /**
      * 对某位公会成员任职
      * @param unionId 公会id
      * @param memberId 成员id
-     * @param authorityLevel 职务和权限等级
+     * @param authorityLevel 职务对应的权限等级
      * @param role 角色
+     * @return 信息提示
      */
-    //任职
-    public void appointCareer(int unionId,int memberId,int authorityLevel,Role role){
-        //查看执行此操作的人是否有该权限，是否为该公会的人，设置的权限时否越级
+    public String appointCareer(int unionId,int memberId,int authorityLevel,Role role){
         int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(role.getId());
         int grade = JobResource.getJobStaticHashMap().get(jobId).getGrade();
         if(grade >Const.union.SECOND_GRADE || role.getUnionId()!=unionId || grade>=authorityLevel){
-            System.out.println("你没有该权限");
+            return"你没有该权限";
         }
-        //给目标重新设置权限级别-包括公会集合和自身属性修改
-        Role member = GlobalInfo.getRoleHashMap().get(memberId);
         Union union = unionHashMap.get(unionId);
         union.getRoleJobHashMap().put(memberId,authorityLevel);
+        return "已任命该角色";
     }
 
     /**
-     * 申请参加公会
+     * 申请参加公会，放入申请列表中
      * @param unionId 公会id
      * @param roleId 角色id
      */
-    //入会申请
     public void applyFor(int unionId,int roleId){
-        //放入申请列表中（还可以通知所有包含权限的人，告知有申请）
         unionHashMap.get(unionId).getRoleList().add(roleId);
     }
 
@@ -101,21 +96,22 @@ public class UnionService {
      * @param unionId 公会id
      * @param applyRoleId 申请人id
      * @param role 角色
+     * @return 信息提示
      */
-    //批准入会申请
-    public void agreeApply(int unionId,Integer applyRoleId,Role role){
-        //查看执行此操作的人是否有该权限，是否为该公会的人，设置的权限时否越级
-        //unionHashMap.get(unionId).getRoleJobHashMap().put(role.getId(),1);
+    public String agreeApply(int unionId,Integer applyRoleId,Role role){
         int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(role.getId());
         int grade = JobResource.getJobStaticHashMap().get(jobId).getGrade();
         if(grade >Const.union.THRID_GRADE|| role.getUnionId()!=unionId){
-            System.out.println("你没有该权限");
+            return "你没有该权限";
         }
         unionHashMap.get(unionId).getRoleList().remove(applyRoleId);
         Role member = GlobalInfo.getRoleHashMap().get(applyRoleId);
         member.setUnionId(unionId);
-        //iAchieveService.ifFirstJoinUnion(member);
-        FsJoinUnionSB.notifyObservers(Const.achieve.TASK_FIRST_UNION,role);
+
+        Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+
+        ServerHandler.notifyGroupRoles(getRoles(unionId),role.getName()+"已批准"+member.getName()+"入会");
+        return "已批准该角色入会";
     }
 
     /**
@@ -123,9 +119,9 @@ public class UnionService {
      * @param unionId 公会id
      * @param memberId 成员id
      * @param role 角色
+     * @return 信息提示
      */
-    //开除
-    public void fireMember(int unionId,Integer memberId,Role role){
+    public String fireMember(int unionId,Integer memberId,Role role){
         //查看执行此操作的人是否有该权限，是否为该公会的人，设置的权限时否越级
         int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(role.getId());
         int grade = JobResource.getJobStaticHashMap().get(jobId).getGrade();
@@ -133,45 +129,57 @@ public class UnionService {
         int memberJobId = unionHashMap.get(unionId).getRoleJobHashMap().get(memberId);
         int memberGrade = JobResource.getJobStaticHashMap().get(memberJobId).getGrade();
         if(grade >Const.union.THRID_GRADE|| role.getUnionId()!=unionId || grade>=memberGrade){
-            System.out.println("你没有该权限");
+            return "你没有该权限";
         }
-        //角色的union设为空，公会集合中移除该角色
         member.setUnionId(0);
         unionHashMap.get(unionId).getRoleJobHashMap().remove(memberId);
+
+        ServerHandler.notifyGroupRoles(getRoles(unionId),role.getName()+"已开除"+member.getName());
+        return "已开除该角色";
+    }
+
+    /** 查看权限，待做，可以对前面共同代码进行抽取 */
+    private void checkAuthority(){
+
     }
 
     /**
      * 捐款给公会
      * @param unionId 公会id
-     * @param money 捐赠数量
+     * @param money 捐赠金钱
      * @param role 角色
+     * @return 信息提示
      */
-    //捐款-钱
-    public void donateMoney(int unionId,int money,Role role){
-        //角色扣钱
-        role.setMoney(role.getMoney()-money);
-        //公会仓库加钱
+    public String donateMoney(int unionId,int money,Role role){
+        if(!packageService.lostMoney(money,role)){
+            return "你没有这么多钱";
+        }
         int sumMoney = unionHashMap.get(unionId).getMoney()+money;
         unionHashMap.get(unionId).setMoney(sumMoney);
+        return "已捐赠银两";
     }
 
     /**
      * 捐赠物品
      * @param unionId 公会id
-     * @param goodsId 物品id
+     * @param goodsId 捐赠物品id
+     * @param number 捐赠数量
      * @param role 角色
+     * @return 信息提示
      */
-    //捐款-道具
-    public void donateGoods(int unionId,int goodsId,int number,Role role){
-        //角色扣道具（可以抽象为一个方法，扣减时进行下限判断）
-        packageService.getFromPackage(goodsId,number,role);
-        //公会仓库加道具
+    public String donateGoods(int unionId,int goodsId,int number,Role role){
+        if(!packageService.getFromPackage(goodsId,number,role)){
+            return "背包中没有这么多物品";
+        }
+
         if(unionHashMap.get(unionId).getGoodsHashMap().get(goodsId)!=null){
             int num = unionHashMap.get(unionId).getGoodsHashMap().get(goodsId)+number;
             unionHashMap.get(unionId).getGoodsHashMap().put(goodsId,num);
-        }else {  //没有该物品，直接放入仓库
+        }else {
             unionHashMap.get(unionId).getGoodsHashMap().put(goodsId,number);
         }
+
+        return "已捐赠该道具";
     }
 
     /**
@@ -179,35 +187,53 @@ public class UnionService {
      * @param unionId 公会id
      * @param goodsId 物品id
      * @param role 角色
+     * @return 信息提示
      */
-    //获取仓库物品-加入到自己背包中-可扩展为任意数量
-    public void getGoods(int unionId,int goodsId,Role role){
+    public String getGoods(int unionId,int goodsId,Role role){
         packageService.putIntoPackage(goodsId,1,role);
         int num = unionHashMap.get(unionId).getGoodsHashMap().get(goodsId)-1;
+        if(num<0){
+            return "仓库中没有该物品";
+        }
         unionHashMap.get(unionId).getGoodsHashMap().put(goodsId,num);
+        return "已拿取该道具";
     }
 
     /**
-     * 获得公会详细信息
+     * 获得公会详细信息，公会成员列表和职务
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //获取公会成员列表和职务
     public String getUnionInfo(Role role){
         int unionId = role.getUnionId();
-        String list = "";
+        StringBuilder list = new StringBuilder();
         if(unionId==0){
             return "null";
         }
         for(Integer memberId : unionHashMap.get(unionId).getRoleJobHashMap().keySet()){
             Role member = GlobalInfo.getRoleHashMap().get(memberId);
             int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(memberId);
-            list+="角色："+member.getName()+"，职务："+JobResource.getJobStaticHashMap().get(jobId).getName()+"； ";
+            list.append("角色：").append(member.getName()).append("，职务：").append(JobResource.getJobStaticHashMap().get(jobId).getName()).append("； ");
         }
-        return list;
+        return list.toString();
     }
 
-    static {
-        FsJoinUnionSB.registerObserver(new FsJoinUnionOB());
+    /**
+     * 获得公会成员集合
+     * @param unionId 公会id
+     * @return 公会成员集合
+     */
+    private ArrayList<Role> getRoles(int unionId){
+        ArrayList<Role> roles = new ArrayList<>();
+        for(Integer memberId : unionHashMap.get(unionId).getRoleJobHashMap().keySet()){
+            roles.add(GlobalInfo.getRoleHashMap().get(memberId));
+        }
+        return roles;
     }
+
+/*    static {
+        FsJoinUnionSB.registerObserver(new FsJoinUnionOb());
+    }*/
+
+    FsJoinUnionOb fsJoinUnionOb = new FsJoinUnionOb();
 }

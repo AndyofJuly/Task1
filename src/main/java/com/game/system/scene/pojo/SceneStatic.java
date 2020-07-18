@@ -6,15 +6,15 @@ package com.game.system.scene.pojo;
  * @create 2020/5/20 20:47
  */
 public class SceneStatic {
-    // 场景id
+    /** 场景id */
     private int id;
-    // 场景名
+    /** 场景名 */
     private String name;
-    // 场景间的关系
+    /** 场景间的关系 */
     private int[] sceneRelation;
-    // 场景包含的NPC-可以改为int
+    /** 场景包含的NPC */
     private int[] npcId;
-    // 场景包含的怪物
+    /** 场景包含的怪物 */
     private int[] monsterId;
 
     public SceneStatic(int id, String name, int[] sceneRelation, int[] npcId, int[] monsterId) {

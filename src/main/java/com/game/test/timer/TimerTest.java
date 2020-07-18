@@ -11,7 +11,6 @@ public class TimerTest {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println("hello");
         }*/
     }
 

@@ -12,6 +12,7 @@ import com.game.common.MyAnnontation;
 import java.util.ArrayList;
 
 /**
+ * 技能模块调用方法入口
  * @Author andy
  * @create 2020/6/15 15:23
  */
@@ -21,13 +22,13 @@ public class SkillController {
     private ArrayList<Integer> intList = RoleController.getIntList();
     private SkillService skillService = new SkillService();
 
-    //显示当前自己的职业有什么技能
+    /** 获得当前自己拥有的技能，使用方式：skillList */
     @MyAnnontation(MethodName = "skillList")
     public ResponseInf getSkillList(){
         return ResponseInf.setResponse(skillService.getSkillInfo(getRole()),getRole());
     }
 
-    //技能攻击，使用举例：skill skillName monsterName ：here修改成skillId,monsterId
+    /** 技能攻击，使用方式：skill skillId monsterId */
     @MyAnnontation(MethodName = "skill")
     public ResponseInf useSkillAttack(){
         String key = AssistService.checkMonsterId(intList.get(1),getRole());
@@ -35,21 +36,21 @@ public class SkillController {
         return ResponseInf.setResponse(msg,getRole());
     }
 
-    //嘲讽技能测试，使用举例：taunt
+    /** 嘲讽技能测试，使用方式：taunt */
     @MyAnnontation(MethodName = "taunt")
     public ResponseInf tauntSkill(){
         String result = skillService.tauntSkill(getRole());
         return ResponseInf.setResponse(result,getRole());
     }
 
-    //群伤技能测试，使用举例：groupAtk skillName 默认对当前场景的所有怪物造成群伤，可扩展：传参为怪物集合：here修改成skillId
+    /** 群伤技能测试，使用方式：groupAtk skillId */
     @MyAnnontation(MethodName = "groupAtk")
     public ResponseInf groupAtkSkill(){
         String result = skillService.groupAtkSkill(intList.get(0),getRole());
         return ResponseInf.setResponse(result,getRole());
     }
 
-    //群回复技能测试，使用举例：groupHile skillName 默认对当前场景的所有角色，可扩展：传参为角色集合：here修改成skillId
+    /** 群回复技能测试，使用方式：groupCure skillId */
     @MyAnnontation(MethodName = "groupCure")
     public ResponseInf groupCureSkill(){
         String result = skillService.groupCureSkill(intList.get(0),getRole());
@@ -57,6 +58,7 @@ public class SkillController {
     }
 
     //召唤技能测试，使用举例：summon monsterName ：here修改成,monsterId
+    /** 用户注册，使用方式：register userName password */
     @MyAnnontation(MethodName = "summon")
     public ResponseInf summonSkill(){
         String result = skillService.summonSkill(intList.get(0),getRole());
@@ -71,12 +73,12 @@ public class SkillController {
                  技能时间结束，此时血量上限重置为原上限，如果角色当前血量大于原上限，则此时满血；角色当前血量小于原上限，就取该血量作为当前血量。
     */
 
-    //获得角色，适用于输入参数最后一位为roleId的情况
+    /** 根据输入获得角色，输入参数最后一位为roleId */
     private Role getRole(){
         return GlobalInfo.getRoleHashMap().get(intList.get(intList.size()-1));
     }
 
-    //普通攻击 atk monsterId (role)
+    /** 普通攻击，使用方式：atk monsterId  */
     @MyAnnontation(MethodName = "atk")
     public ResponseInf normalAttack(){
         String key = AssistService.checkMonsterId(intList.get(0),getRole());

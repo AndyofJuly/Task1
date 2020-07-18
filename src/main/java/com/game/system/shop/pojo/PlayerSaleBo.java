@@ -7,11 +7,11 @@ package com.game.system.shop.pojo;
  */
 public class PlayerSaleBo {
 
-    //物品id
+    /** 物品id */
     private int goodsId;
-    //价格
+    /** 价格 */
     private int price;
-    //数量
+    /** 数量 */
     private int num;
 
     public PlayerSaleBo(int goodsId, int price, int num) {

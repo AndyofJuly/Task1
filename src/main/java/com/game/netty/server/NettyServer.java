@@ -30,9 +30,8 @@ public class NettyServer {
     private int port = 7000;
 
     public void run() throws InterruptedException {
-        //创建bossGroup和WrokerGroup
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup();//默认cpu核数乘以2个NioEventLoop
+        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup)
@@ -41,9 +40,8 @@ public class NettyServer {
                     .childOption(ChannelOption.SO_KEEPALIVE,true)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                        protected void initChannel(SocketChannel socketChannel) {
                             ChannelPipeline pipeline = socketChannel.pipeline();
-                            //向pipeline加入一个解码器
                             //解码器，通过Google Protocol Buffers序列化框架动态的切割接收到的ByteBuf
                             pipeline.addLast(new ProtobufVarint32FrameDecoder());
                             //服务器端接收的是客户端RequestUser对象，所以这边将接收对象进行解码生产实列
@@ -57,7 +55,8 @@ public class NettyServer {
                         }
                     });
             System.out.println("Netty服务器启动");
-            new InitGame();//游戏初始化
+            //游戏初始化
+            new InitGame();
             ChannelFuture chanelFuture = bootstrap.bind(port).sync();
             //监听关闭事件
             chanelFuture.channel().closeFuture().sync();

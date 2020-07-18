@@ -1,5 +1,6 @@
 package com.game.system.role;
 
+import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.*;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.achievement.subject.*;
@@ -11,42 +12,39 @@ import com.game.system.scene.pojo.*;
 import com.game.system.bag.pojo.EquipmentStatic;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
-import com.game.system.role.pojo.CareerResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.skill.SkillService;
 import com.game.system.skill.pojo.SkillResource;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashMap;
 
 
 /**
- * 角色一些功能的方法实现
+ * 角色模块的业务逻辑处理
  * @Author andy
  * @create 2020/5/13 18:18
  */
 
 public class RoleService {
 
-    //private IAchieveService iAchieveService = new AchieveServiceImpl();
-    private PackageService packageService = new PackageService();
+    private final PackageService packageService = new PackageService();
 
     /**
-     * 移动切换场景
+     * 移动切换场景-临时场景考虑在内
      * @param lastSceneId 目标场景id
      * @param role 角色
-     * @return boolean
+     * @return 是否成功移动
      */
-    //角色移动&场景切换，此处moveTarget为外部名字 tempId为动态随机id，角色所在当前场景id为临时场景id
     public boolean moveTo(int lastSceneId, Role role){
-        int scenesId = GlobalInfo.getScenes().get(role.getNowScenesId()).getSceneId();//获得内部id
+        int scenesId = GlobalInfo.getScenes().get(role.getNowScenesId()).getSceneId();
         String nowPlace = SceneResource.getScenesStatics().get(scenesId).getName();
-
-        //将当前场景坐标与要移动的场景的坐标进行对比，此处arr为位置关系数组
         int[] arr = SceneResource.getPlaces().get(AssistService.checkSceneId(nowPlace));
+        //判断是否能移动到目标场景
         boolean result = false;
         for (int value : arr) {
             int sceneId = GlobalInfo.getScenes().get(lastSceneId).getSceneId();
-            String innTarget = SceneResource.getScenesStatics().get(sceneId).getName();//根据动态id找到静态名
+            String innTarget = SceneResource.getScenesStatics().get(sceneId).getName();
             if (innTarget.equals(SceneResource.getScenesStatics().get(value).getName())){
                 result = true;
                 break;
@@ -60,21 +58,18 @@ public class RoleService {
     }
 
     /**
-     * 移动切换场景
+     * 移动切换场景，或传送至某地
      * @param lastSceneId 目标场景id
      * @param role 角色
      */
-    //传送至某地
     public void sendToScene(int lastSceneId, Role role){
         Grid before = GlobalInfo.getScenes().get(role.getNowScenesId()).getGridHashMap().get(role.getCurGridId());
         before.getGridRoleMap().remove(role.getId());
         Grid after = GlobalInfo.getScenes().get(lastSceneId).getGridHashMap().get(role.getCurGridId());
         after.getGridRoleMap().put(role.getId(),role);
 
-        //如果可以移动成功，当前场景剔除该角色，目标场景加入该角色
         GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll().remove(role);
         GlobalInfo.getScenes().get(lastSceneId).getRoleAll().add(role);
-
         role.setNowScenesId(lastSceneId);
 
         if(role.getBaby()!=null){
@@ -83,9 +78,9 @@ public class RoleService {
     }
 
     /**
-     * 获取并设置场景信息，包括场景名、角色、怪物和npc集合
+     * 获取并设置场景所有实体，包括场景名、角色、怪物和npc集合
      * @param sceneId 场景id
-     * @return SceneDetailBo
+     * @return 目标场景中的所有实体对象
      */
     private SceneDetailBo placeDetail(int sceneId){
         SceneDetailBo sceneDetailBo = new SceneDetailBo();
@@ -98,30 +93,31 @@ public class RoleService {
     }
 
     /**
-     * 维修装备
+     * 维修装备-free
      * @param equipmentId 装备id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //修理装备
     public String repairEquipment(int equipmentId,Role role){
+        if(!role.getEquipmentHashMap().containsKey(equipmentId)){
+            return "没有此装备";
+        }
         Equipment equipment = role.getEquipmentHashMap().get(equipmentId);
         equipment.setDura(AssistService.getEquipmentDura(equipmentId));
         return Const.service.REPAIR_SUCCESS +equipment.getDura();
     }
 
     /**
-     * 穿戴装备
+     * 穿戴装备-从背包里拿出来穿戴-身上已有装备与背包互换
      * @param equipmentId 装备id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //穿戴装备-从背包里拿出来穿戴
     public String putOnEquipment(int equipmentId,Role role){
         int atk = role.getAtk();
         atk = atk + AssistService.getEquipmentAtk(equipmentId);
         role.setAtk(atk);
-
+        //判断装备类型，根据身上是否穿戴，与背包进行交换
         EquipmentStatic equipmentInfo = EquipmentResource.getEquipmentStaticHashMap().get(equipmentId);
         boolean alreadyWear = false;
         int wearEquipId = 0;
@@ -131,12 +127,12 @@ public class RoleService {
                 wearEquipId=selfEquipId;
             }
         }
-        Equipment equipment1 = new Equipment(equipmentId,equipmentInfo.getDurability());
-        role.getEquipmentHashMap().put(equipmentId,equipment1);
+        Equipment equipment1 = new Equipment(equipmentId);
         packageService.getFromPackage(equipmentId,1,role);
-        BodyEquipLvSB.notifyObservers(0,role);
+        role.getEquipmentHashMap().put(equipmentId,equipment1);
 
-        //类型相同，背包与身上装备互换,类型不同-直接穿无需返回给背包
+        Subject.notifyObservers(0,role,bodyEquipLvOb);
+
         if(alreadyWear){
             packageService.putIntoPackage(wearEquipId,1,role);
         }
@@ -144,19 +140,32 @@ public class RoleService {
     }
 
     /**
+     * 获得武器的耐久
+     * @param role 角色
+     * @return 信息提示
+     */
+    public String getWeaponDura(Role role){
+        for(Integer selfEquipId : role.getEquipmentHashMap().keySet()){
+            if(EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType()==1){
+                return "当前武器耐久："+role.getEquipmentHashMap().get(selfEquipId).getDura();
+            }
+        }
+        return "没有佩戴武器！";
+    }
+
+
+    /**
      * 脱下装备
      * @param equipmentId 装备id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //卸下装备
     public String takeOffEquipment(int equipmentId,Role role){
         int atk = role.getAtk();
         atk = atk - AssistService.getEquipmentAtk(equipmentId);
         role.setAtk(atk);
         role.getEquipmentHashMap().remove(equipmentId);
         packageService.putIntoPackage(equipmentId,1,role);
-        //role.getMyPackageBo().getGoodsHashMap().put(equipmentId,1);
         return Const.service.TAKEOFF_SUCCESS;
     }
 
@@ -164,40 +173,38 @@ public class RoleService {
      * 使用药品
      * @param potionId 药品id
      * @param role 角色
-     * @return boolean
+     * @return 是否成功使用
      */
-    //使用药品
     public boolean useDrug(int potionId,Role role){
         int hp = role.getHp();
         int mp = role.getMp();
-        if(role.getMyPackageBo().getGoodsHashMap().get(potionId)<=0){
+        if(!packageService.getFromPackage(potionId,1,role)){
             return false;
-        }else {
-            packageService.getFromPackage(potionId,1,role);
         }
         role.setHp(hp + AssistService.getPotionAddHp(potionId));
         role.setMp(mp + AssistService.getPotionAddMp(potionId));
-        int maxHp = CareerResource.getCareerStaticHashMap().get(Const.CAREER_ID).getHp();
-        int maxMp = CareerResource.getCareerStaticHashMap().get(Const.CAREER_ID).getMp();
-        if(role.getHp()>=maxHp || role.getMp()>=maxMp){
-            role.setHp(maxHp);
-            role.setMp(maxMp);
+        if(role.getHp()>=role.getMaxHp()){
+            role.setHp(role.getMaxHp());
+        }
+        if(role.getMp()>=role.getMaxMp()){
+            role.setMp(role.getMaxMp());
         }
         return true;
     }
 
     /**
-     * 与玩家pk
+     * 与玩家pk-任意同场景相同视野下可以发动，效果与技能和普攻相同
      * @param skillId 技能id
      * @param targetRoleId pk角色id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //选择：任意同场景可以pk玩家-假设可随意使用技能攻击
     public String pkPlayer (int skillId,int targetRoleId, Role role){
         Role enemy = GlobalInfo.getRoleHashMap().get(targetRoleId);
-        //检查距离是否足够
-        if(!AssistService.checkDistance(role,enemy)){
+        if(enemy.getNowScenesId()!=role.getNowScenesId()){
+            return "不再同一场景，无法pk";
+        }
+        if(AssistService.isNotInView(role,enemy)){
             return Const.Fight.DISTACNE_LACK;
         }
         String result = new SkillService().skillCommon(skillId,role);
@@ -207,12 +214,18 @@ public class RoleService {
         return pkAffect(skillId,enemy,role);
     }
 
-    //攻击时的双方的状态变化
+    /**
+     * pk攻击时的双方的状态处理
+     * @param skillId 技能id
+     * @param enemy pk的对象
+     * @param role 角色
+     * @return 信息提示
+     */
     private String pkAffect(int skillId,Role enemy,Role role){
         int hp = enemy.getHp();
         int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
         int weaponBuff = 0;
-        if(role.getEquipmentHashMap()!=null){//有装备，加攻击buff
+        if(role.getEquipmentHashMap()!=null){
             weaponBuff=Const.WEAPON_BUFF;
         }
         hp=hp-role.getAtk()-weaponBuff-skillHarm;
@@ -220,30 +233,34 @@ public class RoleService {
         if(hp<=0){
             role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
             packageService.addMoney(Const.PK_GET_LOST,role);
-            packageService.lostMoney(Const.PK_GET_LOST,enemy);
-            FsPkSuccessSB.notifyObservers(Const.achieve.TASK_PK_SUCCESS,role);
+            if(!packageService.lostMoney(Const.PK_GET_LOST,enemy)){
+                enemy.setMoney(0);
+            }
+
+            Subject.notifyObservers(Const.achieve.TASK_PK_SUCCESS,role,fsPkSuccessOb);
             return Const.Fight.PK_SUCCESS;
         }
 
+        ServerHandler.notifyRole(enemy.getId(),"你遭到pk，"+role.getName()+"向你发起了攻击",
+                role.getId(),"你向对方发起了pk，攻击了对方");
         enemy.setHp(hp);
         return Const.Fight.TARGET_HP+hp;
     }
 
     /**
-     * 场景内走路移动
+     * 场景内移动到目标位置。约定：一次最多跨越一个格子，左右移动距离差不超过16，上下距离差不超过8；且每次移动只能改变其中一个坐标的位置；
      * @param x 水平方向移动距离
      * @param y 垂直方向移动距离
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //输入坐标，走动到目标位置；
     public String walkTo(int x,int y,Role role){
         int oldX = role.getPosition()[0];
         int oldY = role.getPosition()[1];
-        //一次只能移动一个格子，左右距离差不超过16，上下距离差不超过8；只能改变其中一个坐标的位置；
-        if(Math.abs(oldX-x)>=Const.GRID_LENGTH
-                || Math.abs(oldY-y)>=Const.GRID_WIDTH
-                || (oldX-x!=0 && oldY-y!=0)){
+        boolean xMove = Math.abs(oldX-x)>=Const.GRID_LENGTH;
+        boolean yMove = Math.abs(oldY-y)>=Const.GRID_WIDTH;
+        boolean xyMove = (oldX-x!=0 && oldY-y!=0);
+        if(xMove || yMove || xyMove){
             return "can not move";
         }
         refleshGrid(x,y,role);
@@ -252,7 +269,12 @@ public class RoleService {
         return "["+role.getPosition()[0]+","+role.getPosition()[1]+"]";
     }
 
-    //对移动前后的网格进行数据更新，包括移动前后网格中实体的增删，先考虑角色，怪物和NPC放在场景模块
+    /**
+     * 对移动前后的小网格进行数据更新，包括移动前后小网格中的实体进行增删和更新
+     * @param x 水平方向移动距离
+     * @param y 垂直方向移动距离
+     * @param role 角色
+     */
     private void refleshGrid(int x,int y,Role role){
         int oldGridId = getGridId(role.getPosition()[0],role.getPosition()[1]);
         int newGridId = getGridId(x,y);
@@ -263,123 +285,117 @@ public class RoleService {
         role.setCurGridId(newGridId);
     }
 
+    /**
+     * 根据坐标位置计算小网格id
+     * @param x 水平方向移动距离
+     * @param y 垂直方向移动距离
+     * @return 小网格id
+     */
     public static int getGridId(int x,int y){
         return x/Const.GRID_LENGTH+1+y/Const.GRID_WIDTH*Const.GRID_WIDTH;
     }
 
-    //封装成九宫格
-    private GridBo getGridVo(Role role){
+    /**
+     * 将角色周围的九个小网格封装成一个九宫格视野对象
+     * @param role 角色
+     * @return 九个小网格组成的视野对象
+     */
+    private ViewGridBo getGridVo(Role role){
         int curGridId = role.getCurGridId();
         HashMap<Integer,Grid> viewGridHashMap = new HashMap<>();
-        role.getGridBo().getGridRoleMap().clear();//清理上一次留存下来的
-        role.getGridBo().getGridMonsterMap().clear();
-        role.getGridBo().getGridNpcMap().clear();
-        //三行三列，每个格子进行封装
+        //清理和更新
+        role.getViewGridBo().getGridRoleMap().clear();
+        role.getViewGridBo().getGridMonsterMap().clear();
+        role.getViewGridBo().getGridNpcMap().clear();
+        //角色周围的九个网格，对三行三列的每个格子进行统计
         for(int k=0;k<3;k++){
             for(int i=curGridId-Const.GRID_WIDTH-1;i<=curGridId-Const.GRID_WIDTH+1;i++){
                 Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
                 viewGridHashMap.put(i,scene.getGridHashMap().get(i));
                 for(Integer key : viewGridHashMap.get(i).getGridRoleMap().keySet()){
-                    role.getGridBo().getGridRoleMap().put(key, GlobalInfo.getRoleHashMap().get(key));
+                    role.getViewGridBo().getGridRoleMap().put(key, GlobalInfo.getRoleHashMap().get(key));
                 }
                 for(String key : viewGridHashMap.get(i).getGridMonsterMap().keySet()){
-                    System.out.println("怪物个数:"+viewGridHashMap.get(i).getGridMonsterMap().size());
                     Monster monster = scene.getMonsterHashMap().get(key);
-                    role.getGridBo().getGridMonsterMap().put(key,monster);
+                    role.getViewGridBo().getGridMonsterMap().put(key,monster);
                 }
                 for(Integer key : viewGridHashMap.get(i).getGridNpcMap().keySet()){
-                    System.out.println("NPC个数:"+viewGridHashMap.get(i).getGridNpcMap().size());
                     Npc npc = scene.getNpcHashMap().get(key);
-                    role.getGridBo().getGridNpcMap().put(key,npc);
+                    role.getViewGridBo().getGridNpcMap().put(key,npc);
                 }
             }
             curGridId+=Const.GRID_WIDTH;
         }
-        return role.getGridBo();
+        return role.getViewGridBo();
     }
 
     /**
-     * 申请添加好友
-     * @param friendId 好友id
+     * 添加好友申请
+     * @param friendId 申请目标id
      * @param role 角色
      */
-    //添加好友申请
     public void askFriend(int friendId,Role role){
+        ServerHandler.notifyRole(friendId,"收到好友添加申请",role.getId(),"请求已发送");
         role.getFriendBo().getApplyIdList().add(friendId);
     }
 
-    //可以增加获取好友申请列表，查看列表后可以执行以下的同意添加方法
-
     /**
-     * 接受好友申请
-     * @param friendId 好友id
+     * 同意添加好友
+     * @param friendId 申请人id
      * @param role 角色
      */
-    //同意添加好友
     public void addFriend(Integer friendId,Role role){
         role.getFriendBo().getFriendIdList().add(role.getId());
         role.getFriendBo().getApplyIdList().remove(friendId);
-        //iAchieveService.countAddFriend(FriendId,role);
-        FriendSB.notifyObservers(0,role);
+        Subject.notifyObservers(0,role,friendOb);
         Role friendRole = GlobalInfo.getRoleHashMap().get(friendId);
-        FriendSB.notifyObservers(0,friendRole);
+        Subject.notifyObservers(0,friendRole,friendOb);
+        ServerHandler.notifyRole(friendId,role.getName()+"已同意你的好友申请",role.getId(),"已添加好友");
     }
 
     /**
-     * 升级-测试用
+     * 升级-测试
      * @param level 等级
      * @param role 角色
      */
-    //升级
     public void levelUp(int level,Role role){
         role.setLevel(level);
-        //iAchieveService.countLevel(role);
-        LevelSB.notifyObservers(0,role);
+        Subject.notifyObservers(0,role,levelOb);
     }
 
-/*    *//**
-     * 获取当前成就信息
-     * @param role 角色
-     * @return String
-     *//*
-    public String getAchievment(Role role){
-        return getAchievmentList(role);
-    }*/
-
     /**
-     * 获取背包物品
+     * 获取背包物品信息-简略
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getPackage(Role role){
-        String list="";
+        StringBuilder list= new StringBuilder();
         for(Integer goodsId : role.getMyPackageBo().getGoodsHashMap().keySet()){
             if(role.getMyPackageBo().getGoodsHashMap().get(goodsId)>0){
-                list+=goodsId+" ";
+                list.append(goodsId).append(" ");
             }
         }
-        return list;
+        return list.toString();
     }
 
     /**
-     * 获得身上装备信息
+     * 获得身上装备信息-简略
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getBodyEquip(Role role){
-        String list="";
+        StringBuilder list= new StringBuilder();
         for(Integer equipId : role.getEquipmentHashMap().keySet()){
-            list+=equipId+" ";
+            list.append(equipId).append(" ");
         }
-        return list;
+        return list.toString();
     }
 
     /**
-     * 打印场景详细信息
+     * 打印场景详细信息，打印的怪物id为静态资源id，而非其UUID
      * @param sceneId 场景id
-     * @return String
+     * @return 信息提示
      */
-    //打印场景信息
     public String printSceneDetail(int sceneId){
         SceneDetailBo sceneDetailBo = placeDetail(sceneId);
         StringBuilder stringBuilder = new StringBuilder("地点："+ sceneDetailBo.getSceneName()+"\n"+"角色：");
@@ -397,59 +413,41 @@ public class RoleService {
             if(sceneDetailBo.getMonsterHashMap().get(key).getAlive()==1){
                 Monster monster = sceneDetailBo.getMonsterHashMap().get(key);
                 int hp = sceneDetailBo.getMonsterHashMap().get(key).getMonsterHp();
-                stringBuilder.append(monster.getMonsterName()+"-"+monster.getMonsterId()+"-血量："+hp).append(" ");//为了观察方便，打印出来的是静态资源id
+                stringBuilder.append(monster.getMonsterName()).append("-").append(monster.getMonsterId()).append("-血量：").append(hp).append(" ");
             }
         }
         return stringBuilder.toString();
     }
 
     /**
-     * 获得当前视野信息
+     * 获得当前视野信息，包括其他角色、怪物和NPC
      * @param myRole 角色
-     * @return String
+     * @return 信息提示
      */
-    //打印视野信息-角色集合
     public String printViewDetail(Role myRole){
-        GridBo gridBo = getGridVo(myRole);
+        ViewGridBo viewGridBo = getGridVo(myRole);
         StringBuilder stringBuilder = new StringBuilder("角色：");
-        for(Integer key : gridBo.getGridRoleMap().keySet()){
+        for(Integer key : viewGridBo.getGridRoleMap().keySet()){
             Role role = GlobalInfo.getRoleHashMap().get(key);
-            stringBuilder.append(role.getName()+" 位置："+
-                    role.getPosition()[0]+","+
-                    role.getPosition()[1]+" 网格id："+
-                    role.getCurGridId()+"；");
+            stringBuilder.append(role.getName()).
+                    append(" 位置：").append(role.getPosition()[0]).append(",").append(role.getPosition()[1]).
+                    append(" 网格id：").append(role.getCurGridId()).append("；");
         }
         stringBuilder.append("\n怪物：");
-        for(String key : gridBo.getGridMonsterMap().keySet()){
-            Monster monster = gridBo.getGridMonsterMap().get(key);
-            stringBuilder.append(monster.getMonsterName()+"-"+monster.getMonsterId()+"-位置："
-                    +monster.getPosition()[0]+","
-                    +monster.getPosition()[1]+"-血量："
-                    +monster.getMonsterHp()+"； ");
+        for(String key : viewGridBo.getGridMonsterMap().keySet()){
+            Monster monster = viewGridBo.getGridMonsterMap().get(key);
+            stringBuilder.append(monster.getMonsterName()).append("-").
+                    append(monster.getMonsterId()).append("-位置：").append(monster.getPosition()[0]).
+                    append(",").append(monster.getPosition()[1]).append("-血量：").append(monster.getMonsterHp()).append("； ");
         }
         stringBuilder.append("\nNPC：");
-        for(Integer key : gridBo.getGridNpcMap().keySet()){
-            Npc npc = gridBo.getGridNpcMap().get(key);
-            stringBuilder.append(npc.getName()+"-"+npc.getNpcId()+"-位置："
-                    +npc.getPosition()[0]+","
-                    +npc.getPosition()[1]+"； ");
+        for(Integer key : viewGridBo.getGridNpcMap().keySet()){
+            Npc npc = viewGridBo.getGridNpcMap().get(key);
+            stringBuilder.append(npc.getName()).append("-").
+                    append(npc.getNpcId()).append("-位置：").append(npc.getPosition()[0]).append(",").append(npc.getPosition()[1]).append("； ");
         }
         return stringBuilder.toString();
     }
-
-/*    //private List<AchievObserver> observers = new ArrayList<AchievObserver>();//此observers注册了该role方法中涉及的不同种类的成就观察者。-不需要
-    private TalkNpcOB talkNpcOB;
-    public void registerObserver(TalkNpcOB observer){
-        talkNpcOB=observer;
-    }
-
-    public void notifyObservers(int targetId, Role role) {
-        //new TalkNpcOB(this);-提前先注册好
-        //for (TalkNpcOB observer : observers) {
-        talkNpcOB.checkAchievement(targetId,role);
-        //}
-    }*/
-
 
     /**
      * 与Npc对话
@@ -458,24 +456,24 @@ public class RoleService {
      * @return String
      */
     public String getNpcReply(int npcId,Role role){
-        //new TalkNpcSB().notifyObservers(npcId,role);
-        TalkNpcSB.notifyObservers(npcId,role);
-        //iAchieveService.talkToNpc(npcId,role);
-        //此处可新增监听判断
-        //如果不在视野内，无法对话
+
+        Subject.notifyObservers(npcId,role,talkNpcOb);
+
+        //talkNpcOb.fireTalkNpc(role,npcId);
+        //ITalkNpcObserver.fireTalkNpc(Role role,int npcId)
+
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Npc npc = scene.getNpcHashMap().get(npcId);
-        if(!AssistService.checkDistance(role, npc)){
-            return "请站近一点对话";
+        if(AssistService.isNotInView(role, npc) || AssistService.isNotInScene(npcId,role)){
+            return Const.NPC_NOTICE;
         }
         return npc.getWords();
     }
 
-
     /**
-     * 获得角色自己当前信息
+     * 获得角色当前自身信息
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getRoleInfo(Role role){
         return  "id:"+role.getId()+"\n"+"name:"+role.getName()+"\n"+"hp："+role.getHp()+"\n"+
@@ -486,34 +484,31 @@ public class RoleService {
     }
 
     /**
-     * 获得怪物信息
+     * 获得某个怪物信息
      * @param monsterId 怪物id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getMonsterInfo(int monsterId,Role role){
         int nowScenesId = role.getNowScenesId();
-        //找到UUID
         String monsterUUID = AssistService.checkMonsterId(monsterId,role);
         Monster nowMonster = GlobalInfo.getScenes().get(nowScenesId).getMonsterHashMap().get(monsterUUID);
         return "hp：" + nowMonster.getMonsterHp() + "，状态："+ nowMonster.getAlive();
     }
 
     /**
-     * 测试
+     * 测试用命令
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //测试用命令
     public String testCode(Role role){
-        //role.getMyPackageBo().randPackageGrid();
         return role.getMyPackageBo().getPackageGrid();
     }
 
     /**
      * 整理背包
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String orderPackage(Role role){
         role.getMyPackageBo().orderPackageGrid();
@@ -521,47 +516,46 @@ public class RoleService {
     }
 
     /**
-     * 背包物品随机存放
+     * 获得背包中每个格子的信息
      * @param role 角色
-     * @return String
-     */
-/*    public String randPackage(Role role){
-        role.getMyPackageBo().randPackageGrid();
-        return getPackageInfo(role);
-    }*/
-
-    /**
-     * 获得背包格子信息
-     * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getPackageInfo(Role role){
         return role.getMyPackageBo().getPackageGrid();
     }
 
     /**
-     * 获取当前成就信息
+     * 获取当前所有成就的信息
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //获得角色当前所有成就信息
     public String getAchievmentList(Role role){
-        String result="";
+        StringBuilder result= new StringBuilder();
         for(Integer achieveId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            result+=AchieveResource.getAchieveStaticHashMap().get(achieveId).getDesc()+"："
-                    +role.getAchievementBo().getAchievementHashMap().get(achieveId)+"\n";
+            result.append(AchieveResource.getAchieveStaticHashMap().get(achieveId).getDesc()).append("：").
+                    append(role.getAchievementBo().getAchievementHashMap().get(achieveId)).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
-    //角色方法处理模块，预先注册好相应的监听器，当触发时间时，对已注册的监听器进行通知处理
-    static {
-        TalkNpcSB.registerObserver(new TalkNpcOB());
-        BodyEquipLvSB.registerObserver(new BodyEquipLvOB());
-        FriendSB.registerObserver(new FriendOB());
-        FsPkSuccessSB.registerObserver(new FsPkSuccessOB());
-        LevelSB.registerObserver(new LevelOB());
-    }
+    //角色方法处理模块，预先注册好相应的监听器，当触发事件时，对已注册的监听器进行通知处理
+    //一对一处理
+/*    static {
+        //TalkNpcSB.registerObserver(new TalkNpcOb());
+        BodyEquipLvSB.registerObserver(new BodyEquipLvOb());
+        FriendSB.registerObserver(new FriendOb());
+        FsPkSuccessSB.registerObserver(new FsPkSuccessOb());
+        LevelSB.registerObserver(new LevelOb());
+    }*/
+
+    //注册观察者
+    private TalkNpcOb talkNpcOb = new TalkNpcOb();
+    private BodyEquipLvOb bodyEquipLvOb = new BodyEquipLvOb();
+    private FriendOb friendOb = new FriendOb();
+    private FsPkSuccessOb fsPkSuccessOb = new FsPkSuccessOb();
+    private LevelOb levelOb = new LevelOb();
+
+
 }
 
 

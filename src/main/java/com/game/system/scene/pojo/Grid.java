@@ -12,13 +12,13 @@ import java.util.HashMap;
  */
 public class Grid {
 
-    //网格id
+    /** 网格id */
     private int gridId;
-    //该网格中的角色
+    /** 该网格中的角色 */
     private HashMap<Integer, Role> gridRoleMap = new HashMap<>();
-    //该网格中的怪物
+    /** 该网格中的怪物 */
     private HashMap<String, Monster> gridMonsterMap = new HashMap<>();
-    //该网格中的NPC
+    /** 该网格中的NPC */
     private HashMap<Integer, Npc> gridNpcMap = new HashMap<>();
 
     public Grid(int gridId) {

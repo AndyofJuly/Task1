@@ -10,28 +10,30 @@ import java.util.regex.Pattern;
  */
 public class PatternUtil {
 
-    //正则表达式判断，获取字符串集合
+    /** 正则表达式判断，获取不包含数字的字符串集合*/
     public static ArrayList<Integer> getIntList(String[] str){
         ArrayList<Integer> intList = new ArrayList();
-        for(int i=0;i<str.length;i++){
-            if(Pattern.matches("[0-9]*", str[i])){
-                intList.add(Integer.parseInt(str[i]));
+        for (String s : str) {
+            if (Pattern.matches("[0-9]*", s)) {
+                intList.add(Integer.parseInt(s));
             }
         }
         return intList;
     }
 
-    //正则表达式判断，获取数字集合
+    /** 正则表达式判断，获取包含数字的数字集合*/
     public static ArrayList<String> getStrList(String[] str){
         ArrayList<String> strList = new ArrayList();
-        for(int i=0;i<str.length;i++){
-            if(!Pattern.matches("[0-9]*", str[i])){
-                strList.add(str[i]);
+        for (String s : str) {
+            if (!Pattern.matches("[0-9]*", s)) {
+                strList.add(s);
             }
         }
         return strList;
     }
-    public static int[] StringToInt(String[] arrs){
+
+    /** 字符串数组转为int数组*/
+    public static int[] stringToInt(String[] arrs){
         int[] ints = new int[arrs.length];
         for(int i=0;i<arrs.length;i++){
             ints[i] = Integer.parseInt(arrs[i]);

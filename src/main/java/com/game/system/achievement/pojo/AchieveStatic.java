@@ -5,15 +5,15 @@ package com.game.system.achievement.pojo;
  * @create 2020/7/1 15:21
  */
 public class AchieveStatic {
-    //成就id
+    /** 成就id*/
     private int id;
-    //成就说明
+    /** 成就说明*/
     private String desc;
-    //目标
+    /** 目标*/
     private int targetId;
-    //完成所需数量
+    /** 完成所需数量*/
     private int count;
-    //系列任务
+    /** 系列任务*/
     private int[] serial;
 
     public AchieveStatic(int id, String desc, int targetId, int count,int[] serial) {

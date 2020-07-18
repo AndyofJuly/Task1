@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
- * 数据库连接与数据库操作方法实现-9个方法
+ * 角色进入游戏前和游戏中的数据库操作
  * @Author andy
  * @create 2020/5/12 9:51
  */
@@ -31,9 +31,9 @@ public class PotralDao {
     }
 
     /**
-     * 用户注册
+     * 用户注册前查找是否有同名
      * @param username 用户名
-     * @return 是否注册成功
+     * @return 是否有同名
      */
     private boolean checkUserName(String username){
         try {
@@ -52,7 +52,7 @@ public class PotralDao {
      * 用户注册
      * @param username 用户名
      * @param password 用户密码
-     * @return boolean
+     * @return 能否注册成功
      */
     public boolean insertRegister(String username, String password) {
         if(checkUserName(username)){return true;}
@@ -72,7 +72,7 @@ public class PotralDao {
      * 用户登录
      * @param username 用户名
      * @param password 用户密码
-     * @return int
+     * @return 用户id
      */
     public int selectLogin(String username, String password) {
         int id = 0;
@@ -95,7 +95,7 @@ public class PotralDao {
     /**
      * 获取该用户的所有角色
      * @param userId 用户id
-     * @return ArrayList
+     * @return 该用户的所有角色id集合
      */
     public ArrayList<Integer> selectRole(int userId){
         ArrayList<Integer> roleList = new ArrayList<>();
@@ -115,9 +115,25 @@ public class PotralDao {
     }
 
     /**
-     * 检查角色名
+     * 新注册角色时，角色表没有用户id，因此为角色表插入用户id
+     * @param userId 用户id
+     */
+    public void insertUserId(int userId,int roleid){
+        try {
+            PreparedStatement st = conn.prepareStatement("update role set userid=? where playid=?");
+            st.setInt(1, userId);
+            st.setInt(2, roleid);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"insertUserId");
+        }
+    }
+
+    /**
+     * 注册角色前检查角色名
      * @param rolename 角色名
-     * @return boolean
+     * @return 是否有相同的角色名
      */
     public boolean checkRoleName(String rolename){
         try {
@@ -137,11 +153,10 @@ public class PotralDao {
      * @param rolename 角色名
      * @param careerId 角色职业id
      */
-    public void insertRegisterRole(String rolename,int careerId){
+    public int insertRegisterRole(String rolename,int careerId){
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO role" +
                     "(rolename,placeid,alive,careerid,hp,mp,atk,money,def,unionid,nowlevel) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-            //根据职业id查找对应的初始化值
             CareerStatic career = CareerResource.getCareerStaticHashMap().get(careerId);
             st.setString(1, rolename);
             st.setInt(2, Const.INIT_SCENE);
@@ -159,10 +174,11 @@ public class PotralDao {
         } catch (Exception e) {
             System.out.println(e.getMessage()+"insertRegisterRole");
         }
+        return selectRoleIdByName(rolename);
     }
 
     /**
-     * 查找角色并登陆
+     * 登录时查找角色，并对属性赋值
      * @param roleId 角色id
      * @return Role
      */
@@ -192,19 +208,13 @@ public class PotralDao {
         return role;
     }
 
-/*    public void insertRoleScenes(int scenesId, Role role){
-        try{
-            PreparedStatement st=conn.prepareStatement("UPDATE role SET placeid=? where playid=?");
-            st.setInt(1,scenesId);
-            st.setInt(2, role.getId());
-            st.executeUpdate();
-        }catch (Exception e)
-        {
-            System.out.println(e.getMessage()+"insertRoleScenes");
-        }
-    }*/
-
-/*    public int selectRoleIdByName(String rolename){
+    /**
+     * 根据角色名查找角色id
+     * @param rolename 角色名
+     * @return 角色id
+     */
+    public int selectRoleIdByName(String rolename){
+        int id = 0;
         try{
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT playid FROM role where rolename=?");
             preparedStatement.setString(1,rolename);
@@ -218,14 +228,12 @@ public class PotralDao {
             System.out.println(e.getMessage()+"selectRoleIdByName");
         }
         return id;
-    }*/
+    }
 
     /**
-     * 更新角色信息
+     * 更新角色信息，对角色信息持久化
      * @param role 角色
      */
-    //退出游戏，结束游戏时的一些方法，需要对数据持久化-更新一下数据库（todo 可以扩展为定时更新例如5分钟1次），包括
-    //角色信息持久化，update，增加所在公会更新roleMapper.updateRoleInfo(role);
     public void updateRoleInfo(Role role){
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE role SET placeid=?,hp=?,mp=?,money=?,def=?,unionid=?,nowlevel=? where playid=?");
@@ -243,10 +251,5 @@ public class PotralDao {
             System.out.println(e.getMessage()+"updateRoleInfo");
         }
     }
-
-
-
-
-
 
 }

@@ -1,10 +1,11 @@
 package com.game.system.skill;
 
 import com.game.netty.server.ServerHandler;
-import com.game.system.achievement.observer.SlayMonsterOB;
-import com.game.system.achievement.subject.SlayMonsterSB;
+import com.game.system.achievement.observer.SlayMonsterOb;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.assist.AssistService;
-import com.game.system.role.BabyAttack;
+import com.game.system.dungeons.DungeonsService;
+import com.game.system.role.RoleBabyAi;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
@@ -19,30 +20,32 @@ import com.game.system.scene.pojo.Scene;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Timer;
 
 /**
- * 职业技能相关，目前是个小demo，后续将进行改动，目前暂时弃置
+ * 技能模块的业务逻辑处理
  * @Author andy
  * @create 2020/6/8 12:12
  */
 public class SkillService {
-    //private IAchieveService iAchieveService = new AchieveServiceImpl();
     private PackageService packageService = new PackageService();
 
     /**
-     * 普通攻击技能-怪物
+     * 怪物普通攻击技能
      * @param skillId 技能id
-     * @return 技能伤害
+     * @return 技能伤害值
      */
-    //怪物普通攻击技能
     public int normalAttackSkill(int skillId){
-        int damage = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
-        return damage;
+        return SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
     }
 
-    //查找当前自己的职业有什么技能
+    /**
+     * 查找当前自己的职业有什么技能
+     * @param role 角色
+     * @return 职业技能
+     */
     private String[] getSkillList(Role role){
         int careerId = role.getCareerId();
         int[] skillId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
@@ -55,32 +58,31 @@ public class SkillService {
     }
 
     /**
-     * 获取当前角色的技能列表
+     * 获得当前自己拥有的技能
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getSkillInfo(Role role){
-        String output = Const.Fight.SKILL_LIST;
+        StringBuilder output = new StringBuilder(Const.Fight.SKILL_LIST);
         String[] skillName = getSkillList(role);
-        for(int i=0;i<skillName.length;i++){
-            output+=skillName[i]+" ";
+        for (String s : skillName) {
+            output.append(s).append(" ");
         }
-        return output;
+        return output.toString();
     }
 
     /**
-     * 普通攻击技能
+     * 普通攻击技能，每个职业都可用使用
      * @param skillId 技能id
      * @param monsterId 怪物id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String useSkillAttack(int skillId,String monsterId,Role role){
-        if(!checkSkillValid(skillId,role)){return "你没有该技能";}
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Monster monster = scene.getMonsterHashMap().get(monsterId);
         monster.setAtkTargetId(role.getId());
-        if(!AssistService.checkDistance(role, monster)){
+        if(AssistService.isNotInView(role, monster)){
             return Const.Fight.DISTACNE_LACK;
         }
         String result = skillCommon(skillId,role);
@@ -90,12 +92,18 @@ public class SkillService {
         return atkSkillAffect(skillId,monster,role);
     }
 
+    /**
+     * 使用普通攻击技能时怪物的状态处理
+     * @param skillId 技能id
+     * @param monster 怪物
+     * @param role 角色
+     * @return 信息提示
+     */
     private String atkSkillAffect(int skillId,Monster monster,Role role){
         int hp = monster.getMonsterHp();
         int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
         int weaponBuff = 0;
         if(role.getEquipmentHashMap()!=null){
-            //有装备，加攻击buff
             weaponBuff=Const.WEAPON_BUFF;
         }
         hp=hp-role.getAtk()-weaponBuff-skillHarm;
@@ -107,7 +115,12 @@ public class SkillService {
         return Const.Fight.TARGET_HP+hp;
     }
 
-    //使用技能时的共同特征进行抽象，如减mp，CD计算等
+    /**
+     * 使用技能时的mp较少和CD计算等共同特征
+     * @param skillId 技能id
+     * @param role 角色
+     * @return 信息提示
+     */
     public String skillCommon(int skillId,Role role){
         Instant nowDate = Instant.now();
         Duration between = Duration.between(role.getSkillHashMap().get(skillId).getStart(), nowDate);
@@ -125,25 +138,28 @@ public class SkillService {
     }
 
     /**
-     * 普攻
+     * 普通攻击，穿戴武器情况下可以使用
      * @param monsterId 怪物id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
-    //普通攻击，平砍
     public String normalAttack(String monsterId,Role role){
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Monster monster = scene.getMonsterHashMap().get(monsterId);
-        //角色攻击力-怪物防御力为怪物扣血量
         monster.setAtkTargetId(role.getId());
-        if(AssistService.checkDistance(role,monster)==false){
+        if(AssistService.isNotInView(role, monster)){
             return Const.Fight.DISTACNE_LACK;
         }
         if(!isWeaponHaveDura(role)){return Const.Fight.DURA_LACK;}
         return atkAffect(monster,role);
     }
 
-    //普通攻击触发的效果
+    /**
+     * 普通攻击时怪物的状态处理
+     * @param monster 怪物
+     * @param role 角色
+     * @return 信息提示
+     */
     private String atkAffect(Monster monster,Role role){
         int harm = role.getAtk()-monster.getMonsterDef();
         int leftHp = monster.getMonsterHp();
@@ -158,7 +174,11 @@ public class SkillService {
         return Const.Fight.TARGET_HP+leftHp;
     }
 
-    //普通攻击时武器耐久下降
+    /**
+     * 普通攻击时武器耐久下降
+     * @param role 角色
+     * @return 信息提示
+     */
     private boolean isWeaponHaveDura(Role role){
         int weaponId =0;
         for (Integer selfEquipId : role.getEquipmentHashMap().keySet()) {
@@ -168,26 +188,29 @@ public class SkillService {
         }
         int leftDura=role.getEquipmentHashMap().get(weaponId).getDura()-1;
         role.getEquipmentHashMap().get(weaponId).setDura(leftDura);
-        if(leftDura<0){
-            return false;
-        }
-        return true;
+        return leftDura >= 0;
     }
 
+    /**
+     * 打败怪物后获得奖励
+     * @param nowMonster 怪物
+     * @param role 角色
+     * @return 信息提示
+     */
     private String getReward(Monster nowMonster,Role role){
         nowMonster.setMonsterHp(0);
         nowMonster.setAlive(0);
-        //获得奖励-随机装备和道具
         Random rand = new Random();
         int getMoney = rand.nextInt(Const.RAND_MONEY);
         packageService.addMoney(getMoney,role);
         int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));
         packageService.putIntoPackage(getEquipId,1,role);
         role.setAtk(role.getAtk()+Const.REWARD_ATK);
-        //成就
-        SlayMonsterSB.notifyObservers(nowMonster.getMonsterId(),role);
-        //通知该场景其他角色怪物已被打败
-        ServerHandler.notifySceneGroup(role.getNowScenesId(),nowMonster.getMonsterId()+"已被"+role.getName()+"打败");
+
+        Subject.notifyObservers(nowMonster.getMonsterId(),role,slayMonsterOb);
+
+        ArrayList<Role> roles = GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll();
+        ServerHandler.notifyGroupRoles(roles,nowMonster.getMonsterId()+"已被"+role.getName()+"打败");
 
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         scene.getMonsterHashMap().remove(nowMonster.getId());
@@ -195,91 +218,113 @@ public class SkillService {
     }
 
     /**
-     * 嘲讽技能
+     * 战士的嘲讽技能，在副本中对BOSS使用
      * @param role 角色
+     * @return 信息提示
      */
-    //战士的嘲讽技能；需在BossAttack中进行优化
     public String tauntSkill(Role role){
-        if(!checkSkillValid(Const.TAUNT_SKILL_ID,role)){return "你没有该技能";}
+        if(isNotSkillValid(Const.TAUNT_SKILL_ID,role)){return "你没有该技能";}
         GlobalInfo.setUseTauntDate(Instant.now());
         role.setUseTaunt(true);
         return Const.Fight.SUMMON_MSG;
     }
 
     /**
-     * 群体技能
+     * 法师的群伤技能，对视野内怪物造成伤害
      * @param skillId 技能id
      * @param role 角色
+     * @return 信息提示
      */
-    //法师的群伤技能；需要调整血量下限，不能为负数
     public String groupAtkSkill(int skillId,Role role){
-        if(!checkSkillValid(skillId,role)){return "你没有该技能";}
-        //int skey = AssistService.checkSkillId(skillName);
-        int sceneId = role.getNowScenesId();
-        Scene scene = GlobalInfo.getScenes().get(sceneId);
-        for(String key : scene.getMonsterHashMap().keySet()){
-            Monster monster = scene.getMonsterHashMap().get(key);
+        if(isNotSkillValid(skillId,role)){return "你没有该技能";}
+
+        for(String key : role.getViewGridBo().getGridMonsterMap().keySet()){
+            Monster monster = role.getViewGridBo().getGridMonsterMap().get(key);
             int leftHp = monster.getMonsterHp()-SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
             monster.setMonsterHp(leftHp);
+            if(leftHp<0){
+                getReward(monster,role);
+            }
         }
         return Const.Fight.GROUPATK_MSG;
     }
 
     /**
-     * 群体治疗
+     * 群体治疗，队伍存在时为队伍角色治疗，不存在时仅治疗自身
      * @param skillId 技能id
      * @param role 角色
+     * @return 信息提示
      */
-    //法师的群体恢复技能；需要调整血量上限，不能超过最大血量
     public String groupCureSkill(int skillId,Role role){
-        if(!checkSkillValid(skillId,role)){return "你没有该技能";}
-        //int skillId = AssistService.checkSkillId(skillName);
+        if(isNotSkillValid(skillId,role)){return "你没有该技能";}
         SkillStatic skill = SkillResource.getSkillStaticHashMap().get(skillId);
-        int sceneId = role.getNowScenesId();
-        try { //吟唱施法时间
+        //吟唱施法时间
+        try {
             Thread.sleep(skill.getCastTime());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        for(Role tempRole : GlobalInfo.getScenes().get(sceneId).getRoleAll()){
-            tempRole.setHp(tempRole.getHp()+skill.getAddHp());
+        //队伍角色回血/自己回血
+        if(role.getTeamId()!=null){
+            ArrayList<Role> roles = DungeonsService.getTeamRoles(GlobalInfo.getTeamList().get(role.getTeamId()).getRoleList());
+            for(Role friendRole : roles){
+                friendRole.setHp(friendRole.getHp()+skill.getAddHp());
+            }
+        }else {
+            role.setHp(role.getHp()+skill.getAddHp());
         }
         return Const.Fight.CURE_MSG;
     }
 
     /**
-     * 召唤术
+     * 召唤术，召唤宝宝，指定宝宝对某个怪物发起攻击
      * @param monsterId 召唤出宝宝所要攻击的怪物id
      * @param role 角色
+     * @return 信息提示
      */
-    //对怪物使用召唤技能时自动触发宝宝攻击
-    //技能攻击
     public String summonSkill(int monsterId,Role role){
-        if(!checkSkillValid(Const.SUMMON_ID,role)){return "你没有该技能";}
-        if(role.getBaby()==null){ //角色没有baby，则创建一个
+        if(isNotSkillValid(Const.SUMMON_ID,role)){return "你没有该技能";}
+        if(role.getBaby()==null){
             Baby baby = new Baby(Const.BABY_RAND_ID,Const.BABY_ID,role);
             role.setBaby(baby);
         }
         String monsterRandId = AssistService.checkMonsterId(monsterId,role);
-        babyAttackMonster(monsterRandId,role.getNowScenesId());
+        babyAttackMonster(monsterRandId,role);
         return Const.Fight.BABY_MSG;
     }
 
     /**
-     * 宝宝攻击
+     * 宝宝进行攻击，简单Ai
      * @param monsterId 所要攻击的怪物id
-     * @param sceneId 场景id
+     * @param role 角色
      */
-    //宝宝定时使用技能攻击怪物方法，简单AI
-    public void babyAttackMonster(String monsterId,int sceneId){
+    public void babyAttackMonster(String monsterId,Role role){
         Timer timer = new Timer();
-        BabyAttack babyAttack = new BabyAttack(timer,monsterId,sceneId);
-        timer.schedule(babyAttack, Const.DELAY_TIME, Const.GAP_TIME_BABY);//1s一次，Const.GAP_TIME_POTION为10s一次
+        RoleBabyAi roleBabyAi = new RoleBabyAi(timer,monsterId,role.getNowScenesId(),role.getId());
+        timer.schedule(roleBabyAi, Const.DELAY_TIME, Const.GAP_TIME_BABY);
+    }
+
+    /**
+     * 判断该角色当前职业是否能使用该技能
+     * @param skillId 技能id
+     * @param role 角色
+     * @return 时刻可以使用指定技能
+     */
+    private boolean isNotSkillValid(int skillId,Role role){
+        int careerId = role.getCareerId();
+        int[] skillsId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
+        for (int value : skillsId) {
+            if (skillId == value) {
+                return false;
+            }
+        }
+        return true;
     }
 
     //盾类和蓝药缓慢恢复技能6.9版本，暂未重写
 
-    //可扩展：boss释放群体伤害技能-对某个范围的角色产生伤害
+    //可扩展：boss释放群体伤害技能-对场景内所有角色产生伤害
+
 /*    public static void groupAttackSkill(List<Integer> roleList, int skillId){
         //对这个角色集合中所有角色造成伤害，造成的伤害根据skillId对应的属性来增加
         for(Integer key : roleList){
@@ -287,21 +332,9 @@ public class SkillService {
         }
     }*/
 
+/*    static {
+        SlayMonsterSB.registerObserver(new SlayMonsterOb());
+    }*/
 
-
-    //判断该角色是否能使用该技能-感觉此方法写在服务端有些多余
-    private boolean checkSkillValid(int skillId,Role role){
-        int careerId = role.getCareerId();
-        int[] skillsId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
-        for(int i=0;i<skillsId.length;i++){
-            if(skillId==skillsId[i]){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    static {
-        SlayMonsterSB.registerObserver(new SlayMonsterOB());
-    }
+    private SlayMonsterOb slayMonsterOb = new SlayMonsterOb();
 }

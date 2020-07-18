@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @create 2020/6/3 21:44
  */
 public class SkillResource {
-    //数值配置表对应的技能类，key为id
+    /** 数值配置表对应的技能类，key为id */
     private static HashMap<Integer, SkillStatic> skillStaticHashMap = new HashMap<Integer, SkillStatic>();
 
     static {

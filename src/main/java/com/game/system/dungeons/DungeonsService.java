@@ -1,7 +1,8 @@
 package com.game.system.dungeons;
 
-import com.game.system.achievement.observer.FsJoinTeamOB;
-import com.game.system.achievement.subject.FsJoinTeamSB;
+import com.game.netty.server.ServerHandler;
+import com.game.system.achievement.observer.FsJoinTeamOb;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.Const;
@@ -16,25 +17,24 @@ import java.util.ArrayList;
 import java.util.Timer;
 
 /**
+ * 副本模块的业务逻辑处理
  * @Author andy
  * @create 2020/6/15 15:08
  */
 public class DungeonsService {
-    //private IAchieveService iAchieveService = new AchieveServiceImpl();
     private SceneService sceneService = new SceneService();
 
     /**
      * 创建队伍
-     * @param dungeonesId 副本id
+     * @param dungeonsId 副本id
      * @param role 角色
-     * @return String
+     * @return 队伍id
      */
-    //创建队伍，返回一个队伍id，并将该id加入到全局的teamList中
-    public String createTeam(int dungeonesId, Role role){
+    public String createTeam(int dungeonsId, Role role){
         if(role.getNowScenesId()!=Const.DUNGEONS_START_SCENE){return "请到副本传送点创建队伍";}
         String teamId = AssistService.generateTeamId();
-        GlobalInfo.getTeamList().put(teamId,new Team(teamId,dungeonesId));
-        joinTeam(Integer.parseInt(teamId),role);
+        GlobalInfo.getTeamList().put(teamId,new Team(teamId,dungeonsId));
+        joinTeam(teamId,role);
         return Const.Fight.CREATE_SUCCESS+teamId;
     }
 
@@ -43,24 +43,26 @@ public class DungeonsService {
      * @param teamId 队伍id
      * @param role 角色
      */
-    //加入队伍，角色放入队伍集合中，返回队伍中的角色列表
-    public void joinTeam(int teamId, Role role){
-        String newId= teamId+"";
-        GlobalInfo.getTeamList().get(newId).getRoleList().add(role.getId());
-        //iAchieveService.ifFirstJoinTeam(role);
-        FsJoinTeamSB.notifyObservers(Const.achieve.TASK_FIRST_TEAM,role);
-        getRoleList(newId);
+    public void joinTeam(String teamId, Role role){
+        role.setTeamId(teamId);
+        GlobalInfo.getTeamList().get(teamId).getRoleList().add(role.getId());
+
+        Subject.notifyObservers(Const.achieve.TASK_FIRST_TEAM,role,fsJoinTeamOb);
+
+        ArrayList<Role> roles = getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
+        ServerHandler.notifyGroupRoles(roles,role.getName()+"加入了队伍");
+        getRoleList(teamId);
     }
 
     /**
      * 获得队伍中角色列表
      * @param teamId 队伍id
      * @param role 角色
-     * @return String
+     * @return 信息提示
      */
     public String getTeamRoleList(int teamId,Role role){
-        ArrayList<Integer> roleList = getRoleList(teamId+"");//joinTeam(teamId,role);
-        String output=Const.Fight.TEAM_ROLELIST;
+        ArrayList<Integer> roleList = getRoleList(String.valueOf(teamId));
+        String output = Const.Fight.TEAM_ROLELIST;
         for(Integer roleId : roleList){
             output = output + GlobalInfo.getRoleHashMap().get(roleId).getName()+" ";
         }
@@ -68,51 +70,63 @@ public class DungeonsService {
     }
 
     /**
+     * 根据队伍角色id获得队伍角色集合
+     * @param roleList 队伍id
+     * @return 角色集合
+     */
+    public static ArrayList<Role> getTeamRoles(ArrayList<Integer> roleList){
+        ArrayList<Role> roles = new ArrayList<>();
+        for(Integer key: roleList){
+            roles.add(GlobalInfo.getRoleHashMap().get(key));
+        }
+        return roles;
+    }
+
+    /**
      * 开始副本
      * @param teamId 队伍id
      * @param role 角色
      */
-    //难度最大的方法，其中还涉及了其他比较多的方法，这些方法需要提取到外部，统一化管理
-    //创建临时副本以开始副本，玩家一起攻打BOSS
     public void startDungeons (String teamId, Role role){
+        ArrayList<Role> roles = getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
+        ServerHandler.notifyGroupRoles(roles,"副本已开启，进入到副本中");
         Team team = GlobalInfo.getTeamList().get(teamId);
         int tempSceneId = sceneService.createTempScene(team.getDungeonsId());
+
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             RoleService roleService = new RoleService();
             roleService.moveTo(tempSceneId, GlobalInfo.getRoleHashMap().get(team.getRoleList().get(i)));
         }
-        //如果角色距离boss较近，调用boss定时攻击角色的方法
+
         int nowScenesId = role.getNowScenesId();
         bossAttackRole(teamId,team.getDungeonsId(),nowScenesId);
     }
 
     /**
-     * Boss定时使用技能攻击角色
+     * Boss定时使用技能攻击角色，简单AI
      * @param teamId 队伍id
      * @param dungeonsId 副本id
      * @param sceneId 场景id
      */
-    //boss定时使用技能攻击角色方法，简单AI
     public void bossAttackRole(String teamId,int dungeonsId,int sceneId){
         Timer timer = new Timer();
-        BossAttack bossAttack = new BossAttack(timer,teamId,dungeonsId,sceneId);
-        timer.schedule(bossAttack, Const.DELAY_TIME, Const.GAP_TIME_BOSS);
+        DungeonsBossAI dungeonsBossAI = new DungeonsBossAI(timer,teamId,dungeonsId,sceneId);
+        timer.schedule(dungeonsBossAI, Const.DELAY_TIME, Const.GAP_TIME_BOSS);
     }
 
     /**
      * 获得队伍中角色列表
      * @param teamId 队伍id
-     * @return ArrayList
+     * @return 角色列表集合
      */
-    //获取队伍中的角色列表，传参为teamId，返回角色列表集合元素信息，集合中为每个roleName
     public ArrayList<Integer> getRoleList(String teamId){
         return GlobalInfo.getTeamList().get(teamId).getRoleList();
     }
 
     /**
      * 获得所有组队列表
-     * @return String
+     * @return 信息提示
      */
     public String getTeamList(){
         String output = Const.Fight.TEAM_LIST;
@@ -126,7 +140,6 @@ public class DungeonsService {
      * 获得所有副本列表
      * @return String
      */
-    //副本列表初始化，返回副本列表集合元素信息，包括id和副本名
     public String getStaticDungeonsList(){
         StringBuilder stringBuilder = new StringBuilder("目前可参加的副本有：\n");
         for(Integer key : DungeonsResource.getDungeonsStaticHashMap().keySet()){
@@ -138,7 +151,9 @@ public class DungeonsService {
         return stringBuilder.toString();
     }
 
-    static {
-        FsJoinTeamSB.registerObserver(new FsJoinTeamOB());
-    }
+/*    static {
+        FsJoinTeamSB.registerObserver(new FsJoinTeamOb());
+    }*/
+
+    private FsJoinTeamOb fsJoinTeamOb = new FsJoinTeamOb();
 }

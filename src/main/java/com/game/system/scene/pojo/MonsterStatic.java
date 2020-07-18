@@ -6,17 +6,17 @@ package com.game.system.scene.pojo;
  * @create 2020/5/20 20:45
  */
 public class MonsterStatic {
-    // 怪物id
+    /** 怪物id */
     private int id;
-    // 怪物名
+    /** 怪物名 */
     private String name;
-    // 怪物血量
+    /** 怪物血量 */
     private int hp;
-    // 怪物攻击力
+    /** 怪物攻击力 */
     private int atk;
-    // 位置坐标
+    /** 位置坐标 */
     private int[] position;
-    // 怪物物理防御力
+    /** 怪物物理防御力 */
     private int def;
 
     public MonsterStatic(int id, String name, int hp, int atk, int[] position, int def) {

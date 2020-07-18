@@ -6,21 +6,21 @@ package com.game.system.shop.pojo;
  * @create 2020/6/26 20:50
  */
 public class DealBo {
-    //交易订单号
+    /** 交易订单号 */
     private String dealId;
-    //对方id
+    /** 对方id */
     private int receiveRoleId;
-    //交易装备id
+    /** 交易装备id */
     private int equipmentId;
-    //交易药品id
+    /** 交易药品id */
     private int potionId;
-    //药品数量
+    /** 药品数量 */
     private int num;
-    //交易价格
+    /** 交易价格 */
     private int price;
-    //发送者id
+    /** 发送者id */
     private int sendRoleId;
-    //是否同意此次交易
+    /** 是否同意此次交易 */
     private boolean isAgree;
 
     public DealBo(String dealId, int receiveRoleId, int equipmentId, int potionId, int num, int price, int sendRoleId) {

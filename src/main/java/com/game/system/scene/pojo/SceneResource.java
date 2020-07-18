@@ -15,9 +15,9 @@ import java.util.HashMap;
  */
 public class SceneResource {
 
-    //数值配置表对应的场景类，key为id
+    /** 数值配置表对应的场景类，key为id */
     private static HashMap<Integer, SceneStatic> scenesStatics = new HashMap<Integer,SceneStatic>();
-    //场景地点关系，key为场景id
+    /** 场景地点关系，key为场景id */
     private static HashMap<Integer, int[]> places= new HashMap<Integer,int[]>();
 
     static {

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import java.util.ArrayList;
 
 /**
+ * 通信模块调用方法入口
  * @Author andy
  * @create 2020/6/15 15:23
  */
@@ -21,44 +22,38 @@ public class ChatController {
     private ArrayList<String> strList = RoleController.getStrList();
     private ArrayList<Integer> intList = RoleController.getIntList();
 
-
-    // 全服聊天：在netty服务端进行处理：say words...
-    // 私人聊天：在netty服务端进行处理：sayTo roleName words...
-    // 邮件：在netty服务端进行处理：
-    //发送邮件，使用举例：email ss(roleId) words... goods number；
-/*    @MyAnnontation(MethodName = "email")
-    public String emailToPlayer(){
-        return ChatService.emailToPlayer(Integer.parseInt(strings[1]),strings[2],strings[3],Integer.parseInt(strings[4]),Integer.parseInt(strings[5]));
-    }*/
-
-    // say msg
+    /** 在公共世界进行聊天，使用方式：say msg */
     @MyAnnontation(MethodName = "say")
     public ResponseInf talkWithAll(){
-        ServerHandler.talkWithAll(strList.get(1),getRole());
+        ArrayList<Role> roles = new ArrayList<>();
+        for(Integer key : GlobalInfo.getRoleHashMap().keySet()){
+            roles.add(GlobalInfo.getRoleHashMap().get(key));
+        }
+        ServerHandler.notifyGroupRoles(roles,getRole().getName()+":"+strList.get(1));
         return ResponseInf.setResponse("消息已发送到世界",getRole());
     }
 
-    // sayTo targetId,msg,role
+    /** 私聊，使用方式：sayTo targetId msg */
     @MyAnnontation(MethodName = "sayTo")
     public ResponseInf talkWithOne(){
-        ServerHandler.talkWithOne(intList.get(0),strList.get(1),getRole());
+        ServerHandler.notifyRole(intList.get(0),getRole().getName()+":"+strList.get(1),getRole().getId(),"");
         return ResponseInf.setResponse("消息已发送给对方",getRole());
     }
 
-    //email 16 给你寄点东西 2001 2 20
-    //roleId+":"+strings[2]+"。邮寄物品："+strings[3]+"数量为："+strings[4]+"金钱为："+strings[5]
+    /** 邮件，使用方式：email targetRoleId msg goodsId num money */
     @MyAnnontation(MethodName = "email")
     public ResponseInf emailToOne(){
-        boolean result = ChatService.emailToPlayer(intList.get(0),strList.get(1),intList.get(1),intList.get(2),intList.get(3),getRole());
+        boolean result = ChatService.emailToPlayer(intList.get(0),intList.get(1),intList.get(2),intList.get(3),getRole());
         if(result){
-            String msg = getRole().getName()+":"+strList.get(1)+"。邮寄物品："+intList.get(1)+"数量为："+intList.get(2)+"金钱为："+intList.get(3);
-            ServerHandler.talkWithOne(intList.get(0),msg,getRole());
+            String msg = getRole().getName()+":"+strList.get(1)+"。附件道具："+intList.get(1)+"，数量为："+intList.get(2)+"，赠送金钱："+intList.get(3);
+
+            ServerHandler.notifyRole(intList.get(0),"邮件提示--"+msg,getRole().getId(),"");
             return ResponseInf.setResponse(Const.SEND_SUCCESS,getRole());
         }
         return ResponseInf.setResponse(Const.SEND_FAILURE,getRole());
     }
 
-    //获得角色，适用于输入参数最后一位为roleId的情况
+    /** 根据输入获得角色，输入参数最后一位为roleId */
     public Role getRole(){
         return GlobalInfo.getRoleHashMap().get(intList.get(intList.size()-1));
     }

@@ -8,7 +8,9 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/8 20:35
  */
 public class ResponseInf {
+    /** 提示消息*/
     private String msg;
+    /** 角色对象*/
     private Role role;
     //以及其他任意对象，均可写在此处，然后由服务端传至客户端。新增对象时，同时修改DataInfo.proto中的结构，并在ServerHandler修改要返回的对象。
 

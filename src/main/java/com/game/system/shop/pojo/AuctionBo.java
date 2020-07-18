@@ -7,29 +7,30 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
+ * 拍卖对象
  * @Author andy
  * @create 2020/6/27 11:30
  */
 public class AuctionBo {
-    //拍卖场次id
+    /** 拍卖场次id */
     private String id;
-    //物品id
+    /** 物品id */
     private int goodsId;
-    //物品价格
+    /** 物品价格 */
     private int price;
-    //供货者角色id
+    /** 供货者角色id */
     private int roleId;
-    //拍卖时间点
+    /** 拍卖时间点 */
     private Instant tagTime;
-    //最终定价
+    /** 最终定价 */
     private int lastPrice;
-    //出价者角色id
+    /** 出价者角色id */
     private int buyRoleId;
-    //参与此次竞价的所有角色
+    /** 参与此次竞价的所有角色 */
     private ArrayList<Role> roleArrayList = new ArrayList<>();
-    //竞价记录，roleId-price
+    /** 竞价记录，roleId-price */
     private HashMap<Integer,Integer> priceHashMap = new HashMap<>();
-    //拍卖结束标志
+    /** 拍卖结束标志 */
     private boolean ifEnding;
 
     public AuctionBo(String id, int goodsId, int price, int roleId) {

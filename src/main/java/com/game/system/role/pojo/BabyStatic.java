@@ -6,14 +6,13 @@ package com.game.system.role.pojo;
  * @create 2020/6/11 16:42
  */
 public class BabyStatic {
-    // 初始的静态数据
-    // 宝宝id
+    /** 宝宝id */
     private int id;
-    // 宝宝名
+    /** 宝宝名 */
     private String name;
-    // 宝宝初始血量
+    /** 宝宝初始血量 */
     private int hp;
-    // 怪物初始攻击力
+    /** 怪物初始攻击力 */
     private int atk;
 
     public BabyStatic(int id, String name, int hp, int atk) {

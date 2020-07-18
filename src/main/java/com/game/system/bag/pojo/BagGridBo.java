@@ -1,16 +1,16 @@
 package com.game.system.bag.pojo;
 
 /**
- * 背包每个格子对象
+ * 背包中的每个格子对象
  * @Author andy
  * @create 2020/7/6 17:48
  */
 public class BagGridBo {
-    //格子id
+    /** 格子id */
     private int id;
-    //格子物品id
+    /** 格子物品id */
     private int goodsId;
-    //该物品数量
+    /** 该物品数量 */
     private int number;
 
     public BagGridBo(int id) {

@@ -14,7 +14,7 @@ import java.util.HashMap;
  */
 public class AchieveResource {
 
-    //数值配置表对应的职务类，key为id
+    /** 数值配置表对应的职务类，key为id*/
     private static HashMap<Integer, AchieveStatic> achieveStaticHashMap = new HashMap<Integer, AchieveStatic>();
 
     static {

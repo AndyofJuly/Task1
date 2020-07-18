@@ -79,14 +79,15 @@ public class NettySingleClient {
         int userId = 0;
         while (scanner.hasNextLine()){
             String msg = scanner.nextLine();
-            if(msg.startsWith("loginR")){
+            if(msg.startsWith("loginR")) {
                 String[] s = msg.split(" ");
-                id = " "+s[1];
+                id = " " + s[1];
 /*                if(roleList==null){// todo 测试时注释掉，加快速度
                     System.out.println("你还没进行用户登录操作");
                     continue;
-                }*/
-                if(roleList!=null && !roleList.contains(Integer.parseInt(s[1]))){
+                }
+                roleList = potralDao.selectRole(userId);
+                if(!roleList.contains(Integer.parseInt(s[1]))){
                     System.out.println("你没有该角色！");
                     continue;
                 }
@@ -94,6 +95,7 @@ public class NettySingleClient {
                 String[] s = msg.split(" ");
                 userId = potralDao.selectLogin(s[1],s[2]);
                 roleList = potralDao.selectRole(userId);
+            }*/
             }
             DataInfo.RequestMsg requestMsg = DataInfo.RequestMsg.newBuilder().setMsg(msg+id).build();
             channelFuture.channel().writeAndFlush(requestMsg);

@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @create 2020/6/30 11:40
  */
 public class JobResource {
-    //数值配置表对应的职务类，key为id
+    /** 数值配置表对应的职务类，key为id */
     private static HashMap<Integer, JobStatic> jobStaticHashMap = new HashMap<Integer, JobStatic>();
 
     static {

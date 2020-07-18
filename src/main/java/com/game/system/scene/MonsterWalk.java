@@ -1,6 +1,7 @@
 package com.game.system.scene;
 
 import com.game.common.Const;
+import com.game.netty.server.ServerHandler;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.scene.pojo.Monster;
@@ -9,7 +10,7 @@ import com.game.system.scene.pojo.MonsterResource;
 import com.game.system.scene.pojo.Scene;
 
 /**
- * 怪物自由走动
+ * 怪物随机移动
  * @Author andy
  * @create 2020/7/8 10:45
  */
@@ -21,54 +22,56 @@ public class MonsterWalk implements Runnable{
         this.monster = monster;
     }
 
-    //怪物定时移动，漫步
     @Override
     public void run() {
         while(true) {
-            //检测怪物存活状态，怪物死时break
+            //检测怪物存活状态
             if (monster.getAlive() == 0) {
                 break;
             }
             checkAtkDistance();
-            //每次停xxx毫秒
+
             try {
                 Thread.sleep(30000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //随机移动一小段距离，怪物位置x和y都加随机整数1-3；
+
+            //随机移动一小段距离
             int add = (int) (Math.round(Math.random() * 5 + 1));
             int minus = -(int) (Math.round(Math.random() * 5 + 1));
             int[] arr = {add,minus};
             int index = (int) (Math.round(Math.random() * 1));
             int x = arr[index]+monster.getPosition()[0];
             int y = arr[index]+monster.getPosition()[1];
+
             //移动后更新格子
+
             //System.out.println(SceneService.refleshGrid(x,y,monster));//配合InitGame中的Sleep使用
             int[] newPositon = {x,y};
             monster.setPosition(newPositon);
-            //monster.getId()+"--"
             System.out.println(+monster.getMonsterId() + "位置为" + monster.getPosition()[0]+","+monster.getPosition()[1]);
         }
     }
 
+    /** 查看攻击距离 */
     private void checkAtkDistance(){
-        //先看有没有角色，有则计算距离，如果距离近，则调进行循环的普通攻击（线程中再进行距离判断，如果距离远了，结束线程）
-        if(monster.getAtkTargetId()!=0) {
-            Role role = GlobalInfo.getRoleHashMap().get(monster.getAtkTargetId());
-            boolean result = AssistService.checkDistance(role, monster);
-            if (result) {
-                //循环攻击角色
-                while (monster.getAlive() != 0 && AssistService.checkDistance(role, monster) && role.getHp()>0) {
-                    //不断地攻击角色
-                    role.setHp(role.getHp() - monster.getAtk());
-                    System.out.println(monster.getMonsterId()+
-                            "攻击了角色，角色血量剩余：" + role.getHp());
-                    try {
-                        Thread.sleep(10000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+        //先判断怪物有无仇恨目标，有则判断距离，在视野范围内再进行攻击
+        if(monster.getAtkTargetId()==0) {return;}
+        Role role = GlobalInfo.getRoleHashMap().get(monster.getAtkTargetId());
+        boolean result = AssistService.isNotInView(role, monster);
+        if (!result) {
+            //循环攻击角色
+            while (monster.getAlive() != 0 && !AssistService.isNotInView(role, monster) && role.getHp()>0 && role.getNowScenesId()==monster.getSceneId()) {
+                role.setHp(role.getHp() - monster.getAtk());
+                ServerHandler.notifySelf(role.getId(),monster.getMonsterId()+
+                        "使用了普通攻击，你血量剩余：" + role.getHp());
+                System.out.println(monster.getMonsterId()+
+                        "攻击了角色，角色血量剩余：" + role.getHp());
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

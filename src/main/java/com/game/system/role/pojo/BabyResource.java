@@ -15,7 +15,7 @@ import java.util.HashMap;
  */
 public class BabyResource {
 
-    //数值配置表对应的宝宝类，key为id
+    /** 数值配置表对应的宝宝类，key为id */
     private static HashMap<Integer, BabyStatic> babyStatics = new HashMap<Integer,BabyStatic>();
 
     static {

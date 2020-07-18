@@ -2,18 +2,19 @@ package com.game.system.assist;
 
 import com.game.common.Const;
 import com.game.system.bag.GoodsDao;
+import com.game.system.role.pojo.CareerResource;
+import com.game.system.scene.pojo.ViewGridBo;
 import com.game.system.shop.RecordDao;
 import com.game.system.union.UnionDao;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
-import com.game.system.scene.pojo.GridBo;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 /**
- * 用户一些功能的方法实现
+ * 用户进入游戏和游戏中的业务逻辑处理
  * @Author andy
  * @create 2020/5/11 21:50
  */
@@ -29,27 +30,15 @@ public class GameService {
     /**
      * 角色登录
      * @param roleId 角色id
-     * @return String
+     * @return 提示信息
      */
-    //角色登录
     public String loginRole(int roleId){
         Role role = potralDao.selectLoginRole(roleId);
-/*        //防止进入临时副本后无法移动出来的bug，临时副本id比普通场景id小
-        if(role.getNowScenesId()<=Const.Max_ID){
-            role.setNowScenesId(Const.DUNGEONS_START_SCENE);
-        }*/
         if(role.getCareerId()!=0){
             getData(role);
             GlobalInfo.getRoleHashMap().put(roleId,role);
             InitGame.setEnterSuccess(true);
             InitGame.init(role);
-            GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll().add(role);
-            //网格中增加该角色
-            Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
-            scene.getGridHashMap().get(role.getCurGridId()).getGridRoleMap().put(roleId,role);
-            //九宫格初始化
-            role.setGridBo(new GridBo(roleId));
-
             if(saveBoolean){
                 saveAuto();
                 saveBoolean=false;
@@ -64,37 +53,36 @@ public class GameService {
      * 角色注册
      * @param roleName 角色名
      * @param careerId 角色职业id
-     * @return boolean
+     * @return 是否注册成功
      */
-    public boolean registerRole(String roleName,int careerId){
+    public int registerRole(String roleName,int careerId){
         if(potralDao.checkRoleName(roleName)){
-            return false;
+            return 0;
         }
-        potralDao.insertRegisterRole(roleName,careerId);
-        return true;
+        return potralDao.insertRegisterRole(roleName,careerId);
     }
 
     /**
      * 数据持久化到数据库
-     * @return String
+     * @return 提示信息
      */
     public String saveDataBase(){
         return "保存游戏"+saveData();
     }
 
-
+    /** 加载数据库*/
     private void getData(Role role){
         recordDao.selectAchievement(role);
         goodsDao.selectBodyEquipment(role);
         goodsDao.selectPackage(role);
     }
 
+    /** 保存到数据库*/
     private boolean saveData(){
-
         for(Integer key : GlobalInfo.getRoleHashMap().keySet()){
             Role role = GlobalInfo.getRoleHashMap().get(key);
-            //防止进入临时副本后无法移动出来的bug，临时副本id比普通场景id小
-            if(role.getNowScenesId()<=Const.Max_ID){
+            //临时副本id比普通场景id小，存库时判断可以避免卡bug
+            if(role.getNowScenesId()<=Const.MAX_ID){
                 role.setNowScenesId(Const.DUNGEONS_START_SCENE);
                 return false;
             }
@@ -105,19 +93,19 @@ public class GameService {
             unionDao.updateUnion(role);
             unionDao.updateUnionStore(role);
         }
-        unionDao.updateUnionMemb();
+        unionDao.updateUnionMember();
         return true;
     }
 
+    /** 定时器，自动保存数据到数据库*/
     private void saveAuto(){
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                //延时time秒后，开始执行
                 saveData();
                 System.out.println("已自动保存游戏-测试");
             }
-        }, 30000, 60000);//暂定一分钟保存一次
+        }, 30000, 60000);
     }
 }

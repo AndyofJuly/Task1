@@ -14,17 +14,15 @@ import java.util.HashMap;
  */
 public class GlobalInfo {
 
-    // 组队列表，key为teamId
+    /** 组队列表，key为teamId*/
     private static HashMap<String, Team> teamList = new HashMap<String, Team>();
-
-    //临时副本id获取该副本内的临时怪物id，分别对应key和value
+    /** 临时副本id获取该副本内的临时怪物id，分别对应key和value*/
     private static HashMap<Integer,String> tempIdHashMap = new HashMap<>();
-
+    /** 游戏中的所有角色*/
     private static HashMap<Integer, Role> roleHashMap = new HashMap<>();
-
+    /** 游戏中的所有场景*/
     public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
-
-    //技能计时
+    /** 技能计时*/
     private static Instant useTauntDate;
 
     public static Instant getUseTauntDate() {

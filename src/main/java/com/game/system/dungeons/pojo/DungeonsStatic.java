@@ -6,15 +6,15 @@ package com.game.system.dungeons.pojo;
  */
 public class DungeonsStatic {
 
-    //副本id
+    /** 副本id */
     private int id;
-    //副本名
+    /** 副本名 */
     private String name;
-    //副本规定时间
+    /** 副本规定时间 */
     private int deadTime;
-    //副本中的bossId，可扩展为集合
+    /** 副本中的bossId，可扩展为集合 */
     private int bossId;
-    //副本中的场景来源，根据该场景建立出临时场景
+    /** 副本中的场景来源，根据该场景建立出临时场景 */
     private int sceneId;
 
     public DungeonsStatic(int id, String name, int deadTime, int bossId, int sceneId) {

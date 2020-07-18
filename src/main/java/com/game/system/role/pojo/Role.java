@@ -2,12 +2,12 @@ package com.game.system.role.pojo;
 
 import com.game.common.Const;
 import com.game.system.bag.pojo.Equipment;
+import com.game.system.scene.pojo.ViewGridBo;
 import com.game.system.shop.pojo.DealBo;
 import com.game.system.shop.pojo.AuctionBo;
 import com.game.system.skill.pojo.Skill;
 import com.game.system.achievement.pojo.AchievementBo;
 import com.game.system.bag.pojo.MyPackageBo;
-import com.game.system.scene.pojo.GridBo;
 
 import java.util.HashMap;
 
@@ -52,7 +52,7 @@ public class Role {
     /** 角色交易行 */
     private AuctionBo auctionBo;
     /** 角色视野实体集合 */
-    private GridBo gridBo;
+    private ViewGridBo viewGridBo;
     /** 角色成就-任务系统 */
     private final AchievementBo achievementBo = new AchievementBo();
     /** 角色的公会 */
@@ -67,6 +67,12 @@ public class Role {
     private final HashMap<Integer, Equipment> equipmentHashMap = new HashMap<>();
     /** 物品锁定-交易时 */
     private HashMap<Integer,Integer> goodsLockMap = new HashMap<>();
+    /** 当前最大血量 */
+    private int maxHp;
+    /** 当前最大蓝量 */
+    private int maxMp;
+    /** 所在队伍id */
+    private String teamId;
 
     public Role(int id) {
         this.id = id;
@@ -114,7 +120,8 @@ public class Role {
     }
 
     public void setHp(int hp) {
-        if(hp<0){this.hp = 0;return;}
+        if(hp<0){hp = 0;}
+        if(hp>this.maxHp){hp=this.maxHp;}
         this.hp = hp;
     }
 
@@ -131,6 +138,8 @@ public class Role {
     }
 
     public void setMp(int mp) {
+        if(mp<0){mp = 0;}
+        if(mp>this.maxMp){mp=this.maxMp;}
         this.mp = mp;
     }
 
@@ -206,12 +215,12 @@ public class Role {
         this.curGridId = curGridId;
     }
 
-    public GridBo getGridBo() {
-        return gridBo;
+    public ViewGridBo getViewGridBo() {
+        return viewGridBo;
     }
 
-    public void setGridBo(GridBo gridBo) {
-        this.gridBo = gridBo;
+    public void setViewGridBo(ViewGridBo viewGridBo) {
+        this.viewGridBo = viewGridBo;
     }
 
     public DealBo getDealBo() {
@@ -260,5 +269,29 @@ public class Role {
 
     public void setGoodsLockMap(HashMap<Integer, Integer> goodsLockMap) {
         this.goodsLockMap = goodsLockMap;
+    }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getMaxMp() {
+        return maxMp;
+    }
+
+    public void setMaxMp(int maxMp) {
+        this.maxMp = maxMp;
+    }
+
+    public String getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(String teamId) {
+        this.teamId = teamId;
     }
 }

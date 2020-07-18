@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 
 /**
+ * 背包模块的数据库操作
  * @Author andy
  * @create 2020/7/1 17:38
  */
@@ -34,7 +35,6 @@ public class GoodsDao {
      * 获取角色身穿装备
      * @param role 角色
      */
-    // 获得身上装备roleMapper.selectBodyEquipment(role);
     public void selectBodyEquipment(Role role){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement(
@@ -47,7 +47,7 @@ public class GoodsDao {
                 Equipment equipment1;
                 for(int i=0;i<equip.length;i++){
                     if(rs.getInt(equip[i])!=0){
-                        equipment1= new Equipment(rs.getInt(equip[i]),Const.EQUIP_DURA);
+                        equipment1= new Equipment(rs.getInt(equip[i]));
                         role.getEquipmentHashMap().put(rs.getInt(equip[i]),equipment1);
                     }
                 }
@@ -62,7 +62,6 @@ public class GoodsDao {
      * 更新角色身穿装备
      * @param role 角色
      */
-    //角色身上装备roleMapper.updateRoleBodyEquipment(role);
     public void updateRoleBodyEquipment(Role role){
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE bodyequipment " +
@@ -91,7 +90,6 @@ public class GoodsDao {
      * 获取角色背包物品
      * @param role 角色
      */
-    // 获得背包-包括物品roleMapper.selectPackage(role);
     public void selectPackage(Role role){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT goodsid,num FROM package WHERE playid=?");
@@ -102,9 +100,6 @@ public class GoodsDao {
             {
                 goods.put(rs.getInt("goodsid"),rs.getInt("num"));
             }
-/*            if(goods==null){
-                insert(role);
-            }*/
             role.setMyPackageBo(new MyPackageBo(Const.PACKAGE_SIZE,goods));
             rs.close();
         }catch (Exception e){
@@ -116,14 +111,8 @@ public class GoodsDao {
      * 更新角色背包物品
      * @param role 角色
      */
-    //将replace拆分，先检查数据库中有无该角色id及物品id；如果有的话使用该update方法，如果没有，再使用insert方法；
-    //角色背包内容roleMapper.updatePackage(role);
-    //"REPLACE INTO package(playid,goodsid,num) VALUES(?,?,?)");
     public void updatePackage(Role role){
         try {
-            //业务逻辑处理需要在外面进行，因此以下循环判断需提取到service层
-            //先清空表
-            //delete(role);
             for(Integer goodsId : role.getMyPackageBo().getGoodsHashMap().keySet()){
                 if(checkPackage(role,goodsId)==false){
                     insertPackage(role,goodsId,role.getMyPackageBo().getGoodsHashMap().get(goodsId));
@@ -141,6 +130,11 @@ public class GoodsDao {
         }
     }
 
+    /**
+     * 判断是否有背包的记录
+     * @param role 角色
+     * @return 是否有背包
+     */
     private boolean checkPackage(Role role,int goodsId){
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("select * from package where playid=? and goodsid=?");
@@ -155,6 +149,10 @@ public class GoodsDao {
         return result;
     }
 
+    /**
+     * 插入一条背包数据
+     * @param role 角色
+     */
     private void insertPackage(Role role,int goodsId,int nums){
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO package(playid,goodsId,num) VALUES(?,?,?)");
@@ -168,6 +166,10 @@ public class GoodsDao {
         }
     }
 
+    /**
+     * 删除一条背包数据
+     * @param role 角色
+     */
     private void delete(Role role){
         try {
             PreparedStatement st = conn.prepareStatement("delete from package where playid=?");
@@ -179,6 +181,10 @@ public class GoodsDao {
         }
     }
 
+    /**
+     * 插入一条除id外的空数据
+     * @param role 角色
+     */
     private void insert(Role role){
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO package(playid) VALUES(?)");

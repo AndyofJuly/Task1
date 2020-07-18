@@ -10,7 +10,7 @@ import com.game.common.MyAnnontation;
 import java.util.ArrayList;
 
 /**
- * 公会
+ * 公会模块调用方法入口
  * @Author andy
  * @create 2020/6/28 14:21
  */
@@ -21,28 +21,28 @@ public class UnionController {
 
     private UnionService unionService = new UnionService();
 
-    //创建公会 createUnion unionName (roleId)
+    /** 创建公会，使用方式：createUnion unionName */
     @MyAnnontation(MethodName = "createUnion")
     public ResponseInf createUnion(){
         String msg = "创建成功，公会id为"+unionService.createUnion(strList.get(1),getRole());
         return ResponseInf.setResponse(msg,getRole());
     }
 
-    //解散公会 disband unionId (roleId)
+    /** 解散公会，使用方式：disband unionId */
     @MyAnnontation(MethodName = "disband")
     public ResponseInf disbandUnion(){
-        unionService.disbandUnion(intList.get(0),getRole());
-        return ResponseInf.setResponse("解散成功",getRole());
+        String msg = unionService.disbandUnion(intList.get(0),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //任职 appoint unionId memberId authorityLevel (roleId)
+    /** 任职某位公会成员，使用方式：appoint unionId memberId authorityLevel */
     @MyAnnontation(MethodName = "appoint")
     public ResponseInf appointCareer(){
-        unionService.appointCareer(intList.get(0),intList.get(1),intList.get(2),getRole());
-        return ResponseInf.setResponse("已任命该角色",getRole());
+        String msg = unionService.appointCareer(intList.get(0),intList.get(1),intList.get(2),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //入会申请 apply unionId (roleId)
+    /** 入会申请，使用方式：apply unionId */
     @MyAnnontation(MethodName = "apply")
     public ResponseInf applyFor(){
         unionService.applyFor(intList.get(0),intList.get(1));
@@ -51,50 +51,50 @@ public class UnionController {
 
     //获取申请列表
 
-    //批准入会申请 agree unionId applyRoleId (roleId)
+    /** 批准入会申请，使用方式：agree unionId applyRoleId */
     @MyAnnontation(MethodName = "agree")
     public ResponseInf agreeApply(){
-        unionService.agreeApply(intList.get(0),intList.get(1),getRole());
-        return ResponseInf.setResponse("已批准该角色入会",getRole());
+        String msg = unionService.agreeApply(intList.get(0),intList.get(1),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //开除 fire unionId memberId (roleId)
+    /** 开除某位公会成员，使用方式：fire unionId memberId */
     @MyAnnontation(MethodName = "fire")
     public ResponseInf fireMember(){
-        unionService.fireMember(intList.get(0),intList.get(1),getRole());
-        return ResponseInf.setResponse("已开除该角色",getRole());
+        String msg = unionService.fireMember(intList.get(0),intList.get(1),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
     //自己离开公会等方法
 
-    //捐款-钱 donate unionId money (roleId)
+    /** 捐款-钱，使用方式： donate unionId money */
     @MyAnnontation(MethodName = "donateM")
     public ResponseInf donateMoney(){
-        unionService.donateMoney(intList.get(0),intList.get(1),getRole());
-        return ResponseInf.setResponse("已捐赠银两",getRole());
+        String msg = unionService.donateMoney(intList.get(0),intList.get(1),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //捐款-道具 donate unionId goodsId number(roleId)
+    /** 捐款-道具，使用方式：donate unionId goodsId number */
     @MyAnnontation(MethodName = "donateG")
     public ResponseInf donateGoods(){
-        unionService.donateGoods(intList.get(0),intList.get(1),intList.get(2),getRole());
-        return ResponseInf.setResponse("已捐赠该道具",getRole());
+        String msg = unionService.donateGoods(intList.get(0),intList.get(1),intList.get(2),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //拿物品 getGoods unionId goodsId (roleId)
+    /** 拿物品，使用方式：getGoods unionId goodsId */
     @MyAnnontation(MethodName = "getGoods")
     public ResponseInf getGoods(){
-        unionService.getGoods(intList.get(0),intList.get(1),getRole());
-        return ResponseInf.setResponse("已拿取该道具",getRole());
+        String msg = unionService.getGoods(intList.get(0),intList.get(1),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
-    //获得公会成员信息 getUnionInfo (roleId)
+    /** 获得公会成员信息，使用方式：getUnionInfo */
     @MyAnnontation(MethodName = "getUnionInfo")
     public ResponseInf getUnionInfo(){
         return ResponseInf.setResponse(unionService.getUnionInfo(getRole()),getRole());
     }
 
-    //获得角色，适用于输入参数最后一位为roleId的情况
+    /** 根据输入获得角色，输入参数最后一位为roleId */
     private Role getRole(){
         return GlobalInfo.getRoleHashMap().get(intList.get(intList.size()-1));
     }

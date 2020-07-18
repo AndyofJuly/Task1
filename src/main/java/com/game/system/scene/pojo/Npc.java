@@ -10,13 +10,13 @@ public class Npc {
     private int alive;
     /** 资源类中的静态id，同时作为实体类id */
     private int npcId;
-    // NPC的名字
+    /** NPC的名字 */
     private String name;
-    // NPC的对话
+    /** NPC的对话 */
     private String words;
-    // NPC所在场景id
+    /** NPC所在场景id */
     private int sceneId;
-    // 位置坐标
+    /** 位置坐标 */
     private int[] position;
 
 
