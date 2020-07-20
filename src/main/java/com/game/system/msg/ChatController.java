@@ -7,6 +7,7 @@ import com.game.netty.server.ServerHandler;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.role.RoleController;
 import com.game.system.role.pojo.Role;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/15 15:23
  */
-@Controller
+@Controller("chatController")
 public class ChatController {
 
     private ArrayList<String> strList = RoleController.getStrList();

@@ -4,6 +4,7 @@ import com.game.netty.server.ServerHandler;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.Const;
 import com.game.system.role.pojo.Baby;
+import com.game.system.scene.SceneService;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.scene.pojo.Scene;
 import com.game.system.skill.SkillService;
@@ -51,7 +52,8 @@ public class RoleBabyAi extends TimerTask {
         //怪物定时收到技能伤害
         Scene scene = GlobalInfo.getScenes().get(sceneId);
         Monster monster = scene.getMonsterHashMap().get(monsterId);
-        monster.setMonsterHp(monster.getMonsterHp()-damage);
+        //monster.setMonsterHp(monster.getMonsterHp()-damage);
+        SceneService.checkAndSetMonsterHp(monster.getMonsterHp()-damage,monster);
         if(monster.getMonsterHp()<=0){
             this.timer.cancel();
         }

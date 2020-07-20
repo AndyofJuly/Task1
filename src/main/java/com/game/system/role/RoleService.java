@@ -16,6 +16,8 @@ import com.game.system.role.pojo.Role;
 import com.game.system.skill.SkillService;
 import com.game.system.skill.pojo.SkillResource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 
@@ -25,10 +27,11 @@ import java.util.HashMap;
  * @Author andy
  * @create 2020/5/13 18:18
  */
-
+@Service
 public class RoleService {
 
-    private final PackageService packageService = new PackageService();
+    @Autowired
+    private PackageService packageService;// = new PackageService();
 
     /**
      * 移动切换场景-临时场景考虑在内
@@ -39,7 +42,7 @@ public class RoleService {
     public boolean moveTo(int lastSceneId, Role role){
         int scenesId = GlobalInfo.getScenes().get(role.getNowScenesId()).getSceneId();
         String nowPlace = SceneResource.getScenesStatics().get(scenesId).getName();
-        int[] arr = SceneResource.getPlaces().get(AssistService.checkSceneId(nowPlace));
+        Integer[] arr = SceneResource.getPlaces().get(AssistService.checkSceneId(nowPlace));
         //判断是否能移动到目标场景
         boolean result = false;
         for (int value : arr) {
@@ -93,17 +96,18 @@ public class RoleService {
     }
 
     /**
-     * 维修装备-free
+     * 维修身上穿戴的装备-free
      * @param equipmentId 装备id
      * @param role 角色
      * @return 信息提示
      */
     public String repairEquipment(int equipmentId,Role role){
-        if(!role.getEquipmentHashMap().containsKey(equipmentId)){
+        if(!role.getEquipmentHashMap().containsValue(equipmentId)){
             return "没有此装备";
         }
-        Equipment equipment = role.getEquipmentHashMap().get(equipmentId);
+        Equipment equipment = GlobalInfo.getEquipmentHashMap().get(equipmentId);
         equipment.setDura(AssistService.getEquipmentDura(equipmentId));
+
         return Const.service.REPAIR_SUCCESS +equipment.getDura();
     }
 
@@ -114,59 +118,76 @@ public class RoleService {
      * @return 信息提示
      */
     public String putOnEquipment(int equipmentId,Role role){
-        int atk = role.getAtk();
-        atk = atk + AssistService.getEquipmentAtk(equipmentId);
-        role.setAtk(atk);
+        int staticId = AssistService.getStaticEquipId(equipmentId);
+        EquipmentStatic equipmentInfo = EquipmentResource.getEquipmentStaticHashMap().get(staticId);
+
+        role.setAtk(role.getAtk() + equipmentInfo.getAtk());
         //判断装备类型，根据身上是否穿戴，与背包进行交换
-        EquipmentStatic equipmentInfo = EquipmentResource.getEquipmentStaticHashMap().get(equipmentId);
+
         boolean alreadyWear = false;
-        int wearEquipId = 0;
-        for(Integer selfEquipId : role.getEquipmentHashMap().keySet()){
-            if(equipmentInfo.getType()==EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType()){
+        int wearPosition = equipmentInfo.getType();
+        for(Integer key : role.getEquipmentHashMap().keySet()){
+/*            if(role.getEquipmentHashMap().get(key)!=0 || role.getEquipmentHashMap().get(key)!=null){//或者null
                 alreadyWear = true;
-                wearEquipId=selfEquipId;
+                wearPosition = key;
+                //wearEquipId=selfEquipId;
+            }*/
+            int tempId = AssistService.getStaticEquipId(role.getEquipmentHashMap().get(key));
+            if(equipmentInfo.getType().equals(EquipmentResource.getEquipmentStaticHashMap().get(tempId).getType())){
+                alreadyWear = true;
+                wearPosition=key;
             }
         }
-        Equipment equipment1 = new Equipment(equipmentId);
-        packageService.getFromPackage(equipmentId,1,role);
-        role.getEquipmentHashMap().put(equipmentId,equipment1);
 
-        Subject.notifyObservers(0,role,bodyEquipLvOb);
+        packageService.getFromPackage(equipmentId,1,role);
 
         if(alreadyWear){
-            packageService.putIntoPackage(wearEquipId,1,role);
+            //packageService.putIntoPackage(wearEquipId,1,role);
+            takeOffEquipment(wearPosition,role);
         }
+
+        //Equipment equipment = new Equipment(equipmentId);
+        //role.getEquipmentHashMap().put(equipmentId,equipment);
+        role.getEquipmentHashMap().put(wearPosition,equipmentId);
+
+        //Subject.notifyObservers(0,role,bodyEquipLvOb);
+        roleSubject.notifyObserver(0,role);
         return Const.service.PUTON_SUCCESS;
     }
 
     /**
-     * 获得武器的耐久
+     * 脱下装备 takeOff 0 表示脱掉装备槽为0的装备-武器
+     * @param wearPosition 装备在身上的位置
+     * @param role 角色
+     * @return 信息提示
+     */
+    public String takeOffEquipment(int wearPosition,Role role){
+        int equipmentId = role.getEquipmentHashMap().get(wearPosition);
+        //int staticId = AssistService.getStaticEquipId(equipmentId);
+        role.setAtk(role.getAtk()-AssistService.getEquipmentAtk(equipmentId));
+        role.getEquipmentHashMap().remove(wearPosition);
+        packageService.putIntoPackage(equipmentId,1,role);
+        return Const.service.TAKEOFF_SUCCESS;
+    }
+
+    /**
+     * 获得身穿武器的当前耐久
      * @param role 角色
      * @return 信息提示
      */
     public String getWeaponDura(Role role){
-        for(Integer selfEquipId : role.getEquipmentHashMap().keySet()){
+        if(role.getEquipmentHashMap().get(0)==0){//==null
+            return "没有佩戴武器！";
+        }
+        Equipment equipment = GlobalInfo.getEquipmentHashMap().get(role.getEquipmentHashMap().get(0));
+        return "当前武器耐久："+ equipment.getDura();
+/*
+        for(Integer key : role.getEquipmentHashMap().keySet()){
             if(EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType()==1){
                 return "当前武器耐久："+role.getEquipmentHashMap().get(selfEquipId).getDura();
             }
         }
-        return "没有佩戴武器！";
-    }
-
-
-    /**
-     * 脱下装备
-     * @param equipmentId 装备id
-     * @param role 角色
-     * @return 信息提示
-     */
-    public String takeOffEquipment(int equipmentId,Role role){
-        int atk = role.getAtk();
-        atk = atk - AssistService.getEquipmentAtk(equipmentId);
-        role.setAtk(atk);
-        role.getEquipmentHashMap().remove(equipmentId);
-        packageService.putIntoPackage(equipmentId,1,role);
-        return Const.service.TAKEOFF_SUCCESS;
+        return "没有佩戴武器！";*/
     }
 
     /**
@@ -175,76 +196,17 @@ public class RoleService {
      * @param role 角色
      * @return 是否成功使用
      */
-    public boolean useDrug(int potionId,Role role){
+    public String useDrug(int potionId,Role role){
         int hp = role.getHp();
         int mp = role.getMp();
         if(!packageService.getFromPackage(potionId,1,role)){
-            return false;
+            return Const.service.USE_FAILURE;
         }
-        role.setHp(hp + AssistService.getPotionAddHp(potionId));
-        role.setMp(mp + AssistService.getPotionAddMp(potionId));
-        if(role.getHp()>=role.getMaxHp()){
-            role.setHp(role.getMaxHp());
-        }
-        if(role.getMp()>=role.getMaxMp()){
-            role.setMp(role.getMaxMp());
-        }
-        return true;
-    }
-
-    /**
-     * 与玩家pk-任意同场景相同视野下可以发动，效果与技能和普攻相同
-     * @param skillId 技能id
-     * @param targetRoleId pk角色id
-     * @param role 角色
-     * @return 信息提示
-     */
-    public String pkPlayer (int skillId,int targetRoleId, Role role){
-        Role enemy = GlobalInfo.getRoleHashMap().get(targetRoleId);
-        if(enemy.getNowScenesId()!=role.getNowScenesId()){
-            return "不再同一场景，无法pk";
-        }
-        if(AssistService.isNotInView(role,enemy)){
-            return Const.Fight.DISTACNE_LACK;
-        }
-        String result = new SkillService().skillCommon(skillId,role);
-        if(!Const.Fight.SUCCESS.equals(result)){
-            return result;
-        }
-        return pkAffect(skillId,enemy,role);
-    }
-
-    /**
-     * pk攻击时的双方的状态处理
-     * @param skillId 技能id
-     * @param enemy pk的对象
-     * @param role 角色
-     * @return 信息提示
-     */
-    private String pkAffect(int skillId,Role enemy,Role role){
-        int hp = enemy.getHp();
-        int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
-        int weaponBuff = 0;
-        if(role.getEquipmentHashMap()!=null){
-            weaponBuff=Const.WEAPON_BUFF;
-        }
-        hp=hp-role.getAtk()-weaponBuff-skillHarm;
-
-        if(hp<=0){
-            role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
-            packageService.addMoney(Const.PK_GET_LOST,role);
-            if(!packageService.lostMoney(Const.PK_GET_LOST,enemy)){
-                enemy.setMoney(0);
-            }
-
-            Subject.notifyObservers(Const.achieve.TASK_PK_SUCCESS,role,fsPkSuccessOb);
-            return Const.Fight.PK_SUCCESS;
-        }
-
-        ServerHandler.notifyRole(enemy.getId(),"你遭到pk，"+role.getName()+"向你发起了攻击",
-                role.getId(),"你向对方发起了pk，攻击了对方");
-        enemy.setHp(hp);
-        return Const.Fight.TARGET_HP+hp;
+        checkAndSetHp(hp + AssistService.getPotionAddHp(potionId),role);
+        checkAndSetMp(mp + AssistService.getPotionAddMp(potionId),role);
+        int recoverHp = role.getHp() - hp;
+        int recoverMp = role.getMp() - mp;
+        return Const.service.USE_SUCCESS+"，血量增加"+recoverHp+"，蓝量增加"+recoverMp;
     }
 
     /**
@@ -347,9 +309,11 @@ public class RoleService {
     public void addFriend(Integer friendId,Role role){
         role.getFriendBo().getFriendIdList().add(role.getId());
         role.getFriendBo().getApplyIdList().remove(friendId);
-        Subject.notifyObservers(0,role,friendOb);
+        //Subject.notifyObservers(0,role,friendOb);
+        roleSubject.notifyObserver(0,role);
         Role friendRole = GlobalInfo.getRoleHashMap().get(friendId);
-        Subject.notifyObservers(0,friendRole,friendOb);
+        //Subject.notifyObservers(0,friendRole,friendOb);
+        roleSubject.notifyObserver(0,friendRole);
         ServerHandler.notifyRole(friendId,role.getName()+"已同意你的好友申请",role.getId(),"已添加好友");
     }
 
@@ -360,7 +324,8 @@ public class RoleService {
      */
     public void levelUp(int level,Role role){
         role.setLevel(level);
-        Subject.notifyObservers(0,role,levelOb);
+        //Subject.notifyObservers(0,role,levelOb);
+        roleSubject.notifyObserver(0,role);
     }
 
     /**
@@ -385,8 +350,8 @@ public class RoleService {
      */
     public String getBodyEquip(Role role){
         StringBuilder list= new StringBuilder();
-        for(Integer equipId : role.getEquipmentHashMap().keySet()){
-            list.append(equipId).append(" ");
+        for(Integer key : role.getEquipmentHashMap().keySet()){
+            list.append(role.getEquipmentHashMap().get(key)).append(" ");
         }
         return list.toString();
     }
@@ -457,7 +422,9 @@ public class RoleService {
      */
     public String getNpcReply(int npcId,Role role){
 
-        Subject.notifyObservers(npcId,role,talkNpcOb);
+        //Subject.notifyObservers(npcId,role,talkNpcOb);
+        //TalkNpcOb talkNpcOb = new TalkNpcOb(roleSubject);//改成单例
+        roleSubject.notifyObserver(npcId,role);
 
         //talkNpcOb.fireTalkNpc(role,npcId);
         //ITalkNpcObserver.fireTalkNpc(Role role,int npcId)
@@ -476,7 +443,7 @@ public class RoleService {
      * @return 信息提示
      */
     public String getRoleInfo(Role role){
-        return  "id:"+role.getId()+"\n"+"name:"+role.getName()+"\n"+"hp："+role.getHp()+"\n"+
+        return  role.getName()+"的信息：\n"+"id:"+role.getId()+"\n"+"hp："+role.getHp()+"\n"+
                 "mp："+role.getMp()+"\n"+"atk："+role.getAtk()+"\n"+"money："+role.getMoney()+"\n"+
                 "nowScenesId:"+role.getNowScenesId()+"\n"+"careerId:"+role.getCareerId()+"\n"+
                 "unionId:"+role.getUnionId()+"\n"+"level:"+role.getLevel()+"\n"+
@@ -502,7 +469,10 @@ public class RoleService {
      * @return 信息提示
      */
     public String testCode(Role role){
-        return role.getMyPackageBo().getPackageGrid();
+        for(Integer key : GlobalInfo.getEquipmentHashMap().keySet()){
+            System.out.println("全局装备有"+key+" ");
+        }
+        return "hi";
     }
 
     /**
@@ -529,13 +499,34 @@ public class RoleService {
      * @param role 角色
      * @return 信息提示
      */
-    public String getAchievmentList(Role role){
+    public String getAchievementList(Role role){
         StringBuilder result= new StringBuilder();
         for(Integer achieveId : AchieveResource.getAchieveStaticHashMap().keySet()){
             result.append(AchieveResource.getAchieveStaticHashMap().get(achieveId).getDesc()).append("：").
                     append(role.getAchievementBo().getAchievementHashMap().get(achieveId)).append("\n");
         }
         return result.toString();
+    }
+
+    public static void checkAndSetHp(int hp,Role role){
+        if(hp<0){
+            role.setHp(0);
+        }else if(hp>role.getMaxHp()){
+            role.setHp(role.getMaxHp());
+        }else {
+            role.setHp(hp);
+        }
+
+    }
+
+    public static void checkAndSetMp(int mp,Role role){
+        if(mp<0){
+            role.setMp(0);
+        }else if(mp>role.getMaxMp()){
+            role.setMp(role.getMaxMp());
+        }else {
+            role.setMp(mp);
+        }
     }
 
     //角色方法处理模块，预先注册好相应的监听器，当触发事件时，对已注册的监听器进行通知处理
@@ -549,12 +540,11 @@ public class RoleService {
     }*/
 
     //注册观察者
-    private TalkNpcOb talkNpcOb = new TalkNpcOb();
-    private BodyEquipLvOb bodyEquipLvOb = new BodyEquipLvOb();
-    private FriendOb friendOb = new FriendOb();
-    private FsPkSuccessOb fsPkSuccessOb = new FsPkSuccessOb();
-    private LevelOb levelOb = new LevelOb();
-
+    Subject roleSubject = new Subject();
+    private TalkNpcOb talkNpcOb = new TalkNpcOb(roleSubject);
+    private BodyEquipLvOb bodyEquipLvOb = new BodyEquipLvOb(roleSubject);
+    private FriendOb friendOb = new FriendOb(roleSubject);
+    private LevelOb levelOb = new LevelOb(roleSubject);
 
 }
 

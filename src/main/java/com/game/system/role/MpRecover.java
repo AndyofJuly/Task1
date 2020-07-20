@@ -3,6 +3,7 @@ package com.game.system.role;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.Const;
 import com.game.system.role.pojo.CareerResource;
+import com.game.system.role.pojo.Role;
 
 import java.util.TimerTask;
 
@@ -16,10 +17,10 @@ public class MpRecover extends TimerTask {
     public void run() {
         //mp恢复方法；每隔x秒恢复1点；假设这里只回复角色1的mp，待扩展；扩展可用循环读取所有的role，然后分别加mp
         for(Integer key : GlobalInfo.getRoleHashMap().keySet()){
-            int mp= GlobalInfo.getRoleHashMap().get(key).getMp()+ Const.RECOVER_MP;
-            int careerId = GlobalInfo.getRoleHashMap().get(key).getCareerId();
-            if(mp <= CareerResource.getCareerStaticHashMap().get(careerId).getMp()){
-                GlobalInfo.getRoleHashMap().get(key).setMp(mp);
+            Role role = GlobalInfo.getRoleHashMap().get(key);
+            int mp= role.getMp()+ Const.RECOVER_MP;
+            if(mp <= role.getMaxMp()){
+                RoleService.checkAndSetMp(mp,role);
             }
         }
     }

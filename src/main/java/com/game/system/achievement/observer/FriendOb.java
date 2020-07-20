@@ -3,6 +3,7 @@ package com.game.system.achievement.observer;
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.achievement.subject.SerialTaskSB;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.role.pojo.Role;
 
 /**
@@ -10,14 +11,14 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/13 10:10
  */
 public class FriendOb implements Observer{
-/*    public FriendOb(FriendSB subject) {
+    public FriendOb(Subject subject) {
         subject.registerObserver(this);
-    }*/
+    }
 
     @Override
     public void checkAchievement(int targetId, Role role){
         if(targetId!=0){return;}
-        role.getAchievementBo().setCountFriend();
+        role.getAchievementBo().setCountFriend(role.getAchievementBo().getCountFriend()+1);
 
         for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
             boolean staticSearch = Const.achieve.TASK_FRIEDN.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
@@ -27,11 +28,6 @@ public class FriendOb implements Observer{
             }
         }
 
-        SerialTaskSB.notifyObservers(0,role);
-    }
-
-    @Override
-    public void checkAchievement(String target, Role role) {
-
+        SerialTaskOb.checkAchievement(0,role);
     }
 }

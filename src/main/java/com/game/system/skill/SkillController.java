@@ -6,6 +6,8 @@ import com.game.system.role.RoleController;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.ResponseInf;
 import com.game.system.assist.AssistService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -16,11 +18,13 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/15 15:23
  */
-@Controller
+@Controller("skillController")
 public class SkillController {
 
     private ArrayList<Integer> intList = RoleController.getIntList();
-    private SkillService skillService = new SkillService();
+
+    @Autowired
+    private SkillService skillService;// = new SkillService();
 
     /** 获得当前自己拥有的技能，使用方式：skillList */
     @MyAnnontation(MethodName = "skillList")
@@ -83,6 +87,13 @@ public class SkillController {
     public ResponseInf normalAttack(){
         String key = AssistService.checkMonsterId(intList.get(0),getRole());
         return ResponseInf.setResponse(skillService.normalAttack(key,getRole()),getRole());
+    }
+
+    /** pk玩家，使用方式：pk skillId roleId */
+    @MyAnnontation(MethodName = "pk")
+    public ResponseInf pkPlayer(){
+        String msg = skillService.pkPlayer(intList.get(0), intList.get(1),getRole());
+        return ResponseInf.setResponse(msg,getRole());
     }
 
 }

@@ -3,6 +3,8 @@ package com.game.system.shop;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.achievement.pojo.AchieveResource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,6 +17,7 @@ import java.util.HashMap;
  * @Author andy
  * @create 2020/7/1 17:37
  */
+@Repository
 public class RecordDao {
 
     private Connection conn;

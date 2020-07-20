@@ -15,6 +15,7 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ import java.util.Scanner;
  * @author maoyuanming0806 and andy
  * @create 2020/6/10 17:32
  */
-@Service("clientTwo")
+@Component("clientTwo")
 public class ClientTwo {
 
     private final String HOST_IP = "127.0.0.1";

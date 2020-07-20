@@ -9,7 +9,9 @@ import com.game.system.role.pojo.Role;
 public interface Observer {
     void checkAchievement(int targetId, Role role);
 
-    void checkAchievement(String target, Role role);
+    //void checkAchievement(String target, Role role);
+
+    //void fireCheckAchievement(String target, Role role);
 
     //void fireTalkNpc(Role role, int NpcId);
 

@@ -8,6 +8,9 @@ import com.game.system.shop.RecordDao;
 import com.game.system.union.UnionDao;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,13 +21,18 @@ import java.util.TimerTask;
  * @Author andy
  * @create 2020/5/11 21:50
  */
-
+@Service
 public class GameService {
 
-    private PotralDao potralDao = new PotralDao();
-    private RecordDao recordDao = new RecordDao();
-    private UnionDao unionDao = new UnionDao();
-    private GoodsDao goodsDao = new GoodsDao();
+    @Autowired
+    private PotralDao potralDao;// = new PotralDao();
+    @Autowired
+    private RecordDao recordDao;// = new RecordDao();
+    @Autowired
+    private UnionDao unionDao;// = new UnionDao();
+    @Autowired
+    private GoodsDao goodsDao;// = new GoodsDao();
+
     private static boolean saveBoolean = true;
 
     /**
@@ -40,7 +48,7 @@ public class GameService {
             InitGame.setEnterSuccess(true);
             InitGame.init(role);
             if(saveBoolean){
-                saveAuto();
+                //saveAuto();
                 saveBoolean=false;
             }
             return Const.start.LOGIN_SUCCESS;
@@ -94,6 +102,7 @@ public class GameService {
             unionDao.updateUnionStore(role);
         }
         unionDao.updateUnionMember();
+        goodsDao.updateEquipment();
         return true;
     }
 

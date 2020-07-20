@@ -7,17 +7,17 @@ package com.game.system.dungeons.pojo;
 public class DungeonsStatic {
 
     /** 副本id */
-    private int id;
+    private Integer id;
     /** 副本名 */
     private String name;
     /** 副本规定时间 */
-    private int deadTime;
+    private Integer deadTime;
     /** 副本中的bossId，可扩展为集合 */
-    private int bossId;
+    private Integer bossId;
     /** 副本中的场景来源，根据该场景建立出临时场景 */
-    private int sceneId;
+    private Integer sceneId;
 
-    public DungeonsStatic(int id, String name, int deadTime, int bossId, int sceneId) {
+    public DungeonsStatic(Integer id, String name, Integer deadTime, Integer bossId, Integer sceneId) {
         this.id = id;
         this.name = name;
         this.deadTime = deadTime;
@@ -25,11 +25,11 @@ public class DungeonsStatic {
         this.sceneId = sceneId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,27 +41,27 @@ public class DungeonsStatic {
         this.name = name;
     }
 
-    public int getDeadTime() {
+    public Integer getDeadTime() {
         return deadTime;
     }
 
-    public void setDeadTime(int deadTime) {
+    public void setDeadTime(Integer deadTime) {
         this.deadTime = deadTime;
     }
 
-    public int getBossId() {
+    public Integer getBossId() {
         return bossId;
     }
 
-    public void setBossId(int bossId) {
+    public void setBossId(Integer bossId) {
         this.bossId = bossId;
     }
 
-    public int getSceneId() {
+    public Integer getSceneId() {
         return sceneId;
     }
 
-    public void setSceneId(int sceneId) {
+    public void setSceneId(Integer sceneId) {
         this.sceneId = sceneId;
     }
 }

@@ -12,6 +12,9 @@ import com.game.system.dungeons.pojo.DungeonsStatic;
 import com.game.system.dungeons.pojo.DungeonsResource;
 import com.game.system.role.RoleService;
 import com.game.system.scene.SceneService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -21,8 +24,10 @@ import java.util.Timer;
  * @Author andy
  * @create 2020/6/15 15:08
  */
+@Service
 public class DungeonsService {
-    private SceneService sceneService = new SceneService();
+    @Autowired
+    private SceneService sceneService;// = new SceneService();
 
     /**
      * 创建队伍
@@ -47,7 +52,8 @@ public class DungeonsService {
         role.setTeamId(teamId);
         GlobalInfo.getTeamList().get(teamId).getRoleList().add(role.getId());
 
-        Subject.notifyObservers(Const.achieve.TASK_FIRST_TEAM,role,fsJoinTeamOb);
+        //Subject.notifyObservers(Const.achieve.TASK_FIRST_TEAM,role,fsJoinTeamOb);
+        dungeonsSubject.notifyObserver(0,role);
 
         ArrayList<Role> roles = getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
         ServerHandler.notifyGroupRoles(roles,role.getName()+"加入了队伍");
@@ -155,5 +161,6 @@ public class DungeonsService {
         FsJoinTeamSB.registerObserver(new FsJoinTeamOb());
     }*/
 
-    private FsJoinTeamOb fsJoinTeamOb = new FsJoinTeamOb();
+    Subject dungeonsSubject = new Subject();
+    private FsJoinTeamOb fsJoinTeamOb = new FsJoinTeamOb(dungeonsSubject);
 }

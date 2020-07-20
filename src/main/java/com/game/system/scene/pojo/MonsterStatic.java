@@ -7,19 +7,19 @@ package com.game.system.scene.pojo;
  */
 public class MonsterStatic {
     /** 怪物id */
-    private int id;
+    private Integer id;
     /** 怪物名 */
     private String name;
     /** 怪物血量 */
-    private int hp;
+    private Integer hp;
     /** 怪物攻击力 */
-    private int atk;
+    private Integer atk;
     /** 位置坐标 */
-    private int[] position;
+    private Integer[] position;
     /** 怪物物理防御力 */
-    private int def;
+    private Integer def;
 
-    public MonsterStatic(int id, String name, int hp, int atk, int[] position, int def) {
+    public MonsterStatic(Integer id, String name, Integer hp, Integer atk, Integer[] position, Integer def) {
         this.id = id;
         this.name = name;
         this.hp = hp;
@@ -29,27 +29,11 @@ public class MonsterStatic {
         this.def = def;
     }
 
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -61,19 +45,35 @@ public class MonsterStatic {
         this.name = name;
     }
 
-    public int[] getPosition() {
+    public Integer getHp() {
+        return hp;
+    }
+
+    public void setHp(Integer hp) {
+        this.hp = hp;
+    }
+
+    public Integer getAtk() {
+        return atk;
+    }
+
+    public void setAtk(Integer atk) {
+        this.atk = atk;
+    }
+
+    public Integer[] getPosition() {
         return position;
     }
 
-    public void setPosition(int[] position) {
+    public void setPosition(Integer[] position) {
         this.position = position;
     }
 
-    public int getDef() {
+    public Integer getDef() {
         return def;
     }
 
-    public void setDef(int def) {
+    public void setDef(Integer def) {
         this.def = def;
     }
 }

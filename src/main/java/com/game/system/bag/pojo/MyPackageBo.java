@@ -10,9 +10,9 @@ import java.util.HashMap;
  * @Author andy
  * @create 2020/5/21 20:04
  */
-public class MyPackageBo {
+public class MyPackageBo {//改
     /** 背包容量，默认为6*/
-    private int size;
+    private Integer size;
     /** 背包极品装备数量*/
     private int bestNum = 0;
     /** 背包格子集合，格子id-每个格子对象-在该类中封装，仅对外提供信息，只有通过goodsHashMap才能对其操作*/
@@ -20,7 +20,7 @@ public class MyPackageBo {
     /** 物品id和物品数量-外部访问时访问该集合，主要为了方便数据库读取*/
     private HashMap<Integer,Integer> goodsHashMap = new HashMap<Integer,Integer>();
 
-    public MyPackageBo(int size, HashMap<Integer, Integer> goodsHashMap) {
+    public MyPackageBo(Integer size, HashMap<Integer, Integer> goodsHashMap) {
         this.size = size;
         this.goodsHashMap = goodsHashMap;
         //初始化
@@ -30,28 +30,20 @@ public class MyPackageBo {
         }
     }
 
-    public int getSize() {
+    public Integer getSize() {
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(Integer size) {
         this.size = size;
-    }
-
-    public HashMap<Integer, Integer> getGoodsHashMap() {
-        return goodsHashMap;
-    }
-
-    public void setGoodsHashMap(HashMap<Integer, Integer> goodsHashMap) {
-        this.goodsHashMap = goodsHashMap;
     }
 
     public int getBestNum() {
         return bestNum;
     }
 
-    public void setSumBestNum() {
-        this.bestNum = this.bestNum+1;
+    public void setBestNum(int bestNum) {
+        this.bestNum = bestNum;
     }
 
     public HashMap<Integer, BagGridBo> getPackageGridHashMap() {
@@ -62,8 +54,14 @@ public class MyPackageBo {
         this.packageGridHashMap = packageGridHashMap;
     }
 
+    public HashMap<Integer, Integer> getGoodsHashMap() {
+        return goodsHashMap;
+    }
 
-    //将背包goodsHashMap集合封装成背包格子，再对外提供背包格子信息
+    public void setGoodsHashMap(HashMap<Integer, Integer> goodsHashMap) {
+        this.goodsHashMap = goodsHashMap;
+    }
+//将背包goodsHashMap集合封装成背包格子，再对外提供背包格子信息
 
     //物品集合随机散落在格子上-已删除
 

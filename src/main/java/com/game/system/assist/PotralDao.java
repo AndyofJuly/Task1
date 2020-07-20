@@ -4,6 +4,8 @@ import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.role.pojo.CareerStatic;
 import com.game.system.role.pojo.CareerResource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/5/12 9:51
  */
-
+@Repository
 public class PotralDao {
     private Connection conn;
     private boolean result;

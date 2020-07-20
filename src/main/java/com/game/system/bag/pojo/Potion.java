@@ -1,26 +1,23 @@
 package com.game.system.bag.pojo;
 
 /**
+ * 药品类-暂时无用
  * @Author andy
  * @create 2020/5/29 9:56
  */
-public class Potion {
-    /** 同类药品当前数量 */
-    private int number;
-    /** 资源类中的静态id */
-    private int potionId;
+public class Potion {//改
+    /** 资源类中的静态id和动态id相同 */
+    private Integer potionId;
 
-    public Potion(int number, int potionId) {
-        this.number = number;
+    public Potion(Integer potionId) {
         this.potionId = potionId;
     }
 
-    public int getNumber() {
-        return number;
+    public Integer getPotionId() {
+        return potionId;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setPotionId(Integer potionId) {
+        this.potionId = potionId;
     }
-
 }

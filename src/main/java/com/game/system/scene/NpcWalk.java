@@ -37,7 +37,7 @@ public class NpcWalk implements Runnable{
             //移动后更新格子
             //System.out.println(SceneService.refleshGrid(x,y,npc));
 
-            int[] newPositon = {x,y};
+            Integer[] newPositon = {x,y};
             npc.setPosition(newPositon);
             System.out.println(npc.getNpcId() + "位置为" + npc.getPosition()[0]+","+npc.getPosition()[1]);
         }

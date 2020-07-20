@@ -6,17 +6,17 @@ package com.game.system.bag.pojo;
  */
 public class PotionStatic {
     /** 药品id*/
-    private int id;
+    private Integer id;
     /** 药品名*/
     private String name;
     /** 药品增加的蓝量*/
-    private int addMp;
+    private Integer addMp;
     /** 药品增加的血量*/
-    private int addHp;
+    private Integer addHp;
     /** 药品的价格*/
-    private int price;
+    private Integer price;
 
-    public PotionStatic(int id, String name, int addMp, int addHp, int price) {
+    public PotionStatic(Integer id, String name, Integer addMp, Integer addHp, Integer price) {
         this.id = id;
         this.name = name;
         this.addMp = addMp;
@@ -24,11 +24,11 @@ public class PotionStatic {
         this.price = price;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,27 +40,27 @@ public class PotionStatic {
         this.name = name;
     }
 
-    public int getAddMp() {
+    public Integer getAddMp() {
         return addMp;
     }
 
-    public void setAddMp(int addMp) {
+    public void setAddMp(Integer addMp) {
         this.addMp = addMp;
     }
 
-    public int getAddHp() {
+    public Integer getAddHp() {
         return addHp;
     }
 
-    public void setAddHp(int addHp) {
+    public void setAddHp(Integer addHp) {
         this.addHp = addHp;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 }

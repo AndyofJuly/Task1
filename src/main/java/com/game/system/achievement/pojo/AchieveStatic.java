@@ -6,17 +6,17 @@ package com.game.system.achievement.pojo;
  */
 public class AchieveStatic {
     /** 成就id*/
-    private int id;
+    private Integer id;
     /** 成就说明*/
     private String desc;
     /** 目标*/
-    private int targetId;
+    private Integer targetId;
     /** 完成所需数量*/
-    private int count;
+    private Integer count;
     /** 系列任务*/
-    private int[] serial;
+    private Integer[] serial;
 
-    public AchieveStatic(int id, String desc, int targetId, int count,int[] serial) {
+    public AchieveStatic(Integer id, String desc, Integer targetId, Integer count,Integer[] serial) {
         this.id = id;
         this.desc = desc;
         this.targetId = targetId;
@@ -24,11 +24,11 @@ public class AchieveStatic {
         this.serial = serial;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -40,27 +40,27 @@ public class AchieveStatic {
         this.desc = desc;
     }
 
-    public int getTargetId() {
+    public Integer getTargetId() {
         return targetId;
     }
 
-    public void setTargetId(int targetId) {
+    public void setTargetId(Integer targetId) {
         this.targetId = targetId;
     }
 
-    public int getCount() {
+    public Integer getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(Integer count) {
         this.count = count;
     }
 
-    public int[] getSerial() {
+    public Integer[] getSerial() {
         return serial;
     }
 
-    public void setSerial(int[] serial) {
+    public void setSerial(Integer[] serial) {
         this.serial = serial;
     }
 }

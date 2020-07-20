@@ -8,9 +8,10 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/13 10:13
  */
 public class SerialTaskSB {
-    private static SerialTaskOb serialTaskOB = new SerialTaskOb();
+/*    private static SerialTaskOb serialTaskOB = new SerialTaskOb();
 
     public static void notifyObservers(int targetId, Role role) {
+
         serialTaskOB.checkAchievement(targetId,role);
-    }
+    }*/
 }

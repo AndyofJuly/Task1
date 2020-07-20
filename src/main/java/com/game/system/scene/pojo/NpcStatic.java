@@ -7,17 +7,17 @@ package com.game.system.scene.pojo;
  */
 public class NpcStatic {
     /** NPC的id */
-    private int id;
+    private Integer id;
     /** NPC的名字 */
     private String name;
     /** NPC的对话 */
     private String words;
     /** NPC所在场景id */
-    private int sceneId;
+    private Integer sceneId;
     /** 位置坐标 */
-    private int[] position;
+    private Integer[] position;
 
-    public NpcStatic(int id, String name,String words,int sceneId,int[] position) {
+    public NpcStatic(Integer id, String name,String words,Integer sceneId,Integer[] position) {
         this.id = id;
         this.name = name;
         this.words = words;
@@ -25,27 +25,11 @@ public class NpcStatic {
         this.position = position;
     }
 
-    public int getSceneId() {
-        return sceneId;
-    }
-
-    public void setSceneId(int sceneId) {
-        this.sceneId = sceneId;
-    }
-
-    public String getWords() {
-        return words;
-    }
-
-    public void setWords(String words) {
-        this.words = words;
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,11 +41,27 @@ public class NpcStatic {
         this.name = name;
     }
 
-    public int[] getPosition() {
+    public String getWords() {
+        return words;
+    }
+
+    public void setWords(String words) {
+        this.words = words;
+    }
+
+    public Integer getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(Integer sceneId) {
+        this.sceneId = sceneId;
+    }
+
+    public Integer[] getPosition() {
         return position;
     }
 
-    public void setPosition(int[] position) {
+    public void setPosition(Integer[] position) {
         this.position = position;
     }
 }

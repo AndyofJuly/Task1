@@ -3,6 +3,7 @@ package com.game.system.achievement.observer;
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.achievement.subject.SerialTaskSB;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.role.pojo.Role;
 
 /**
@@ -10,9 +11,9 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/13 10:03
  */
 public class SlayMonsterOb implements Observer{
-/*    public SlayMonsterOb(SlayMonsterSB subject) {
+    public SlayMonsterOb(Subject subject) {
         subject.registerObserver(this);
-    }*/
+    }
 
     @Override
     public void checkAchievement(int targetId, Role role){
@@ -36,11 +37,6 @@ public class SlayMonsterOb implements Observer{
             }
         }
 
-        SerialTaskSB.notifyObservers(0,role);
-    }
-
-    @Override
-    public void checkAchievement(String target, Role role) {
-
+        SerialTaskOb.checkAchievement(0,role);
     }
 }

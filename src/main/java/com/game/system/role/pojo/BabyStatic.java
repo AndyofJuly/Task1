@@ -7,26 +7,26 @@ package com.game.system.role.pojo;
  */
 public class BabyStatic {
     /** 宝宝id */
-    private int id;
+    private Integer id;
     /** 宝宝名 */
     private String name;
     /** 宝宝初始血量 */
-    private int hp;
+    private Integer hp;
     /** 怪物初始攻击力 */
-    private int atk;
+    private Integer atk;
 
-    public BabyStatic(int id, String name, int hp, int atk) {
+    public BabyStatic(Integer id, String name, Integer hp, Integer atk) {
         this.id = id;
         this.name = name;
         this.hp = hp;
         this.atk = atk;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,19 +38,19 @@ public class BabyStatic {
         this.name = name;
     }
 
-    public int getHp() {
+    public Integer getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(Integer hp) {
         this.hp = hp;
     }
 
-    public int getAtk() {
+    public Integer getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(Integer atk) {
         this.atk = atk;
     }
 }

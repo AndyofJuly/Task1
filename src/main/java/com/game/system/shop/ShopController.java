@@ -6,6 +6,8 @@ import com.game.system.role.pojo.Role;
 import com.game.system.role.RoleController;
 import com.game.common.ResponseInf;
 import com.game.system.assist.GlobalInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -16,12 +18,13 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/15 15:23
  */
-@Controller
+@Controller("shopController")
 public class ShopController {
 
     private ArrayList<Integer> intList = RoleController.getIntList();
 
-    private ShopService shopService = new ShopService();
+    @Autowired
+    private ShopService shopService;// = new ShopService();
 
     /** 获得商店的商品列表，使用方式：getGoodsList */
     @MyAnnontation(MethodName = "getGoodsList")

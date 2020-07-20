@@ -1,15 +1,20 @@
 package com.game.system.bag;
 
+import com.game.common.Const;
 import com.game.system.achievement.observer.BestEquipOb;
 import com.game.system.achievement.observer.SumMoneyOb;
 import com.game.system.achievement.subject.Subject;
+import com.game.system.assist.AssistService;
 import com.game.system.role.pojo.Role;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * 背包模块的业务逻辑处理
  * @Author andy
  * @create 2020/6/17 12:11
  */
+@Service
 public class PackageService {
 
     /**
@@ -20,7 +25,7 @@ public class PackageService {
      * @return boolean
      */
     public boolean putIntoPackage(int goodsId,int number,Role role){
-        if(role.getMyPackageBo().checkIfCanPut(goodsId,number)==false){
+        if(!role.getMyPackageBo().checkIfCanPut(goodsId, number)){
             System.out.println("背包放不下了-测试");
             return false;
         }
@@ -32,7 +37,10 @@ public class PackageService {
             role.getMyPackageBo().getGoodsHashMap().put(goodsId,number);
         }
 
-        Subject.notifyObservers(goodsId,role,bestEquipOb);
+        //Subject.notifyObservers(goodsId,role,bestEquipOb);
+        if(String.valueOf(goodsId).startsWith(Const.EQUIPMENT_HEAD)){
+            bagSubject.notifyObserver(AssistService.getStaticEquipId(goodsId),role);
+        }
         return true;
     }
 
@@ -61,7 +69,8 @@ public class PackageService {
      */
     public void addMoney(int number,Role role){
         role.setMoney(role.getMoney()+number);
-        Subject.notifyObservers(number,role,sumMoneyOb);
+        //Subject.notifyObservers(number,role,sumMoneyOb);
+        bagSubject.notifyObserver(number,role);
     }
 
     /**
@@ -78,12 +87,12 @@ public class PackageService {
         return true;
     }
 
-/*    static {
-        BestEquipSB.registerObserver(new BestEquipOb());
-        SumMoneySB.registerObserver(new SumMoneyOb());
-    }*/
-
-    private BestEquipOb bestEquipOb = new BestEquipOb();
-    private SumMoneyOb sumMoneyOb = new SumMoneyOb();
+    /*    static {
+            BestEquipSB.registerObserver(new BestEquipOb());
+            SumMoneySB.registerObserver(new SumMoneyOb());
+        }*/
+    Subject bagSubject = new Subject();
+    private BestEquipOb bestEquipOb = new BestEquipOb(bagSubject);
+    private SumMoneyOb sumMoneyOb = new SumMoneyOb(bagSubject);
 
 }

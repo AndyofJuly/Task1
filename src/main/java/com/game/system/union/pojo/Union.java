@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 public class Union {
     /** 公会id */
-    private int id;
+    private Integer id;
     /** 公会名 */
     private String name;
     /** 公会成员id及职务id */
@@ -20,21 +20,21 @@ public class Union {
     /** 申请列表 */
     private final ArrayList<Integer> roleList = new ArrayList<>();
     /** 钱 */
-    private int money;
+    private Integer money;
     /** 道具id和数量 */
     private final HashMap<Integer, Integer> goodsHashMap = new HashMap<>();
 
-    public Union(int id, String name) {
+    public Union(Integer id, String name) {
         this.id = id;
         this.name = name;
         this.money = 0;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,11 +54,11 @@ public class Union {
         return roleList;
     }
 
-    public int getMoney() {
+    public Integer getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(Integer money) {
         this.money = money;
     }
 

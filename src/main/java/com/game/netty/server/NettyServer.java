@@ -16,6 +16,7 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,7 +25,7 @@ import org.springframework.stereotype.Service;
  * @author maoyuanming0806 and andy
  * @create 2020/5/12 22:32
  */
-@Service("nettyServer")
+@Component("nettyServer")
 public class NettyServer {
     //监听端口
     private int port = 7000;
@@ -66,9 +67,11 @@ public class NettyServer {
         }
     }
 
+    //public static ApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+
     public static void main(String[] args) throws InterruptedException {
-        ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        NettyServer nettyServer = (NettyServer)ac.getBean("nettyServer");
+        ApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        NettyServer nettyServer = (NettyServer)springContext.getBean("nettyServer");
         nettyServer.run();
     }
 }

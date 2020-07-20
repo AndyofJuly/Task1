@@ -6,6 +6,7 @@ import com.game.system.dungeons.pojo.DungeonsResource;
 import com.game.system.role.RoleService;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
+import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
@@ -16,6 +17,7 @@ import java.util.concurrent.Executors;
  * @Author andy
  * @create 2020/6/12 10:32
  */
+@Component
 public class SceneService {
 
     /**
@@ -105,6 +107,15 @@ public class SceneService {
         scene.getGridHashMap().get(oldGridId).getGridNpcMap().remove(npc.getNpcId());
         scene.getGridHashMap().get(newGridId).getGridNpcMap().put(npc.getNpcId(),npc);
         return "过去格子"+oldGridId+"。现在格子"+newGridId;
+    }
+
+    public static void checkAndSetMonsterHp(int hp,Monster monster){
+        if(hp<0){
+            monster.setMonsterHp(0);
+            monster.setAlive(0);
+        }else{
+            monster.setMonsterHp(hp);
+        }
     }
 
     /**

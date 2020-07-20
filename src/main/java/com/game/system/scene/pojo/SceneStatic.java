@@ -7,17 +7,17 @@ package com.game.system.scene.pojo;
  */
 public class SceneStatic {
     /** 场景id */
-    private int id;
+    private Integer id;
     /** 场景名 */
     private String name;
     /** 场景间的关系 */
-    private int[] sceneRelation;
+    private Integer[] sceneRelation;
     /** 场景包含的NPC */
-    private int[] npcId;
+    private Integer[] npcId;
     /** 场景包含的怪物 */
-    private int[] monsterId;
+    private Integer[] monsterId;
 
-    public SceneStatic(int id, String name, int[] sceneRelation, int[] npcId, int[] monsterId) {
+    public SceneStatic(Integer id, String name, Integer[] sceneRelation, Integer[] npcId, Integer[] monsterId) {
         this.id = id;
         this.name = name;
         this.sceneRelation = sceneRelation;
@@ -25,11 +25,11 @@ public class SceneStatic {
         this.monsterId = monsterId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,27 +41,27 @@ public class SceneStatic {
         this.name = name;
     }
 
-    public int[] getSceneRelation() {
+    public Integer[] getSceneRelation() {
         return sceneRelation;
     }
 
-    public void setSceneRelation(int[] sceneRelation) {
+    public void setSceneRelation(Integer[] sceneRelation) {
         this.sceneRelation = sceneRelation;
     }
 
-    public int[] getNpcId() {
+    public Integer[] getNpcId() {
         return npcId;
     }
 
-    public void setNpcId(int[] npcId) {
+    public void setNpcId(Integer[] npcId) {
         this.npcId = npcId;
     }
 
-    public int[] getMonsterId() {
+    public Integer[] getMonsterId() {
         return monsterId;
     }
 
-    public void setMonsterId(int[] monsterId) {
+    public void setMonsterId(Integer[] monsterId) {
         this.monsterId = monsterId;
     }
 }

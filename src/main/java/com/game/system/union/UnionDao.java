@@ -3,6 +3,8 @@ package com.game.system.union;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.union.pojo.Union;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,6 +16,7 @@ import java.sql.ResultSet;
  * @Author andy
  * @create 2020/7/1 17:36
  */
+@Repository
 public class UnionDao {
     private Connection conn;
     private boolean result;

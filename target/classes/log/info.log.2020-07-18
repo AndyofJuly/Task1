@@ -1,0 +1,302 @@
+2020-07-18 09:34:35  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 09:34:35 CST 2020]; root of context hierarchy
+2020-07-18 09:34:35  [ main:66 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 09:34:43  [ main:16 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 09:34:43 CST 2020]; root of context hierarchy
+2020-07-18 09:34:43  [ main:95 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 09:35:05  [ main:32 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 09:35:05 CST 2020]; root of context hierarchy
+2020-07-18 09:35:05  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 09:35:15  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 09:35:15 CST 2020]; root of context hierarchy
+2020-07-18 09:35:15  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 09:35:34  [ nioEventLoopGroup-3-1:29053 ] - [ INFO ]  Reflections took 62 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:35:46  [ nioEventLoopGroup-3-1:41661 ] - [ INFO ]  Reflections took 22 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:36:26  [ nioEventLoopGroup-3-1:80824 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:36:30  [ nioEventLoopGroup-3-1:85024 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:37:53  [ nioEventLoopGroup-3-1:168045 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:38:00  [ nioEventLoopGroup-3-1:175569 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:38:04  [ nioEventLoopGroup-3-1:178769 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:38:08  [ nioEventLoopGroup-3-1:183499 ] - [ INFO ]  Reflections took 19 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 09:38:11  [ nioEventLoopGroup-3-1:186545 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 15:29:13  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 15:29:13 CST 2020]; root of context hierarchy
+2020-07-18 15:29:13  [ main:49 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 15:29:17  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 15:29:17 CST 2020]; root of context hierarchy
+2020-07-18 15:29:17  [ main:63 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 15:29:33  [ nioEventLoopGroup-3-1:19265 ] - [ INFO ]  Reflections took 58 ms to scan 1 urls, producing 5 keys and 28 values 
+2020-07-18 15:29:37  [ nioEventLoopGroup-3-1:24044 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 5 keys and 28 values 
+2020-07-18 15:53:03  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a79be86: startup date [Sat Jul 18 15:53:03 CST 2020]; root of context hierarchy
+2020-07-18 15:53:03  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 15:56:30  [ main:5 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 15:56:30 CST 2020]; root of context hierarchy
+2020-07-18 15:56:30  [ main:39 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:00:05  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:00:05 CST 2020]; root of context hierarchy
+2020-07-18 16:00:05  [ main:47 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:04:16  [ main:5 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:04:16 CST 2020]; root of context hierarchy
+2020-07-18 16:04:16  [ main:45 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:06:44  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:06:44 CST 2020]; root of context hierarchy
+2020-07-18 16:06:44  [ main:43 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:12:41  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:12:41 CST 2020]; root of context hierarchy
+2020-07-18 16:12:41  [ main:45 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:13:28  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:13:28 CST 2020]; root of context hierarchy
+2020-07-18 16:13:28  [ main:79 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:13:38  [ main:12 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:13:38 CST 2020]; root of context hierarchy
+2020-07-18 16:13:38  [ main:83 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:13:55  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:13:55 CST 2020]; root of context hierarchy
+2020-07-18 16:13:55  [ main:48 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:14:13  [ main:5 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:14:13 CST 2020]; root of context hierarchy
+2020-07-18 16:14:13  [ main:50 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:25:24  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:25:24 CST 2020]; root of context hierarchy
+2020-07-18 16:25:24  [ main:46 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:35:29  [ main:5 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:35:29 CST 2020]; root of context hierarchy
+2020-07-18 16:35:29  [ main:53 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:35:56  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@606d8acf: startup date [Sat Jul 18 16:35:56 CST 2020]; root of context hierarchy
+2020-07-18 16:35:56  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:44:20  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:44:20 CST 2020]; root of context hierarchy
+2020-07-18 16:44:20  [ main:69 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:44:27  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:44:27 CST 2020]; root of context hierarchy
+2020-07-18 16:44:27  [ main:44 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:44:39  [ nioEventLoopGroup-3-1:19351 ] - [ INFO ]  Reflections took 66 ms to scan 1 urls, producing 5 keys and 30 values 
+2020-07-18 16:45:31  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:45:31 CST 2020]; root of context hierarchy
+2020-07-18 16:45:31  [ main:46 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:45:33  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:45:33 CST 2020]; root of context hierarchy
+2020-07-18 16:45:33  [ main:51 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:45:37  [ nioEventLoopGroup-3-1:6301 ] - [ INFO ]  Reflections took 69 ms to scan 1 urls, producing 5 keys and 31 values 
+2020-07-18 16:50:40  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:50:40 CST 2020]; root of context hierarchy
+2020-07-18 16:50:40  [ main:47 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:50:42  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 16:50:42 CST 2020]; root of context hierarchy
+2020-07-18 16:50:42  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 16:51:04  [ nioEventLoopGroup-3-1:24937 ] - [ INFO ]  Reflections took 53 ms to scan 1 urls, producing 5 keys and 31 values 
+2020-07-18 17:03:47  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:03:47 CST 2020]; root of context hierarchy
+2020-07-18 17:03:47  [ main:63 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:03:51  [ main:14 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:03:51 CST 2020]; root of context hierarchy
+2020-07-18 17:03:51  [ main:94 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:03:55  [ nioEventLoopGroup-3-1:8767 ] - [ INFO ]  Reflections took 60 ms to scan 1 urls, producing 5 keys and 47 values 
+2020-07-18 17:03:57  [ nioEventLoopGroup-3-1:10814 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 5 keys and 47 values 
+2020-07-18 17:03:59  [ nioEventLoopGroup-3-1:12464 ] - [ INFO ]  Reflections took 21 ms to scan 1 urls, producing 5 keys and 47 values 
+2020-07-18 17:04:15  [ nioEventLoopGroup-3-1:28097 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 5 keys and 47 values 
+2020-07-18 17:05:11  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:05:11 CST 2020]; root of context hierarchy
+2020-07-18 17:05:11  [ main:45 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:05:14  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:05:14 CST 2020]; root of context hierarchy
+2020-07-18 17:05:14  [ main:62 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:05:16  [ nioEventLoopGroup-3-1:5055 ] - [ INFO ]  Reflections took 51 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:18  [ nioEventLoopGroup-3-1:6517 ] - [ INFO ]  Reflections took 19 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:22  [ nioEventLoopGroup-3-1:10440 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:27  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:05:27 CST 2020]; root of context hierarchy
+2020-07-18 17:05:27  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:05:32  [ nioEventLoopGroup-3-2:20859 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:33  [ nioEventLoopGroup-3-2:22058 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:38  [ nioEventLoopGroup-3-2:26337 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:39  [ nioEventLoopGroup-3-2:27449 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:05:41  [ nioEventLoopGroup-3-2:30086 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 5 keys and 41 values 
+2020-07-18 17:08:43  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:08:43 CST 2020]; root of context hierarchy
+2020-07-18 17:08:43  [ main:49 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:08:46  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:08:46 CST 2020]; root of context hierarchy
+2020-07-18 17:08:46  [ main:53 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:08:51  [ nioEventLoopGroup-3-1:7402 ] - [ INFO ]  Reflections took 61 ms to scan 1 urls, producing 5 keys and 38 values 
+2020-07-18 17:08:55  [ nioEventLoopGroup-3-1:11515 ] - [ INFO ]  Reflections took 19 ms to scan 1 urls, producing 5 keys and 38 values 
+2020-07-18 17:09:03  [ nioEventLoopGroup-3-1:19230 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 5 keys and 38 values 
+2020-07-18 17:22:25  [ main:18 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:22:25 CST 2020]; root of context hierarchy
+2020-07-18 17:22:25  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:22:27  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:22:27 CST 2020]; root of context hierarchy
+2020-07-18 17:22:27  [ main:66 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:22:30  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:22:30 CST 2020]; root of context hierarchy
+2020-07-18 17:22:30  [ main:71 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:22:38  [ nioEventLoopGroup-3-1:13311 ] - [ INFO ]  Reflections took 62 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:22:43  [ nioEventLoopGroup-3-2:18062 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:22:45  [ nioEventLoopGroup-3-2:19647 ] - [ INFO ]  Reflections took 14 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:22:52  [ nioEventLoopGroup-3-1:27359 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:23:07  [ nioEventLoopGroup-3-1:42415 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:23:13  [ nioEventLoopGroup-3-2:47499 ] - [ INFO ]  Reflections took 27 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:24:31  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:24:31 CST 2020]; root of context hierarchy
+2020-07-18 17:24:31  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:24:33  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:24:33 CST 2020]; root of context hierarchy
+2020-07-18 17:24:33  [ main:70 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:24:36  [ main:13 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:24:36 CST 2020]; root of context hierarchy
+2020-07-18 17:24:36  [ main:105 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:24:40  [ nioEventLoopGroup-3-1:9117 ] - [ INFO ]  Reflections took 106 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:24:46  [ nioEventLoopGroup-3-2:14911 ] - [ INFO ]  Reflections took 19 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:24:54  [ nioEventLoopGroup-3-1:23049 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:24:57  [ nioEventLoopGroup-3-2:26764 ] - [ INFO ]  Reflections took 20 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:25:01  [ nioEventLoopGroup-3-1:30782 ] - [ INFO ]  Reflections took 23 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:28:16  [ nioEventLoopGroup-3-1:225185 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:28:20  [ nioEventLoopGroup-3-1:229367 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:28:57  [ nioEventLoopGroup-3-1:266359 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:29:25  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:29:25 CST 2020]; root of context hierarchy
+2020-07-18 17:29:25  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:29:27  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:29:27 CST 2020]; root of context hierarchy
+2020-07-18 17:29:27  [ main:57 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:29:30  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:29:30 CST 2020]; root of context hierarchy
+2020-07-18 17:29:30  [ main:51 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:29:41  [ nioEventLoopGroup-3-2:16474 ] - [ INFO ]  Reflections took 52 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:29:43  [ nioEventLoopGroup-3-1:18743 ] - [ INFO ]  Reflections took 21 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:29:50  [ nioEventLoopGroup-3-2:25337 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:29:57  [ nioEventLoopGroup-3-1:31972 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:32:00  [ nioEventLoopGroup-3-1:155863 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:34:45  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:34:45 CST 2020]; root of context hierarchy
+2020-07-18 17:34:45  [ main:46 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:34:47  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:34:47 CST 2020]; root of context hierarchy
+2020-07-18 17:34:47  [ main:50 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:34:53  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:34:53 CST 2020]; root of context hierarchy
+2020-07-18 17:34:53  [ main:46 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:34:58  [ nioEventLoopGroup-3-1:12796 ] - [ INFO ]  Reflections took 56 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:35:03  [ nioEventLoopGroup-3-1:18480 ] - [ INFO ]  Reflections took 18 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:35:15  [ nioEventLoopGroup-3-2:30038 ] - [ INFO ]  Reflections took 18 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:35:18  [ nioEventLoopGroup-3-2:33349 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:35:26  [ nioEventLoopGroup-3-1:41118 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:37:35  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:37:35 CST 2020]; root of context hierarchy
+2020-07-18 17:37:35  [ main:49 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:37:37  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:37:37 CST 2020]; root of context hierarchy
+2020-07-18 17:37:37  [ main:72 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:37:41  [ nioEventLoopGroup-3-1:5649 ] - [ INFO ]  Reflections took 51 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:37:56  [ nioEventLoopGroup-3-1:20773 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:40:58  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:40:58 CST 2020]; root of context hierarchy
+2020-07-18 17:40:58  [ main:45 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:41:00  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:41:00 CST 2020]; root of context hierarchy
+2020-07-18 17:41:00  [ main:54 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:41:03  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 17:41:03 CST 2020]; root of context hierarchy
+2020-07-18 17:41:03  [ main:58 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 17:41:10  [ nioEventLoopGroup-3-1:11972 ] - [ INFO ]  Reflections took 59 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:41:14  [ nioEventLoopGroup-3-2:16045 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:41:17  [ nioEventLoopGroup-3-2:19442 ] - [ INFO ]  Reflections took 14 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 17:41:22  [ nioEventLoopGroup-3-1:23924 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:33:18  [ nioEventLoopGroup-3-1:3140639 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:33:46  [ nioEventLoopGroup-3-1:3168304 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:35:23  [ nioEventLoopGroup-3-1:3265481 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:38:14  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:14 CST 2020]; root of context hierarchy
+2020-07-18 18:38:14  [ main:52 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:16  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:16 CST 2020]; root of context hierarchy
+2020-07-18 18:38:16  [ main:54 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:18  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:18 CST 2020]; root of context hierarchy
+2020-07-18 18:38:18  [ main:58 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:22  [ nioEventLoopGroup-3-2:8354 ] - [ INFO ]  Reflections took 73 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:38:29  [ nioEventLoopGroup-3-2:14569 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:38:36  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:36 CST 2020]; root of context hierarchy
+2020-07-18 18:38:36  [ main:48 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:38  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:38 CST 2020]; root of context hierarchy
+2020-07-18 18:38:38  [ main:80 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:40  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:38:40 CST 2020]; root of context hierarchy
+2020-07-18 18:38:40  [ main:74 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:38:44  [ nioEventLoopGroup-3-1:7730 ] - [ INFO ]  Reflections took 74 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:38:46  [ nioEventLoopGroup-3-2:10007 ] - [ INFO ]  Reflections took 16 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:38:53  [ nioEventLoopGroup-3-1:16982 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:39:15  [ nioEventLoopGroup-3-1:38981 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:39:20  [ nioEventLoopGroup-3-1:44029 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:39:48  [ nioEventLoopGroup-3-1:72137 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:39:54  [ nioEventLoopGroup-3-2:78246 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:40:00  [ nioEventLoopGroup-3-1:83633 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:40:27  [ nioEventLoopGroup-3-1:111001 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:40:44  [ nioEventLoopGroup-3-1:127715 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:40:47  [ nioEventLoopGroup-3-1:131168 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:40:52  [ nioEventLoopGroup-3-1:135314 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:41:16  [ nioEventLoopGroup-3-1:159380 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:41:25  [ nioEventLoopGroup-3-1:168316 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:41:33  [ nioEventLoopGroup-3-1:176836 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:43:23  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:43:23 CST 2020]; root of context hierarchy
+2020-07-18 18:43:23  [ main:50 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:43:25  [ main:36 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:43:25 CST 2020]; root of context hierarchy
+2020-07-18 18:43:25  [ main:104 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:43:28  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:43:28 CST 2020]; root of context hierarchy
+2020-07-18 18:43:28  [ main:78 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:43:34  [ nioEventLoopGroup-3-1:10805 ] - [ INFO ]  Reflections took 73 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 18:43:38  [ nioEventLoopGroup-3-2:15017 ] - [ INFO ]  Reflections took 33 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 18:43:46  [ nioEventLoopGroup-3-1:23364 ] - [ INFO ]  Reflections took 43 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 18:43:51  [ nioEventLoopGroup-3-2:27920 ] - [ INFO ]  Reflections took 22 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 18:43:55  [ nioEventLoopGroup-3-1:32647 ] - [ INFO ]  Reflections took 22 ms to scan 1 urls, producing 4 keys and 26 values 
+2020-07-18 18:49:23  [ main:6 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:49:23 CST 2020]; root of context hierarchy
+2020-07-18 18:49:23  [ main:44 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:49:24  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:49:24 CST 2020]; root of context hierarchy
+2020-07-18 18:49:25  [ main:77 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:49:27  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:49:27 CST 2020]; root of context hierarchy
+2020-07-18 18:49:27  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:49:47  [ nioEventLoopGroup-3-1:24625 ] - [ INFO ]  Reflections took 68 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:49:50  [ nioEventLoopGroup-3-2:27263 ] - [ INFO ]  Reflections took 20 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:49:56  [ nioEventLoopGroup-3-2:33717 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:50:01  [ nioEventLoopGroup-3-1:38076 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:50:06  [ nioEventLoopGroup-3-1:43246 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:50:10  [ nioEventLoopGroup-3-1:46987 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:50:15  [ nioEventLoopGroup-3-2:52408 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:51:47  [ main:13 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:51:47 CST 2020]; root of context hierarchy
+2020-07-18 18:51:47  [ main:96 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:51:50  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:51:50 CST 2020]; root of context hierarchy
+2020-07-18 18:51:50  [ main:55 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:51:56  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:51:56 CST 2020]; root of context hierarchy
+2020-07-18 18:51:56  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:53:03  [ nioEventLoopGroup-3-1:75721 ] - [ INFO ]  Reflections took 296 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:53:44  [ nioEventLoopGroup-3-1:117344 ] - [ INFO ]  Reflections took 34 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:53:54  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 18:53:54 CST 2020]; root of context hierarchy
+2020-07-18 18:53:54  [ main:48 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:54:06  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:54:06 CST 2020]; root of context hierarchy
+2020-07-18 18:54:06  [ main:60 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:54:11  [ main:9 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:54:11 CST 2020]; root of context hierarchy
+2020-07-18 18:54:12  [ main:65 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:54:14  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 18:54:14 CST 2020]; root of context hierarchy
+2020-07-18 18:54:14  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 18:54:22  [ nioEventLoopGroup-3-1:16333 ] - [ INFO ]  Reflections took 76 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:54:29  [ nioEventLoopGroup-3-2:22559 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:54:38  [ nioEventLoopGroup-3-1:31976 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 18:54:45  [ nioEventLoopGroup-3-2:39202 ] - [ INFO ]  Reflections took 13 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:01:21  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:01:21 CST 2020]; root of context hierarchy
+2020-07-18 19:01:21  [ main:48 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:23  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:01:23 CST 2020]; root of context hierarchy
+2020-07-18 19:01:23  [ main:66 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:25  [ main:13 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:01:25 CST 2020]; root of context hierarchy
+2020-07-18 19:01:25  [ main:79 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:32  [ nioEventLoopGroup-3-1:10722 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@38cb4990: startup date [Sat Jul 18 19:01:32 CST 2020]; root of context hierarchy
+2020-07-18 19:01:32  [ nioEventLoopGroup-3-1:10722 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:32  [ nioEventLoopGroup-3-1:10891 ] - [ INFO ]  Reflections took 52 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:01:38  [ nioEventLoopGroup-3-2:16666 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@15305890: startup date [Sat Jul 18 19:01:38 CST 2020]; root of context hierarchy
+2020-07-18 19:01:38  [ nioEventLoopGroup-3-2:16667 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:38  [ nioEventLoopGroup-3-2:16761 ] - [ INFO ]  Reflections took 20 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:01:48  [ nioEventLoopGroup-3-2:26928 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2094761d: startup date [Sat Jul 18 19:01:48 CST 2020]; root of context hierarchy
+2020-07-18 19:01:48  [ nioEventLoopGroup-3-2:26929 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:01:48  [ nioEventLoopGroup-3-2:27010 ] - [ INFO ]  Reflections took 22 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:02:04  [ nioEventLoopGroup-3-1:43406 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1066f6b7: startup date [Sat Jul 18 19:02:04 CST 2020]; root of context hierarchy
+2020-07-18 19:02:04  [ nioEventLoopGroup-3-1:43406 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:02:05  [ nioEventLoopGroup-3-1:43466 ] - [ INFO ]  Reflections took 11 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:02:10  [ nioEventLoopGroup-3-2:49363 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1e615412: startup date [Sat Jul 18 19:02:10 CST 2020]; root of context hierarchy
+2020-07-18 19:02:10  [ nioEventLoopGroup-3-2:49364 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:02:11  [ nioEventLoopGroup-3-2:49444 ] - [ INFO ]  Reflections took 15 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:02:34  [ nioEventLoopGroup-3-1:73285 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6c8a74c5: startup date [Sat Jul 18 19:02:34 CST 2020]; root of context hierarchy
+2020-07-18 19:02:34  [ nioEventLoopGroup-3-1:73285 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:02:34  [ nioEventLoopGroup-3-1:73368 ] - [ INFO ]  Reflections took 14 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:02:40  [ nioEventLoopGroup-3-2:78660 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@3e04fbc6: startup date [Sat Jul 18 19:02:40 CST 2020]; root of context hierarchy
+2020-07-18 19:02:40  [ nioEventLoopGroup-3-2:78661 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:02:40  [ nioEventLoopGroup-3-2:78723 ] - [ INFO ]  Reflections took 12 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:02:44  [ nioEventLoopGroup-3-1:83180 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@59822cc7: startup date [Sat Jul 18 19:02:44 CST 2020]; root of context hierarchy
+2020-07-18 19:02:44  [ nioEventLoopGroup-3-1:83181 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:02:44  [ nioEventLoopGroup-3-1:83250 ] - [ INFO ]  Reflections took 14 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:20:46  [ main:18 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:20:46 CST 2020]; root of context hierarchy
+2020-07-18 19:20:46  [ main:51 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:20:48  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:20:48 CST 2020]; root of context hierarchy
+2020-07-18 19:20:48  [ main:82 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:20:53  [ nioEventLoopGroup-3-1:6391 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5648812b: startup date [Sat Jul 18 19:20:53 CST 2020]; root of context hierarchy
+2020-07-18 19:20:53  [ nioEventLoopGroup-3-1:6391 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:20:53  [ nioEventLoopGroup-3-1:6558 ] - [ INFO ]  Reflections took 53 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:20:56  [ nioEventLoopGroup-3-1:10358 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@50758971: startup date [Sat Jul 18 19:20:56 CST 2020]; root of context hierarchy
+2020-07-18 19:20:56  [ nioEventLoopGroup-3-1:10359 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:20:57  [ nioEventLoopGroup-3-1:10448 ] - [ INFO ]  Reflections took 17 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:20:58  [ nioEventLoopGroup-3-1:11898 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@52b6d2ea: startup date [Sat Jul 18 19:20:58 CST 2020]; root of context hierarchy
+2020-07-18 19:20:58  [ nioEventLoopGroup-3-1:11899 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:20:58  [ nioEventLoopGroup-3-1:11979 ] - [ INFO ]  Reflections took 19 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:21:12  [ nioEventLoopGroup-3-1:25485 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@6c79d44: startup date [Sat Jul 18 19:21:12 CST 2020]; root of context hierarchy
+2020-07-18 19:21:12  [ nioEventLoopGroup-3-1:25487 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:21:12  [ nioEventLoopGroup-3-1:25606 ] - [ INFO ]  Reflections took 27 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:38:44  [ main:13 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:38:44 CST 2020]; root of context hierarchy
+2020-07-18 19:38:44  [ main:53 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:38:46  [ main:11 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:38:46 CST 2020]; root of context hierarchy
+2020-07-18 19:38:46  [ main:85 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:38:49  [ main:8 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:38:49 CST 2020]; root of context hierarchy
+2020-07-18 19:38:49  [ main:68 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:38:56  [ nioEventLoopGroup-3-2:12016 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@781b6b69: startup date [Sat Jul 18 19:38:56 CST 2020]; root of context hierarchy
+2020-07-18 19:38:56  [ nioEventLoopGroup-3-2:12017 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:38:56  [ nioEventLoopGroup-3-2:12207 ] - [ INFO ]  Reflections took 63 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:44:21  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 19:44:21 CST 2020]; root of context hierarchy
+2020-07-18 19:44:21  [ main:67 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:44:23  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@9660f4e: startup date [Sat Jul 18 19:44:23 CST 2020]; root of context hierarchy
+2020-07-18 19:44:23  [ main:64 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:44:26  [ nioEventLoopGroup-3-1:5584 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@230a4345: startup date [Sat Jul 18 19:44:26 CST 2020]; root of context hierarchy
+2020-07-18 19:44:26  [ nioEventLoopGroup-3-1:5585 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:44:26  [ nioEventLoopGroup-3-1:5774 ] - [ INFO ]  Reflections took 55 ms to scan 1 urls, producing 7 keys and 39 values 
+2020-07-18 19:47:22  [ main:7 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:47:22 CST 2020]; root of context hierarchy
+2020-07-18 19:47:22  [ main:64 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:47:24  [ main:10 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5680a178: startup date [Sat Jul 18 19:47:24 CST 2020]; root of context hierarchy
+2020-07-18 19:47:25  [ main:59 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:47:28  [ nioEventLoopGroup-3-1:5901 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2b28c5be: startup date [Sat Jul 18 19:47:28 CST 2020]; root of context hierarchy
+2020-07-18 19:47:28  [ nioEventLoopGroup-3-1:5901 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2020-07-18 19:47:28  [ nioEventLoopGroup-3-1:6071 ] - [ INFO ]  Reflections took 48 ms to scan 1 urls, producing 7 keys and 39 values 

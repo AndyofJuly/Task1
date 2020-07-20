@@ -3,7 +3,7 @@ package com.game.system.role.pojo;
 import java.util.ArrayList;
 
 /**
- * 社交
+ * 社交好友对象-业务对象-OB(Business object)
  * @Author andy
  * @create 2020/6/28 22:09
  */

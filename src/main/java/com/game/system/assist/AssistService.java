@@ -2,10 +2,12 @@ package com.game.system.assist;
 
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
+import com.game.system.bag.pojo.Equipment;
 import com.game.system.scene.pojo.*;
 import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.bag.pojo.PotionResource;
 import com.game.system.role.pojo.Role;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,6 +18,7 @@ import java.util.Random;
  * @Author andy
  * @create 2020/6/3 20:35
  */
+@Service
 public class AssistService {
 
     /**
@@ -85,8 +88,8 @@ public class AssistService {
      * @return 是否在可攻击范围内
      */
     public static boolean isNotInView(Role role, Monster monster){
-        int[] self = role.getPosition();
-        int[] other = monster.getPosition();
+        Integer[] self = role.getPosition();
+        Integer[] other = monster.getPosition();
         if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
             return false;
         }
@@ -100,8 +103,8 @@ public class AssistService {
      * @return 是否在可谈话范围内
      */
     public static boolean isNotInView(Role role, Npc npc){
-        int[] self = role.getPosition();
-        int[] other = npc.getPosition();
+        Integer[] self = role.getPosition();
+        Integer[] other = npc.getPosition();
         if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
             return false;
         }
@@ -115,8 +118,8 @@ public class AssistService {
      * @return 是否在可攻击、谈话范围内
      */
     public static boolean isNotInView(Role role, Role target){
-        int[] self = role.getPosition();
-        int[] other = target.getPosition();
+        Integer[] self = role.getPosition();
+        Integer[] other = target.getPosition();
         if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
             return false;
         }
@@ -129,13 +132,14 @@ public class AssistService {
      * @param other 目标实体位置
      * @return 对应成就包含的所有目标id
      */
-    public static double getDistance(int[] self,int[] other){
+    public static double getDistance(Integer[] self,Integer[] other){
         return Math.sqrt(Math.pow(self[0]-other[0],2)+Math.pow(self[1]-other[1],2));
     }
 
     private static HashSet<Integer> teamSet = new HashSet<>();
     private static HashSet<Integer> sceneSet = new HashSet<>();
     private static int unionId;
+    private static int equipId = 300100;
 
     /**
      * 队伍id随机生成，数量小于10000
@@ -175,8 +179,21 @@ public class AssistService {
         return ++unionId;
     }
 
+    /**
+     * 装备随机id生成-该值建议存数据库
+     * @return 公会id
+     */
+    public static int generateEquipId(){
+        return ++equipId;
+    }
 
     /** 查找对应静态资源*/
+    //根据唯一id，查找静态id；首先在GlobalInfo中拿到这个装备，再获取此装备的id
+    public static int getStaticEquipId(int onlyId){
+        Equipment equipment = GlobalInfo.getEquipmentHashMap().get(onlyId);
+        return equipment.getEquipmentId();
+    }
+
 
     /**
      * 获得装备或药品价格
@@ -229,11 +246,12 @@ public class AssistService {
 
     /**
      * 获得装备攻击力
-     * @param key 物品id
+     * @param key 物品唯一id
      * @return 装备攻击力
      */
     public static int getEquipmentAtk(int key){
-        return EquipmentResource.getEquipmentStaticHashMap().get(key).getAtk();
+        int equipId = getStaticEquipId(key);
+        return EquipmentResource.getEquipmentStaticHashMap().get(equipId).getAtk();
     }
 
     /**
@@ -242,7 +260,8 @@ public class AssistService {
      * @return 装备耐久
      */
     public static int getEquipmentDura(int key){
-        return EquipmentResource.getEquipmentStaticHashMap().get(key).getDurability();
+        int equipId = getStaticEquipId(key);
+        return EquipmentResource.getEquipmentStaticHashMap().get(equipId).getDurability();
     }
 
 }

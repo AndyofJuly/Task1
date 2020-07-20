@@ -4,6 +4,8 @@ import com.game.system.role.pojo.Role;
 import com.game.system.role.RoleController;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.ResponseInf;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -14,12 +16,13 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/28 14:21
  */
-@Controller
+@Controller("unionController")
 public class UnionController {
     private ArrayList<String> strList = RoleController.getStrList();
     private ArrayList<Integer> intList = RoleController.getIntList();
 
-    private UnionService unionService = new UnionService();
+    @Autowired
+    private UnionService unionService;// = new UnionService();
 
     /** 创建公会，使用方式：createUnion unionName */
     @MyAnnontation(MethodName = "createUnion")
@@ -45,7 +48,7 @@ public class UnionController {
     /** 入会申请，使用方式：apply unionId */
     @MyAnnontation(MethodName = "apply")
     public ResponseInf applyFor(){
-        unionService.applyFor(intList.get(0),intList.get(1));
+        unionService.applyFor(intList.get(0),getRole());
         return ResponseInf.setResponse("已申请入会，等待审批",getRole());
     }
 

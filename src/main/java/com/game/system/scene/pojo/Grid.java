@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class Grid {
 
     /** 网格id */
-    private int gridId;
+    private Integer gridId;
     /** 该网格中的角色 */
     private HashMap<Integer, Role> gridRoleMap = new HashMap<>();
     /** 该网格中的怪物 */
@@ -21,15 +21,15 @@ public class Grid {
     /** 该网格中的NPC */
     private HashMap<Integer, Npc> gridNpcMap = new HashMap<>();
 
-    public Grid(int gridId) {
+    public Grid(Integer gridId) {
         this.gridId = gridId;
     }
 
-    public int getGridId() {
+    public Integer getGridId() {
         return gridId;
     }
 
-    public void setGridId(int gridId) {
+    public void setGridId(Integer gridId) {
         this.gridId = gridId;
     }
 

@@ -8,27 +8,27 @@ package com.game.system.bag.pojo;
 public class EquipmentStatic {
 
     /** 装备id*/
-    private int id;
+    private Integer id;
     /** 装备名*/
     private String name;
     /** 装备攻击力*/
-    private int atk;
+    private Integer atk;
     /** 装备耐久*/
-    private int durability;
+    private Integer durability;
     /** 装备价格*/
-    private int price;
+    private Integer price;
     /** 装备等级*/
-    private int level;
+    private Integer level;
     /** 装备血量增益*/
-    private int addHp;
+    private Integer addHp;
     /** 装备蓝量增益*/
-    private int addMp;
+    private Integer addMp;
     /** 装备类别；1为武器；2为手环；3为项链；4为身体；5为帽子；6为鞋子*/
-    private int type;
+    private Integer type;
     /** 装备稀有度：0为普通武器；1为极品武器*/
-    private int quality;
+    private Integer quality;
 
-    public EquipmentStatic(int id, String name, int atk, int durability, int price, int level, int addHp, int addMp, int type,int quality) {
+    public EquipmentStatic(Integer id, String name, Integer atk, Integer durability, Integer price, Integer level, Integer addHp, Integer addMp, Integer type,Integer quality) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -41,11 +41,11 @@ public class EquipmentStatic {
         this.quality = quality;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,67 +57,67 @@ public class EquipmentStatic {
         this.name = name;
     }
 
-    public int getAtk() {
+    public Integer getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(Integer atk) {
         this.atk = atk;
     }
 
-    public int getDurability() {
+    public Integer getDurability() {
         return durability;
     }
 
-    public void setDurability(int durability) {
+    public void setDurability(Integer durability) {
         this.durability = durability;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public int getLevel() {
+    public Integer getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(Integer level) {
         this.level = level;
     }
 
-    public int getAddHp() {
+    public Integer getAddHp() {
         return addHp;
     }
 
-    public void setAddHp(int addHp) {
+    public void setAddHp(Integer addHp) {
         this.addHp = addHp;
     }
 
-    public int getAddMp() {
+    public Integer getAddMp() {
         return addMp;
     }
 
-    public void setAddMp(int addMp) {
+    public void setAddMp(Integer addMp) {
         this.addMp = addMp;
     }
 
-    public int getType() {
+    public Integer getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(Integer type) {
         this.type = type;
     }
 
-    public int getQuality() {
+    public Integer getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    public void setQuality(Integer quality) {
         this.quality = quality;
     }
 }

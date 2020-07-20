@@ -7,6 +7,8 @@ import com.game.system.role.pojo.Role;
 import com.game.system.assist.GlobalInfo;
 import com.game.common.ResponseInf;
 import com.game.system.assist.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
@@ -17,14 +19,18 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/5/17 1:09
  */
-@Controller
+@Controller("roleController")
 public class RoleController {
 
     private static ArrayList<Integer> intList  = new ArrayList<>();
     private static ArrayList<String> strList  = new ArrayList<>();
-    private GameService gameService = new GameService();
-    private RoleService roleService = new RoleService();
-    private PotralDao potralDao = new PotralDao();
+
+    @Autowired
+    private GameService gameService;// = new GameService();
+    @Autowired
+    private RoleService roleService;// = new RoleService();
+    @Autowired
+    private PotralDao potralDao;// = new PotralDao();
 
     /** 用户注册，使用方式：register userName password */
     @MyAnnontation(MethodName = "register")
@@ -144,15 +150,16 @@ public class RoleController {
     /** 使用药品，使用方式：use potionId */
     @MyAnnontation(MethodName = "use")
     public ResponseInf use(){
-        if(roleService.useDrug(intList.get(0),getRole())){
-            return ResponseInf.setResponse(Const.service.USE_SUCCESS,getRole());
-        }
-        return ResponseInf.setResponse(Const.service.USE_FAILURE,getRole());
+        return ResponseInf.setResponse(roleService.useDrug(intList.get(0),getRole()),getRole());
     }
 
-    /** 返回角色的信息，使用方式：getInfo */
+    /** 查看角色的信息，使用方式：查看其他角色-getInfo roleId；查看自己-getInfo*/
     @MyAnnontation(MethodName = "getInfo")
     public ResponseInf getInfo(){
+        if(!getRole().getId().equals(intList.get(0))){
+            Role role = GlobalInfo.getRoleHashMap().get(intList.get(0));
+            return ResponseInf.setResponse(roleService.getRoleInfo(role),getRole());
+        }
         return ResponseInf.setResponse(roleService.getRoleInfo(getRole()),getRole());
     }
 
@@ -160,13 +167,6 @@ public class RoleController {
     @MyAnnontation(MethodName = "getMonster")
     public ResponseInf getMonster(){
         String msg = roleService.getMonsterInfo(intList.get(0),getRole());
-        return ResponseInf.setResponse(msg,getRole());
-    }
-
-    /** pk玩家，使用方式：pk skillId roleId */
-    @MyAnnontation(MethodName = "pk")
-    public ResponseInf pkPlayer(){
-        String msg = roleService.pkPlayer(intList.get(0), intList.get(1),getRole());
         return ResponseInf.setResponse(msg,getRole());
     }
 
@@ -186,6 +186,7 @@ public class RoleController {
     /** 调试代码用的测试，使用方式：test */
     @MyAnnontation(MethodName = "test")
     public ResponseInf testCode(){
+
         return ResponseInf.setResponse(roleService.testCode(getRole()),getRole());
     }
 
@@ -210,10 +211,10 @@ public class RoleController {
         return ResponseInf.setResponse("已升级",getRole());
     }
 
-    /** 获取自己的成就，使用方式：getAchievment */
-    @MyAnnontation(MethodName = "getAchievment")
-    public ResponseInf getAchievment(){
-        return ResponseInf.setResponse(roleService.getAchievmentList(getRole()),getRole());
+    /** 获取自己的成就，使用方式：getAchievement */
+    @MyAnnontation(MethodName = "getAchievement")
+    public ResponseInf getAchievement(){
+        return ResponseInf.setResponse(roleService.getAchievementList(getRole()),getRole());
     }
 
     /** 背包整理&获取背包信息，使用方式：getOrderPackage */

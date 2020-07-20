@@ -1,6 +1,7 @@
 package com.game.system.assist;
 
 import com.game.common.Const;
+import com.game.system.bag.GoodsDao;
 import com.game.system.role.pojo.CareerResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.MonsterWalk;
@@ -99,6 +100,8 @@ public class InitGame {
         unionDao.selectUnion();
         unionDao.selectUnionMemb();
         unionDao.selectUnionStore();
+        GoodsDao goodsDao = new GoodsDao();
+        goodsDao.getEquipment();
     }
 
 
@@ -125,8 +128,10 @@ public class InitGame {
         //初始化最大血量和蓝量
         role.setMaxHp(CareerResource.getCareerStaticHashMap().get(role.getCareerId()).getHp());
         role.setMaxMp(CareerResource.getCareerStaticHashMap().get(role.getCareerId()).getMp());
-        role.setHp(role.getMaxHp());
-        role.setMp(role.getMaxMp());
+        RoleService.checkAndSetHp(role.getMaxHp(),role);
+        RoleService.checkAndSetMp(role.getMaxMp(),role);
+        //role.setHp(role.getMaxHp());
+        //role.setMp(role.getMaxMp());
 
         //确定进入到游戏中
         if(enterSuccess){

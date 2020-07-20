@@ -7,12 +7,16 @@ import com.game.system.achievement.subject.Subject;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.bag.PackageService;
+import com.game.system.bag.pojo.Equipment;
 import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.bag.pojo.PotionResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.shop.pojo.AuctionBo;
 import com.game.system.shop.pojo.DealBo;
 import com.game.system.shop.pojo.PlayerSaleBo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -25,10 +29,13 @@ import java.util.UUID;
  * @Author andy
  * @create 2020/6/15 15:00
  */
+@Service
 public class ShopService {
 
-    private RecordDao recordDao = new RecordDao();
-    private PackageService packageService = new PackageService();
+    @Autowired
+    private RecordDao recordDao;// = new RecordDao();
+    @Autowired
+    private PackageService packageService;// = new PackageService();
 
     //商店仓库中角色上架的物品，key为角色id，value为出售物品和数量
     private static HashMap<Integer, PlayerSaleBo> playerSaleBoHashMap = new HashMap<>();
@@ -47,7 +54,14 @@ public class ShopService {
         int cost = AssistService.getGoodsPrice(goodsId) * number;
         if(!packageService.lostMoney(cost,role)){
             return Const.Shop.BUY_FAILURE;
-        }else if(!packageService.putIntoPackage(goodsId, number, role)){
+        }
+        //检查是否为装备，如果是装备，则要有唯一id
+        if(String.valueOf(goodsId).startsWith(Const.EQUIPMENT_HEAD)){
+            int equipId = AssistService.generateEquipId();
+            GlobalInfo.getEquipmentHashMap().put(equipId,new Equipment(equipId,goodsId,100));//默认耐久
+            goodsId=equipId;
+        }
+        if(!packageService.putIntoPackage(goodsId, number, role)){
             return Const.Shop.BAG_OUT_SPACE;
         }
         return Const.Shop.BUY_SUCCESS+ role.getMyPackageBo().getGoodsHashMap().get(goodsId);
@@ -86,7 +100,7 @@ public class ShopService {
         if(!packageService.lostMoney(price,role)){
             return "金钱不够";
         }
-        if(!packageService.getFromPackage(equipId,1,role) || !packageService.getFromPackage(potionId,1,role)){
+        if(!packageService.getFromPackage(equipId,1,role) || !packageService.getFromPackage(potionId,num,role)){
             return "背包中没有这么多物品";
         }
         String dealId = UUID.randomUUID().toString();
@@ -120,8 +134,10 @@ public class ShopService {
             exChangeGoods(targetRole,role);
             exChangeGoods(role,targetRole);
 
-            Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,role,fsTradeOb);
-            Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,targetRole,fsTradeOb);
+            //Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,role,fsTradeOb);
+            //Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,targetRole,fsTradeOb);
+            shopSubject.notifyObserver(0,role);
+            shopSubject.notifyObserver(0,role);
 
             ServerHandler.notifyRole(targetId,"交易双方都已同意，交易成功",role.getId(),"交易双方都已同意，交易成功");
             return;
@@ -252,6 +268,7 @@ public class ShopService {
         AuctionBo auctionBo = new AuctionBo(auctionId,goodsId,minPrice,role.getId());
         role.setAuctionBo(auctionBo);
         role.getAuctionBo().setTagTime(Instant.now());
+        role.getAuctionBo().setLastPrice(minPrice);
         countdown(goodsId,role);
         ArrayList<Role> roles = GlobalInfo.getScenes().get(Const.AUCTION_SCENE).getRoleAll();
         ServerHandler.notifyGroupRoles(roles,role.getName()+"已经开始拍卖了，物品"+goodsId+"，起价："+minPrice);
@@ -270,8 +287,8 @@ public class ShopService {
         if(role.getNowScenesId()!=Const.AUCTION_SCENE){return "需要移动到拍卖场进行拍卖";}
         if(offerRole.getAuctionBo().isIfEnding()){return "拍卖已经结束，不可以再进行操作";}
         if(price<=offerRole.getAuctionBo().getLastPrice()){return "请出更高的价格！";}
-
         if(isOutOfMoney(price,offerRole,role)){return "已经没有钱了";}
+
         offerRole.getAuctionBo().getRoleArrayList().add(role);
         offerRole.getAuctionBo().setBuyRoleId(role.getId());
         offerRole.getAuctionBo().setLastPrice(price);
@@ -327,9 +344,9 @@ public class ShopService {
         return stringBuilder.toString();
     }
 
-/*    static {
-        FsTradeSB.registerObserver(new FsTradeOb());
-    }*/
-
-    private FsTradeOb fsTradeOb = new FsTradeOb();
+    /*    static {
+            FsTradeSB.registerObserver(new FsTradeOb());
+        }*/
+    Subject shopSubject = new Subject();
+    private FsTradeOb fsTradeOb = new FsTradeOb(shopSubject);
 }

@@ -7,23 +7,23 @@ package com.game.system.union.pojo;
  */
 public class JobStatic {
     /** 职务id */
-    private int id;
+    private Integer id;
     /** 职务名 */
     private String name;
     /** 职务权限级别 */
-    private int grade;
+    private Integer grade;
 
-    public JobStatic(int id, String name, int grade) {
+    public JobStatic(Integer id, String name, Integer grade) {
         this.id = id;
         this.name = name;
         this.grade = grade;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -35,11 +35,11 @@ public class JobStatic {
         this.name = name;
     }
 
-    public int getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 }

@@ -1,6 +1,9 @@
 package com.game.common;
 
+import com.game.netty.server.NettyServer;
 import org.reflections.Reflections;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import java.lang.reflect.Method;
@@ -14,7 +17,7 @@ import java.util.Set;
 public class ReflectService {
 
     private ResponseInf object;
-
+    private ApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
     /**
      * 反射
      * @param inputString 经过服务端处理的字符串命令
@@ -22,7 +25,6 @@ public class ReflectService {
      */
     public ResponseInf getMethod(String inputString) {
         Reflections reflections = new Reflections("com.game.system");
-        //获取带Service注解的类
         Set<Class<?>> typesAnnotatedWith = reflections.getTypesAnnotatedWith(Controller.class);
         for (Class clazz : typesAnnotatedWith) {
             Method[] methods = clazz.getDeclaredMethods();
@@ -34,7 +36,9 @@ public class ReflectService {
                     if (annotation.MethodName().equals(inputString)) {
                         try {
                             //执行method
-                            object= (ResponseInf)method.invoke(clazz.newInstance());
+                            //object= (ResponseInf)method.invoke(clazz.newInstance());
+                            System.out.println(lowerFirst(clazz.getSimpleName()));
+                            object= (ResponseInf)method.invoke(springContext.getBean(lowerFirst(clazz.getSimpleName())));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -44,4 +48,11 @@ public class ReflectService {
         }
         return object;
     }
+
+    private String lowerFirst(String string){
+        char[] chars = string.toCharArray();
+        chars[0] += 32;
+        return String.valueOf(chars);
+    }
+
 }

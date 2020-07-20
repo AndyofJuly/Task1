@@ -10,22 +10,22 @@ import java.util.regex.Pattern;
  */
 public class PatternUtil {
 
-    /** 正则表达式判断，获取不包含数字的字符串集合*/
+    /** 正则表达式判断，获取包含数字的字符串集合*/
     public static ArrayList<Integer> getIntList(String[] str){
         ArrayList<Integer> intList = new ArrayList();
         for (String s : str) {
-            if (Pattern.matches("[0-9]*", s)) {
+            if (Pattern.matches("[0-9]*", s.trim())) {
                 intList.add(Integer.parseInt(s));
             }
         }
         return intList;
     }
 
-    /** 正则表达式判断，获取包含数字的数字集合*/
+    /** 正则表达式判断，获取不包含数字的数字集合*/
     public static ArrayList<String> getStrList(String[] str){
         ArrayList<String> strList = new ArrayList();
         for (String s : str) {
-            if (!Pattern.matches("[0-9]*", s)) {
+            if (!Pattern.matches("[0-9]*", s.trim())) {
                 strList.add(s);
             }
         }

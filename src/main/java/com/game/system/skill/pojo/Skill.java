@@ -11,9 +11,9 @@ public class Skill {
     /** 技能释放的时间戳-是否在CD */
     private Instant start;
     /** 资源类中的静态id */
-    private int skillId;
+    private Integer skillId;
 
-    public Skill(int skillId) {
+    public Skill(Integer skillId) {
         this.skillId = skillId;
     }
 

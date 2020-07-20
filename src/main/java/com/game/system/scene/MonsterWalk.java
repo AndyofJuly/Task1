@@ -4,6 +4,7 @@ import com.game.common.Const;
 import com.game.netty.server.ServerHandler;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
+import com.game.system.role.RoleService;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.MonsterResource;
@@ -48,7 +49,7 @@ public class MonsterWalk implements Runnable{
             //移动后更新格子
 
             //System.out.println(SceneService.refleshGrid(x,y,monster));//配合InitGame中的Sleep使用
-            int[] newPositon = {x,y};
+            Integer[] newPositon = {x,y};
             monster.setPosition(newPositon);
             System.out.println(+monster.getMonsterId() + "位置为" + monster.getPosition()[0]+","+monster.getPosition()[1]);
         }
@@ -62,8 +63,9 @@ public class MonsterWalk implements Runnable{
         boolean result = AssistService.isNotInView(role, monster);
         if (!result) {
             //循环攻击角色
-            while (monster.getAlive() != 0 && !AssistService.isNotInView(role, monster) && role.getHp()>0 && role.getNowScenesId()==monster.getSceneId()) {
-                role.setHp(role.getHp() - monster.getAtk());
+            while (monster.getAlive() != 0 && !AssistService.isNotInView(role, monster) && role.getHp()>0 && role.getNowScenesId().equals(monster.getSceneId())) {
+                //role.setHp(role.getHp() - monster.getAtk());
+                RoleService.checkAndSetHp(role.getHp() - monster.getAtk(),role);
                 ServerHandler.notifySelf(role.getId(),monster.getMonsterId()+
                         "使用了普通攻击，你血量剩余：" + role.getHp());
                 System.out.println(monster.getMonsterId()+

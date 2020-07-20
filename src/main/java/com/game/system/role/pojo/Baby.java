@@ -9,19 +9,19 @@ public class Baby {
     /** 宝宝UUID，每个宝宝id唯一 */
     private String id;
     /** 宝宝攻击力 */
-    private int babyAtk;
+    private Integer babyAtk;
     /** 宝宝血量 */
-    private int babyHp;
+    private Integer babyHp;
     /** 宝宝所在场景 */
-    private int scenneId;
+    private Integer scenneId;
     /** 宝宝静态id */
-    private int babyId;
+    private Integer babyId;
     /** 宝宝是否被召唤出来 */
     private boolean ifCall;
     /** 测试-所属角色 */
     private Role role;
 
-    public Baby(String id,int babyId,Role role) {
+    public Baby(String id,Integer babyId,Role role) {
         this.id = id;
         this.babyId = babyId;
         this.role = role;
@@ -37,19 +37,19 @@ public class Baby {
         this.id = id;
     }
 
-    public int getBabyAtk() {
+    public Integer getBabyAtk() {
         return babyAtk;
     }
 
-    public int getBabyHp() {
+    public Integer getBabyHp() {
         return babyHp;
     }
 
-    public void setBabyHp(int babyHp) {
+    public void setBabyHp(Integer babyHp) {
         this.babyHp = babyHp;
     }
 
-    public void setScenneId(int scenneId) {
+    public void setScenneId(Integer scenneId) {
         this.scenneId = scenneId;
     }
 }

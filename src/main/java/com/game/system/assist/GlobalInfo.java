@@ -1,5 +1,6 @@
 package com.game.system.assist;
 
+import com.game.system.bag.pojo.Equipment;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
 import com.game.system.dungeons.pojo.Team;
@@ -21,7 +22,9 @@ public class GlobalInfo {
     /** 游戏中的所有角色*/
     private static HashMap<Integer, Role> roleHashMap = new HashMap<>();
     /** 游戏中的所有场景*/
-    public static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
+    private static HashMap<Integer, Scene> scenes = new HashMap<Integer,Scene>();
+    /** 游戏中的所有已存在装备*/
+    private static HashMap<Integer, Equipment> equipmentHashMap = new HashMap<>();
     /** 技能计时*/
     private static Instant useTauntDate;
 
@@ -49,5 +52,11 @@ public class GlobalInfo {
         return scenes;
     }
 
+    public static HashMap<Integer, Equipment> getEquipmentHashMap() {
+        return equipmentHashMap;
+    }
 
+    public static void setEquipmentHashMap(HashMap<Integer, Equipment> equipmentHashMap) {
+        GlobalInfo.equipmentHashMap = equipmentHashMap;
+    }
 }

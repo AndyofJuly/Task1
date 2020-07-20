@@ -5,39 +5,39 @@ package com.game.system.bag.pojo;
  * @Author andy
  * @create 2020/7/6 17:48
  */
-public class BagGridBo {
+public class BagGridBo {//改
     /** 格子id */
-    private int id;
+    private Integer id;
     /** 格子物品id */
-    private int goodsId;
+    private Integer goodsId;
     /** 该物品数量 */
-    private int number;
+    private Integer number;
 
-    public BagGridBo(int id) {
+    public BagGridBo(Integer id) {
         this.id = id;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getGoodsId() {
+    public Integer getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(int goodsId) {
+    public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
     }
 }

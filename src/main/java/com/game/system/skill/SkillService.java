@@ -1,6 +1,7 @@
 package com.game.system.skill;
 
 import com.game.netty.server.ServerHandler;
+import com.game.system.achievement.observer.FsPkSuccessOb;
 import com.game.system.achievement.observer.SlayMonsterOb;
 import com.game.system.achievement.subject.Subject;
 import com.game.system.assist.AssistService;
@@ -9,6 +10,8 @@ import com.game.system.role.RoleBabyAi;
 import com.game.system.assist.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
+import com.game.system.role.RoleService;
+import com.game.system.scene.SceneService;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.skill.pojo.SkillStatic;
 import com.game.system.role.pojo.Baby;
@@ -17,6 +20,9 @@ import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.skill.pojo.SkillResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -29,8 +35,10 @@ import java.util.Timer;
  * @Author andy
  * @create 2020/6/8 12:12
  */
+@Service
 public class SkillService {
-    private PackageService packageService = new PackageService();
+    @Autowired
+    private PackageService packageService;// = new PackageService();
 
     /**
      * 怪物普通攻击技能
@@ -48,7 +56,7 @@ public class SkillService {
      */
     private String[] getSkillList(Role role){
         int careerId = role.getCareerId();
-        int[] skillId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
+        Integer[] skillId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
         String[] skillName = new String[skillId.length];
         for(int i=0;i<skillName.length;i++){
             int id = skillId[i];
@@ -103,15 +111,15 @@ public class SkillService {
         int hp = monster.getMonsterHp();
         int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
         int weaponBuff = 0;
-        if(role.getEquipmentHashMap()!=null){
+        if(role.getEquipmentHashMap().get(0)!=0){
             weaponBuff=Const.WEAPON_BUFF;
         }
         hp=hp-role.getAtk()-weaponBuff-skillHarm;
         if(hp<=0){
-            monster.setAlive(0);
             return Const.Fight.SLAY_SUCCESS+getReward(monster,role);
         }
-        monster.setMonsterHp(hp);
+        //monster.setMonsterHp(hp);
+        SceneService.checkAndSetMonsterHp(hp,monster);
         return Const.Fight.TARGET_HP+hp;
     }
 
@@ -130,7 +138,8 @@ public class SkillService {
                 return Const.Fight.MP_LACK;
             }
             int leftMp=role.getMp()-SkillResource.getSkillStaticHashMap().get(skillId).getUseMp();
-            role.setMp(leftMp);
+            //role.setMp(leftMp);
+            RoleService.checkAndSetMp(leftMp,role);
         }else {
             return Const.Fight.SKILL_IN_CD;
         }
@@ -166,9 +175,9 @@ public class SkillService {
         if(harm>0){
             leftHp = monster.getMonsterHp()-harm;
         }
-        monster.setMonsterHp(leftHp);
+        //monster.setMonsterHp(leftHp);
+        SceneService.checkAndSetMonsterHp(leftHp,monster);
         if(leftHp<=0){
-            monster.setAlive(0);
             return Const.Fight.SLAY_SUCCESS+getReward(monster,role);
         }
         return Const.Fight.TARGET_HP+leftHp;
@@ -180,14 +189,15 @@ public class SkillService {
      * @return 信息提示
      */
     private boolean isWeaponHaveDura(Role role){
-        int weaponId =0;
-        for (Integer selfEquipId : role.getEquipmentHashMap().keySet()) {
+        //int weaponId =0;
+/*        for (Integer selfEquipId : role.getEquipmentHashMap().keySet()) {
             if(EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType()==1){
                 weaponId = selfEquipId;
             }
-        }
-        int leftDura=role.getEquipmentHashMap().get(weaponId).getDura()-1;
-        role.getEquipmentHashMap().get(weaponId).setDura(leftDura);
+        }*/
+        int weaponId = role.getEquipmentHashMap().get(0);
+        int leftDura=GlobalInfo.getEquipmentHashMap().get(weaponId).getDura()-1;
+        GlobalInfo.getEquipmentHashMap().get(weaponId).setDura(leftDura);
         return leftDura >= 0;
     }
 
@@ -198,23 +208,80 @@ public class SkillService {
      * @return 信息提示
      */
     private String getReward(Monster nowMonster,Role role){
-        nowMonster.setMonsterHp(0);
-        nowMonster.setAlive(0);
         Random rand = new Random();
         int getMoney = rand.nextInt(Const.RAND_MONEY);
         packageService.addMoney(getMoney,role);
-        int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));
-        packageService.putIntoPackage(getEquipId,1,role);
+        //int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));
+        //packageService.putIntoPackage(getEquipId,1,role);
         role.setAtk(role.getAtk()+Const.REWARD_ATK);
 
-        Subject.notifyObservers(nowMonster.getMonsterId(),role,slayMonsterOb);
+        //Subject.notifyObservers(nowMonster.getMonsterId(),role,slayMonsterOb);
+        skillSubject.notifyObserver(nowMonster.getMonsterId(),role);
 
         ArrayList<Role> roles = GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll();
         ServerHandler.notifyGroupRoles(roles,nowMonster.getMonsterId()+"已被"+role.getName()+"打败");
 
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         scene.getMonsterHashMap().remove(nowMonster.getId());
-        return "获得装备："+getEquipId+"!获得银两"+getMoney;
+        return "!获得银两"+getMoney;//"获得装备："+getEquipId+
+    }
+
+    /**
+     * 与玩家pk-任意同场景相同视野下可以发动，效果与技能和普攻相同
+     * @param skillId 技能id
+     * @param targetRoleId pk角色id
+     * @param role 角色
+     * @return 信息提示
+     */
+    public String pkPlayer (int skillId,int targetRoleId, Role role){
+        Role enemy = GlobalInfo.getRoleHashMap().get(targetRoleId);
+        if(!enemy.getNowScenesId().equals(role.getNowScenesId())){
+            return "不再同一场景，无法pk";
+        }
+        if(AssistService.isNotInView(role,enemy)){
+            return Const.Fight.DISTACNE_LACK;
+        }
+
+        int harm = 0;
+        //skillId为0时表示普通攻击
+        if(skillId==0){
+            harm = role.getAtk();
+        }else {
+            String result = new SkillService().skillCommon(skillId,role);
+            if(!Const.Fight.SUCCESS.equals(result)){
+                return result;
+            }
+            if(role.getEquipmentHashMap().get(0)!=0){
+                int weaponBuff=Const.WEAPON_BUFF;
+                harm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk()+weaponBuff;
+            }
+        }
+        return pkAffect(harm,enemy,role);
+    }
+
+    /**
+     * pk攻击时的双方的状态处理
+     * @param harm 伤害
+     * @param enemy pk的对象
+     * @param role 角色
+     * @return 信息提示
+     */
+    private String pkAffect(int harm,Role enemy,Role role){
+        RoleService.checkAndSetHp(enemy.getHp()-harm,enemy);
+        //pk收益与损失结算
+        if(enemy.getHp()<=0){
+            role.setAtk(role.getAtk()+Const.ABTAIN_ATK);
+            packageService.addMoney(Const.PK_GET_LOST,role);
+            if(!packageService.lostMoney(Const.PK_GET_LOST,enemy)){
+                enemy.setMoney(0);
+            }
+            //Subject.notifyObservers(Const.achieve.TASK_PK_SUCCESS,role,fsPkSuccessOb);
+            skillSubject.notifyObserver(0,role);
+            return Const.Fight.PK_SUCCESS;
+        }
+        ServerHandler.notifyRole(enemy.getId(),"你遭到玩，"+role.getName()+"的pk，受到"+harm+"点伤害",
+                role.getId(),"你向对方发起了pk，攻击了对方");
+        return Const.Fight.TARGET_HP+enemy.getHp();
     }
 
     /**
@@ -241,7 +308,8 @@ public class SkillService {
         for(String key : role.getViewGridBo().getGridMonsterMap().keySet()){
             Monster monster = role.getViewGridBo().getGridMonsterMap().get(key);
             int leftHp = monster.getMonsterHp()-SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
-            monster.setMonsterHp(leftHp);
+            //monster.setMonsterHp(leftHp);
+            SceneService.checkAndSetMonsterHp(leftHp,monster);
             if(leftHp<0){
                 getReward(monster,role);
             }
@@ -268,10 +336,12 @@ public class SkillService {
         if(role.getTeamId()!=null){
             ArrayList<Role> roles = DungeonsService.getTeamRoles(GlobalInfo.getTeamList().get(role.getTeamId()).getRoleList());
             for(Role friendRole : roles){
-                friendRole.setHp(friendRole.getHp()+skill.getAddHp());
+                //friendRole.setHp(friendRole.getHp()+skill.getAddHp());
+                RoleService.checkAndSetHp(friendRole.getHp()+skill.getAddHp(),friendRole);
             }
         }else {
-            role.setHp(role.getHp()+skill.getAddHp());
+            //role.setHp(role.getHp()+skill.getAddHp());
+            RoleService.checkAndSetHp(role.getHp()+skill.getAddHp(),role);
         }
         return Const.Fight.CURE_MSG;
     }
@@ -312,7 +382,7 @@ public class SkillService {
      */
     private boolean isNotSkillValid(int skillId,Role role){
         int careerId = role.getCareerId();
-        int[] skillsId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
+        Integer[] skillsId = CareerResource.getCareerStaticHashMap().get(careerId).getSkillId();
         for (int value : skillsId) {
             if (skillId == value) {
                 return false;
@@ -335,6 +405,7 @@ public class SkillService {
 /*    static {
         SlayMonsterSB.registerObserver(new SlayMonsterOb());
     }*/
-
-    private SlayMonsterOb slayMonsterOb = new SlayMonsterOb();
+    Subject skillSubject = new Subject();
+    private SlayMonsterOb slayMonsterOb = new SlayMonsterOb(skillSubject);
+    private FsPkSuccessOb fsPkSuccessOb = new FsPkSuccessOb(skillSubject);
 }

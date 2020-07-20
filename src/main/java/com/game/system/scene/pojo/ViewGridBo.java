@@ -11,7 +11,7 @@ import java.util.HashMap;
  */
 public class ViewGridBo {
     /** 该九宫格id，默认为角色id */
-    private int roleId;
+    private Integer roleId;
     /** 九宫格中的角色集合 */
     private HashMap<Integer,Role> gridRoleMap = new HashMap<>();
     /** 九宫格中的怪物集合 */
@@ -19,18 +19,15 @@ public class ViewGridBo {
     /** 九宫格中的Npc集合 */
     private HashMap<Integer,Npc> gridNpcMap = new HashMap<>();
 
-/*    public ViewGridBo() {
-    }*/
-
     public ViewGridBo(int roleId) {
         this.roleId = roleId;
     }
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 

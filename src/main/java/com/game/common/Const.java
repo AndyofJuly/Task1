@@ -73,7 +73,7 @@ public class Const {
         String REPAIR_SUCCESS = "修理成功！当前武器耐久为：";
         String PUTON_SUCCESS = "你已成功装备该武器";
         String TAKEOFF_SUCCESS = "你已成功卸下该武器";
-        String USE_SUCCESS = "使用成功";
+        String USE_SUCCESS = "使用药品成功";
         String USE_FAILURE = "物品已用完";
     }
 
@@ -127,7 +127,7 @@ public class Const {
     /** s转换为ms*/
     public static final int TO_MS = 1000;
     /** MP的持续回复药物，回复的定时间隔时间*/
-    public static final int GAP_TIME_POTION = 2000;
+    public static final int GAP_TIME_POTION = 20000;
     /** 技能定时时间*/
     public static final int GAP_TIME_SKILL = 1000;
 

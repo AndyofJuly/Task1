@@ -9,25 +9,25 @@ public class Monster{
     /** 具体对象的id，每个怪物的id不相同 */
     private String id;
     /** 怪物存活状态，1表示存活，0表示被消灭 */
-    private int alive;
+    private Integer alive;
     /** 资源类中的静态id */
-    private int monsterId;
+    private Integer monsterId;
     /** 怪物名称 */
     private String monsterName;
     /** 怪物血量 */
-    private int monsterHp;
+    private Integer monsterHp;
     /** 怪物防御力 */
-    private int monsterDef;
+    private Integer monsterDef;
     /** 怪物位置-动态 */
-    private int[] position;
+    private Integer[] position;
     /** 怪物锁定的目标 */
-    private int atkTargetId;
+    private Integer atkTargetId;
     /** 怪物攻击力 */
-    private int atk;
+    private Integer atk;
     /** 怪物所在场景 */
-    private int sceneId;
+    private Integer sceneId;
 
-    public Monster(String id, int monsterId) {
+    public Monster(String id, Integer monsterId) {
         this.id = id;
         this.monsterId = monsterId;
         this.monsterHp = MonsterResource.getMonstersStatics().get(this.monsterId).getHp();
@@ -47,61 +47,20 @@ public class Monster{
         this.id = id;
     }
 
-    public int getMonsterId() {
-        return monsterId;
-    }
-
-    public void setMonsterId(int monsterId) {
-        this.monsterId = monsterId;
-    }
-
-    public int getAlive() {
+    public Integer getAlive() {
         return alive;
     }
 
-    public void setAlive(int alive) {
+    public void setAlive(Integer alive) {
         this.alive = alive;
     }
 
-    public int getMonsterHp() {
-        return monsterHp;
+    public Integer getMonsterId() {
+        return monsterId;
     }
 
-    public void setMonsterHp(int monsterHp) {
-        if(monsterHp<0){monsterHp=0;}
-        this.monsterHp = monsterHp;
-    }
-
-    public int[] getPosition() {
-        return position;
-    }
-
-    public void setPosition(int[] position) {
-        this.position = position;
-    }
-
-    public int getMonsterDef() {
-        return monsterDef;
-    }
-
-    public void setMonsterDef(int monsterDef) {
-        this.monsterDef = monsterDef;
-    }
-
-    public int getAtkTargetId() {
-        return atkTargetId;
-    }
-
-    public void setAtkTargetId(int atkTargetId) {
-        this.atkTargetId = atkTargetId;
-    }
-
-    public int getAtk() {
-        return atk;
-    }
-
-    public void setAtk(int atk) {
-        this.atk = atk;
+    public void setMonsterId(Integer monsterId) {
+        this.monsterId = monsterId;
     }
 
     public String getMonsterName() {
@@ -112,11 +71,52 @@ public class Monster{
         this.monsterName = monsterName;
     }
 
-    public int getSceneId() {
+    public Integer getMonsterHp() {
+        return monsterHp;
+    }
+
+    public void setMonsterHp(Integer monsterHp) {
+        this.monsterHp = monsterHp;
+    }
+
+    public Integer getMonsterDef() {
+        return monsterDef;
+    }
+
+    public void setMonsterDef(Integer monsterDef) {
+        this.monsterDef = monsterDef;
+    }
+
+    public Integer[] getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer[] position) {
+        this.position = position;
+    }
+
+    public Integer getAtkTargetId() {
+        return atkTargetId;
+    }
+
+    public void setAtkTargetId(Integer atkTargetId) {
+        this.atkTargetId = atkTargetId;
+    }
+
+    public Integer getAtk() {
+        return atk;
+    }
+
+    public void setAtk(Integer atk) {
+        this.atk = atk;
+    }
+
+    public Integer getSceneId() {
         return sceneId;
     }
 
-    public void setSceneId(int sceneId) {
+    public void setSceneId(Integer sceneId) {
         this.sceneId = sceneId;
     }
+
 }

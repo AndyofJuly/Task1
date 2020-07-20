@@ -36,14 +36,6 @@ public class SceneDetailBo {
         this.roleArrayList = roleArrayList;
     }
 
-/*    public int[] getNpcIdArray() {
-        return npcIdArray;
-    }
-
-    public void setNpcIdArray(int[] npcIdArray) {
-        this.npcIdArray = npcIdArray;
-    }*/
-
     public HashMap<Integer, Npc> getNpcHashMap() {
         return npcHashMap;
     }

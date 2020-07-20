@@ -7,20 +7,20 @@ package com.game.system.scene.pojo;
  */
 public class Npc {
     /** NPC存活状态，1表示存活，0表示不存活 */
-    private int alive;
+    private Integer alive;
     /** 资源类中的静态id，同时作为实体类id */
-    private int npcId;
+    private Integer npcId;
     /** NPC的名字 */
     private String name;
     /** NPC的对话 */
     private String words;
     /** NPC所在场景id */
-    private int sceneId;
+    private Integer sceneId;
     /** 位置坐标 */
-    private int[] position;
+    private Integer[] position;
 
 
-    public Npc(int npcId) {
+    public Npc(Integer npcId) {
         this.npcId = npcId;
         this.sceneId = NpcResource.getNpcsStatics().get(npcId).getSceneId();
         this.words = NpcResource.getNpcsStatics().get(npcId).getWords();
@@ -29,19 +29,19 @@ public class Npc {
         this.alive = 1;
     }
 
-    public int getAlive() {
+    public Integer getAlive() {
         return alive;
     }
 
-    public void setAlive(int alive) {
+    public void setAlive(Integer alive) {
         this.alive = alive;
     }
 
-    public int getNpcId() {
+    public Integer getNpcId() {
         return npcId;
     }
 
-    public void setNpcId(int npcId) {
+    public void setNpcId(Integer npcId) {
         this.npcId = npcId;
     }
 
@@ -61,19 +61,19 @@ public class Npc {
         this.words = words;
     }
 
-    public int getSceneId() {
+    public Integer getSceneId() {
         return sceneId;
     }
 
-    public void setSceneId(int sceneId) {
+    public void setSceneId(Integer sceneId) {
         this.sceneId = sceneId;
     }
 
-    public int[] getPosition() {
+    public Integer[] getPosition() {
         return position;
     }
 
-    public void setPosition(int[] position) {
+    public void setPosition(Integer[] position) {
         this.position = position;
     }
 }

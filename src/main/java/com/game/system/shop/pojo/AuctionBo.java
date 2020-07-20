@@ -15,17 +15,17 @@ public class AuctionBo {
     /** 拍卖场次id */
     private String id;
     /** 物品id */
-    private int goodsId;
+    private Integer goodsId;
     /** 物品价格 */
-    private int price;
+    private Integer price;
     /** 供货者角色id */
-    private int roleId;
+    private Integer roleId;
     /** 拍卖时间点 */
     private Instant tagTime;
     /** 最终定价 */
-    private int lastPrice;
+    private Integer lastPrice;
     /** 出价者角色id */
-    private int buyRoleId;
+    private Integer buyRoleId;
     /** 参与此次竞价的所有角色 */
     private ArrayList<Role> roleArrayList = new ArrayList<>();
     /** 竞价记录，roleId-price */
@@ -33,7 +33,7 @@ public class AuctionBo {
     /** 拍卖结束标志 */
     private boolean ifEnding;
 
-    public AuctionBo(String id, int goodsId, int price, int roleId) {
+    public AuctionBo(String id, Integer goodsId, Integer price, Integer roleId) {
         this.id = id;
         this.goodsId = goodsId;
         this.price = price;
@@ -48,27 +48,27 @@ public class AuctionBo {
         this.id = id;
     }
 
-    public int getGoodsId() {
+    public Integer getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(int goodsId) {
+    public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public int getRoleId() {
+    public Integer getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(Integer roleId) {
         this.roleId = roleId;
     }
 
@@ -80,19 +80,19 @@ public class AuctionBo {
         this.tagTime = tagTime;
     }
 
-    public int getLastPrice() {
+    public Integer getLastPrice() {
         return lastPrice;
     }
 
-    public void setLastPrice(int lastPrice) {
+    public void setLastPrice(Integer lastPrice) {
         this.lastPrice = lastPrice;
     }
 
-    public int getBuyRoleId() {
+    public Integer getBuyRoleId() {
         return buyRoleId;
     }
 
-    public void setBuyRoleId(int buyRoleId) {
+    public void setBuyRoleId(Integer buyRoleId) {
         this.buyRoleId = buyRoleId;
     }
 

@@ -3,6 +3,7 @@ package com.game.system.achievement.observer;
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.achievement.subject.SerialTaskSB;
+import com.game.system.achievement.subject.Subject;
 import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.role.pojo.Role;
 
@@ -11,9 +12,9 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/13 10:06
  */
 public class BestEquipOb implements Observer{
-/*    public BestEquipOb(BestEquipSB subject) {
+    public BestEquipOb(Subject subject) {
         subject.registerObserver(this);
-    }*/
+    }
 
     @Override
     public void checkAchievement(int targetId, Role role){
@@ -21,7 +22,7 @@ public class BestEquipOb implements Observer{
         int quality = EquipmentResource.getEquipmentStaticHashMap().get(targetId).getQuality();
         //1为极品装备标志
         if(quality==1){
-            role.getMyPackageBo().setSumBestNum();
+            role.getMyPackageBo().setBestNum(role.getMyPackageBo().getBestNum()+1);
         }else{
             return;
         }
@@ -33,11 +34,6 @@ public class BestEquipOb implements Observer{
             }
         }
 
-        SerialTaskSB.notifyObservers(0,role);
-    }
-
-    @Override
-    public void checkAchievement(String target, Role role) {
-
+        SerialTaskOb.checkAchievement(0,role);
     }
 }

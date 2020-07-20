@@ -8,21 +8,21 @@ package com.game.system.role.pojo;
 public class CareerStatic {
 
     /** 角色职业id */
-    private int id;
+    private Integer id;
     /** 职业名 */
     private String name;
     /** 职业初始攻击力 */
-    private int atk;
+    private Integer atk;
     /** 职业初始防御力 */
-    private int def;
+    private Integer def;
     /** 职业初始hp */
-    private int hp;
+    private Integer hp;
     /** 职业初始mp */
-    private int mp;
+    private Integer mp;
     /** 职业技能 */
-    private int[] skillId;
+    private Integer[] skillId;
 
-    public CareerStatic(int id, String name, int atk, int def, int hp, int mp, int[] skillId) {
+    public CareerStatic(Integer id, String name, Integer atk, Integer def, Integer hp, Integer mp, Integer[] skillId) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -32,11 +32,11 @@ public class CareerStatic {
         this.skillId = skillId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -48,43 +48,43 @@ public class CareerStatic {
         this.name = name;
     }
 
-    public int getAtk() {
+    public Integer getAtk() {
         return atk;
     }
 
-    public void setAtk(int atk) {
+    public void setAtk(Integer atk) {
         this.atk = atk;
     }
 
-    public int getDef() {
+    public Integer getDef() {
         return def;
     }
 
-    public void setDef(int def) {
+    public void setDef(Integer def) {
         this.def = def;
     }
 
-    public int getHp() {
+    public Integer getHp() {
         return hp;
     }
 
-    public void setHp(int hp) {
+    public void setHp(Integer hp) {
         this.hp = hp;
     }
 
-    public int getMp() {
+    public Integer getMp() {
         return mp;
     }
 
-    public void setMp(int mp) {
+    public void setMp(Integer mp) {
         this.mp = mp;
     }
 
-    public int[] getSkillId() {
+    public Integer[] getSkillId() {
         return skillId;
     }
 
-    public void setSkillId(int[] skillId) {
+    public void setSkillId(Integer[] skillId) {
         this.skillId = skillId;
     }
 }

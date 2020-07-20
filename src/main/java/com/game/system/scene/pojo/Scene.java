@@ -13,11 +13,11 @@ import java.util.HashMap;
 public class Scene {
 
     /** 具体随机场景id */
-    private int id;
+    private Integer id;
     /** 具体场景随机Name */
     private String name;
     /** 资源类中的静态id */
-    private int sceneId;
+    private Integer sceneId;
     /** 该场景下的角色集合 */
     private final ArrayList<Role> roleAll = new ArrayList<>();
     /** 该场景下的怪物集合 */
@@ -27,17 +27,17 @@ public class Scene {
     /** 该场景下的网格集合 */
     private final HashMap<Integer, Grid> gridHashMap = new HashMap<>();
 
-    public Scene(int id,String name,int sceneId) {
+    public Scene(Integer id,String name,Integer sceneId) {
         this.id = id;
         this.name = name;
         this.sceneId = sceneId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class Scene {
         this.name = name;
     }
 
-    public int getSceneId() {
+    public Integer getSceneId() {
         return sceneId;
     }
 
-    public void setSceneId(int sceneId) {
+    public void setSceneId(Integer sceneId) {
         this.sceneId = sceneId;
     }
 
@@ -65,11 +65,11 @@ public class Scene {
         return monsterHashMap;
     }
 
-    public HashMap<Integer, Grid> getGridHashMap() {
-        return gridHashMap;
-    }
-
     public HashMap<Integer, Npc> getNpcHashMap() {
         return npcHashMap;
+    }
+
+    public HashMap<Integer, Grid> getGridHashMap() {
+        return gridHashMap;
     }
 }

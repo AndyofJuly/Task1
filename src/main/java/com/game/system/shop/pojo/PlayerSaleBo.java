@@ -8,39 +8,39 @@ package com.game.system.shop.pojo;
 public class PlayerSaleBo {
 
     /** 物品id */
-    private int goodsId;
+    private Integer goodsId;
     /** 价格 */
-    private int price;
+    private Integer price;
     /** 数量 */
-    private int num;
+    private Integer num;
 
-    public PlayerSaleBo(int goodsId, int price, int num) {
+    public PlayerSaleBo(Integer goodsId, Integer price, Integer num) {
         this.goodsId = goodsId;
         this.price = price;
         this.num = num;
     }
 
-    public int getGoodsId() {
+    public Integer getGoodsId() {
         return goodsId;
     }
 
-    public void setGoodsId(int goodsId) {
+    public void setGoodsId(Integer goodsId) {
         this.goodsId = goodsId;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
-    public int getNum() {
+    public Integer getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(Integer num) {
         this.num = num;
     }
 }

@@ -14,9 +14,9 @@ public class Team {
     /** 队伍中的角色id集合 */
     private final ArrayList<Integer> roleList = new ArrayList<>();
     /** 选择的副本id */
-    private int dungeonsId;
+    private Integer dungeonsId;
 
-    public Team(String id, int dungeonsId) {
+    public Team(String id, Integer dungeonsId) {
         this.id = id;
         this.dungeonsId = dungeonsId;
     }
@@ -33,7 +33,7 @@ public class Team {
         this.id = id;
     }
 
-    public int getDungeonsId() {
+    public Integer getDungeonsId() {
         return dungeonsId;
     }
 

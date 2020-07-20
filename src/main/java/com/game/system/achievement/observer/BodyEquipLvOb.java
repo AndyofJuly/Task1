@@ -3,6 +3,9 @@ package com.game.system.achievement.observer;
 import com.game.common.Const;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.achievement.subject.SerialTaskSB;
+import com.game.system.achievement.subject.Subject;
+import com.game.system.assist.AssistService;
+import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.role.pojo.Role;
 
 /**
@@ -10,15 +13,16 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/13 10:09
  */
 public class BodyEquipLvOb implements Observer{
-/*    public BodyEquipLvOb(BodyEquipLvSB subject) {
+    public BodyEquipLvOb(Subject subject) {
         subject.registerObserver(this);
-    }*/
+    }
 
     @Override
     public void checkAchievement(int targetId, Role role){
         int sumLevel = 0;
-        for(Integer equipmentId : role.getEquipmentHashMap().keySet()){
-            sumLevel+=role.getEquipmentHashMap().get(equipmentId).getLevel();
+        for(Integer key : role.getEquipmentHashMap().keySet()){
+            int staticId = AssistService.getStaticEquipId(role.getEquipmentHashMap().get(key));
+            sumLevel+= EquipmentResource.getEquipmentStaticHashMap().get(staticId).getLevel();
         }
 
         for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
@@ -29,11 +33,6 @@ public class BodyEquipLvOb implements Observer{
             }
         }
 
-        SerialTaskSB.notifyObservers(0,role);
-    }
-
-    @Override
-    public void checkAchievement(String target, Role role) {
-
+        SerialTaskOb.checkAchievement(0,role);
     }
 }

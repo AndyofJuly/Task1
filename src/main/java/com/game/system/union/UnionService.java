@@ -10,6 +10,9 @@ import com.game.system.union.pojo.JobResource;
 import com.game.system.union.pojo.Union;
 import com.game.system.assist.AssistService;
 import com.game.system.assist.GlobalInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +22,14 @@ import java.util.HashMap;
  * @Author andy
  * @create 2020/6/28 14:27
  */
+@Service
 public class UnionService {
 
     /** 所有的公会集合，key为unionId，value为Union */
     public static HashMap<Integer,Union> unionHashMap = new HashMap<>();
 
-    private PackageService packageService = new PackageService();
+    @Autowired
+    private PackageService packageService;// = new PackageService();
 
     /**
      * 创建公会，创建者获得最高权限-1，职务为会长
@@ -38,7 +43,8 @@ public class UnionService {
         union.getRoleJobHashMap().put(role.getId(),1);
         role.setUnionId(unionId);
         unionHashMap.put(unionId,union);
-        Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+        //Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+        unionSubject.notifyObserver(0,role);
         return String.valueOf(unionId);
     }
 
@@ -85,10 +91,10 @@ public class UnionService {
     /**
      * 申请参加公会，放入申请列表中
      * @param unionId 公会id
-     * @param roleId 角色id
+     * @param role 角色
      */
-    public void applyFor(int unionId,int roleId){
-        unionHashMap.get(unionId).getRoleList().add(roleId);
+    public void applyFor(int unionId,Role role){
+        unionHashMap.get(unionId).getRoleList().add(role.getId());
     }
 
     /**
@@ -98,17 +104,18 @@ public class UnionService {
      * @param role 角色
      * @return 信息提示
      */
-    public String agreeApply(int unionId,Integer applyRoleId,Role role){
+    public String agreeApply(int unionId,int applyRoleId,Role role){
         int jobId = unionHashMap.get(unionId).getRoleJobHashMap().get(role.getId());
         int grade = JobResource.getJobStaticHashMap().get(jobId).getGrade();
         if(grade >Const.union.THRID_GRADE|| role.getUnionId()!=unionId){
             return "你没有该权限";
         }
-        unionHashMap.get(unionId).getRoleList().remove(applyRoleId);
+        unionHashMap.get(unionId).getRoleList().remove(Integer.valueOf(applyRoleId));
         Role member = GlobalInfo.getRoleHashMap().get(applyRoleId);
         member.setUnionId(unionId);
 
-        Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+        //Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
+        unionSubject.notifyObserver(0,role);
 
         ServerHandler.notifyGroupRoles(getRoles(unionId),role.getName()+"已批准"+member.getName()+"入会");
         return "已批准该角色入会";
@@ -235,5 +242,6 @@ public class UnionService {
         FsJoinUnionSB.registerObserver(new FsJoinUnionOb());
     }*/
 
-    FsJoinUnionOb fsJoinUnionOb = new FsJoinUnionOb();
+    Subject unionSubject = new Subject();
+    FsJoinUnionOb fsJoinUnionOb = new FsJoinUnionOb(unionSubject);
 }

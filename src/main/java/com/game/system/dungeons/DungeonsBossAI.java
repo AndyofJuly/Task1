@@ -101,7 +101,8 @@ public class DungeonsBossAI extends TimerTask {
         if(checkBossHpOut()){
             for(int i = 0; i< list.size(); i++) {
                 //DungeonsSB.notifyObservers(this.dungeonsId, GlobalInfo.getRoleHashMap().get(list.get(i)));
-                Subject.notifyObservers(this.dungeonsId, GlobalInfo.getRoleHashMap().get(list.get(i)),dungeonsOb);
+                //Subject.notifyObservers(this.dungeonsId, GlobalInfo.getRoleHashMap().get(list.get(i)),dungeonsOb);
+                dungeonsSubject.notifyObserver(this.dungeonsId,GlobalInfo.getRoleHashMap().get(list.get(i)));
             }
         }
     }
@@ -109,7 +110,8 @@ public class DungeonsBossAI extends TimerTask {
     //怪物优先攻击战士角色，然后攻击其他角色
     private void attackRole(int keyRole,ArrayList<Integer> list){
         Role role = GlobalInfo.getRoleHashMap().get(list.get(keyRole));
-        role.setHp(role.getHp()+role.getDef()-damage);
+        //role.setHp(role.getHp()+role.getDef()-damage);
+        RoleService.checkAndSetHp(role.getHp()+role.getDef()-damage,role);
         System.out.println("角色"+role.getName()+"遭到技能攻击，当前血量为："+role.getHp());
         ServerHandler.notifyGroupRoles(getRoles(),"角色"+role.getName()+"遭到攻击，当前血量为："+role.getHp());
     }
@@ -117,7 +119,8 @@ public class DungeonsBossAI extends TimerTask {
     //怪物收到嘲讽，选择攻击战士
     private void attackRoleByTaunt(int keyTaunt,ArrayList<Integer> list){
         Role role = GlobalInfo.getRoleHashMap().get(list.get(keyTaunt));
-        role.setHp(role.getHp()-damage);
+        //role.setHp(role.getHp()-damage);
+        RoleService.checkAndSetHp(role.getHp()-damage,role);
         Instant nowDate = Instant.now();
         Duration between = Duration.between(GlobalInfo.getUseTauntDate(), nowDate);
         // 嘲讽持续时间
@@ -212,6 +215,7 @@ public class DungeonsBossAI extends TimerTask {
         DungeonsSB.registerObserver(new DungeonsOb());
     }*/
 
-    private DungeonsOb dungeonsOb = new DungeonsOb();
+    Subject dungeonsSubject = new Subject();
+    private DungeonsOb dungeonsOb = new DungeonsOb(dungeonsSubject);
 
 }

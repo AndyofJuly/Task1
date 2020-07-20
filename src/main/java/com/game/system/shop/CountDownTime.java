@@ -55,7 +55,7 @@ public class CountDownTime extends TimerTask {
         //退款
         HashMap<Integer, Integer> priceHashMap = offerRole.getAuctionBo().getPriceHashMap();
         for(Role role : offerRole.getAuctionBo().getRoleArrayList()){
-            if(role.getId()!=lastRole.getId()){
+            if(!role.getId().equals(lastRole.getId())){
                 packageService.addMoney(priceHashMap.get(role.getId()),role);
             }
         }
