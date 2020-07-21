@@ -2,16 +2,15 @@ package com.game.system.union;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsJoinUnionOb;
-import com.game.system.achievement.subject.Subject;
+import com.game.system.achievement.pojo.Subject;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.union.pojo.JobResource;
 import com.game.system.union.pojo.Union;
-import com.game.system.assist.AssistService;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.AssistService;
+import com.game.system.gameserver.GlobalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class UnionService {
     public static HashMap<Integer,Union> unionHashMap = new HashMap<>();
 
     @Autowired
-    private PackageService packageService;// = new PackageService();
+    private PackageService packageService;
 
     /**
      * 创建公会，创建者获得最高权限-1，职务为会长
@@ -43,7 +42,6 @@ public class UnionService {
         union.getRoleJobHashMap().put(role.getId(),1);
         role.setUnionId(unionId);
         unionHashMap.put(unionId,union);
-        //Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
         unionSubject.notifyObserver(0,role);
         return String.valueOf(unionId);
     }
@@ -114,7 +112,6 @@ public class UnionService {
         Role member = GlobalInfo.getRoleHashMap().get(applyRoleId);
         member.setUnionId(unionId);
 
-        //Subject.notifyObservers(Const.achieve.TASK_FIRST_UNION,role,fsJoinUnionOb);
         unionSubject.notifyObserver(0,role);
 
         ServerHandler.notifyGroupRoles(getRoles(unionId),role.getName()+"已批准"+member.getName()+"入会");
@@ -147,7 +144,7 @@ public class UnionService {
 
     /** 查看权限，待做，可以对前面共同代码进行抽取 */
     private void checkAuthority(){
-
+        //todo
     }
 
     /**
@@ -238,10 +235,7 @@ public class UnionService {
         return roles;
     }
 
-/*    static {
-        FsJoinUnionSB.registerObserver(new FsJoinUnionOb());
-    }*/
-
+    /** 注册成就观察者 */
     Subject unionSubject = new Subject();
     FsJoinUnionOb fsJoinUnionOb = new FsJoinUnionOb(unionSubject);
 }

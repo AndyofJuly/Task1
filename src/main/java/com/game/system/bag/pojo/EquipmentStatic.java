@@ -27,8 +27,10 @@ public class EquipmentStatic {
     private Integer type;
     /** 装备稀有度：0为普通武器；1为极品武器*/
     private Integer quality;
+    /** 装备防御增益*/
+    private Integer def;
 
-    public EquipmentStatic(Integer id, String name, Integer atk, Integer durability, Integer price, Integer level, Integer addHp, Integer addMp, Integer type,Integer quality) {
+    public EquipmentStatic(Integer id, String name, Integer atk, Integer durability, Integer price, Integer level, Integer addHp, Integer addMp, Integer type,Integer quality,Integer def) {
         this.id = id;
         this.name = name;
         this.atk = atk;
@@ -39,6 +41,7 @@ public class EquipmentStatic {
         this.addMp = addMp;
         this.type = type;
         this.quality = quality;
+        this.def = def;
     }
 
     public Integer getId() {
@@ -119,5 +122,13 @@ public class EquipmentStatic {
 
     public void setQuality(Integer quality) {
         this.quality = quality;
+    }
+
+    public Integer getDef() {
+        return def;
+    }
+
+    public void setDef(Integer def) {
+        this.def = def;
     }
 }

@@ -1,7 +1,6 @@
 package com.game.system.bag.pojo;
 
 import com.game.common.Const;
-import com.game.system.assist.AssistService;
 
 import java.util.HashMap;
 
@@ -13,8 +12,8 @@ import java.util.HashMap;
 public class MyPackageBo {//改
     /** 背包容量，默认为6*/
     private Integer size;
-    /** 背包极品装备数量*/
-    private int bestNum = 0;
+/*    *//** 背包极品装备数量*//*
+    private int bestNum = 0;*/
     /** 背包格子集合，格子id-每个格子对象-在该类中封装，仅对外提供信息，只有通过goodsHashMap才能对其操作*/
     private HashMap<Integer, BagGridBo> packageGridHashMap = new HashMap<Integer, BagGridBo>();
     /** 物品id和物品数量-外部访问时访问该集合，主要为了方便数据库读取*/
@@ -38,13 +37,13 @@ public class MyPackageBo {//改
         this.size = size;
     }
 
-    public int getBestNum() {
+/*    public int getBestNum() {
         return bestNum;
     }
 
     public void setBestNum(int bestNum) {
         this.bestNum = bestNum;
-    }
+    }*/
 
     public HashMap<Integer, BagGridBo> getPackageGridHashMap() {
         return packageGridHashMap;

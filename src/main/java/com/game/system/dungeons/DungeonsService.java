@@ -2,9 +2,9 @@ package com.game.system.dungeons;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsJoinTeamOb;
-import com.game.system.achievement.subject.Subject;
-import com.game.system.assist.AssistService;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.achievement.pojo.Subject;
+import com.game.system.gameserver.AssistService;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.common.Const;
 import com.game.system.role.pojo.Role;
 import com.game.system.dungeons.pojo.Team;
@@ -13,7 +13,6 @@ import com.game.system.dungeons.pojo.DungeonsResource;
 import com.game.system.role.RoleService;
 import com.game.system.scene.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -27,7 +26,7 @@ import java.util.Timer;
 @Service
 public class DungeonsService {
     @Autowired
-    private SceneService sceneService;// = new SceneService();
+    private SceneService sceneService;
 
     /**
      * 创建队伍
@@ -52,7 +51,6 @@ public class DungeonsService {
         role.setTeamId(teamId);
         GlobalInfo.getTeamList().get(teamId).getRoleList().add(role.getId());
 
-        //Subject.notifyObservers(Const.achieve.TASK_FIRST_TEAM,role,fsJoinTeamOb);
         dungeonsSubject.notifyObserver(0,role);
 
         ArrayList<Role> roles = getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
@@ -102,7 +100,7 @@ public class DungeonsService {
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             RoleService roleService = new RoleService();
-            roleService.moveTo(tempSceneId, GlobalInfo.getRoleHashMap().get(team.getRoleList().get(i)));
+            sceneService.moveTo(tempSceneId, GlobalInfo.getRoleHashMap().get(team.getRoleList().get(i)));
         }
 
         int nowScenesId = role.getNowScenesId();
@@ -157,10 +155,7 @@ public class DungeonsService {
         return stringBuilder.toString();
     }
 
-/*    static {
-        FsJoinTeamSB.registerObserver(new FsJoinTeamOb());
-    }*/
-
+    /** 注册成就观察者 */
     Subject dungeonsSubject = new Subject();
     private FsJoinTeamOb fsJoinTeamOb = new FsJoinTeamOb(dungeonsSubject);
 }

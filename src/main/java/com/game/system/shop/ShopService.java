@@ -3,9 +3,9 @@ package com.game.system.shop;
 import com.game.common.Const;
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsTradeOb;
-import com.game.system.achievement.subject.Subject;
-import com.game.system.assist.AssistService;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.achievement.pojo.Subject;
+import com.game.system.gameserver.AssistService;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.system.bag.pojo.Equipment;
 import com.game.system.bag.pojo.EquipmentResource;
@@ -15,7 +15,6 @@ import com.game.system.shop.pojo.AuctionBo;
 import com.game.system.shop.pojo.DealBo;
 import com.game.system.shop.pojo.PlayerSaleBo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
@@ -32,10 +31,10 @@ import java.util.UUID;
 @Service
 public class ShopService {
 
+/*    @Autowired
+    private RecordDao recordDao;*/
     @Autowired
-    private RecordDao recordDao;// = new RecordDao();
-    @Autowired
-    private PackageService packageService;// = new PackageService();
+    private PackageService packageService;
 
     //商店仓库中角色上架的物品，key为角色id，value为出售物品和数量
     private static HashMap<Integer, PlayerSaleBo> playerSaleBoHashMap = new HashMap<>();
@@ -48,9 +47,9 @@ public class ShopService {
      * @return 信息提示
      */
     public String buyGoods(int goodsId,int number,Role role){
-        if(!ifLimitBuy(goodsId,number,role.getId())){
+/*        if(!ifLimitBuy(goodsId,number,role.getId())){
             return Const.Shop.LIMIT_MSG;
-        }
+        }*/
         int cost = AssistService.getGoodsPrice(goodsId) * number;
         if(!packageService.lostMoney(cost,role)){
             return Const.Shop.BUY_FAILURE;
@@ -74,7 +73,7 @@ public class ShopService {
      * @param roleId 角色id
      * @return 是否限购
      */
-    private boolean ifLimitBuy(int goodsId,int number,int roleId){
+/*    private boolean ifLimitBuy(int goodsId,int number,int roleId){
         HashMap<Integer,HashMap<Integer,Integer>> buyRecord = recordDao.selectBuyRecord(roleId);
         buyRecord.get(roleId).putIfAbsent(goodsId, 0);
         int sumNumber = number + buyRecord.get(roleId).get(goodsId);
@@ -84,10 +83,10 @@ public class ShopService {
             recordDao.insertBuyRecord(roleId,goodsId,sumNumber);
         }
         return true;
-    }
+    }*/
 
     /**
-     * 面对面交易-发起阶段
+     * 面对面交易-双方发起阶段
      * @param targetId 交易对方id
      * @param equipId 装备id，默认数量1
      * @param potionId 药品id
@@ -134,8 +133,6 @@ public class ShopService {
             exChangeGoods(targetRole,role);
             exChangeGoods(role,targetRole);
 
-            //Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,role,fsTradeOb);
-            //Subject.notifyObservers(Const.achieve.TASK_FRIST_TRADE,targetRole,fsTradeOb);
             shopSubject.notifyObserver(0,role);
             shopSubject.notifyObserver(0,role);
 
@@ -300,7 +297,7 @@ public class ShopService {
     }
 
     /**
-     * 对喊价人的喊价对应的资金进行锁定，判断是否还有足够的钱参与拍卖；拍卖结束后统一将钱退款给竞价失败的人
+     * 对喊价人的出价资金进行锁定，判断是否还有足够的钱参与拍卖；拍卖结束后统一将钱退款给竞价失败的人
      * @param price 价格
      * @param offerRole 出售者
      * @param role 角色
@@ -344,9 +341,7 @@ public class ShopService {
         return stringBuilder.toString();
     }
 
-    /*    static {
-            FsTradeSB.registerObserver(new FsTradeOb());
-        }*/
+    /** 注册成就观察者 */
     Subject shopSubject = new Subject();
     private FsTradeOb fsTradeOb = new FsTradeOb(shopSubject);
 }

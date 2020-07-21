@@ -3,11 +3,11 @@ package com.game.system.skill;
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsPkSuccessOb;
 import com.game.system.achievement.observer.SlayMonsterOb;
-import com.game.system.achievement.subject.Subject;
-import com.game.system.assist.AssistService;
+import com.game.system.achievement.pojo.Subject;
+import com.game.system.gameserver.AssistService;
 import com.game.system.dungeons.DungeonsService;
 import com.game.system.role.RoleBabyAi;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
 import com.game.system.role.RoleService;
@@ -16,12 +16,10 @@ import com.game.system.scene.pojo.Monster;
 import com.game.system.skill.pojo.SkillStatic;
 import com.game.system.role.pojo.Baby;
 import com.game.system.role.pojo.CareerResource;
-import com.game.system.bag.pojo.EquipmentResource;
 import com.game.system.skill.pojo.SkillResource;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -38,7 +36,7 @@ import java.util.Timer;
 @Service
 public class SkillService {
     @Autowired
-    private PackageService packageService;// = new PackageService();
+    private PackageService packageService;
 
     /**
      * 怪物普通攻击技能
@@ -66,7 +64,7 @@ public class SkillService {
     }
 
     /**
-     * 获得当前自己拥有的技能
+     * 获得当前自己拥有的技能-供外部调用
      * @param role 角色
      * @return 信息提示
      */
@@ -118,13 +116,12 @@ public class SkillService {
         if(hp<=0){
             return Const.Fight.SLAY_SUCCESS+getReward(monster,role);
         }
-        //monster.setMonsterHp(hp);
         SceneService.checkAndSetMonsterHp(hp,monster);
         return Const.Fight.TARGET_HP+hp;
     }
 
     /**
-     * 使用技能时的mp较少和CD计算等共同特征
+     * 使用技能时的状态变化管理，例如mp减少和CD判断等共同特征
      * @param skillId 技能id
      * @param role 角色
      * @return 信息提示
@@ -138,7 +135,6 @@ public class SkillService {
                 return Const.Fight.MP_LACK;
             }
             int leftMp=role.getMp()-SkillResource.getSkillStaticHashMap().get(skillId).getUseMp();
-            //role.setMp(leftMp);
             RoleService.checkAndSetMp(leftMp,role);
         }else {
             return Const.Fight.SKILL_IN_CD;
@@ -175,7 +171,6 @@ public class SkillService {
         if(harm>0){
             leftHp = monster.getMonsterHp()-harm;
         }
-        //monster.setMonsterHp(leftHp);
         SceneService.checkAndSetMonsterHp(leftHp,monster);
         if(leftHp<=0){
             return Const.Fight.SLAY_SUCCESS+getReward(monster,role);
@@ -189,12 +184,6 @@ public class SkillService {
      * @return 信息提示
      */
     private boolean isWeaponHaveDura(Role role){
-        //int weaponId =0;
-/*        for (Integer selfEquipId : role.getEquipmentHashMap().keySet()) {
-            if(EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType()==1){
-                weaponId = selfEquipId;
-            }
-        }*/
         int weaponId = role.getEquipmentHashMap().get(0);
         int leftDura=GlobalInfo.getEquipmentHashMap().get(weaponId).getDura()-1;
         GlobalInfo.getEquipmentHashMap().get(weaponId).setDura(leftDura);
@@ -211,12 +200,11 @@ public class SkillService {
         Random rand = new Random();
         int getMoney = rand.nextInt(Const.RAND_MONEY);
         packageService.addMoney(getMoney,role);
-        //int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));
+        //int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));//获得装备奖励
         //packageService.putIntoPackage(getEquipId,1,role);
         role.setAtk(role.getAtk()+Const.REWARD_ATK);
 
-        //Subject.notifyObservers(nowMonster.getMonsterId(),role,slayMonsterOb);
-        skillSubject.notifyObserver(nowMonster.getMonsterId(),role);
+        slayMonsterSubject.notifyObserver(nowMonster.getMonsterId(),role);
 
         ArrayList<Role> roles = GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll();
         ServerHandler.notifyGroupRoles(roles,nowMonster.getMonsterId()+"已被"+role.getName()+"打败");
@@ -275,8 +263,7 @@ public class SkillService {
             if(!packageService.lostMoney(Const.PK_GET_LOST,enemy)){
                 enemy.setMoney(0);
             }
-            //Subject.notifyObservers(Const.achieve.TASK_PK_SUCCESS,role,fsPkSuccessOb);
-            skillSubject.notifyObserver(0,role);
+            fsPkSuccessSubject.notifyObserver(0,role);
             return Const.Fight.PK_SUCCESS;
         }
         ServerHandler.notifyRole(enemy.getId(),"你遭到玩，"+role.getName()+"的pk，受到"+harm+"点伤害",
@@ -308,7 +295,6 @@ public class SkillService {
         for(String key : role.getViewGridBo().getGridMonsterMap().keySet()){
             Monster monster = role.getViewGridBo().getGridMonsterMap().get(key);
             int leftHp = monster.getMonsterHp()-SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
-            //monster.setMonsterHp(leftHp);
             SceneService.checkAndSetMonsterHp(leftHp,monster);
             if(leftHp<0){
                 getReward(monster,role);
@@ -336,11 +322,9 @@ public class SkillService {
         if(role.getTeamId()!=null){
             ArrayList<Role> roles = DungeonsService.getTeamRoles(GlobalInfo.getTeamList().get(role.getTeamId()).getRoleList());
             for(Role friendRole : roles){
-                //friendRole.setHp(friendRole.getHp()+skill.getAddHp());
                 RoleService.checkAndSetHp(friendRole.getHp()+skill.getAddHp(),friendRole);
             }
         }else {
-            //role.setHp(role.getHp()+skill.getAddHp());
             RoleService.checkAndSetHp(role.getHp()+skill.getAddHp(),role);
         }
         return Const.Fight.CURE_MSG;
@@ -402,10 +386,9 @@ public class SkillService {
         }
     }*/
 
-/*    static {
-        SlayMonsterSB.registerObserver(new SlayMonsterOb());
-    }*/
-    Subject skillSubject = new Subject();
-    private SlayMonsterOb slayMonsterOb = new SlayMonsterOb(skillSubject);
-    private FsPkSuccessOb fsPkSuccessOb = new FsPkSuccessOb(skillSubject);
+    /** 注册成就观察者 */
+    Subject slayMonsterSubject = new Subject();
+    Subject fsPkSuccessSubject = new Subject();
+    private SlayMonsterOb slayMonsterOb = new SlayMonsterOb(slayMonsterSubject);
+    private FsPkSuccessOb fsPkSuccessOb = new FsPkSuccessOb(fsPkSuccessSubject);
 }

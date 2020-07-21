@@ -1,11 +1,12 @@
 package com.game.system.achievement.observer;
 
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.achievement.subject.SerialTaskSB;
-import com.game.system.achievement.subject.Subject;
+import com.game.system.achievement.Achievement;
+import com.game.system.achievement.AchievementService;
+import com.game.system.achievement.pojo.Subject;
 import com.game.system.role.pojo.Role;
 
 /**
+ * 成就观察者：第一次组队
  * @Author andy
  * @create 2020/7/13 10:10
  */
@@ -16,12 +17,11 @@ public class FsJoinTeamOb implements Observer{
 
     @Override
     public void checkAchievement(int targetId, Role role) {
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            if("firstJoinTeam".equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc())){
-                role.getAchievementBo().getAchievementHashMap().put(achievId,true);
-            }
-        }
+        AchievementService.countAchievement(Achievement.firstJoinTeam.getDesc(),role);
+
+        AchievementService.checkIfComplete(Achievement.firstJoinTeam.getDesc(),role);
 
         SerialTaskOb.checkAchievement(0,role);
+
     }
 }

@@ -1,7 +1,7 @@
 package com.game.netty.client;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.system.assist.PotralDao;
+import com.game.system.gameserver.GameDao;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -16,7 +16,6 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -75,7 +74,7 @@ public class NettySingleClient {
     private void dealInputMsg(ChannelFuture channelFuture){
         Scanner scanner = new Scanner(System.in);
         String id = "";
-        PotralDao potralDao = new PotralDao();
+        GameDao gameDao = new GameDao();
         ArrayList<Integer> roleList = null;
         int userId = 0;
         while (scanner.hasNextLine()){

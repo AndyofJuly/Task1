@@ -1,12 +1,10 @@
 package com.game.system.bag;
 
 import com.game.common.Const;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.bag.pojo.Equipment;
 import com.game.system.bag.pojo.MyPackageBo;
 import com.game.system.role.pojo.Role;
-import com.game.system.bag.pojo.EquipmentResource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -55,9 +53,9 @@ public class GoodsDao {
                     if(rs.getInt(equip[i])!=0){
                         int staticId = checkStaticByEquipId(rs.getInt(equip[i]))[0];
                         int dura = checkStaticByEquipId(rs.getInt(equip[i]))[1];
-                        equipment= new Equipment(rs.getInt(equip[i]),staticId,dura);//新增一个表，动态随机id对应静态id；在游戏运行之前全部读到内存中。耐久也要存数据库？
-                        GlobalInfo.getEquipmentHashMap().put(equipment.getId(),equipment);//全局记录
-                        role.getEquipmentHashMap().put(i,rs.getInt(equip[i]));//rs.getInt(equip[i]
+                        equipment= new Equipment(rs.getInt(equip[i]),staticId,dura);
+                        GlobalInfo.getEquipmentHashMap().put(equipment.getId(),equipment);
+                        role.getEquipmentHashMap().put(i,rs.getInt(equip[i]));
                     }
                 }
             }
@@ -104,17 +102,6 @@ public class GoodsDao {
                     st.setInt(i+1, 0);
                 }
             }
-/*            for(Integer key : role.getEquipmentHashMap().keySet()){ todo
-                int type = EquipmentResource.getEquipmentStaticHashMap().get(selfEquipId).getType();
-                for(int i=0;i<selfEquip.length;i++){
-                    if(type==i+1){
-                        selfEquip[i]=selfEquipId;
-                    }
-                }
-            }
-            for(int i=0;i<selfEquip.length;i++){
-                st.setInt(i+1, selfEquip[i]);
-            }*/
             st.setInt(7, role.getId());
             st.executeUpdate();
             st.close();
@@ -234,7 +221,7 @@ public class GoodsDao {
         }
     }
 
-    //获取全局武器数据库信息
+    /**获取全局武器的数据库信息 */
     public void getEquipment(){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT equipid,staticid,dura FROM equipment");
@@ -252,7 +239,7 @@ public class GoodsDao {
         }
     }
 
-    //更新全局武器数据库表，有则update，没有则insert
+    /** 更新全局武器数据库表，有该武器则update，没有则insert */
     public void updateEquipment(){
         try {
             for(Integer key : GlobalInfo.getEquipmentHashMap().keySet()){
@@ -272,6 +259,11 @@ public class GoodsDao {
         }
     }
 
+    /**
+     * 查找是否有该武器
+     * @param equipId 武器唯一id
+     * @return 是否有该武器
+     */
     private boolean checkEquipment(int equipId){
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("SELECT * FROM equipment where equipid = ?");
@@ -285,6 +277,12 @@ public class GoodsDao {
         return result;
     }
 
+    /**
+     * 插入一条武器数据
+     * @param equipId 武器唯一id
+     * @param staticId 武器静态id
+     * @param dura 武器耐久
+     */
     private void insertEquipment(int equipId,int staticId,int dura){
         try {
             PreparedStatement st = conn.prepareStatement("INSERT INTO equipment(equipId,staticId,dura) VALUES(?,?,?)");

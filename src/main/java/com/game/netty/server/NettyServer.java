@@ -1,7 +1,7 @@
 package com.game.netty.server;
 
 import com.game.common.protobuf.DataInfo;
-import com.game.system.assist.InitGame;
+import com.game.system.gameserver.InitGame;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -17,7 +17,6 @@ import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * netty服务端

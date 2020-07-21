@@ -2,8 +2,8 @@ package com.game.system.dungeons;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.DungeonsOb;
-import com.game.system.achievement.subject.Subject;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.achievement.pojo.Subject;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
 import com.game.system.role.pojo.Baby;
@@ -44,16 +44,15 @@ public class DungeonsBossAI extends TimerTask {
         this.sceneId = sceneId;
     }
 
-    //调用该方法的次数
+    /** 调用该方法的次数 */
     static int k;
-    //1秒，计时
+    /** 1秒，计时 */
     static int seconds;
     SkillService skillService = new SkillService();
     int damage = skillService.normalAttackSkill(Const.BOSS_SKILL_ID);
     Baby baby = null;
     ArrayList<Integer> list;
     boolean success = false;
-    //IAchieveService iAchieveService = new AchieveServiceImpl();
     private SceneService sceneService = new SceneService();
 
     @Override
@@ -100,26 +99,22 @@ public class DungeonsBossAI extends TimerTask {
         if(checkTeamHpOut()){return;}
         if(checkBossHpOut()){
             for(int i = 0; i< list.size(); i++) {
-                //DungeonsSB.notifyObservers(this.dungeonsId, GlobalInfo.getRoleHashMap().get(list.get(i)));
-                //Subject.notifyObservers(this.dungeonsId, GlobalInfo.getRoleHashMap().get(list.get(i)),dungeonsOb);
                 dungeonsSubject.notifyObserver(this.dungeonsId,GlobalInfo.getRoleHashMap().get(list.get(i)));
             }
         }
     }
 
-    //怪物优先攻击战士角色，然后攻击其他角色
+    /** 怪物优先攻击战士角色，然后攻击其他角色 */
     private void attackRole(int keyRole,ArrayList<Integer> list){
         Role role = GlobalInfo.getRoleHashMap().get(list.get(keyRole));
-        //role.setHp(role.getHp()+role.getDef()-damage);
         RoleService.checkAndSetHp(role.getHp()+role.getDef()-damage,role);
         System.out.println("角色"+role.getName()+"遭到技能攻击，当前血量为："+role.getHp());
         ServerHandler.notifyGroupRoles(getRoles(),"角色"+role.getName()+"遭到攻击，当前血量为："+role.getHp());
     }
 
-    //怪物收到嘲讽，选择攻击战士
+    /** 怪物收到嘲讽，选择攻击战士 */
     private void attackRoleByTaunt(int keyTaunt,ArrayList<Integer> list){
         Role role = GlobalInfo.getRoleHashMap().get(list.get(keyTaunt));
-        //role.setHp(role.getHp()-damage);
         RoleService.checkAndSetHp(role.getHp()-damage,role);
         Instant nowDate = Instant.now();
         Duration between = Duration.between(GlobalInfo.getUseTauntDate(), nowDate);
@@ -135,7 +130,7 @@ public class DungeonsBossAI extends TimerTask {
         System.out.println("角色"+role.getName()+"释放嘲讽技能遭到攻击，当前血量为："+role.getHp());
     }
 
-    //怪物旁边有宝宝，选择攻击宝宝
+    /** 怪物旁边有宝宝，选择攻击宝宝 */
     private void attackBaby(int keyBaby,ArrayList<Integer> list){
         Role role = GlobalInfo.getRoleHashMap().get(list.get(keyBaby));
         baby = role.getBaby();
@@ -147,6 +142,7 @@ public class DungeonsBossAI extends TimerTask {
         }
     }
 
+    /** 检查副本时间是否已到 */
     private boolean checkTimeOut(){
         if(seconds>=DungeonsResource.getDungeonsStaticHashMap().get(dungeonsId).getDeadTime()){
             ServerHandler.notifyGroupRoles(getRoles(),"副本时间结束，挑战失败");
@@ -157,6 +153,7 @@ public class DungeonsBossAI extends TimerTask {
         return false;
     }
 
+    /** 检查队伍角色是否全败 */
     private boolean checkTeamHpOut(){
         int allHp=0;
         for(int i = 0; i< list.size(); i++) {
@@ -172,6 +169,7 @@ public class DungeonsBossAI extends TimerTask {
         return false;
     }
 
+    /** 检查Boss是否已被击败 */
     private boolean checkBossHpOut(){
         //GlobalInfo.getScenes().get(sceneId).getMonsterHashMap().get(bossId).getMonsterHp()<=0
         String bossId =  GlobalInfo.getTempIdHashMap().get(sceneId);
@@ -186,6 +184,7 @@ public class DungeonsBossAI extends TimerTask {
         return false;
     }
 
+    /** 离开副本 */
     private void leaveDungeons(){
         //重新计时
         k=0;
@@ -198,23 +197,20 @@ public class DungeonsBossAI extends TimerTask {
             }
             role.setTeamId(null);
             RoleService roleService = new RoleService();
-            roleService.moveTo(Const.DUNGEONS_START_SCENE,role);
+            sceneService.moveTo(Const.DUNGEONS_START_SCENE,role);
         }
         success = false;
         this.timer.cancel();
         sceneService.deleteTempScene(sceneId,teamId);
     }
 
-    //队伍角色
+    /** 获取队伍角色 */
     private ArrayList<Role> getRoles(){
         ArrayList<Role> roles = DungeonsService.getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
         return roles;
     }
 
-/*    static {
-        DungeonsSB.registerObserver(new DungeonsOb());
-    }*/
-
+    /** 注册成就观察者 */
     Subject dungeonsSubject = new Subject();
     private DungeonsOb dungeonsOb = new DungeonsOb(dungeonsSubject);
 

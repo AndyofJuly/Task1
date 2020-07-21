@@ -1,12 +1,12 @@
 package com.game.system.achievement.observer;
 
-import com.game.common.Const;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.achievement.subject.SerialTaskSB;
-import com.game.system.achievement.subject.Subject;
+import com.game.system.achievement.Achievement;
+import com.game.system.achievement.AchievementService;
+import com.game.system.achievement.pojo.Subject;
 import com.game.system.role.pojo.Role;
 
 /**
+ * 成就观察者：通关某个副本
  * @Author andy
  * @create 2020/7/13 10:08
  */
@@ -17,14 +17,12 @@ public class DungeonsOb implements Observer{
 
     @Override
     public void checkAchievement(int targetId, Role role){
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            boolean staticSearch = Const.achieve.TASK_DUNGEONS.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
-            boolean euipCompare = (targetId==AchieveResource.getAchieveStaticHashMap().get(achievId).getTargetId());
-            if(staticSearch && euipCompare){
-                role.getAchievementBo().getAchievementHashMap().put(achievId,true);
-            }
-        }
+
+        AchievementService.countAchievementWithTarget(targetId, Achievement.passDungeons.getDesc(),role);
+
+        AchievementService.checkIfCompleteWithTarget(targetId,Achievement.passDungeons.getDesc(),role);
 
         SerialTaskOb.checkAchievement(0,role);
+
     }
 }

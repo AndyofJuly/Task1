@@ -1,11 +1,10 @@
 package com.game.system.union;
 
+import com.game.system.gameserver.GameController;
 import com.game.system.role.pojo.Role;
-import com.game.system.role.RoleController;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -18,11 +17,11 @@ import java.util.ArrayList;
  */
 @Controller("unionController")
 public class UnionController {
-    private ArrayList<String> strList = RoleController.getStrList();
-    private ArrayList<Integer> intList = RoleController.getIntList();
+    private ArrayList<String> strList = GameController.getStrList();
+    private ArrayList<Integer> intList = GameController.getIntList();
 
     @Autowired
-    private UnionService unionService;// = new UnionService();
+    private UnionService unionService;
 
     /** 创建公会，使用方式：createUnion unionName */
     @MyAnnontation(MethodName = "createUnion")
@@ -68,7 +67,7 @@ public class UnionController {
         return ResponseInf.setResponse(msg,getRole());
     }
 
-    //自己离开公会等方法
+    //todo 自己离开公会等方法
 
     /** 捐款-钱，使用方式： donate unionId money */
     @MyAnnontation(MethodName = "donateM")

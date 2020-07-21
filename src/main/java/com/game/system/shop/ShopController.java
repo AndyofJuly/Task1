@@ -1,13 +1,11 @@
 package com.game.system.shop;
 
 import com.game.netty.server.ServerHandler;
-import com.game.system.msg.ChatService;
+import com.game.system.gameserver.GameController;
 import com.game.system.role.pojo.Role;
-import com.game.system.role.RoleController;
 import com.game.common.ResponseInf;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -21,10 +19,10 @@ import java.util.ArrayList;
 @Controller("shopController")
 public class ShopController {
 
-    private ArrayList<Integer> intList = RoleController.getIntList();
+    private ArrayList<Integer> intList = GameController.getIntList();
 
     @Autowired
-    private ShopService shopService;// = new ShopService();
+    private ShopService shopService;
 
     /** 获得商店的商品列表，使用方式：getGoodsList */
     @MyAnnontation(MethodName = "getGoodsList")

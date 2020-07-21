@@ -1,8 +1,7 @@
 package com.game.system.role;
 
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.common.Const;
-import com.game.system.role.pojo.CareerResource;
 import com.game.system.role.pojo.Role;
 
 import java.util.TimerTask;

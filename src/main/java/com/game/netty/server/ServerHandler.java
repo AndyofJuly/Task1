@@ -3,11 +3,11 @@ package com.game.netty.server;
 import com.game.common.ReflectService;
 import com.game.common.PatternUtil;
 import com.game.common.protobuf.DataInfo;
-import com.game.system.assist.GameService;
-import com.game.system.role.RoleController;
+import com.game.system.gameserver.GameController;
+import com.game.system.gameserver.GameService;
 import com.game.system.role.pojo.Role;
 import com.game.system.scene.pojo.Scene;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -51,14 +51,14 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
             }
         }
             System.out.println("收到来自客户端:"+msg.toString());
-            RoleController.setIntList(PatternUtil.getIntList(msg.toString().split(" ")));
-            RoleController.setStrList(PatternUtil.getStrList(msg.toString().split(" ")));
+            GameController.setIntList(PatternUtil.getIntList(msg.toString().split(" ")));
+            GameController.setStrList(PatternUtil.getStrList(msg.toString().split(" ")));
             ReflectService reflectService = new ReflectService();
             Channel channel = ctx.channel();
             channelGroup.forEach(ch -> {
                 if(channel == ch){
                     try {
-                        writeMessage(reflectService.getMethod(RoleController.getStrList().get(0)),ch);
+                        writeMessage(reflectService.getMethod(GameController.getStrList().get(0)),ch);
                     }catch (Exception e){
                         writeMessage(new ResponseInf("命令无法识别"),ch);
                     }

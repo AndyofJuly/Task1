@@ -7,13 +7,8 @@ import com.game.system.role.pojo.Role;
  * @create 2020/7/16 12:35
  */
 public interface Observer {
+
+    /** 观察者执行任务 */
     void checkAchievement(int targetId, Role role);
 
-    //void checkAchievement(String target, Role role);
-
-    //void fireCheckAchievement(String target, Role role);
-
-    //void fireTalkNpc(Role role, int NpcId);
-
-    //void fireKillMonster(Role role, int monsterId);
 }

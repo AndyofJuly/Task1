@@ -1,13 +1,11 @@
 package com.game.system.skill;
 
-import com.game.common.Const;
+import com.game.system.gameserver.GameController;
 import com.game.system.role.pojo.Role;
-import com.game.system.role.RoleController;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
-import com.game.system.assist.AssistService;
+import com.game.system.gameserver.AssistService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import com.game.common.MyAnnontation;
 
@@ -21,10 +19,10 @@ import java.util.ArrayList;
 @Controller("skillController")
 public class SkillController {
 
-    private ArrayList<Integer> intList = RoleController.getIntList();
+    private ArrayList<Integer> intList = GameController.getIntList();
 
     @Autowired
-    private SkillService skillService;// = new SkillService();
+    private SkillService skillService;
 
     /** 获得当前自己拥有的技能，使用方式：skillList */
     @MyAnnontation(MethodName = "skillList")

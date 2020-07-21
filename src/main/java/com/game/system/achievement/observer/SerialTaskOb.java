@@ -1,29 +1,19 @@
 package com.game.system.achievement.observer;
 
 import com.game.common.Const;
+import com.game.system.achievement.Achievement;
+import com.game.system.achievement.AchievementService;
 import com.game.system.achievement.pojo.AchieveResource;
 import com.game.system.role.pojo.Role;
 
 /**
+ * 成就观察者：完成某一系列任务
  * @Author andy
  * @create 2020/7/13 10:13
  */
 public class SerialTaskOb{
 
     public static void checkAchievement(int targetId, Role role){
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            boolean staticSearch = Const.achieve.TASK_SERIA.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
-            if(staticSearch){
-                Integer[] strings = AchieveResource.getAchieveStaticHashMap().get(achievId).getSerial();
-                //System.out.println(Arrays.toString(strings));
-                for(int i=0;i<strings.length;i++){
-                    if(role.getAchievementBo().getAchievementHashMap().get(strings[i])==false){
-                        return;
-                    }
-                }
-                role.getAchievementBo().getAchievementHashMap().put(achievId,true);
-            }
-        }
+        AchievementService.completSeriaAchievement(Achievement.completeTask.getDesc(),role);
     }
-
 }

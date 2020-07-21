@@ -1,14 +1,11 @@
 package com.game.system.scene;
 
-import com.game.common.Const;
 import com.game.netty.server.ServerHandler;
-import com.game.system.assist.AssistService;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.AssistService;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.role.RoleService;
 import com.game.system.scene.pojo.Monster;
 import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.MonsterResource;
-import com.game.system.scene.pojo.Scene;
 
 /**
  * 怪物随机移动
@@ -64,7 +61,6 @@ public class MonsterWalk implements Runnable{
         if (!result) {
             //循环攻击角色
             while (monster.getAlive() != 0 && !AssistService.isNotInView(role, monster) && role.getHp()>0 && role.getNowScenesId().equals(monster.getSceneId())) {
-                //role.setHp(role.getHp() - monster.getAtk());
                 RoleService.checkAndSetHp(role.getHp() - monster.getAtk(),role);
                 ServerHandler.notifySelf(role.getId(),monster.getMonsterId()+
                         "使用了普通攻击，你血量剩余：" + role.getHp());

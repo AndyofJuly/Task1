@@ -1,12 +1,12 @@
 package com.game.system.achievement.observer;
 
-import com.game.common.Const;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.achievement.subject.SerialTaskSB;
-import com.game.system.achievement.subject.Subject;
+import com.game.system.achievement.Achievement;
+import com.game.system.achievement.AchievementService;
+import com.game.system.achievement.pojo.Subject;
 import com.game.system.role.pojo.Role;
 
 /**
+ * 成就观察者：添加一个好友
  * @Author andy
  * @create 2020/7/13 10:10
  */
@@ -17,17 +17,12 @@ public class FriendOb implements Observer{
 
     @Override
     public void checkAchievement(int targetId, Role role){
-        if(targetId!=0){return;}
-        role.getAchievementBo().setCountFriend(role.getAchievementBo().getCountFriend()+1);
 
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            boolean staticSearch = Const.achieve.TASK_FRIEDN.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc());
-            boolean euipCompare = role.getAchievementBo().getCountFriend()>=AchieveResource.getAchieveStaticHashMap().get(achievId).getCount();
-            if(staticSearch && euipCompare){
-                role.getAchievementBo().getAchievementHashMap().put(achievId,true);
-            }
-        }
+        AchievementService.countAchievement(Achievement.addFriend.getDesc(),role);
+
+        AchievementService.checkIfComplete(Achievement.addFriend.getDesc(),role);
 
         SerialTaskOb.checkAchievement(0,role);
+
     }
 }

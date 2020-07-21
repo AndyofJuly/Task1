@@ -54,7 +54,9 @@ public class Role {
     /** 角色视野实体集合 */
     private ViewGridBo viewGridBo;
     /** 角色成就-任务系统 */
-    private final AchievementBo achievementBo = new AchievementBo();
+    private AchievementBo achievementBo;
+    /** 每项成就及对应完成的数量，Key为成就id，value为数量 */
+    private HashMap<Integer,Integer> achievementCountMap = new HashMap<>();
     /** 角色的公会 */
     private Integer unionId;
     /** 朋友 */
@@ -81,6 +83,7 @@ public class Role {
         this.position= new Integer[]{50, 20};
         this.curGridId = 20;
         this.nowScenesId = Const.INIT_SCENE;
+        achievementBo = new AchievementBo();
     }
 
     public Integer getId() {
@@ -229,6 +232,18 @@ public class Role {
 
     public AchievementBo getAchievementBo() {
         return achievementBo;
+    }
+
+    public void setAchievementBo(AchievementBo achievementBo) {
+        this.achievementBo = achievementBo;
+    }
+
+    public HashMap<Integer, Integer> getAchievementCountMap() {
+        return achievementCountMap;
+    }
+
+    public void setAchievementCountMap(HashMap<Integer, Integer> achievementCountMap) {
+        this.achievementCountMap = achievementCountMap;
     }
 
     public Integer getUnionId() {

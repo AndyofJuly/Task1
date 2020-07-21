@@ -2,7 +2,7 @@ package com.game.system.shop;
 
 import com.game.common.Const;
 import com.game.netty.server.ServerHandler;
-import com.game.system.assist.GlobalInfo;
+import com.game.system.gameserver.GlobalInfo;
 import com.game.system.role.pojo.Role;
 import com.game.system.bag.PackageService;
 

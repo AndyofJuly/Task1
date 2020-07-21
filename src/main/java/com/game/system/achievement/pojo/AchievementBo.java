@@ -9,16 +9,18 @@ import java.util.HashMap;
  */
 public class AchievementBo {
 
-    //任务完成情况；id和是否已完成，对应数据库0表示未完成，1表示已完成
-    //击杀怪物id和数量
-    /** 同静态资源id*/
+    /** 成就id-同静态资源id*/
     private Integer id;
-    /** 击杀怪物记录*/
-    private HashMap<Integer,Integer> killMonsterCountMap = new HashMap<>();
+    /** 每项成就及对应完成的数量，Key为成就id，value为数量 */
+    private HashMap<Integer,Integer> achievementCountMap = new HashMap<>();
     /** 成就id和完成情况*/
     private HashMap<Integer,Boolean> achievementHashMap = new HashMap<>();
-    /** 添加好友数量*/
-    private int countFriend;
+/*    *//** 击杀怪物记录*//*
+    private HashMap<Integer,Integer> killMonsterCountMap = new HashMap<>();
+    *//** 成就id和完成情况*//*
+    private HashMap<Integer,Boolean> achievementHashMap = new HashMap<>();
+    *//** 添加好友数量*//*
+    private int countFriend;*/
 
     public AchievementBo() {
         for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
@@ -34,13 +36,21 @@ public class AchievementBo {
         this.id = id;
     }
 
-    public HashMap<Integer, Integer> getKillMonsterCountMap() {
+    public HashMap<Integer, Integer> getAchievementCountMap() {
+        return achievementCountMap;
+    }
+
+    public void setAchievementCountMap(HashMap<Integer, Integer> achievementCountMap) {
+        this.achievementCountMap = achievementCountMap;
+    }
+
+    /*public HashMap<Integer, Integer> getKillMonsterCountMap() {
         return killMonsterCountMap;
     }
 
     public void setKillMonsterCountMap(HashMap<Integer, Integer> killMonsterCountMap) {
         this.killMonsterCountMap = killMonsterCountMap;
-    }
+    }*/
 
     public HashMap<Integer, Boolean> getAchievementHashMap() {
         return achievementHashMap;
@@ -50,11 +60,11 @@ public class AchievementBo {
         this.achievementHashMap = achievementHashMap;
     }
 
-    public int getCountFriend() {
+    /*public int getCountFriend() {
         return countFriend;
     }
 
     public void setCountFriend(int countFriend) {
         this.countFriend = countFriend;
-    }
+    }*/
 }
