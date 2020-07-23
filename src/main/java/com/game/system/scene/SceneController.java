@@ -5,7 +5,7 @@ import com.game.system.gameserver.GlobalInfo;
 import com.game.common.Const;
 import com.game.common.MyAnnontation;
 import com.game.common.ResponseInf;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -28,9 +28,9 @@ public class SceneController {
     @MyAnnontation(MethodName = "move")
     public ResponseInf moveMesseage() {
         if(sceneService.moveTo(intList.get(0),getRole())){
-            return ResponseInf.setResponse(Const.service.MOVE_SUCCESS,getRole());
+            return ResponseInf.setResponse(Const.Service.MOVE_SUCCESS,getRole());
         }
-        return ResponseInf.setResponse(Const.service.MOVE_FAILURE,getRole());
+        return ResponseInf.setResponse(Const.Service.MOVE_FAILURE,getRole());
     }
 
     /** 传送，使用方式：sendTo sceneId */

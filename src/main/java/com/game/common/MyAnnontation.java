@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 import java.lang.annotation.*;
 /**
- * 自定义注解类，用于根据输入命令自动调用指定方法
+ * 自定义注解类，用于Controller中，可以根据输入命令自动调用Controller中的指定方法
  * @author andy
  * @create 2020/5/16 19:30
  */

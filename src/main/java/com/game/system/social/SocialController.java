@@ -6,7 +6,7 @@ import com.game.common.ResponseInf;
 import com.game.netty.server.ServerHandler;
 import com.game.system.gameserver.GameController;
 import com.game.system.gameserver.GlobalInfo;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @Author andy
  * @create 2020/6/15 15:23
  */
-@Controller("chatController")
+@Controller("socialController")
 public class SocialController {
 
     private ArrayList<String> strList = GameController.getStrList();

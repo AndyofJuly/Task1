@@ -1,9 +1,9 @@
 package com.game.system.gameserver;
 
-import com.game.system.bag.pojo.Equipment;
-import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.Scene;
-import com.game.system.dungeons.pojo.Team;
+import com.game.system.bag.entity.Equipment;
+import com.game.system.role.entity.Role;
+import com.game.system.scene.entity.Scene;
+import com.game.system.dungeons.entity.Team;
 
 import java.time.Instant;
 import java.util.HashMap;

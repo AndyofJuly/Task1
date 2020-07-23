@@ -1,0 +1,380 @@
+####################演示的常量说明####################
+场景：10001-10002(10006)-10003
+npc:20001-老爷爷
+怪物：30003-小偷；30004-恶人；30013-魔爪蜘蛛
+技能:1001-突刺攻击；1002-横扫千军；1005-妙手回春；1009-召唤术；1010-嘲讽
+装备：3001-钢剑；3002-青釭剑；3003-兽骨手环(+hp)
+药品：2001-蓝药；2002-红药
+职业：5001-战士；5002-牧师；5004-召唤师
+副本：4001-魔爪蜘蛛讨伐战
+
+####################演示命令####################
+##数据库表清空-->启动服务端-->启动3个客户端
+#登录用户与角色
+login m m
+loginR 1
+
+login t t
+loginR 16
+
+login v v
+loginR 37
+
+#成就-查看-介绍
+ac
+sc
+
+#场景
+aoi
+view
+sendTo 10001
+talkTo 20001
+move 10003  (失败)
+move 10002  (成功)
+
+#打小怪测试-购买药品和装备-穿戴
+atk 30004
+skill 1001 30004
+skill 1001 30004(再次快速重复使用以测试CD)
+buy 2002 5
+buy 3004 1
+buy 3002 1
+bag
+body
+putOn 33001
+
+#对话
+sayTo 16 打副本吗
+say 有人一起组队打副本吗
+
+#副本
+create 4001
+join xx
+start xx
+
+#使用技能攻打boss
+skill 1001 30013
+skill 1002 30013
+atk 300013
+groupCure 1005
+summon 30013
+taunt
+
+#查看成就完成情况
+ac
+sc
+
+
+################整个项目的游戏命令与操作-说明版##############
+####################游戏服务模块####################
+
+用户注册register userName password
+register tidy 123456
+
+用户登录login userName password
+login tidy 123456
+
+角色注册registerR roleName careerId
+registerR jack 5001
+
+角色登录loginR roleId
+loginR 5001
+
+手动保存游戏save
+save
+
+####################角色模块####################
+查看角色的信息getInfo roleId
+body
+body 16
+
+测试test
+test
+
+升级levelUp level
+levelUp 20
+
+####################场景模块####################
+场景切换，使用方式：move sceneId
+move 10002
+
+传送，使用方式：sendTo sceneId
+sendTo 10002
+
+获取当前整个场景的信息，使用方式：aoi
+aoi
+
+查找任意场景信息，使用方式：：checkPlace sceneId
+checkPlace 10002
+
+与NPC对话，使用方式：talkTo npcId
+talkTo 20001
+
+返回怪物当前状态，使用方式：getMonster monsterId
+getMonster 3004
+
+获得当前视野范围内实体信息，使用方式：view
+view
+
+角色在场景内移动，使用方式：walk x y
+walk 60 20
+
+
+####################背包模块####################
+
+修理装备，使用方式：repair equipmentId
+repair 300101
+
+穿戴装备，使用方式：putOn equipmentId
+putOn 300101
+
+获取当前武器耐久，使用方式：dura
+dura
+
+卸下装备，使用方式：takeOff wearPosition
+takeOff 0
+
+使用药品，使用方式：use potionId
+use 2002
+
+背包整理&获取背包信息，使用方式：getOrderPackage-bag
+getOrderPackage
+bag
+
+####################商品交易模块####################
+获得商店的商品列表，使用方式：getGoodsList
+getGoodsList
+
+购买药品or装备，使用方式：buy goodsId num
+buy 2001 2
+buy 3003 1
+
+玩家面对面交易，双方都需要同时发起，使用方式：deal targetRoleId equipmentId potionId num money
+deal 16 300013 2001 5 10
+deal 1 300014 2002 2 0
+
+玩家面对面交易，双方都可以选择同意本次交易或者拒绝，使用方式：trade targetRoleId yes (yes:1;no:0)
+trade 16 1
+trade 1 1
+trade 1 0
+
+一口价交易-卖-玩家将商品和价格寄托在商店，商店代卖，使用方式：sale goodsId num price
+sale 2001 2 5
+
+撤销上架在商店进行出售的物品，使用方式：undoSale
+undoSale
+
+获取所有玩家寄卖的物品的列表，使用方式：roleSaleList
+roleSaleList
+
+一口价交易-买-购买其他的玩家上架的物品，使用方式：buyR goodsId num offerId
+buyR 2001 3 1
+
+拍卖-卖方使用，使用方式：auctionSale goodsId minPrice
+aucSale 2001 5
+
+拍卖-买方使用，使用方式：auctionBuy price offerId
+aucBuy 7 1
+
+####################技能模块####################
+普通攻击，使用方式：atk monsterId
+atk 30003
+
+pk玩家，使用方式：pk skillId roleId
+pk 0 16
+pk 1001 16
+
+获得当前自己拥有的技能，使用方式：skillList
+skillList
+
+技能攻击，使用方式：skill skillId monsterId
+skill 1001 30013
+
+嘲讽技能测试，使用方式：taunt
+taunt
+
+群伤技能测试，使用方式：groupAtk skillId
+groupAtk 1007
+
+群回复技能测试，使用方式：groupCure skillId
+groupCure 1005
+
+召唤技能测试，使用方式：summon monsterId
+summon 3004
+
+####################副本模块####################
+获得所有的队伍列表，使用方式：getAllTeam
+getAllTeam
+
+获得当副本列表，使用方式：getDungeonsList
+getDungeonsList
+
+创建队伍，使用方式：create dungeonsId
+create 4001
+
+加入队伍，使用方式：join teamId
+join
+
+开始副本，使用方式：start dungeonsId
+start
+
+获取该队伍中其他角色，使用方式：teamMember teamId
+teamMember
+
+####################社交模块####################
+
+添加好友申请，使用方式：askFriend friendId
+askFriend 16
+
+同意添加好友，使用方式：addFriend friendId
+addFriend 1
+
+在公共世界进行聊天，使用方式：say msg
+say hello
+
+私聊，使用方式：sayTo targetId msg
+sayTo 16 hi
+
+邮件，使用方式：email targetRoleId msg goodsId num money
+email 16 给你寄点东西 2001 2 20
+
+####################公会模块####################
+创建公会，使用方式：createUnion unionName
+createUnion 凌云会
+
+解散公会，使用方式：disband unionId
+disband 1
+
+任职某位公会成员，使用方式：appoint unionId memberId authorityLevel
+appoint 1 16 2
+
+入会申请，使用方式：apply unionId
+apply 1
+
+批准入会申请，使用方式：agree unionId applyRoleId
+agree 1 16
+
+开除某位公会成员，使用方式：fire unionId memberId
+fire 1 16
+
+捐款-钱，使用方式： donate unionId money
+donateM 1 29
+
+捐款-道具，使用方式：donate unionId goodsId number
+donateG 1 2001
+
+拿物品，使用方式：getGoods unionId goodsId
+getGoods 1 2001
+
+获得公会成员信息，使用方式：getUnionInfo
+getUnionInfo
+
+获得所有公会列表，使用方式：getUnionList
+getUnionList
+####################成就模块####################
+
+获取自己的成就，使用方式：getAchievement-ac
+getAchievement
+ac
+
+获取自己的成就，使用方式：getAchievement-sc
+getTaskSchedule
+sc
+
+
+################整个项目的游戏命令与操作-简要版##############
+
+#####登录(完)#########
+loginR 1
+loginR 16
+register vv vv
+login vv vv
+registerR ss 5002 (5)
+loginR 5001
+save
+####################角色模块(完)####################
+body
+body 16
+test
+levelUp 20
+####################场景模块(完)####################
+move 10002
+sendTo 10002
+aoi
+checkPlace 10002
+talkTo 20001
+getMonster 30004
+view
+walk 60 20
+####################背包模块(完)####################
+repair 300101
+putOn 300101
+dura
+takeOff 0
+use 2002
+getOrderPackage
+bag
+body
+####################商品交易模块(完)####################
+getGoodsList
+buy 2001 2
+buy 3003 1
+deal 16 300013 2001 5 10
+deal 1 300014 2002 2 0
+trade 16 1
+trade 1 1
+trade 1 0
+sale 2001 2 5
+undoSale
+roleSaleList
+buyR 2001 3 1
+aucSale 2001 5
+aucBuy 7 37
+aucBuy 9 37
+####################技能模块(完)####################
+skillList
+atk 30003
+skill 1001 30013
+skill 1002 30013
+taunt
+groupAtk 1007
+groupCure 1005
+summon 3004
+pk 0 16
+pk 1001 16
+####################副本模块(完)####################
+getAllTeam
+getDungeonsList
+create 4001
+join ?
+start ?
+teamMember ?
+####################社交模块(完)####################
+askFriend 16
+addFriend 1
+say hello
+sayTo 16 hi
+email 16 给你寄点东西 2001 2 20
+####################公会模块(完)####################
+createUnion 凌云会
+disband
+appoint 16 2
+apply 1
+leaveUnion
+agree 16
+fire 16
+donateM 29
+donateG 2001
+getGoods 2001
+getUnionInfo
+getUnionList
+getApplyList
+####################成就模块(完)####################
+getAchievement
+getTaskSchedule
+
+
+
+
+
+

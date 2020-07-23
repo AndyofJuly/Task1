@@ -1,7 +1,7 @@
 package com.game.system.skill;
 
 import com.game.system.gameserver.GameController;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
 import com.game.system.gameserver.AssistService;
@@ -75,11 +75,6 @@ public class SkillController {
                  技能时间结束，此时血量上限重置为原上限，如果角色当前血量大于原上限，则此时满血；角色当前血量小于原上限，就取该血量作为当前血量。
     */
 
-    /** 根据输入获得角色，输入参数最后一位为roleId */
-    private Role getRole(){
-        return GlobalInfo.getRoleHashMap().get(intList.get(intList.size()-1));
-    }
-
     /** 普通攻击，使用方式：atk monsterId  */
     @MyAnnontation(MethodName = "atk")
     public ResponseInf normalAttack(){
@@ -92,6 +87,11 @@ public class SkillController {
     public ResponseInf pkPlayer(){
         String msg = skillService.pkPlayer(intList.get(0), intList.get(1),getRole());
         return ResponseInf.setResponse(msg,getRole());
+    }
+
+    /** 根据输入获得角色，输入参数最后一位为roleId */
+    private Role getRole(){
+        return GlobalInfo.getRoleHashMap().get(intList.get(intList.size()-1));
     }
 
 }

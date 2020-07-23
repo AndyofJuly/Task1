@@ -2,9 +2,9 @@ package com.game.system.role;
 
 import com.game.system.gameserver.GlobalInfo;
 import com.game.system.achievement.observer.LevelOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.bag.PackageService;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Service;
 
 
@@ -16,10 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleService {
 
-
-
     /**
-     * 升级-测试成就
+     * 升级-测试成就用
      * @param level 等级
      * @param role 角色
      */
@@ -35,7 +33,7 @@ public class RoleService {
      */
     public String getRoleInfo(Role role){
         return  role.getName()+"的信息：\n"+"id:"+role.getId()+"\n"+"hp："+role.getHp()+"\n"+
-                "mp："+role.getMp()+"\n"+"atk："+role.getAtk()+"\n"+"money："+role.getMoney()+"\n"+
+                "mp："+role.getMp()+"\n"+"atk："+role.getAtk()+"\n"+"def："+role.getDef()+"\n"+"money："+role.getMoney()+"\n"+
                 "nowScenesId:"+role.getNowScenesId()+"\n"+"careerId:"+role.getCareerId()+"\n"+
                 "unionId:"+role.getUnionId()+"\n"+"level:"+role.getLevel()+"\n"+
                 "背包物品："+PackageService.getPackage(role)+"\n"+"身上装备："+PackageService.getBodyEquip(role)+"\n";

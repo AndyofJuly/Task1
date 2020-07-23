@@ -1,15 +1,13 @@
 package com.game.system.gameserver;
 
 import com.game.common.Const;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.bag.pojo.Equipment;
-import com.game.system.scene.pojo.*;
-import com.game.system.bag.pojo.EquipmentResource;
-import com.game.system.bag.pojo.PotionResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.bag.entity.Equipment;
+import com.game.system.scene.entity.*;
+import com.game.system.bag.entity.EquipmentResource;
+import com.game.system.bag.entity.PotionResource;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -20,21 +18,6 @@ import java.util.Random;
  */
 @Service
 public class AssistService {
-
-    /**
-     * 查找需要的成就id集合
-     * @param desc 成就描述-标记
-     * @return 对应成就包含的所有目标id
-     */
-    public static ArrayList<Integer> checkAchieveId(String desc){
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            if(desc.equals(AchieveResource.getAchieveStaticHashMap().get(achievId).getDesc())){
-                arrayList.add(achievId);
-            }
-        }
-        return arrayList;
-    }
 
     /**
      * 验证目标npc是否在该场景
@@ -86,13 +69,10 @@ public class AssistService {
      * @param monster 怪物
      * @return 是否在可攻击范围内
      */
-    public static boolean isNotInView(Role role, Monster monster){
+    public static boolean isOutOfInteraction(Role role, Monster monster){
         Integer[] self = role.getPosition();
         Integer[] other = monster.getPosition();
-        if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
-            return false;
-        }
-        return true;
+        return !(getDistance(self, other) <= Const.Max_OPT_DISTANCE);
     }
 
     /**
@@ -101,13 +81,10 @@ public class AssistService {
      * @param npc npc
      * @return 是否在可谈话范围内
      */
-    public static boolean isNotInView(Role role, Npc npc){
+    public static boolean isOutOfInteraction(Role role, Npc npc){
         Integer[] self = role.getPosition();
         Integer[] other = npc.getPosition();
-        if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
-            return false;
-        }
-        return true;
+        return !(getDistance(self, other) <= Const.Max_OPT_DISTANCE);
     }
 
     /**
@@ -116,13 +93,10 @@ public class AssistService {
      * @param target 目标角色
      * @return 是否在可攻击、谈话范围内
      */
-    public static boolean isNotInView(Role role, Role target){
+    public static boolean isOutOfInteraction(Role role, Role target){
         Integer[] self = role.getPosition();
         Integer[] other = target.getPosition();
-        if(getDistance(self,other)<= Const.Max_OPT_DISTANCE){
-            return false;
-        }
-        return true;
+        return !(getDistance(self, other) <= Const.Max_OPT_DISTANCE);
     }
 
     /**
@@ -135,17 +109,16 @@ public class AssistService {
         return Math.sqrt(Math.pow(self[0]-other[0],2)+Math.pow(self[1]-other[1],2));
     }
 
-    private static HashSet<Integer> teamSet = new HashSet<>();
-    private static HashSet<Integer> sceneSet = new HashSet<>();
-    private static int unionId;
-    private static int equipId = 300100;
+    private static final HashSet<Integer> teamSet = new HashSet<>();
+    private static final HashSet<Integer> sceneSet = new HashSet<>();
+    GameDao gameDao = new GameDao();
 
     /**
      * 队伍id随机生成，数量小于10000
      * @return 队伍id
      */
     public static String generateTeamId(){
-        Integer tmp=0;
+        int tmp=0;
         int size = teamSet.size();
         Random ran = new Random();
         while (size+1>teamSet.size()){
@@ -160,7 +133,7 @@ public class AssistService {
      * @return 临时副本id
      */
     public static int generateSceneId(){
-        Integer tmp=0;
+        int tmp=0;
         int size = sceneSet.size();
         Random ran = new Random();
         while (size+1>sceneSet.size()){
@@ -174,19 +147,21 @@ public class AssistService {
      * 公会id生成
      * @return 公会id
      */
-    public static int generateUnionId(){
+    public int generateUnionId(){
+        int unionId = gameDao.selectMaxUnionId();
+        gameDao.updateMaxUnionId(unionId);
         return ++unionId;
     }
 
     /**
-     * 装备随机id生成-该值建议存数据库
-     * @return 公会id
+     * 装备id生成
+     * @return 装备id
      */
-    public static int generateEquipId(){
+    public int generateEquipId(){
+        int equipId = gameDao.selectMaxEquipId();
+        gameDao.updateMaxEquipId(equipId);
         return ++equipId;
     }
-
-    /** 查找对应静态资源*/
 
     /**
      * 根据唯一id，查找静态id
@@ -248,16 +223,6 @@ public class AssistService {
     }
 
     /**
-     * 获得装备攻击力
-     * @param key 物品唯一id
-     * @return 装备攻击力
-     */
-    public static int getEquipmentAtk(int key){
-        int equipId = getStaticEquipId(key);
-        return EquipmentResource.getEquipmentStaticHashMap().get(equipId).getAtk();
-    }
-
-    /**
      * 获得装备耐久
      * @param key 物品id
      * @return 装备耐久
@@ -267,4 +232,10 @@ public class AssistService {
         return EquipmentResource.getEquipmentStaticHashMap().get(equipId).getDurability();
     }
 
+    /** 饿汉式单例模式 */
+    private static AssistService instance = new AssistService();
+    private AssistService() {}
+    public static AssistService getInstance() {
+        return instance;
+    }
 }

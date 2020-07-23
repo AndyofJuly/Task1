@@ -4,7 +4,7 @@ import com.game.system.gameserver.GameController;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.common.MyAnnontation;
 import com.game.common.ResponseInf;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -20,8 +20,7 @@ public class PackageController {
 
     private ArrayList<Integer> intList = GameController.getIntList();
 
-    @Autowired
-    private PackageService packageService;
+    private PackageService packageService = PackageService.getInstance();
 
     /** 修理装备，使用方式：repair equipmentId */
     @MyAnnontation(MethodName = "repair")
@@ -43,7 +42,7 @@ public class PackageController {
         return ResponseInf.setResponse(packageService.getWeaponDura(getRole()),getRole());
     }
 
-    /** 卸下装备，使用方式：takeOff equipmentId */
+    /** 卸下装备，使用方式：takeOff wearPosition */
     @MyAnnontation(MethodName = "takeOff")
     public ResponseInf takeOff(){
         String msg = packageService.takeOffEquipment(intList.get(0),getRole());
@@ -56,8 +55,8 @@ public class PackageController {
         return ResponseInf.setResponse(packageService.useDrug(intList.get(0),getRole()),getRole());
     }
 
-    /** 背包整理&获取背包信息，使用方式：getOrderPackage */
-    @MyAnnontation(MethodName = "getOrderPackage")
+    /** 背包整理&获取背包信息，使用方式：getOrderPackage-bag */
+    @MyAnnontation(MethodName = "bag")
     public ResponseInf getOrderPackage(){
         return ResponseInf.setResponse(packageService.orderPackage(getRole()),getRole());
     }

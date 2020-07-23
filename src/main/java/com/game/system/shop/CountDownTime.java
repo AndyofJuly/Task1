@@ -3,7 +3,7 @@ package com.game.system.shop;
 import com.game.common.Const;
 import com.game.netty.server.ServerHandler;
 import com.game.system.gameserver.GlobalInfo;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import com.game.system.bag.PackageService;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ public class CountDownTime extends TimerTask {
     private Timer timer;
     private int goodsId;
     private Role offerRole;
-    private PackageService packageService = new PackageService();
+    private PackageService packageService = PackageService.getInstance();
 
     public CountDownTime(Timer timer,int goodsId,Role offerRole) {
         this.timer = timer;

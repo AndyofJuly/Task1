@@ -1,6 +1,6 @@
 package com.game.system.scene;
 
-import com.game.system.scene.pojo.Npc;
+import com.game.system.scene.entity.Npc;
 
 /**
  * Npc随机移动
@@ -27,8 +27,8 @@ public class NpcWalk implements Runnable{
             }
 
             //随机移动一小段距离
-            int add = (int) (Math.round(Math.random() * 5 + 1));
-            int minus = -(int) (Math.round(Math.random() * 5 + 1));
+            int add = (int) (Math.round(Math.random() * 2 + 1));
+            int minus = -(int) (Math.round(Math.random() * 2 + 1));
             int[] arr = {add,minus};
             int index = (int) (Math.round(Math.random() * 1));
             int x =arr[index]+npc.getPosition()[0];

@@ -2,10 +2,10 @@ package com.game.system.scene;
 
 import com.game.common.Const;
 import com.game.system.achievement.observer.TalkNpcOb;
-import com.game.system.achievement.pojo.Subject;
-import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.*;
-import com.game.system.dungeons.pojo.DungeonsResource;
+import com.game.system.achievement.entity.Subject;
+import com.game.system.role.entity.Role;
+import com.game.system.scene.entity.*;
+import com.game.system.dungeons.entity.DungeonsResource;
 import com.game.system.gameserver.AssistService;
 import com.game.system.gameserver.GlobalInfo;
 import org.springframework.stereotype.Component;
@@ -98,7 +98,7 @@ public class SceneService {
         boolean yMove = Math.abs(oldY-y)>=Const.GRID_WIDTH;
         boolean xyMove = (oldX-x!=0 && oldY-y!=0);
         if(xMove || yMove || xyMove){
-            return "can not move";
+            return "请输入正确的移动坐标";
         }
         refleshGrid(x,y,role);
         role.getPosition()[0]=x;
@@ -167,7 +167,7 @@ public class SceneService {
     }
 
     /**
-     * 打印场景详细信息，打印的怪物id为静态资源id，而非其UUID
+     * 打印场景详细信息，为方便显示，打印的怪物id为静态资源id，而非其UUID
      * @param sceneId 场景id
      * @return 信息提示
      */
@@ -211,6 +211,7 @@ public class SceneService {
         stringBuilder.append("\n怪物：");
         for(String key : viewGridBo.getGridMonsterMap().keySet()){
             Monster monster = viewGridBo.getGridMonsterMap().get(key);
+            if(monster==null){continue;}
             stringBuilder.append(monster.getMonsterName()).append("-").
                     append(monster.getMonsterId()).append("-位置：").append(monster.getPosition()[0]).
                     append(",").append(monster.getPosition()[1]).append("-血量：").append(monster.getMonsterHp()).append("； ");
@@ -234,7 +235,7 @@ public class SceneService {
         talkNpcSubject.notifyObserver(npcId,role);
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Npc npc = scene.getNpcHashMap().get(npcId);
-        if(AssistService.isNotInView(role, npc) || AssistService.isNotInScene(npcId,role)){
+        if(AssistService.isOutOfInteraction(role, npc) || AssistService.isNotInScene(npcId,role)){
             return Const.NPC_NOTICE;
         }
         return npc.getWords();
@@ -319,10 +320,10 @@ public class SceneService {
         int oldGridId = getGridId(monster.getPosition()[0],monster.getPosition()[1]);
         int newGridId = getGridId(x,y);
         Scene scene = GlobalInfo.getScenes().get(monster.getSceneId());
-        if(oldGridId==newGridId){return "原格子Monster";}
+        if(oldGridId==newGridId){return "still-Monster";}
         scene.getGridHashMap().get(oldGridId).getGridMonsterMap().remove(monster.getId());
         scene.getGridHashMap().get(newGridId).getGridMonsterMap().put(monster.getId(),monster);
-        return "==怪物跨格子移动了！过去格子"+oldGridId+"。现在格子"+newGridId;
+        return "old"+oldGridId+"。new"+newGridId;
     }
 
     /**
@@ -336,10 +337,10 @@ public class SceneService {
         int oldGridId = getGridId(npc.getPosition()[0],npc.getPosition()[1]);
         int newGridId = getGridId(x,y);
         Scene scene = GlobalInfo.getScenes().get(npc.getSceneId());
-        if(oldGridId==newGridId){return "原格子NPC";}
+        if(oldGridId==newGridId){return "still-NPC";}
         scene.getGridHashMap().get(oldGridId).getGridNpcMap().remove(npc.getNpcId());
         scene.getGridHashMap().get(newGridId).getGridNpcMap().put(npc.getNpcId(),npc);
-        return "过去格子"+oldGridId+"。现在格子"+newGridId;
+        return "old"+oldGridId+"。new"+newGridId;
     }
 
     /**
@@ -348,7 +349,7 @@ public class SceneService {
      * @param monster 怪物
      */
     public static void checkAndSetMonsterHp(int hp,Monster monster){
-        if(hp<0){
+        if(hp<=0){
             monster.setMonsterHp(0);
             monster.setAlive(0);
         }else{

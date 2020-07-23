@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.Set;
 
 /**
- * 反射类，能根据输入去查找对应有@Service-Controller注解的类，执行对应方法，这些注解类均写在controller包下
+ * 反射类，能根据输入去查找对应有@Controller注解的类，执行对应方法
  * @Author andy
  * @create 2020/5/18 18:10
  */
@@ -36,8 +36,6 @@ public class ReflectService {
                     if (annotation.MethodName().equals(inputString)) {
                         try {
                             //执行method
-                            //object= (ResponseInf)method.invoke(clazz.newInstance());
-                            System.out.println(lowerFirst(clazz.getSimpleName()));
                             object= (ResponseInf)method.invoke(springContext.getBean(lowerFirst(clazz.getSimpleName())));
                         } catch (Exception e) {
                             e.printStackTrace();

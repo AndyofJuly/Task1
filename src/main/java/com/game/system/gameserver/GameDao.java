@@ -1,10 +1,9 @@
 package com.game.system.gameserver;
 
 import com.game.common.Const;
-import com.game.system.role.pojo.Role;
-import com.game.system.role.pojo.CareerStatic;
-import com.game.system.role.pojo.CareerResource;
-import org.springframework.stereotype.Component;
+import com.game.system.role.entity.Role;
+import com.game.system.role.entity.CareerStatic;
+import com.game.system.role.entity.CareerResource;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -251,6 +250,74 @@ public class GameDao {
             st.close();
         } catch (Exception e) {
             System.out.println(e.getMessage()+"updateRoleInfo");
+        }
+    }
+
+    /**
+     * 获取公会id生成的初始值
+     */
+    public int selectMaxUnionId(){
+        int id = 0;
+        try{
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT maxUnionid FROM recordid");
+            ResultSet rs=preparedStatement.executeQuery();
+            while (rs.next())
+            {
+                id=rs.getInt("maxUnionid");
+            }
+            rs.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage()+"selectMaxUnionId");
+        }
+        return id;
+    }
+
+    /**
+     * 获取装备id生成的初始值
+     */
+    public int selectMaxEquipId(){
+        int id = 0;
+        try{
+            PreparedStatement preparedStatement=conn.prepareStatement("SELECT maxEquipid FROM recordid");
+            ResultSet rs=preparedStatement.executeQuery();
+            while (rs.next())
+            {
+                id=rs.getInt("maxEquipid");
+            }
+            rs.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage()+"selectMaxEquipId");
+        }
+        return id;
+    }
+
+    /**
+     * 更新公会id最大值
+     */
+    public void updateMaxUnionId(int unionId){
+        try {
+            PreparedStatement st = conn.prepareStatement("UPDATE recordid SET maxUnionid=? where id=?");
+            st.setInt(1, unionId+1);
+            st.setInt(2, 1);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"updateMaxUnionId");
+        }
+    }
+
+    /**
+     * 更新装备id最大值
+     */
+    public void updateMaxEquipId(int equipId){
+        try {
+            PreparedStatement st = conn.prepareStatement("UPDATE recordid SET maxEquipid=? where id=?");
+            st.setInt(1, equipId+1);
+            st.setInt(2, 1);
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"updateMaxEquipId");
         }
     }
 

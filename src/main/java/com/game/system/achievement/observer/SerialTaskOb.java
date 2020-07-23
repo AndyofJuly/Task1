@@ -1,10 +1,8 @@
 package com.game.system.achievement.observer;
 
-import com.game.common.Const;
 import com.game.system.achievement.Achievement;
 import com.game.system.achievement.AchievementService;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 
 /**
  * 成就观察者：完成某一系列任务

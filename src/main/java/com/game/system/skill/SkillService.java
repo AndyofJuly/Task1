@@ -3,7 +3,9 @@ package com.game.system.skill;
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsPkSuccessOb;
 import com.game.system.achievement.observer.SlayMonsterOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
+import com.game.system.bag.entity.Equipment;
+import com.game.system.bag.entity.EquipmentResource;
 import com.game.system.gameserver.AssistService;
 import com.game.system.dungeons.DungeonsService;
 import com.game.system.role.RoleBabyAi;
@@ -12,14 +14,13 @@ import com.game.system.bag.PackageService;
 import com.game.common.Const;
 import com.game.system.role.RoleService;
 import com.game.system.scene.SceneService;
-import com.game.system.scene.pojo.Monster;
-import com.game.system.skill.pojo.SkillStatic;
-import com.game.system.role.pojo.Baby;
-import com.game.system.role.pojo.CareerResource;
-import com.game.system.skill.pojo.SkillResource;
-import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.Scene;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.game.system.scene.entity.Monster;
+import com.game.system.skill.entity.SkillStatic;
+import com.game.system.role.entity.Baby;
+import com.game.system.role.entity.CareerResource;
+import com.game.system.skill.entity.SkillResource;
+import com.game.system.role.entity.Role;
+import com.game.system.scene.entity.Scene;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -35,8 +36,8 @@ import java.util.Timer;
  */
 @Service
 public class SkillService {
-    @Autowired
-    private PackageService packageService;
+
+    private PackageService packageService = PackageService.getInstance();
 
     /**
      * 怪物普通攻击技能
@@ -88,8 +89,8 @@ public class SkillService {
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Monster monster = scene.getMonsterHashMap().get(monsterId);
         monster.setAtkTargetId(role.getId());
-        if(AssistService.isNotInView(role, monster)){
-            return Const.Fight.DISTACNE_LACK;
+        if(AssistService.isOutOfInteraction(role, monster)){
+            return Const.Fight.DISTANCE_LACK;
         }
         String result = skillCommon(skillId,role);
         if(!Const.Fight.SUCCESS.equals(result)){
@@ -109,14 +110,14 @@ public class SkillService {
         int hp = monster.getMonsterHp();
         int skillHarm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk();
         int weaponBuff = 0;
-        if(role.getEquipmentHashMap().get(0)!=0){
+        if(role.getEquipmentHashMap().size()!=0 && role.getEquipmentHashMap().get(0)!=0){
             weaponBuff=Const.WEAPON_BUFF;
         }
         hp=hp-role.getAtk()-weaponBuff-skillHarm;
+        SceneService.checkAndSetMonsterHp(hp,monster);
         if(hp<=0){
             return Const.Fight.SLAY_SUCCESS+getReward(monster,role);
         }
-        SceneService.checkAndSetMonsterHp(hp,monster);
         return Const.Fight.TARGET_HP+hp;
     }
 
@@ -152,10 +153,10 @@ public class SkillService {
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
         Monster monster = scene.getMonsterHashMap().get(monsterId);
         monster.setAtkTargetId(role.getId());
-        if(AssistService.isNotInView(role, monster)){
-            return Const.Fight.DISTACNE_LACK;
+        if(AssistService.isOutOfInteraction(role, monster)){
+            return Const.Fight.DISTANCE_LACK;
         }
-        if(!isWeaponHaveDura(role)){return Const.Fight.DURA_LACK;}
+        if(role.getEquipmentHashMap().get(0)!=null && !isWeaponHaveDura(role)){return Const.Fight.DURA_LACK;}
         return atkAffect(monster,role);
     }
 
@@ -196,22 +197,28 @@ public class SkillService {
      * @param role 角色
      * @return 信息提示
      */
-    private String getReward(Monster nowMonster,Role role){
+    public String getReward(Monster nowMonster,Role role){
         Random rand = new Random();
         int getMoney = rand.nextInt(Const.RAND_MONEY);
         packageService.addMoney(getMoney,role);
-        //int getEquipId = (int) (3001 + Math.floor(Math.random()*Const.RAND_EWUIP));//获得装备奖励
-        //packageService.putIntoPackage(getEquipId,1,role);
+
+        //获得装备奖励
+        int getEquipId = (int) (3001 + Math.floor(Math.random()* EquipmentResource.getEquipmentStaticHashMap().size()));
+        int equipId = AssistService.getInstance().generateEquipId();
+        int dura = EquipmentResource.getEquipmentStaticHashMap().get(getEquipId).getDurability();
+        GlobalInfo.getEquipmentHashMap().put(equipId,new Equipment(equipId,getEquipId,dura));
+        packageService.putIntoPackage(equipId,1,role);
+
         role.setAtk(role.getAtk()+Const.REWARD_ATK);
 
         slayMonsterSubject.notifyObserver(nowMonster.getMonsterId(),role);
-
         ArrayList<Role> roles = GlobalInfo.getScenes().get(role.getNowScenesId()).getRoleAll();
         ServerHandler.notifyGroupRoles(roles,nowMonster.getMonsterId()+"已被"+role.getName()+"打败");
 
         Scene scene = GlobalInfo.getScenes().get(role.getNowScenesId());
+        int gridId = SceneService.getGridId(nowMonster.getPosition()[0],nowMonster.getPosition()[1]);
         scene.getMonsterHashMap().remove(nowMonster.getId());
-        return "!获得银两"+getMoney;//"获得装备："+getEquipId+
+        return "获得装备："+getEquipId+"!获得银两"+getMoney;//"获得装备："+getEquipId+
     }
 
     /**
@@ -226,8 +233,8 @@ public class SkillService {
         if(!enemy.getNowScenesId().equals(role.getNowScenesId())){
             return "不再同一场景，无法pk";
         }
-        if(AssistService.isNotInView(role,enemy)){
-            return Const.Fight.DISTACNE_LACK;
+        if(AssistService.isOutOfInteraction(role,enemy)){
+            return Const.Fight.DISTANCE_LACK;
         }
 
         int harm = 0;
@@ -239,7 +246,7 @@ public class SkillService {
             if(!Const.Fight.SUCCESS.equals(result)){
                 return result;
             }
-            if(role.getEquipmentHashMap().get(0)!=0){
+            if(role.getEquipmentHashMap()!=null && role.getEquipmentHashMap().get(0)!=0){
                 int weaponBuff=Const.WEAPON_BUFF;
                 harm = SkillResource.getSkillStaticHashMap().get(skillId).getAtk()+weaponBuff;
             }
@@ -277,7 +284,7 @@ public class SkillService {
      * @return 信息提示
      */
     public String tauntSkill(Role role){
-        if(isNotSkillValid(Const.TAUNT_SKILL_ID,role)){return "你没有该技能";}
+        if(isNotSkillValid(Const.TAUNT_SKILL_ID,role)){return Const.NO_SKILL_VALID;}
         GlobalInfo.setUseTauntDate(Instant.now());
         role.setUseTaunt(true);
         return Const.Fight.SUMMON_MSG;
@@ -290,7 +297,7 @@ public class SkillService {
      * @return 信息提示
      */
     public String groupAtkSkill(int skillId,Role role){
-        if(isNotSkillValid(skillId,role)){return "你没有该技能";}
+        if(isNotSkillValid(skillId,role)){return Const.NO_SKILL_VALID;}
 
         for(String key : role.getViewGridBo().getGridMonsterMap().keySet()){
             Monster monster = role.getViewGridBo().getGridMonsterMap().get(key);
@@ -300,7 +307,7 @@ public class SkillService {
                 getReward(monster,role);
             }
         }
-        return Const.Fight.GROUPATK_MSG;
+        return Const.Fight.GROUP_ATK_MSG;
     }
 
     /**
@@ -310,7 +317,7 @@ public class SkillService {
      * @return 信息提示
      */
     public String groupCureSkill(int skillId,Role role){
-        if(isNotSkillValid(skillId,role)){return "你没有该技能";}
+        if(isNotSkillValid(skillId,role)){return Const.NO_SKILL_VALID;}
         SkillStatic skill = SkillResource.getSkillStaticHashMap().get(skillId);
         //吟唱施法时间
         try {
@@ -337,7 +344,7 @@ public class SkillService {
      * @return 信息提示
      */
     public String summonSkill(int monsterId,Role role){
-        if(isNotSkillValid(Const.SUMMON_ID,role)){return "你没有该技能";}
+        if(isNotSkillValid(Const.SUMMON_ID,role)){return Const.NO_SKILL_VALID;}
         if(role.getBaby()==null){
             Baby baby = new Baby(Const.BABY_RAND_ID,Const.BABY_ID,role);
             role.setBaby(baby);
@@ -354,7 +361,7 @@ public class SkillService {
      */
     public void babyAttackMonster(String monsterId,Role role){
         Timer timer = new Timer();
-        RoleBabyAi roleBabyAi = new RoleBabyAi(timer,monsterId,role.getNowScenesId(),role.getId());
+        RoleBabyAi roleBabyAi = new RoleBabyAi(timer,monsterId,role.getNowScenesId(),role);
         timer.schedule(roleBabyAi, Const.DELAY_TIME, Const.GAP_TIME_BABY);
     }
 

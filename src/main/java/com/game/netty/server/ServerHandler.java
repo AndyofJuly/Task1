@@ -5,8 +5,8 @@ import com.game.common.PatternUtil;
 import com.game.common.protobuf.DataInfo;
 import com.game.system.gameserver.GameController;
 import com.game.system.gameserver.GameService;
-import com.game.system.role.pojo.Role;
-import com.game.system.scene.pojo.Scene;
+import com.game.system.role.entity.Role;
+import com.game.system.scene.entity.Scene;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
 import io.netty.channel.Channel;
@@ -30,19 +30,22 @@ import java.util.*;
 
 public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestMsg> {
 
-    //定义一个Channel 组，管理所有的channel
-    //GlobalEventExecutor.INSTANCE是一个全局事件执行器，是一个单例
     private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     private static HashMap<ChannelId, Integer> clientGroup = new HashMap<ChannelId, Integer>();
     Logger logger = LoggerFactory.getLogger(NettyServer.class);
     private static HashMap<Integer, ChannelHandlerContext> sceneGroup = new HashMap<Integer, ChannelHandlerContext>();
-    //读取数据
+
+    /**
+     * 读取数据
+     * @param ctx 管道
+     * @param msgs 消息
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, DataInfo.RequestMsg msgs) throws Exception {
 
         String msg = msgs.getMsg();
         String[] s = msg.split(" ");
-        if(msg.contains("loginR")){//!msg.contains("registerR") && !msg.contains("login") && !msg.contains("register")
+        if(msg.contains("loginR")){
             try {
                 clientGroup.put(ctx.channel().id(),Integer.parseInt(s[s.length-1]));
                 sceneGroup.put(Integer.parseInt(s[s.length-1]),ctx);
@@ -66,26 +69,38 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
             });
     }
 
-    //表示连接建立，第一个被执行
+    /**
+     * 表示连接建立，第一个被执行
+     * @param ctx 管道
+     */
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
         channelGroup.add(channel);
     }
 
-    //表示断开连接，该方法执行，会导致   channelGroup.remove(channel);   所以不用写此句代码
+    /**
+     * 表示断开连接，该方法执行，会导致channelGroup.remove(channel);
+     * @param ctx 管道
+     */
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
         //do nothing
     }
 
-    //表示channel处于活动状态
+    /**
+     * 表示channel处于活动状态
+     * @param ctx 管道
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println(ctx.channel().remoteAddress()+"已连接服务器");
     }
 
-    //表示channel处于非活动状态
+    /**
+     * 表示channel处于非活动状态
+     * @param ctx 管道
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         //先对角色数据进行保存
@@ -122,6 +137,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         super.channelWritabilityChanged(ctx);
     }
 
+    /**
+     * 发送数据给客户端
+     * @param message 消息
+     * @param ch 管道
+     */
     public static void writeMessage(ResponseInf message, Channel ch) {
 
         DataInfo.ResponseMsg.Builder builders = DataInfo.ResponseMsg.newBuilder();
@@ -148,7 +168,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         ch.writeAndFlush(builders.build());
     }
 
-    //通知某个角色集合
+    /**
+     * 通知某个角色集合
+     * @param roles 角色集合
+     * @param msg 消息
+     */
     public static void notifyGroupRoles(ArrayList<Role> roles,String msg){
         for(Role role : roles){
             Channel channel = sceneGroup.get(role.getId()).channel();
@@ -156,7 +180,13 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         }
     }
 
-    //通知某个角色
+    /**
+     * 通知自己和其他某个角色
+     * @param targetId 目标角色
+     * @param targetMsg 通知目标的消息
+     * @param roleId 角色自身
+     * @param roleMsg 通知角色自身的消息
+     */
     public static void notifyRole(int targetId,String targetMsg,int roleId,String roleMsg){
         Channel targetChannel = sceneGroup.get(targetId).channel();
         Channel selfChannel = sceneGroup.get(roleId).channel();
@@ -164,7 +194,11 @@ public class ServerHandler extends SimpleChannelInboundHandler<DataInfo.RequestM
         writeMessage(new ResponseInf(roleMsg),selfChannel);
     }
 
-    //通知自身
+    /**
+     * 通知自身
+     * @param roleId 角色自身
+     * @param roleMsg 通知角色自身的消息
+     */
     public static void notifySelf(int roleId,String roleMsg){
         Channel selfChannel = sceneGroup.get(roleId).channel();
         writeMessage(new ResponseInf(roleMsg),selfChannel);

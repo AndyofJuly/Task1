@@ -14,7 +14,7 @@ public class PatternUtil {
     public static ArrayList<Integer> getIntList(String[] str){
         ArrayList<Integer> intList = new ArrayList();
         for (String s : str) {
-            if (Pattern.matches("[0-9]*", s.trim())) {
+            if (Pattern.matches("[0-9]*", s.trim()) && s!="") {
                 intList.add(Integer.parseInt(s));
             }
         }

@@ -2,8 +2,8 @@ package com.game.system.achievement.observer;
 
 import com.game.system.achievement.Achievement;
 import com.game.system.achievement.AchievementService;
-import com.game.system.achievement.pojo.Subject;
-import com.game.system.role.pojo.Role;
+import com.game.system.achievement.entity.Subject;
+import com.game.system.role.entity.Role;
 
 /**
  * 成就观察者：等级提升到N级

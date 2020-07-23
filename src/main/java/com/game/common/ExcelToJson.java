@@ -11,14 +11,13 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
- * 该类负责读取excel表，将其中的数据转换为json，并转化为java对象
+ * 该类负责读取excel表，将其中的数据转换为json，并转化为java对象。使用了工具类，并自定义读取和解析的方式
  * @author andy
  */
 
 public class ExcelToJson {
 
     public static Pattern pattern = Pattern.compile("[0-9]*");
-    //读取excel文件，解析为JSON
 
     /**
      * 读去excel文件内容，转换为json数组

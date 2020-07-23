@@ -2,9 +2,9 @@ package com.game.system.social;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FriendOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.bag.PackageService;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import com.game.system.gameserver.GlobalInfo;
 import org.springframework.stereotype.Service;
 
@@ -50,12 +50,12 @@ public class SocialService {
      * @return String
      */
     public static boolean emailToPlayer(int targetRoleId, int goodsId, int num, int money, Role role){
-        PackageService packageService = new PackageService();
-        if(!packageService.getFromPackage(goodsId,num,role)){return false;}
-        if(!packageService.lostMoney(money,role)){return false;}
+        //PackageService packageService = new PackageService();
+        if(!PackageService.getInstance().getFromPackage(goodsId,num,role)){return false;}
+        if(!PackageService.getInstance().lostMoney(money,role)){return false;}
         Role targetRole = GlobalInfo.getRoleHashMap().get(targetRoleId);
-        packageService.addMoney(money,targetRole);
-        packageService.putIntoPackage(goodsId,num,targetRole);
+        PackageService.getInstance().addMoney(money,targetRole);
+        PackageService.getInstance().putIntoPackage(goodsId,num,targetRole);
         return true;
     }
 

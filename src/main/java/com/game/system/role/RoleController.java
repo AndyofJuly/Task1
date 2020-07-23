@@ -2,7 +2,7 @@ package com.game.system.role;
 
 import com.game.common.MyAnnontation;
 import com.game.system.gameserver.GameController;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.common.ResponseInf;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
-    /** 查看角色的信息，使用方式：查看其他角色-getInfo roleId；查看自己-getInfo*/
-    @MyAnnontation(MethodName = "getInfo")
+    /** 查看角色的信息，使用方式：查看其他角色-getInfo roleId；查看自己-getInfo-body*/
+    @MyAnnontation(MethodName = "body")
     public ResponseInf getInfo(){
         if(!getRole().getId().equals(intList.get(0))){
             Role role = GlobalInfo.getRoleHashMap().get(intList.get(0));

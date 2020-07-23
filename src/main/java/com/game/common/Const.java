@@ -1,6 +1,7 @@
 package com.game.common;
 
 /**
+ * 项目中的常量配置
  * @Author andy
  * @create 2020/6/2 16:39
  */
@@ -33,15 +34,15 @@ public class Const {
         String MP_LACK = "角色蓝量不够，请先恢复再战斗";
         String SKILL_IN_CD = "该技能冷却中";
         String TARGET_HP ="攻击目标血量剩余";
-        String DISTACNE_LACK = "距离不够";
-        String SLAY_SUCCESS = "怪物血量为0，你已经打败该怪物！恭喜获得50银!获得2点攻击力加成!";
+        String DISTANCE_LACK = "距离不够";
+        String SLAY_SUCCESS = "怪物血量为0，你已经打败该怪物!获得2点攻击力加成!";
         String TEAM_LIST = "队伍列表：";
         String CREATE_SUCCESS = "已创建队伍：";
-        String TEAM_ROLELIST = "当前队伍角色：";
+        String TEAM_ROLE_LIST = "当前队伍角色：";
         String START_DUNGEONS = "已进入到副本中";
         String SKILL_LIST = "可用技能：";
         String SUMMON_MSG = "怪物受到嘲讽";
-        String GROUPATK_MSG = "使用群伤技能，场景怪物均受到攻击";
+        String GROUP_ATK_MSG = "使用群伤技能，视野内怪物均受到攻击";
         String CURE_MSG = "使用群体治疗技能";
         String BABY_MSG = "召唤出宝宝，开始自动释放技能攻击怪物";
     }
@@ -52,46 +53,39 @@ public class Const {
         String BUY_FAILURE = "您所携带的银两不够或背包已满，无法够买";
         String BUY_SUCCESS = "购买成功，目前该物品在背包中的数量为";
         String BAG_OUT_SPACE = "背包放不下了";
+
+        String OUT_OF_MONEY = "金钱不够";
+        String OUT_OF_GOODS = "背包中没有这么多物品";
+        String PTU_ON_SUCCESS = "上架成功";
+        String CANT_REVOKE = "无可撤销";
+        String REVOKE_SUCCESS = "撤销上架成功";
+        String MOVE_NOTICE = "需要移动到拍卖场进行拍卖";
+        String AUCTION_START= "开始拍卖";
+        String AUCTION_END = "拍卖已经结束，不可以再进行操作";
+        String HIGHER_BIDDING = "请出更高的价格";
     }
 
     /** 登录的提示信息*/
-    public interface start {
+    public interface Start {
         String LOGIN_SUCCESS = "登陆成功，您进入到了游戏世界";
         String LOGIN_FAILURE = "您没有该角色，登陆失败";
-        String UREGISTER_FAILURE = "注册失败，该用户名已有人使用";
-        String UREGISTER_SUCCESS = "注册成功，请进行登录";
-        String ULOGIN_SUCCESS = "登陆成功，请新增或登录角色以开始游戏";
-        String ULOGIN_FAILURE = "用户名或密码错误，登陆失败";
+        String USER_REGISTER_FAILURE = "注册失败，该用户名已有人使用";
+        String USER_REGISTER_SUCCESS = "注册成功，请进行登录";
+        String USER_LOGIN_SUCCESS = "登陆成功，请新增或登录角色以开始游戏";
+        String USER_LOGIN_FAILURE = "用户名或密码错误，登陆失败";
         String REGISTER_SUCCESS = "注册成功，请进行登录";
         String REGISTER_FAILURE = "注册失败，该角色名称已有人使用";
     }
 
     /** 角色一些方法的提示信息*/
-    public interface service {
+    public interface Service {
         String MOVE_SUCCESS = "移动成功";
         String MOVE_FAILURE = "移动失败";
         String REPAIR_SUCCESS = "修理成功！当前武器耐久为：";
-        String PUTON_SUCCESS = "你已成功装备该武器";
-        String TAKEOFF_SUCCESS = "你已成功卸下该武器";
+        String PUT_ON_SUCCESS = "你已成功装备该装备";
+        String TAKEOFF_SUCCESS = "你已成功卸下该装备";
         String USE_SUCCESS = "使用药品成功";
         String USE_FAILURE = "物品已用完";
-    }
-
-    /** 成就信息*/
-    public interface achieve {
-        String TASK_MONSTER = "killMonster";
-        String TASK_LEVEL = "levelUp";
-        String TASK_NPC = "talkNpc";
-        String TASK_EQUIP = "getBestEquip";
-        String TASK_DUNGEONS = "passDungeons";
-        String TASK_EQUIP_LEVEL = "sumEquipLevel";
-        String TASK_FRIEDN = "addFriend";
-        String TASK_FIRST_TEAM = "firstJoinTeam";
-        String TASK_FIRST_UNION = "firstJoinUnion";
-        String TASK_FRIST_TRADE = "firstTrade";
-        String TASK_PK_SUCCESS = "firstPkSuccess";
-        String TASK_MONEY = "sumMoney";
-        String TASK_SERIA = "completeTask";
     }
 
     /** 邮件发送提示*/
@@ -103,13 +97,27 @@ public class Const {
 
     /** NPC谈话*/
     public static final String NPC_NOTICE = "无法对话";
+    /** 技能提示*/
+    public static final String NO_SKILL_VALID = "你没有该技能";
 
     /** 公会参数-等级*/
-    public interface union {
+    public interface Union {
         int FIRST_GRADE = 1;
         int SECOND_GRADE = 2;
         int THRID_GRADE = 3;
         int FOURTH_GRADE = 4;
+
+        String NO_PERMISSION = "你没有该权限";
+        String DISBAND_SUCCESS = "已解散工会";
+        String APPOINTMENT_SUCCESS = "已任命该角色";
+        String AGREE_SUCCESS = "已批准该角色入会";
+        String FIRE_SUCCESS = "已开除该角色";
+        String OUT_OF_MONEY = "你没有这么多钱";
+        String DONATE_SUCCESS = "已捐赠银两";
+        String OUT_OF_GOODS = "背包中没有这么多物品";
+        String DONATE_GOODS_SUCCESS = "已捐赠该道具";
+        String NOT_FOUND_GOODS = "仓库中没有该物品";
+        String GET_GOODS_SUCCESS = "已拿取该道具";
     }
 
     /** 角色第一次进入游戏时的初始场景*/
@@ -127,7 +135,7 @@ public class Const {
     /** s转换为ms*/
     public static final int TO_MS = 1000;
     /** MP的持续回复药物，回复的定时间隔时间*/
-    public static final int GAP_TIME_POTION = 20000;
+    public static final int GAP_TIME_RECOVER = 20000;
     /** 技能定时时间*/
     public static final int GAP_TIME_SKILL = 1000;
 
@@ -144,7 +152,7 @@ public class Const {
 
     /** 奖励掉落*/
     public static final int RAND_MONEY = 60;
-    public static final int RAND_EWUIP = 4;
+    public static final int RAND_EWUIP = 8;
     public static final int REWARD_ATK = 2;
 
     /** pk收益与损失*/
@@ -165,7 +173,7 @@ public class Const {
     /** 生成id的最大范围*/
     public static final int MAX_ID = 10000;
     /** 与其他实体互动的最大半径距离*/
-    public static final int Max_OPT_DISTANCE = 10;
+    public static final int Max_OPT_DISTANCE = 15;
     /** 视野单位网格长*/
     public static final int GRID_LENGTH = 16;
     /** 视野单位网格宽*/
@@ -187,9 +195,6 @@ public class Const {
 
     /** 扩展测试-蓝药缓慢回复*/
     public static final int MP_ID = 2001;
-    /** 扩展测试-技能类型*/
-    public static final int POISON_TYPE = 1;
-    public static final int SHIELD_TYPE = 2;
 
     /** 战士职业id*/
     public static final int FIGHTER_CAREER_ID = 5001;

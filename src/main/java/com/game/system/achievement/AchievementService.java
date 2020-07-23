@@ -1,8 +1,6 @@
 package com.game.system.achievement;
 
-import com.game.common.Const;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Service;
 
 /**
@@ -79,16 +77,16 @@ public class AchievementService {
     }
 
     /**
-     * 检查是否完成某一系列任务
+     * 检查是否完成某一系列任务-改
      * @param desc 成就描述
      * @param role 角色
      */
     public static void completSeriaAchievement(String desc,Role role){
         for(Achievement achievement : Achievement.values()) {
             if (achievement.getDesc().equals(desc)) {
-                Integer[] strings = AchieveResource.getAchieveStaticHashMap().get(achievement.getId()).getSerial();
-                for(int i=0;i<strings.length;i++){
-                    if(role.getAchievementBo().getAchievementHashMap().get(strings[i])==false){
+                Integer[] serials = achievement.getSerial();
+                for(int i=0;i<serials.length;i++){
+                    if(!role.getAchievementBo().getAchievementHashMap().get(serials[i])){
                         return;
                     }
                 }
@@ -99,15 +97,15 @@ public class AchievementService {
 
 
     /**
-     * 查询当前所有成就是否已完成
+     * 查询当前所有成就是否已完成-改
      * @param role 角色
      * @return 信息提示
      */
     public String getAchievementList(Role role){
         StringBuilder result= new StringBuilder();
-        for(Integer achieveId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            result.append(AchieveResource.getAchieveStaticHashMap().get(achieveId).getDesc()).append("：").
-                    append(role.getAchievementBo().getAchievementHashMap().get(achieveId)).append("\n");
+        for(Achievement achievement : Achievement.values()){
+            result.append(achievement.getDesc()).append("：").append(role.getAchievementBo().
+                    getAchievementHashMap().get(achievement.getId())).append("\n");
         }
         return result.toString();
     }
@@ -119,8 +117,8 @@ public class AchievementService {
      */
     public String getTaskSchedule(Role role){
         StringBuilder stringBuilder = new StringBuilder();
-        for(Integer achieveId : role.getAchievementCountMap().keySet()){
-            stringBuilder.append(achieveId+":"+role.getAchievementCountMap().get(achieveId)+"\n");
+        for(Achievement achievement : Achievement.values()){
+            stringBuilder.append(achievement.getDesc()+":"+role.getAchievementCountMap().get(achievement.getId())+"\n");
         }
         return stringBuilder.toString();
     }

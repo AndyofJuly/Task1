@@ -1,8 +1,7 @@
 package com.game.system.achievement;
 
 import com.game.common.Const;
-import com.game.system.achievement.pojo.AchieveResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -29,10 +28,6 @@ public class AchievementDao {
         }
     }
 
-    //成就读取select
-
-    //成就更新update
-
     /**
      * 获取角色成就
      * @param role 角色
@@ -45,7 +40,6 @@ public class AchievementDao {
             String list="";
             while (rs.next()){
                 list=rs.getString("achievementlist");
-                System.out.println("=====list获取结果测试======"+list);
                 role.getAchievementCountMap().put(Achievement.killMonsterThief.getId(),rs.getInt("killMonsterThief"));
                 role.getAchievementCountMap().put(Achievement.levelUpA.getId(),rs.getInt("levelUp"));
                 role.getAchievementCountMap().put(Achievement.talkNpc.getId(),rs.getInt("talkNpc"));
@@ -60,6 +54,7 @@ public class AchievementDao {
                 role.getAchievementCountMap().put(Achievement.sumMoney.getId(),rs.getInt("sumMoney"));
                 role.getAchievementCountMap().put(Achievement.completeTask.getId(),rs.getInt("completeTask"));
                 role.getAchievementCountMap().put(Achievement.killMonsterWicked.getId(),rs.getInt("killMonsterWicked"));
+                role.getAchievementCountMap().put(Achievement.levelUpB.getId(),rs.getInt("levelUpB"));
             }
             if("".equals(list)){
                 insert(role);
@@ -77,13 +72,13 @@ public class AchievementDao {
     }
 
     /**
-     * 更新角色成就
+     * 更新角色成就-改
      * @param role 角色
      */
     public void updateAchievement(Role role){
         StringBuilder input= new StringBuilder();
-        for(Integer achievId : AchieveResource.getAchieveStaticHashMap().keySet()){
-            if(role.getAchievementBo().getAchievementHashMap().get(achievId)){
+        for(Achievement achievement : Achievement.values()){
+            if(role.getAchievementBo().getAchievementHashMap().get(achievement.getId())){
                 input.append("1");
             }else{
                 input.append("0");
@@ -91,7 +86,7 @@ public class AchievementDao {
         }
         try {
             PreparedStatement st = conn.prepareStatement("UPDATE achievement SET achievementlist=?,killMonsterThief=?,levelUp=?,talkNpc=?,getBestEquip=?,passDungeons=?," +
-                    "sumEquipLevel=?,addFriend=?,firstJoinTeam=?,firstJoinUnion=?,firstTrade=?,firstPkSuccess=?,sumMoney=?,completeTask=?,killMonsterWicked=? where playid=?");
+                    "sumEquipLevel=?,addFriend=?,firstJoinTeam=?,firstJoinUnion=?,firstTrade=?,firstPkSuccess=?,sumMoney=?,completeTask=?,killMonsterWicked=?,levelUpB=? where playid=?");
             st.setString(1, input.toString());
 
             st.setInt(2, role.getAchievementCountMap().get(Achievement.killMonsterThief.getId()));
@@ -108,8 +103,9 @@ public class AchievementDao {
             st.setInt(13, role.getAchievementCountMap().get(Achievement.sumMoney.getId()));
             st.setInt(14, role.getAchievementCountMap().get(Achievement.completeTask.getId()));
             st.setInt(15, role.getAchievementCountMap().get(Achievement.killMonsterWicked.getId()));
+            st.setInt(16, role.getAchievementCountMap().get(Achievement.levelUpB.getId()));
 
-            st.setInt(16, role.getId());
+            st.setInt(17, role.getId());
             st.executeUpdate();
             st.close();
         } catch (Exception e) {

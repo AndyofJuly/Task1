@@ -14,6 +14,8 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import io.netty.util.concurrent.DefaultEventExecutorGroup;
+import io.netty.util.concurrent.EventExecutorGroup;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -32,6 +34,7 @@ public class NettyServer {
     public void run() throws InterruptedException {
         NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+        EventExecutorGroup businessGroup = new DefaultEventExecutorGroup(1);
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();
             bootstrap.group(bossGroup,workerGroup)
@@ -51,7 +54,7 @@ public class NettyServer {
                             //Google Protocol Buffers编码器
                             pipeline.addLast(new ProtobufEncoder());
                             //加入自己的处理器
-                            pipeline.addLast(new ServerHandler());
+                            pipeline.addLast(businessGroup,new ServerHandler());
                         }
                     });
             System.out.println("Netty服务器启动");
@@ -65,8 +68,6 @@ public class NettyServer {
             workerGroup.shutdownGracefully();
         }
     }
-
-    //public static ApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext springContext = new ClassPathXmlApplicationContext("applicationContext.xml");

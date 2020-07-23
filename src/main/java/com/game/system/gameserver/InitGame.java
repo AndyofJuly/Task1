@@ -2,15 +2,15 @@ package com.game.system.gameserver;
 
 import com.game.common.Const;
 import com.game.system.bag.GoodsDao;
-import com.game.system.role.pojo.CareerResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.CareerResource;
+import com.game.system.role.entity.Role;
 import com.game.system.scene.MonsterWalk;
 import com.game.system.scene.NpcWalk;
 import com.game.system.scene.SceneService;
-import com.game.system.scene.pojo.*;
-import com.game.system.skill.pojo.Skill;
+import com.game.system.scene.entity.*;
+import com.game.system.skill.entity.Skill;
 import com.game.system.union.UnionDao;
-import com.game.system.skill.pojo.SkillResource;
+import com.game.system.skill.entity.SkillResource;
 import com.game.system.role.MpRecover;
 import com.game.system.role.RoleService;
 
@@ -60,12 +60,7 @@ public class InitGame {
                 if(i==10006){
                     pool.submit(new MonsterWalk(monster));
 
-                    //再次生成一些已生成过的怪物；//bug:如果要观察怪物的格子移动，需要休眠才可能创建出第二个线程；不观察则可以直接创建出第二个线程
-/*                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }*/
+                    //再次生成一些已生成过的怪物；
                     String monsterId2 = UUID.randomUUID().toString();
                     Monster monster2 = new Monster(monsterId2,key);
                     GlobalInfo.getScenes().get(i).getMonsterHashMap().put(monsterId2, monster2);
@@ -142,7 +137,7 @@ public class InitGame {
     private static void run() {
         Timer timer = new Timer();
         MpRecover mpRecover = new MpRecover();
-        timer.schedule(mpRecover, Const.DELAY_TIME, Const.GAP_TIME_POTION);
+        timer.schedule(mpRecover, Const.DELAY_TIME, Const.GAP_TIME_RECOVER);
     }
 
     public static boolean isEnterSuccess() {

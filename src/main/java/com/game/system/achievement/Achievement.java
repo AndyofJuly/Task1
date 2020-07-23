@@ -1,6 +1,7 @@
 package com.game.system.achievement;
 
 /**
+ * 成就-枚举；新增成就时要对应修改数据库表和数据访问层，observer包中新增成就观察者类，Service中进行注册和触发
  * @Author andy
  * @create 2020/7/21 0:21
  */
@@ -22,11 +23,19 @@ public enum Achievement {
     killMonsterWicked(113,"killMonsterWicked",30004,2,null),
     levelUpB(114,"levelUp",0,10,null);
 
-    private Integer id;
-    private String desc;
-    private Integer targetId;
-    private Integer count;
-    private Integer[] serial;
+    private final Integer id;
+    private final String desc;
+    private final Integer targetId;
+    private final Integer count;
+    private final Integer[] serial;
+
+    Achievement(Integer id, String desc, Integer targetId, Integer count, Integer[] serial) {
+        this.id = id;
+        this.desc = desc;
+        this.targetId = targetId;
+        this.count = count;
+        this.serial = serial;
+    }
 
     public Integer getId() {
         return id;
@@ -47,15 +56,5 @@ public enum Achievement {
     public Integer[] getSerial() {
         return serial;
     }
-
-    Achievement(Integer id, String desc, Integer targetId, Integer count, Integer[] serial) {
-        this.id = id;
-        this.desc = desc;
-        this.targetId = targetId;
-        this.count = count;
-        this.serial = serial;
-    }
-
-
 
 }

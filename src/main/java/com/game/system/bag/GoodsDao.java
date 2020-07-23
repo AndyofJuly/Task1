@@ -2,9 +2,9 @@ package com.game.system.bag;
 
 import com.game.common.Const;
 import com.game.system.gameserver.GlobalInfo;
-import com.game.system.bag.pojo.Equipment;
-import com.game.system.bag.pojo.MyPackageBo;
-import com.game.system.role.pojo.Role;
+import com.game.system.bag.entity.Equipment;
+import com.game.system.bag.entity.MyPackageBo;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -66,8 +66,6 @@ public class GoodsDao {
     }
 
     public int[] checkStaticByEquipId(int equipId){
-/*        int staticId = 0;
-        int dura = 0;*/
         int[] arr = new int[2];
         try {
             PreparedStatement preparedStatement=conn.prepareStatement("select staticid,dura from equipment where equipid=?");
@@ -95,7 +93,7 @@ public class GoodsDao {
             PreparedStatement st = conn.prepareStatement("UPDATE bodyequipment " +
                     "SET weapon=?,circlet=?,necklace=?,body=?,head=?,foot=? where playid=?");
             int[] selfEquip = new int[6];
-            for(int i=0;i<selfEquip.length;i++){//Integer key : role.getEquipmentHashMap().keySet()
+            for(int i=0;i<selfEquip.length;i++){
                 if(role.getEquipmentHashMap().get(i)!=null){
                     st.setInt(i+1, role.getEquipmentHashMap().get(i));
                 }else {
@@ -153,6 +151,7 @@ public class GoodsDao {
         } catch (Exception e) {
             System.out.println(e.getMessage()+"updatePackage");
         }
+        deletePackage(role);
     }
 
     /**
@@ -192,17 +191,17 @@ public class GoodsDao {
     }
 
     /**
-     * 删除一条背包数据
+     * 删除无用的背包中的数据
      * @param role 角色
      */
-    private void delete(Role role){
+    private void deletePackage(Role role){
         try {
-            PreparedStatement st = conn.prepareStatement("delete from package where playid=?");
-            st.setInt(1, role.getId());
+            PreparedStatement st = conn.prepareStatement("delete from package where num=?");
+            st.setInt(1, 0);
             st.executeUpdate();
             st.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage()+"packageDelete");
+            System.out.println(e.getMessage()+"deletePackage");
         }
     }
 

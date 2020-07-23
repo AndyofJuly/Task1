@@ -2,10 +2,10 @@ package com.game.system.achievement.observer;
 
 import com.game.system.achievement.Achievement;
 import com.game.system.achievement.AchievementService;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.gameserver.AssistService;
-import com.game.system.bag.pojo.EquipmentResource;
-import com.game.system.role.pojo.Role;
+import com.game.system.bag.entity.EquipmentResource;
+import com.game.system.role.entity.Role;
 
 /**
  * 成就观察者：穿戴的装备等级总和达到指定等级

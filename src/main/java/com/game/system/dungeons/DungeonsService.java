@@ -2,14 +2,14 @@ package com.game.system.dungeons;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.FsJoinTeamOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.gameserver.AssistService;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.common.Const;
-import com.game.system.role.pojo.Role;
-import com.game.system.dungeons.pojo.Team;
-import com.game.system.dungeons.pojo.DungeonsStatic;
-import com.game.system.dungeons.pojo.DungeonsResource;
+import com.game.system.role.entity.Role;
+import com.game.system.dungeons.entity.Team;
+import com.game.system.dungeons.entity.DungeonsStatic;
+import com.game.system.dungeons.entity.DungeonsResource;
 import com.game.system.role.RoleService;
 import com.game.system.scene.SceneService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +66,7 @@ public class DungeonsService {
      */
     public String getTeamRoleList(int teamId,Role role){
         ArrayList<Integer> roleList = getRoleList(String.valueOf(teamId));
-        String output = Const.Fight.TEAM_ROLELIST;
+        String output = Const.Fight.TEAM_ROLE_LIST;
         for(Integer roleId : roleList){
             output = output + GlobalInfo.getRoleHashMap().get(roleId).getName()+" ";
         }
@@ -92,14 +92,16 @@ public class DungeonsService {
      * @param role 角色
      */
     public void startDungeons (String teamId, Role role){
+        if(!teamId.equals(role.getTeamId())){return;}
         ArrayList<Role> roles = getTeamRoles(GlobalInfo.getTeamList().get(teamId).getRoleList());
-        ServerHandler.notifyGroupRoles(roles,"副本已开启，进入到副本中");
+        ServerHandler.notifyGroupRoles(roles,"副本已开启");
         Team team = GlobalInfo.getTeamList().get(teamId);
         int tempSceneId = sceneService.createTempScene(team.getDungeonsId());
 
         //队伍角色进入副本中
         for(int i=0;i<team.getRoleList().size();i++){
             RoleService roleService = new RoleService();
+            //或者可以使用sendToScene-传送方法
             sceneService.moveTo(tempSceneId, GlobalInfo.getRoleHashMap().get(team.getRoleList().get(i)));
         }
 

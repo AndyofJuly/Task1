@@ -2,15 +2,15 @@ package com.game.system.dungeons;
 
 import com.game.netty.server.ServerHandler;
 import com.game.system.achievement.observer.DungeonsOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.gameserver.GlobalInfo;
 import com.game.system.bag.PackageService;
 import com.game.common.Const;
-import com.game.system.role.pojo.Baby;
-import com.game.system.role.pojo.Role;
-import com.game.system.dungeons.pojo.DungeonsResource;
-import com.game.system.scene.pojo.Monster;
-import com.game.system.skill.pojo.SkillResource;
+import com.game.system.role.entity.Baby;
+import com.game.system.role.entity.Role;
+import com.game.system.dungeons.entity.DungeonsResource;
+import com.game.system.scene.entity.Monster;
+import com.game.system.skill.entity.SkillResource;
 import com.game.system.role.RoleService;
 import com.game.system.scene.SceneService;
 import com.game.system.skill.SkillService;
@@ -22,7 +22,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 副本中Boss的简单Ai
+ * 副本中Boss的简单Ai，可以根据优先级选择角色攻击，释放普通攻击技能，同时也可以移动或普通攻击
  * @Author andy
  * @create 2020/6/8 18:19
  */
@@ -192,8 +192,8 @@ public class DungeonsBossAI extends TimerTask {
         for(int i = 0; i< list.size(); i++) {
             Role role = GlobalInfo.getRoleHashMap().get(list.get(i));
             if(success = true){
-                PackageService packageService = new PackageService();
-                packageService.addMoney(Const.DUNGEONS_GAIN,role);
+                //PackageService packageService = new PackageService();
+                PackageService.getInstance().addMoney(Const.DUNGEONS_GAIN,role);
             }
             role.setTeamId(null);
             RoleService roleService = new RoleService();

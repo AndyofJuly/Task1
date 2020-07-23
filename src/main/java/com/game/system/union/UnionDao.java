@@ -1,9 +1,8 @@
 package com.game.system.union;
 
 import com.game.common.Const;
-import com.game.system.role.pojo.Role;
-import com.game.system.union.pojo.Union;
-import org.springframework.stereotype.Component;
+import com.game.system.role.entity.Role;
+import com.game.system.union.entity.Union;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -33,10 +32,11 @@ public class UnionDao {
     /** 获取所有公会 */
     public void selectUnion(){
         try {
-            PreparedStatement st = conn.prepareStatement("select unionid,unionname from unions");
+            PreparedStatement st = conn.prepareStatement("select unionid,unionname,money from unions");
             ResultSet rs=st.executeQuery();
             while (rs.next()){
                 UnionService.unionHashMap.put(rs.getInt("unionid"),new Union(rs.getInt("unionid"),rs.getString("unionname")));
+                UnionService.unionHashMap.get(rs.getInt("unionid")).setMoney(rs.getInt("money"));
             }
             rs.close();
         } catch (Exception e) {
@@ -105,7 +105,7 @@ public class UnionDao {
             if(role.getUnionId()==0){return;}
             Union union = UnionService.unionHashMap.get(role.getUnionId());
             for(Integer goodsId : union.getGoodsHashMap().keySet()){
-                if(checkUnionStore(role,goodsId)==false){
+                if(!checkUnionStore(role, goodsId)){
                     insertUnionStore(role,goodsId,union.getGoodsHashMap().get(goodsId));
                 }else{
                     PreparedStatement st = conn.prepareStatement("update unionstore set num=? where unionid=? and goodsid=?");
@@ -127,13 +127,13 @@ public class UnionDao {
             for(Integer uid : UnionService.unionHashMap.keySet()){
                 for(Integer rid : UnionService.unionHashMap.get(uid).getRoleJobHashMap().keySet()){
                     int grade = UnionService.unionHashMap.get(uid).getRoleJobHashMap().get(rid);
-                    if(!checkUnionMember(uid, rid)){
+                    if(!checkUnionMember(rid)){
                         insertUnionMember(uid,rid,grade);
                     }else{
-                        PreparedStatement st = conn.prepareStatement("update unionmember set unionid=?,playid=?,grade=?");
+                        PreparedStatement st = conn.prepareStatement("update unionmember set unionid=?,grade=? where playid=?");
                         st.setInt(1, uid);
-                        st.setInt(2, rid);
-                        st.setInt(3, grade);
+                        st.setInt(2, grade);
+                        st.setInt(3, rid);
                         st.executeUpdate();
                         st.close();
                     }
@@ -146,15 +146,13 @@ public class UnionDao {
 
     /**
      * 查找公会成员
-     * @param unionid 公会id
      * @param playid 角色id
      * @return 是否有该成员
      */
-    private boolean checkUnionMember(int unionid,int playid){
+    private boolean checkUnionMember(int playid){
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement("select * from unionmember where unionid=? and playid=?");
-            preparedStatement.setInt(1,unionid);
-            preparedStatement.setInt(2,playid);
+            PreparedStatement preparedStatement = conn.prepareStatement("select * from unionmember where playid=?");
+            preparedStatement.setInt(1,playid);
             ResultSet rs=preparedStatement.executeQuery();
             result = rs.next();
             rs.close();
@@ -180,6 +178,21 @@ public class UnionDao {
             st.close();
         } catch (Exception e) {
             System.out.println(e.getMessage()+"insertUnionMember");
+        }
+    }
+
+    /**
+     * 删除一位公会成语
+     * @param role 角色
+     */
+    public void deleteRole(Role role){
+        try {
+            PreparedStatement st = conn.prepareStatement("delete from unionmember where playid=?");
+            st.setInt(1, role.getId());
+            st.executeUpdate();
+            st.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"deleteRole");
         }
     }
 

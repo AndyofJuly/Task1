@@ -4,7 +4,7 @@ import com.game.common.Const;
 import com.game.system.achievement.AchievementDao;
 import com.game.system.bag.GoodsDao;
 import com.game.system.union.UnionDao;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -47,9 +47,9 @@ public class GameService {
                 //saveAuto();
                 saveBoolean=false;
             }
-            return Const.start.LOGIN_SUCCESS;
+            return Const.Start.LOGIN_SUCCESS;
         }else {
-            return Const.start.LOGIN_FAILURE;
+            return Const.Start.LOGIN_FAILURE;
         }
     }
 
@@ -71,7 +71,7 @@ public class GameService {
      * @return 提示信息
      */
     public String saveDataBase(){
-        return "保存游戏"+saveData();
+        return "已保存游戏"+saveData();
     }
 
     /** 加载数据库*/
@@ -85,7 +85,7 @@ public class GameService {
     private boolean saveData(){
         for(Integer key : GlobalInfo.getRoleHashMap().keySet()){
             Role role = GlobalInfo.getRoleHashMap().get(key);
-            //临时副本id比普通场景id小，存库时判断可以避免卡bug
+            //临时副本的场景id比普通场景id小，存库时判断可以避免卡bug
             if(role.getNowScenesId()<=Const.MAX_ID){
                 role.setNowScenesId(Const.DUNGEONS_START_SCENE);
                 return false;
@@ -109,7 +109,6 @@ public class GameService {
             @Override
             public void run() {
                 saveData();
-                System.out.println("已自动保存游戏-测试");
             }
         }, 30000, 60000);
     }

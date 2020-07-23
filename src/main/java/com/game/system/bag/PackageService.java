@@ -5,13 +5,13 @@ import com.game.common.Const;
 import com.game.system.achievement.observer.BestEquipOb;
 import com.game.system.achievement.observer.BodyEquipLvOb;
 import com.game.system.achievement.observer.SumMoneyOb;
-import com.game.system.achievement.pojo.Subject;
+import com.game.system.achievement.entity.Subject;
 import com.game.system.gameserver.AssistService;
-import com.game.system.bag.pojo.Equipment;
-import com.game.system.bag.pojo.EquipmentResource;
-import com.game.system.bag.pojo.EquipmentStatic;
+import com.game.system.bag.entity.Equipment;
+import com.game.system.bag.entity.EquipmentResource;
+import com.game.system.bag.entity.EquipmentStatic;
 import com.game.system.role.RoleService;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.stereotype.Service;
 
 
@@ -36,7 +36,7 @@ public class PackageService {
         Equipment equipment = GlobalInfo.getEquipmentHashMap().get(equipmentId);
         equipment.setDura(AssistService.getEquipmentDura(equipmentId));
 
-        return Const.service.REPAIR_SUCCESS +equipment.getDura();
+        return Const.Service.REPAIR_SUCCESS +equipment.getDura();
     }
 
     /**
@@ -67,7 +67,7 @@ public class PackageService {
         role.getEquipmentHashMap().put(wearPosition,equipmentId);
 
         bodyEquipLvSubject.notifyObserver(0,role);
-        return Const.service.PUTON_SUCCESS;
+        return Const.Service.PUT_ON_SUCCESS;
     }
 
     /**
@@ -81,7 +81,7 @@ public class PackageService {
         takeOffAffect(equipmentId,role);
         role.getEquipmentHashMap().remove(wearPosition);
         putIntoPackage(equipmentId,1,role);
-        return Const.service.TAKEOFF_SUCCESS;
+        return Const.Service.TAKEOFF_SUCCESS;
     }
 
     /**
@@ -93,13 +93,13 @@ public class PackageService {
         if(equipmentInfo.getType()==0){
             role.setAtk(role.getAtk() + equipmentInfo.getAtk());
         }else if(equipmentInfo.getType()==1){
-            role.setMaxHp(role.getHp()+role.getMaxHp()+equipmentInfo.getAddHp());
-            RoleService.checkAndSetHp(equipmentInfo.getAddHp(),role);
+            role.setMaxHp(role.getMaxHp()+equipmentInfo.getAddHp());
+            RoleService.checkAndSetHp(role.getHp()+equipmentInfo.getAddHp(),role);
         }else if(equipmentInfo.getType()==2){
             role.setMaxMp(role.getMaxMp()+equipmentInfo.getAddMp());
             RoleService.checkAndSetMp(role.getMp()+equipmentInfo.getAddMp(),role);
         }else if(equipmentInfo.getType()==3){
-            role.setDef(role.getDef()+equipmentInfo.getDef());
+            role.setDef(role.getDef()+equipmentInfo.getAddDef());
         }
     }
 
@@ -120,7 +120,7 @@ public class PackageService {
             role.setMaxMp(role.getMaxMp()-equipmentInfo.getAddMp());
             RoleService.checkAndSetMp(role.getMp(),role);
         }else if(equipmentInfo.getType()==3){
-            role.setDef(role.getDef()-equipmentInfo.getDef());
+            role.setDef(role.getDef()-equipmentInfo.getAddDef());
         }
     }
 
@@ -147,13 +147,13 @@ public class PackageService {
         int hp = role.getHp();
         int mp = role.getMp();
         if(!getFromPackage(potionId,1,role)){
-            return Const.service.USE_FAILURE;
+            return Const.Service.USE_FAILURE;
         }
         RoleService.checkAndSetHp(hp + AssistService.getPotionAddHp(potionId),role);
         RoleService.checkAndSetMp(mp + AssistService.getPotionAddMp(potionId),role);
         int recoverHp = role.getHp() - hp;
         int recoverMp = role.getMp() - mp;
-        return Const.service.USE_SUCCESS+"，血量增加"+recoverHp+"，蓝量增加"+recoverMp;
+        return Const.Service.USE_SUCCESS+"，血量增加"+recoverHp+"，蓝量增加"+recoverMp;
     }
 
     /**
@@ -164,8 +164,9 @@ public class PackageService {
     public static String getPackage(Role role){
         StringBuilder list= new StringBuilder();
         for(Integer goodsId : role.getMyPackageBo().getGoodsHashMap().keySet()){
-            if(role.getMyPackageBo().getGoodsHashMap().get(goodsId)>0){
-                list.append(goodsId).append(" ");
+            int num = role.getMyPackageBo().getGoodsHashMap().get(goodsId);
+            if(num>0){
+                list.append(goodsId+"-"+num).append(" ");
             }
         }
         return list.toString();
@@ -179,7 +180,9 @@ public class PackageService {
     public static String getBodyEquip(Role role){
         StringBuilder list= new StringBuilder();
         for(Integer key : role.getEquipmentHashMap().keySet()){
-            list.append(role.getEquipmentHashMap().get(key)).append(" ");
+            int weaponId = role.getEquipmentHashMap().get(key);
+            Equipment equipment = GlobalInfo.getEquipmentHashMap().get(weaponId);
+            list.append(weaponId+"-"+equipment.getEquipmentId()).append(" ");
         }
         return list.toString();
     }
@@ -212,7 +215,6 @@ public class PackageService {
      */
     public boolean putIntoPackage(int goodsId,int number,Role role){
         if(!role.getMyPackageBo().checkIfCanPut(goodsId, number)){
-            System.out.println("背包放不下了-测试");
             return false;
         }
 
@@ -242,7 +244,6 @@ public class PackageService {
     public boolean getFromPackage(int goodsId,int number,Role role){
         int leftAmount = role.getMyPackageBo().getGoodsHashMap().get(goodsId)-number;
         if(leftAmount<0){
-            System.out.println("背包中无法拿出这么多物品-测试用");
             return false;
         }else{
             role.getMyPackageBo().getGoodsHashMap().put(goodsId,leftAmount);
@@ -282,4 +283,12 @@ public class PackageService {
     private BestEquipOb bestEquipOb = new BestEquipOb(bestEquipSubject);
     private SumMoneyOb sumMoneyOb = new SumMoneyOb(sumMoneySubject);
     private BodyEquipLvOb bodyEquipLvOb = new BodyEquipLvOb(bodyEquipLvSubject);
+
+    //饿汉式单例模式
+    private static PackageService instance = new PackageService();
+    private PackageService() {}
+    public static PackageService getInstance() {
+        return instance;
+    }
+
 }

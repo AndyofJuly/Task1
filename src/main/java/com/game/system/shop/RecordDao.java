@@ -1,9 +1,6 @@
 package com.game.system.shop;
 
 import com.game.common.Const;
-import com.game.system.role.pojo.Role;
-import com.game.system.achievement.pojo.AchieveResource;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -13,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 
 /**
- * 购物模块的数据库操作
+ * 购物模块的数据库操作-限购功能-暂时不用
  * @Author andy
  * @create 2020/7/1 17:37
  */

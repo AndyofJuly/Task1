@@ -3,13 +3,14 @@ package com.game.system.gameserver;
 import com.game.common.Const;
 import com.game.common.MyAnnontation;
 import com.game.common.ResponseInf;
-import com.game.system.role.pojo.Role;
+import com.game.system.role.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
 
 /**
+ * 游戏服务模块调用方法入口
  * @Author andy
  * @create 2020/7/21 12:37
  */
@@ -18,8 +19,6 @@ public class GameController {
 
     private static ArrayList<Integer> intList  = new ArrayList<>();
     private static ArrayList<String> strList  = new ArrayList<>();
-/*    private ArrayList<Integer> intList = RoleController.getIntList();
-    private ArrayList<String> strList = RoleController.getStrList();*/
     @Autowired
     private GameService gameService;
     @Autowired
@@ -29,9 +28,9 @@ public class GameController {
     @MyAnnontation(MethodName = "register")
     public ResponseInf registerMesseage() {
         if(gameDao.insertRegister(strList.get(1),strList.get(2))){
-            return  ResponseInf.setResponse(Const.start.UREGISTER_FAILURE,null);
+            return  ResponseInf.setResponse(Const.Start.USER_REGISTER_FAILURE,null);
         }else {
-            return ResponseInf.setResponse(Const.start.UREGISTER_SUCCESS,null);
+            return ResponseInf.setResponse(Const.Start.USER_REGISTER_SUCCESS,null);
         }
     }
 
@@ -45,21 +44,22 @@ public class GameController {
             for(Integer roleId : roleList){
                 roleMsg += roleId+" ";
             }
-            return ResponseInf.setResponse(Const.start.ULOGIN_SUCCESS+roleMsg,null);
+            return ResponseInf.setResponse(Const.Start.USER_LOGIN_SUCCESS+roleMsg,null);
         }else {
-            return ResponseInf.setResponse(Const.start.ULOGIN_FAILURE,null);
+            return ResponseInf.setResponse(Const.Start.USER_LOGIN_FAILURE,null);
         }
     }
 
-    /** 角色注册，使用方式：registerR roleName careerId */
+    /** 角色注册，使用方式：registerR roleName careerId (userId)*/
     @MyAnnontation(MethodName = "registerR")
-    public ResponseInf registerRoleMesseage() { //注册时没有id，id从数据库中拿
+    public ResponseInf registerRoleMesseage() {
+        //注册时没有id，id从数据库中拿
         int result = gameService.registerRole(strList.get(1),intList.get(0));
         if(result!=0){
             gameDao.insertUserId(intList.get(1),result);
-            return ResponseInf.setResponse(Const.start.REGISTER_SUCCESS+"，你的角色id为："+result,null);
+            return ResponseInf.setResponse(Const.Start.REGISTER_SUCCESS+"，你的角色id为："+result,null);
         }else {
-            return ResponseInf.setResponse(Const.start.REGISTER_FAILURE,null);
+            return ResponseInf.setResponse(Const.Start.REGISTER_FAILURE,null);
         }
     }
 
